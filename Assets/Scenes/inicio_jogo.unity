@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 858241621}
   - component: {fileID: 858241620}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: texto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -744,7 +744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: -64.3}
+  m_AnchoredPosition: {x: -29.8, y: -66.2}
   m_SizeDelta: {x: 863.7, y: -128.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858241620
@@ -767,11 +767,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ol\xE1, jogador! Neste jogo, voc\xEA \xE9 um jornalista investigativo
+  m_text: "    Ol\xE1, jogador! Neste jogo, voc\xEA \xE9 um jornalista  investigativo
     escalado para cobrir uma pauta sobre uma onda de desinforma\xE7\xE3o que assola
-    Lide. \n\nSeu objetivo \xE9 descobrir quem est\xE1 por tr\xE1s de tudo isso e
-    salvar a popula\xE7\xE3o do caos. Lembre-se, voc\xEA n\xE3o pode confiar em ningu\xE9m,
-    investiga\xE7\xE3o \xE9 a chave!"
+    Lide. \n\n  Seu objetivo \xE9 descobrir quem est\xE1 por tr\xE1s de tudo isso
+    e salvar a popula\xE7\xE3o do caos. Lembre-se, voc\xEA n\xE3o pode confiar em
+    ningu\xE9m, investiga\xE7\xE3o \xE9 a chave!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -798,14 +798,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 17
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -43.89743, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1020,7 +1020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -687.5}
+  m_AnchoredPosition: {x: 0, y: -635.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306239192
@@ -1652,8 +1652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000038147, y: 86}
-  m_SizeDelta: {x: 1107.3, y: 1268.3}
+  m_AnchoredPosition: {x: 0, y: 240}
+  m_SizeDelta: {x: 1187.1, y: 1360.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143370855
 MonoBehaviour:
