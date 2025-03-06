@@ -335,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -278.6, y: 603.6}
+  m_AnchoredPosition: {x: -278.6, y: 572.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505042447
@@ -693,8 +693,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000019073, y: 0}
-  m_SizeDelta: {x: 1176.8, y: 1394.4}
+  m_AnchoredPosition: {x: -0.00000047684, y: 32.9}
+  m_SizeDelta: {x: 1280, y: 1862.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &805585048
 MonoBehaviour:
@@ -791,13 +791,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Infelizmente, ao longo de sua investiga\xE7\xE3o, voc\xEA n\xE3o conseguiu
-    coletar todas as pistas para desvendar esse caso. Antes de sua miss\xE3o final,
-    voc\xEA deve resolver os enigmas para recuperar as dicas e descobrir quem \xE9
-    o verdadeiro vil\xE3o."
+  m_text: "   Infelizmente, ao longo de sua investiga\xE7\xE3o, voc\xEA n\xE3o conseguiu
+    coletar todas as pistas para desvendar esse caso. \n\n   Antes de sua miss\xE3o
+    final, voc\xEA deve resolver os enigmas para recuperar as dicas e descobrir quem
+    \xE9 o verdadeiro vil\xE3o."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 17
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -361.44354, y: 0, z: 24.046692, w: 0}
+  m_margin: {x: -361.44354, y: 0, z: 33.995743, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1045,7 +1045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.239}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 132, y: -924.38}
+  m_AnchoredPosition: {x: 126, y: -1136}
   m_SizeDelta: {x: 177, y: 241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1182076324
@@ -1166,7 +1166,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.302}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -109, y: -925}
+  m_AnchoredPosition: {x: -115, y: -1136.62}
   m_SizeDelta: {x: 177, y: 241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1251330106
@@ -1277,7 +1277,7 @@ Transform:
   m_GameObject: {fileID: 1607524397}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: -644, z: 0}
+  m_LocalPosition: {x: -4, y: -817, z: 0}
   m_LocalScale: {x: 387.59998, y: 387.59998, z: 387.59998}
   m_ConstrainProportionsScale: 1
   m_Children: []
