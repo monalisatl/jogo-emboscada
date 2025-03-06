@@ -357,8 +357,8 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 2.218984, y: 1.9854066, z: 1.1678863}
+  m_LocalPosition: {x: -0.1315, y: 0, z: -10}
+  m_LocalScale: {x: 2.3481288, y: 2.2041986, z: 1.1678863}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -441,8 +441,8 @@ Transform:
   m_GameObject: {fileID: 619394800}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1315, y: 0, z: 0}
+  m_LocalScale: {x: 1.0582, y: 1.1102, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -607,8 +607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -12.897}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.87168753, y: 0.5}
-  m_AnchoredPosition: {x: -790, y: 665}
-  m_SizeDelta: {x: -285.6, y: 175.2}
+  m_AnchoredPosition: {x: -730, y: 763}
+  m_SizeDelta: {x: -274.5, y: 194.5}
   m_Pivot: {x: 4.0787535, y: 1.0000001}
 --- !u!114 &782487520
 MonoBehaviour:
@@ -1113,8 +1113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.8614804}
-  m_AnchoredPosition: {x: -258.3, y: 268.35004}
-  m_SizeDelta: {x: 200, y: 293.69992}
+  m_AnchoredPosition: {x: -258.3, y: 289.16498}
+  m_SizeDelta: {x: 200, y: 335.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045557056
 MonoBehaviour:
@@ -1163,8 +1163,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1249,7 +1249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238.5, y: -47.5}
+  m_AnchoredPosition: {x: -238.5, y: -62}
   m_SizeDelta: {x: 514.2, y: 338}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2049413206
@@ -1272,9 +1272,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Eu sou a editora-chefe do Veritas News! Ao longo dessa miss\xE3o, serei
-    sua mentora e te guiarei durante as fases! Antes de come\xE7armos, fique atento 
-    a essas informa\xE7\xF5es, elas v\xE3o te ajudar a desvendar o caso."
+  m_text: "           Eu sou a editora-chefe do Veritas News! Ao longo dessa miss\xE3o,
+    serei sua mentora e te guiarei durante as fases! Antes de come\xE7armos, fique
+    atento  a essas informa\xE7\xF5es, elas v\xE3o te ajudar a desvendar o caso."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1301,14 +1301,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 54
+  m_fontSizeBase: 54
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 17
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1389,8 +1389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: 426.9}
-  m_SizeDelta: {x: 1220.2, y: 732.8}
+  m_AnchoredPosition: {x: 0, y: 462.8}
+  m_SizeDelta: {x: 1326.8, y: 842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2069440247
 MonoBehaviour:
@@ -1503,8 +1503,8 @@ Transform:
   m_GameObject: {fileID: 2086527625}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.1315, y: 0, z: 0}
+  m_LocalScale: {x: 1.0582, y: 1.1102, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

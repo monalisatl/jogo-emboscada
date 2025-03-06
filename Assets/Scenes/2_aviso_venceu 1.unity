@@ -200,7 +200,7 @@ Transform:
   m_GameObject: {fileID: 41378894}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0.96, z: 0}
+  m_LocalPosition: {x: 0.012582168, y: 1.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 103572641}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.98, y: 291, z: 0}
+  m_LocalPosition: {x: -27, y: 440, z: 0}
   m_LocalScale: {x: 134.3, y: 134.3, z: 134.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 452743224}
   - component: {fileID: 452743223}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: texto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,7 +434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -420.5, y: -329.7}
+  m_AnchoredPosition: {x: -470.6, y: -296.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452743223
@@ -458,7 +458,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "parab\xE9ns, voc\xEA conseguiu realizar esta fase a tempo,  receba mais
-    credibilidade para as pr\xF3ximas fases e uma pista valiosa."
+    credibilidade para as pr\xF3ximas fases.\n\nE Na pr\xF3xima tela voc\xEA vai
+    receber uma pista valiosa."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -485,8 +486,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -523,7 +524,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 341.19272, z: -799.552, w: 0}
+  m_margin: {x: 0, y: 341.19272, z: -943.3355, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -830,7 +831,7 @@ Transform:
   m_GameObject: {fileID: 585609990}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.75741786, y: 2.98, z: 0}
+  m_LocalPosition: {x: 0.85, y: 3.51, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1001,7 +1002,7 @@ Transform:
   m_GameObject: {fileID: 883889327}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.03, y: 2.98, z: 0}
+  m_LocalPosition: {x: -0.9374178, y: 3.51, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1495,7 +1496,7 @@ Transform:
   m_GameObject: {fileID: 1806212011}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12703942, y: 2.9614968, z: 0}
+  m_LocalPosition: {x: -0.03445725, y: 3.4914968, z: 0}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
