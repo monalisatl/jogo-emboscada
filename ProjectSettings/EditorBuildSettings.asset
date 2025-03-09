@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/abertura.unity
+    guid: 51fe0d4846705024789e8e3fb27de1fe
+  - enabled: 1
+    path: Assets/Scenes/main.unity
+    guid: f95f68b5f9bb15d4396cbea203604aac
+  - enabled: 1
     path: Assets/Scenes/scenes gerais/0_abertura_jogo.unity
     guid: a84ef2d95613ab1418f65454cc0da5e9
   - enabled: 1
@@ -15,14 +21,14 @@ EditorBuildSettings:
     path: Assets/Scenes/scenes gerais/2_veritas_news.unity
     guid: 7db964c647bd13546b3c8ff699df46c4
   - enabled: 1
-    path: Assets/Scenes/3_falha.unity
-    guid: 8a820ee10bd524d4abcc245695b0348f
+    path: Assets/Scenes/scenes gerais/3_falha.unity
+    guid: 19accb19aae8beb4dba2b417e011b230
   - enabled: 1
     path: Assets/Scenes/scenes gerais/4_inicio_jogo.unity
     guid: 58737981a6fbb4647adaea25aa638ff9
   - enabled: 1
-    path: Assets/Scenes/5_personagem.unity
-    guid: f06eacf7740c9fa48a1a291729e7f66b
+    path: Assets/Scenes/scenes gerais/5_personagem.unity
+    guid: b4aa83d9dd239da46b854a1892b2623e
   - enabled: 1
     path: "Assets/Scenes/scenes gerais/6_apresenta\xE7\xE3o_editora_chefe.unity"
     guid: f4edc0bcb7963b14cb5a26236f44a1ff
@@ -66,8 +72,8 @@ EditorBuildSettings:
     path: "Assets/Scenes/scenes gerais/19_informa\xE7ao_hacker.unity"
     guid: 22be2a9f54ee4824a84ca7cccf9edee5
   - enabled: 1
-    path: Assets/Scenes/20_fasesdojogo.unity
-    guid: 4198d36f8496e6244b1e7817622b46b4
+    path: Assets/Scenes/scenes gerais/20_fasesdojogo.unity
+    guid: 7caa0241b9ed29d49a718096dcc9a3a4
   - enabled: 1
     path: Assets/Scenes/scenes gerais/21_aviso_coletiva.unity
     guid: 646a5e36996c3d148a64664f07d56b84
@@ -135,6 +141,8 @@ EditorBuildSettings:
     path: Assets/Scenes/scenes gerais/41_botaofinal.unity
     guid: e06fa536b9b72c44c89bd10da9744dc9
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: f380d6c27cf462445b527f7a5fa42750, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 7035e338560e35242aa9736aaf814f8c, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 56cb1f185e8d7a843b7a706295448c3d, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
