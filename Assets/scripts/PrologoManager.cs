@@ -9,14 +9,11 @@ public class PrologoManager : MonoBehaviour
 
     void Start()
     {
-        // Obtém o componente TextMeshProUGUI corretamente
         textMesh = prologo.GetComponent<TextMeshProUGUI>();
 
-        // Define o texto inicial
         AtualizarTexto(texto);
     }
 
-    // Método público para atualizar o texto dinamicamente
     public void AtualizarTexto(string novoTexto)
     {
         if (textMesh != null)
@@ -28,4 +25,6 @@ public class PrologoManager : MonoBehaviour
             Debug.LogWarning("O componente TextMeshProUGUI não foi encontrado.");
         }
     }
+
+    
 }
