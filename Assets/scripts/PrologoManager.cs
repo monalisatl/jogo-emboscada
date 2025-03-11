@@ -1,5 +1,7 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.iOS;
 
 public class PrologoManager : MonoBehaviour
 {
@@ -26,5 +28,10 @@ public class PrologoManager : MonoBehaviour
         }
     }
 
+
+    public void nextPage(){
+        mainManager.main.IrParaCanvas(2);
+
+    }
     
 }

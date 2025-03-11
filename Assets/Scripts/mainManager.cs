@@ -6,10 +6,12 @@ public class mainManager : MonoBehaviour
    [SerializeField] public List<GameObject> prefabs;
     private GameObject canva;
     private int indice = 1;
+    public static mainManager main;
 
     void Start()
     {
         InstanciarCanva(1);
+        main = this;
     }
 
     // Update is called once per frame
