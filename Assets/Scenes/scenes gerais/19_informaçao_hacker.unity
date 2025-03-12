@@ -427,6 +427,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2272915932892221167, guid: 8611c68dc2945fa48bf2b554e8662ff1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1305
+      objectReference: {fileID: 0}
     - target: {fileID: 5999835878642406880, guid: 8611c68dc2945fa48bf2b554e8662ff1, type: 3}
       propertyPath: m_Name
       value: "19_informa\xE7ao_hacker"

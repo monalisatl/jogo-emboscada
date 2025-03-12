@@ -511,10 +511,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8987233148823893285, guid: 55bd653e9504e594b98954e318436163, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1322
+      objectReference: {fileID: 0}
     - target: {fileID: 9067287288055001279, guid: 55bd653e9504e594b98954e318436163, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 9160570143104161599, guid: 55bd653e9504e594b98954e318436163, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
