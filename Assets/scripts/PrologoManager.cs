@@ -28,10 +28,5 @@ public class PrologoManager : MonoBehaviour
         }
     }
 
-
-    public void nextPage(){
-        mainManager.main.IrParaCanvas(2);
-
-    }
     
 }

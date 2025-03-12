@@ -27,11 +27,11 @@ Transform:
   m_GameObject: {fileID: 2497981609772796325}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1594265, y: -3.5909405, z: 1.7008464}
-  m_LocalScale: {x: 0.0032383425, y: 0.0032383425, z: 0.0032383425}
+  m_LocalPosition: {x: -640.00024, y: -1372.445, z: 0.00003051758}
+  m_LocalScale: {x: 0.8888891, y: 0.8888891, z: 0.8888891}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2640278511300991236}
+  m_Father: {fileID: 7221831684440486343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5807305600628842618
 MonoBehaviour:
@@ -437,7 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2640278511300991236}
-  - component: {fileID: 2303511821313299574}
+  - component: {fileID: 3981376137655327053}
   m_Layer: 0
   m_Name: "configura\xE7oes"
   m_TagString: Untagged
@@ -457,11 +457,10 @@ Transform:
   m_LocalPosition: {x: -47.26166, y: -386.7716, z: -466.86343}
   m_LocalScale: {x: 274.4889, y: 274.4889, z: 274.4889}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3469520212089584319}
+  m_Children: []
   m_Father: {fileID: 7221831684440486343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2303511821313299574
+--- !u!114 &3981376137655327053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -470,16 +469,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3968743885645008659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42369c678a84a79469c5ee5551144440, type: 3}
+  m_Script: {fileID: 11500000, guid: 477e81534d5027045a62c3d1f7cf4f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prologo: {fileID: 0}
-  texto: " Em um futuro pr\xF3ximo, Lide City, localizada na Am\xE9rica Noticiosa,
-    vive uma crise causada pelo processo de desinforma\xE7\xE3o. Um hacker se infiltrou
-    no sistema governamental e instalou um v\xEDrus capaz de manipular os meios de
-    comunica\xE7\xE3o, permitindo a dissemina\xE7\xE3o incontrol\xE1vel de desinforma\xE7\xE3o.
-    As redes sociais e a m\xEDdia agora est\xE3o tomadas por informa\xE7\xF5es forjadas,
-    teorias da conspira\xE7\xE3o e inverdades."
 --- !u!1 &5296362957729364393
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,12 +581,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6560560137574045263}
-  - {fileID: 1867705943599760218}
   - {fileID: 195662150013400498}
   - {fileID: 3639840450946044315}
+  - {fileID: 3469520212089584319}
   - {fileID: 2640278511300991236}
   - {fileID: 9001636066429791742}
   - {fileID: 1234772624691740770}
+  - {fileID: 6575875340884144547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -740,7 +733,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &6387793288571388311
+--- !u!1 &6195604422266589863
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -748,9 +741,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7783673935805938285}
-  - component: {fileID: 2261479493552384348}
-  - component: {fileID: 6743283796892877743}
+  - component: {fileID: 7513072647295370505}
+  - component: {fileID: 5035799841412447351}
+  - component: {fileID: 1526867830100451153}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -758,40 +751,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &7783673935805938285
+--- !u!224 &7513072647295370505
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6387793288571388311}
+  m_GameObject: {fileID: 6195604422266589863}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1867705943599760218}
+  m_Father: {fileID: 6575875340884144547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &2261479493552384348
+--- !u!222 &5035799841412447351
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6387793288571388311}
+  m_GameObject: {fileID: 6195604422266589863}
   m_CullTransparentMesh: 1
---- !u!114 &6743283796892877743
+--- !u!114 &1526867830100451153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6387793288571388311}
+  m_GameObject: {fileID: 6195604422266589863}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -876,7 +869,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &6720940643096493144
+--- !u!1 &7173339527874642731
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -884,10 +877,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1867705943599760218}
-  - component: {fileID: 8110193696840360647}
-  - component: {fileID: 6162220285459906506}
-  - component: {fileID: 9191439520493880999}
+  - component: {fileID: 6575875340884144547}
+  - component: {fileID: 3548242728105020193}
+  - component: {fileID: 8324520907295620882}
+  - component: {fileID: 3086813070642007898}
   m_Layer: 5
   m_Name: next
   m_TagString: Untagged
@@ -895,48 +888,48 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1867705943599760218
+--- !u!224 &6575875340884144547
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6720940643096493144}
-  m_LocalRotation: {x: -0, y: -0, z: 0.9999892, w: -0.004649685}
+  m_GameObject: {fileID: 7173339527874642731}
+  m_LocalRotation: {x: -0, y: -0, z: 0.9999568, w: 0.009299714}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7783673935805938285}
+  - {fileID: 7513072647295370505}
   m_Father: {fileID: 7221831684440486343}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180.533}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 178.934}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 426, y: -1081}
-  m_SizeDelta: {x: 160.51, y: 233.1}
+  m_AnchoredPosition: {x: 522.48, y: -981}
+  m_SizeDelta: {x: 136.8, y: 185.6}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8110193696840360647
+--- !u!222 &3548242728105020193
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6720940643096493144}
+  m_GameObject: {fileID: 7173339527874642731}
   m_CullTransparentMesh: 1
---- !u!114 &6162220285459906506
+--- !u!114 &8324520907295620882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6720940643096493144}
+  m_GameObject: {fileID: 7173339527874642731}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.85882354, b: 0.6372664, a: 1}
+  m_Color: {r: 0.4532307, g: 0.990566, b: 0.48009744, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -953,13 +946,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9191439520493880999
+--- !u!114 &3086813070642007898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6720940643096493144}
+  m_GameObject: {fileID: 7173339527874642731}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -993,10 +986,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 6162220285459906506}
+  m_TargetGraphic: {fileID: 8324520907295620882}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3981376137655327053}
+        m_TargetAssemblyTypeName: nextPage, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8359310784545916478
 GameObject:
   m_ObjectHideFlags: 0

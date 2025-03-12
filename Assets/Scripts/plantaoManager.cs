@@ -19,9 +19,4 @@ public class plantaoManager : MonoBehaviour
         }
     }
 
-    public void Next(){
-        if(audioSource.isPlaying){
-            mainManager.main.ProximoCanvas();
-        }
-    }
 }

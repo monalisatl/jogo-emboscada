@@ -1,3 +1,5 @@
+using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -5,35 +7,33 @@ using UnityEngine.UIElements;
 public class InicioJogo : MonoBehaviour
 {
     [SerializeField] private GameObject mainCanvas;
-    [SerializeField] private GameObject firstPopupPrefab;
-    [SerializeField] private GameObject secondPopupPrefab;
-
-    private GameObject currentPopup;
+    [SerializeField] private GameObject popUp;
+    [SerializeField] private GameObject popUpText;
+    [SerializeField] private TextMeshProUGUI popUpTextMesh;
     private int noClickCount = 0;
     
     
     void Start()
     {
-        mainCanvas = GameObject.Find("");
+        mainCanvas = GameObject.Find("4_inicio_jogo");
+        popUp = GameObject.Find("PopUp");
+        popUpText = GameObject.Find("mainText");
+        popUpTextMesh = popUpText.GetComponent<TextMeshProUGUI>();
+        popUp.SetActive(false);
     }
 
-    public void OnYesClicked()
-    {
-        Debug.Log("Jogador escolheu SIM! Continuando o jogo...");
-        mainManager.main.ProximoCanvas();
-    }
-    
+
     public void OnNoClicked()
     {
         noClickCount++;
         
         if (noClickCount == 1)
         {
-            ShowPopup(firstPopupPrefab);
+            ShowPopup( "Entendo, você não está interessado realmente? \n pense mais um pouco");
         }
-        else if (noClickCount == 2)
+        else if (noClickCount >=2)
         {
-            ShowPopup(secondPopupPrefab);
+            ShowPopup( "Por favor, só aperte SIM, é muito importante para mim.");
         }
         else
         {
@@ -42,25 +42,18 @@ public class InicioJogo : MonoBehaviour
         }
     }
     
-    private void ShowPopup(GameObject popupPrefab)
+    private void ShowPopup( string text)
     {
-        // ClosePopup();
-        // currentPopup = Instantiate(popupPrefab, canvasParent);
-        // Button buttons = currentPopup.GetComponentInChildren<Button>();
-        // foreach (Button button in buttons)
-        // {
-        //     if (button.name.Contains("Sim"))
-        //         button.onClick.AddListener(OnYesClicked);
-        //     else if (button.name.Contains("Nao") || button.name.Contains("Não"))
-        //         button.onClick.AddListener(OnNoClicked);
-        // }
+        popUpTextMesh.text = text;
+        popUp.SetActive(true);
+        
     }
     
     private void ClosePopup()
     {
-        if (currentPopup != null)
-            Destroy(currentPopup);
+        popUp.SetActive(false);
     }
+
 
 
 }

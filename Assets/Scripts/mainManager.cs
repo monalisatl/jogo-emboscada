@@ -5,12 +5,12 @@ public class mainManager : MonoBehaviour
 {
    [SerializeField] public List<GameObject> prefabs;
     private GameObject canva;
-    private int indice = 1;
+    private int indice = 0;
     public static mainManager main;
 
     void Start()
     {
-        InstanciarCanva(1);
+        InstanciarCanva(0);
         main = this;
     }
 
@@ -60,7 +60,8 @@ public class mainManager : MonoBehaviour
 
     
     public void IrParaCanvas(int indice)
-    {
+    {   
         InstanciarCanva(indice);
+    
     }
 }
