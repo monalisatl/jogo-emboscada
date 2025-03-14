@@ -4,7 +4,6 @@ public class FalhaManager : MonoBehaviour
 {
     private GameObject audioPlay;
     private AudioSource player;
-    private static int cout = 0;
     void Start()
     {
         audioPlay = GameObject.Find("Audio");
@@ -20,7 +19,6 @@ public class FalhaManager : MonoBehaviour
     {
         if (player != null && !player.isPlaying)
         {
-
             if (mainManager.main != null)
             {
                 {
