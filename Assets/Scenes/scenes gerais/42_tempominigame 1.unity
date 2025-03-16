@@ -274,7 +274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -303.4, y: 836}
+  m_AnchoredPosition: {x: -303.4, y: 846.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338005408
@@ -624,7 +624,7 @@ RectTransform:
   m_GameObject: {fileID: 899205065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
+  m_LocalScale: {x: 1.3999999, y: 1.3999999, z: 1.3999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8708790933705582992}
@@ -706,7 +706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400.5, y: 350.69998}
+  m_AnchoredPosition: {x: -400.5, y: 391.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059802289
@@ -730,10 +730,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u201CAgora, voc\xEA precisa organizar sua esta\xE7\xE3o de verifica\xE7\xE3o
-    antes de irmos a campo e darmos in\xEDcio a nossa investiga\xE7\xE3o sobre  as
-    fake news que est\xE3o se espalhando. Em tempos de desinforma\xE7\xE3o, cada
-    ferramenta tem um papel espec\xEDfico na descoberta da verdade. Associe ferramentas
-    de verifica\xE7\xE3o do jornalismo com seus prop\xF3sitos na checagem de not\xEDcias.\u201D\r\n"
+    antes de irmos  a campo e darmos in\xEDcio a nossa investiga\xE7\xE3o sobre 
+    as fake news que est\xE3o se espalhando. \nEm tempos de desinforma\xE7\xE3o,
+    cada ferramenta tem um papel espec\xEDfico na descoberta da verdade.\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1042,8 +1041,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076294, y: 418}
-  m_SizeDelta: {x: 135.8, y: 108.2}
+  m_AnchoredPosition: {x: -0.0000076294, y: 474.09003}
+  m_SizeDelta: {x: 135.8, y: 96.753}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266179191
 MonoBehaviour:
@@ -1709,7 +1708,7 @@ GameObject:
   - component: {fileID: 3505338675455577508}
   - component: {fileID: 7670405094217268034}
   m_Layer: 5
-  m_Name: 42.1_2_aviso_1fase
+  m_Name: 42.1_2_aviso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
