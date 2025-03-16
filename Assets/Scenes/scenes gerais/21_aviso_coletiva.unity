@@ -427,9 +427,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 191894792147255327, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_Name
+      value: next
+      objectReference: {fileID: 0}
+    - target: {fileID: 575071040992599274, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_Name
+      value: back
+      objectReference: {fileID: 0}
+    - target: {fileID: 595353606999917931, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -87
+      objectReference: {fileID: 0}
+    - target: {fileID: 595353606999917931, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 473.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1072698014296837588, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1305
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381208693428921231, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 134.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381208693428921231, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1010.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3087773409842464623, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_text
+      value: "Rep\xF3rter, voc\xEA precisa agir r\xE1pido! O governo est\xE1 promovendo
+        uma coletiva de imprensa, essa \xE9 a sua chance de conseguir informa\xE7\xF5es
+        cruciais. Lembre-se das not\xEDcias falsas que voc\xEA investigou. Use as
+        evid\xEAncias aprendidas para confrontar a autoridade. Boas perguntas revelam
+        mais pistas, fique atento aos detalhes!\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3087773409842464623, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_fontSize
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3087773409842464623, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3933384951357865409, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -123
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904720001043488452, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -173.4
       objectReference: {fileID: 0}
     - target: {fileID: 7112703032082338248, guid: fde68c2e12065d5409eba3e9621cd16a, type: 3}
       propertyPath: m_Pivot.x
