@@ -427,6 +427,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4656918450683502713, guid: c69ba01d90a1b2046a5e351f9e3acb49, type: 3}
+      propertyPath: m_text
+      value: "\"Eu sou a editora-chefe do Veritas News! Ao longo dessa miss\xE3o,
+        serei sua mentora e te guiarei durante as fases! Antes de come\xE7armos,
+        fique atento  a essas informa\xE7\xF5es, elas v\xE3o te ajudar a desvendar
+        o caso.\""
+      objectReference: {fileID: 0}
     - target: {fileID: 5911632479117435544, guid: c69ba01d90a1b2046a5e351f9e3acb49, type: 3}
       propertyPath: m_Name
       value: "6_apresenta\xE7\xE3o_editora_chefe"
