@@ -427,6 +427,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 560822309095232150, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -58.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072729744464130088, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532585177228578501, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
+      propertyPath: m_text
+      value: "Rep\xF3rter, nesta fase voc\xEA ter\xE1 que resolver tr\xEAs enigmas!
+        O cen\xE1rio \xE9 um labirinto que simula uma comunidade online, respons\xE1vel
+        por impulsionar as not\xEDcias falsas. \r\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 4492110660937295393, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
       propertyPath: m_Name
       value: 26_aviso_3_fase
@@ -510,6 +524,14 @@ PrefabInstance:
     - target: {fileID: 7466452186882688826, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231977394095119818, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1331.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299295596839771277, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -999
       objectReference: {fileID: 0}
     - target: {fileID: 8985252447486967399, guid: 1c764ef4200e861418e8d227bbcb221e, type: 3}
       propertyPath: m_Camera
