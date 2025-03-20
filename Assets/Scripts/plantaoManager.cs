@@ -1,22 +1,42 @@
 using UnityEngine;
+using UnityEngine.Video;
+using System.Collections;
 
-public class plantaoManager : MonoBehaviour
+public class PlantaoManager : MonoBehaviour
 {
-    private AudioSource audioSource;
-    private GameObject config;
-    void Start()
-    {   
-        config = GameObject.Find("Audio Source");
-        audioSource = config.GetComponent<AudioSource>();
-        audioSource.Play();
+    private VideoPlayer videoPlayer;     private GameObject config;
+
+    void Start(){
+        config = GameObject.Find("Video Player");
+        if (config != null)
+        {
+            videoPlayer = config.GetComponent<VideoPlayer>();
+        }
+        if (videoPlayer == null)
+        {
+            Debug.LogError("VideoPlayer não encontrado no objeto 'Video Player'. Certifique-se de que o objeto existe e contém o componente VideoPlayer.");
+            return;
+        }
+        videoPlayer.Play();
+
+        // Inicia a coroutine para verificar periodicamente o estado de reprodução
+        StartCoroutine(CheckAndPlayAudio());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator CheckAndPlayAudio()
     {
-        if(!audioSource.isPlaying){
-            mainManager.main.ProximoCanvas();
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            if (!videoPlayer.isPlaying && videoPlayer != null)
+            {
+                mainManager.main.ProximoCanvas();
+            }
         }
     }
 
+    void Update()
+    {
+
+    }
 }

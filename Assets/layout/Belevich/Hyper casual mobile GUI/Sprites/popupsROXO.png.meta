@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 117ca5be26dcc9d44967e147be66300f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: popupsROXO_0
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 2808
+        width: 882
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b6353969d9c364bb0cc366a8274548
+      internalID: 1852774620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_1
+      rect:
+        serializedVersion: 2
+        x: 3252
+        y: 2688
+        width: 1099
+        height: 372
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1579b4dbc982e2949976a7429b54ae5c
+      internalID: -1265006403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_2
+      rect:
+        serializedVersion: 2
+        x: 4326
+        y: 2676
+        width: 1172
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58aa77e9e41634f4195095d0623a8846
+      internalID: 135209356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_3
+      rect:
+        serializedVersion: 2
+        x: 5166
+        y: 2203
+        width: 582
+        height: 445
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edada36ce4f373c43b9532bd3e8cfbc5
+      internalID: 1021038460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_4
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1932
+        width: 1379
+        height: 718
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0aafa766356b6b43a5e58574f255397
+      internalID: -262998012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_5
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 1959
+        width: 1329
+        height: 666
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe3725563d2e3b48b6d540d40f63416
+      internalID: -955978711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_6
+      rect:
+        serializedVersion: 2
+        x: 3346
+        y: 1642
+        width: 554
+        height: 980
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d977b7d0d5fb684599927f1fde2d5de
+      internalID: -688840562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_7
+      rect:
+        serializedVersion: 2
+        x: 3954
+        y: 2201
+        width: 1154
+        height: 415
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc1a2cd24a4c1741923322cda09de30
+      internalID: -1904793339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_8
+      rect:
+        serializedVersion: 2
+        x: 3960
+        y: 1992
+        width: 1068
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac725d6d5e567f4d97e42fd81c95b86
+      internalID: 46857718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_9
+      rect:
+        serializedVersion: 2
+        x: 5068
+        y: 1992
+        width: 482
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7deb248c33fd0448a531a0a9920edd0
+      internalID: -475206310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_10
+      rect:
+        serializedVersion: 2
+        x: 5592
+        y: 1994
+        width: 156
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281494c7e24ce2843b43c32690ee9fdd
+      internalID: -1818774238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_11
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 449
+        width: 718
+        height: 1379
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207ea2eced0deec4f83f7c0c12a28ca0
+      internalID: 220059294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_12
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 1034
+        width: 718
+        height: 794
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8492d29ed514bef4c944b843c78e1d8c
+      internalID: 263285109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_13
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 474
+        width: 666
+        height: 1329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36f7d5504a23304781238e00c25c656
+      internalID: 315221097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_14
+      rect:
+        serializedVersion: 2
+        x: 2484
+        y: 1059
+        width: 666
+        height: 744
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 474c8b88b21b4564a9cfcfe3d6970120
+      internalID: 1199885608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_15
+      rect:
+        serializedVersion: 2
+        x: 4032
+        y: 1566
+        width: 858
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9085ba26dcfab4443a94ab795b21c0e9
+      internalID: -753161974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_16
+      rect:
+        serializedVersion: 2
+        x: 4980
+        y: 1560
+        width: 711
+        height: 378
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a646f9cda537abf49975271c062a5e55
+      internalID: 1350536365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_17
+      rect:
+        serializedVersion: 2
+        x: 5682
+        y: 1788
+        width: 132
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2aec9300d115934fb5b1424820ae2ee
+      internalID: 177038240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_18
+      rect:
+        serializedVersion: 2
+        x: 5718
+        y: 1722
+        width: 102
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b400153718f4f46bbc0a167c0843f2
+      internalID: 233310747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_19
+      rect:
+        serializedVersion: 2
+        x: 4974
+        y: 1692
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e736f0acf60c5d640bf1c199e97f9508
+      internalID: -1718956897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_20
+      rect:
+        serializedVersion: 2
+        x: 5718
+        y: 1698
+        width: 96
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb1b759949f96324f9f6689bb4f1fad2
+      internalID: 1156633264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_21
+      rect:
+        serializedVersion: 2
+        x: 5724
+        y: 1686
+        width: 96
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: becdefa83467b104589cd88b040a958a
+      internalID: 889959845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_22
+      rect:
+        serializedVersion: 2
+        x: 5724
+        y: 1680
+        width: 93
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd3ec9d7eee2d347a8d680b8629f99b
+      internalID: 1684965664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_23
+      rect:
+        serializedVersion: 2
+        x: 4962
+        y: 1657
+        width: 30
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a69a95ee0ece5489a02f748fbbf8ff
+      internalID: -1858325072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_24
+      rect:
+        serializedVersion: 2
+        x: 4998
+        y: 1662
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bde7cbcfdeaa1f94f80514f8c075d143
+      internalID: 1202168077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_25
+      rect:
+        serializedVersion: 2
+        x: 4950
+        y: 1626
+        width: 30
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0910181aa4948d42ae6294401f87d6d
+      internalID: -976536073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_26
+      rect:
+        serializedVersion: 2
+        x: 3407
+        y: 1260
+        width: 429
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2a1cb17c3a207e4bbd4529e069ba0fe
+      internalID: 369708706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_27
+      rect:
+        serializedVersion: 2
+        x: 4034
+        y: 1091
+        width: 853
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c0423734a5d8343a3f70d2e3e3bf5f
+      internalID: -160361478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_28
+      rect:
+        serializedVersion: 2
+        x: 4942
+        y: 1089
+        width: 854
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fad7a13652c9b24aa6b95c0e677f74e
+      internalID: 1482548211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_29
+      rect:
+        serializedVersion: 2
+        x: 3407
+        y: 996
+        width: 429
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149e11afb0ec0734fb40a2f98e748726
+      internalID: 950190997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_30
+      rect:
+        serializedVersion: 2
+        x: 4940
+        y: 696
+        width: 877
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b9942d90679f94b8a53844a274609e
+      internalID: -1410907746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_31
+      rect:
+        serializedVersion: 2
+        x: 4005
+        y: 696
+        width: 879
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd21d468c26aea74fad239676a5a1572
+      internalID: -574751106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_32
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 164
+        width: 508
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30228869a4af76b48b02ead093e8ee09
+      internalID: -832095036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_33
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 164
+        width: 255
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68915ac593bd2b54a8dbf8bd0a318536
+      internalID: 248375469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_34
+      rect:
+        serializedVersion: 2
+        x: 4224
+        y: 164
+        width: 635
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f51d37756071c4d99e31ff433ef63f
+      internalID: 429260398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupsROXO_35
+      rect:
+        serializedVersion: 2
+        x: 4937
+        y: 164
+        width: 635
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26d1dd29fdc5bc54f9aa8b1f0d456728
+      internalID: 1208641590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6a79f61f8373070409256922c60740af
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      popupsROXO_0: 1852774620
+      popupsROXO_1: -1265006403
+      popupsROXO_10: -1818774238
+      popupsROXO_11: 220059294
+      popupsROXO_12: 263285109
+      popupsROXO_13: 315221097
+      popupsROXO_14: 1199885608
+      popupsROXO_15: -753161974
+      popupsROXO_16: 1350536365
+      popupsROXO_17: 177038240
+      popupsROXO_18: 233310747
+      popupsROXO_19: -1718956897
+      popupsROXO_2: 135209356
+      popupsROXO_20: 1156633264
+      popupsROXO_21: 889959845
+      popupsROXO_22: 1684965664
+      popupsROXO_23: -1858325072
+      popupsROXO_24: 1202168077
+      popupsROXO_25: -976536073
+      popupsROXO_26: 369708706
+      popupsROXO_27: -160361478
+      popupsROXO_28: 1482548211
+      popupsROXO_29: 950190997
+      popupsROXO_3: 1021038460
+      popupsROXO_30: -1410907746
+      popupsROXO_31: -574751106
+      popupsROXO_32: -832095036
+      popupsROXO_33: 248375469
+      popupsROXO_34: 429260398
+      popupsROXO_35: 1208641590
+      popupsROXO_4: -262998012
+      popupsROXO_5: -955978711
+      popupsROXO_6: -688840562
+      popupsROXO_7: -1904793339
+      popupsROXO_8: 46857718
+      popupsROXO_9: -475206310
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
