@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Fase1Manager : MonoBehaviour {
-    [SerializeField] private List<Noticia> poolNoticias = new List<Noticia>(); 
+    [SerializeField] public List<Noticia> poolNoticias = new List<Noticia>(); 
     [SerializeField] private int quantidadePerguntas = 4;
     public static List<Noticia> noticiasSelecionadas { get; private set; }
     public static int perguntaAtualIndex = 0;
@@ -34,8 +34,8 @@ public class Fase1Manager : MonoBehaviour {
         List<Noticia> noticiasDisponiveis = new List<Noticia>(poolNoticias);
         noticiasSelecionadas.Clear();
         Debug.Log("Selecionando notícias aleatórias...");
-        Debug.Log("Notícias disponíveis: " + noticiasDisponiveis.Count);
         Debug.Log("Quantidade de perguntas: " + poolNoticias.Count);
+        Debug.Log("Quantidade de perguntas selecionadas: " + quantidadePerguntas);
 
         for (int i = 0; i < quantidadePerguntas; i++) {
             if (noticiasDisponiveis.Count == 0) break;

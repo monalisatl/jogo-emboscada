@@ -119,6 +119,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &166413813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3289655603903733349, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &166413815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4500085209274078613, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166413813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &313101477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7682080666171500595, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &313101479 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5963294550828861763, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313101477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &480131120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 589675775117054601, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &480131122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1309084526000276313, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480131120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +405,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13346d00539fee409267c424d0334ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &820118643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5316352265296573740, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &820118645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8805364911575131846, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820118643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871258315
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +481,105 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9057155693939324912, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
   m_PrefabInstance: {fileID: 2288041232435428808}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1020190803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4511993333978558391, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1114438035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5317234128578674759, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1114438037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4204917069148800972, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114438035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1213541909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6478496651405661303, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1232256179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3908235544622299159, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1252225688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6241628893214472979, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1252225690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2066081451275276538, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252225688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1345618901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2661834681607348562, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1462836341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7715782471493815076, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1462836343 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8477561180375291761, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462836341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1883214842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4065794137412362356, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1904041343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1987098849727902851, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1953469722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 463868649978678830, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1969303076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6384954699440287635, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1969303078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1246015038851641065, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+  m_PrefabInstance: {fileID: 2288041232435428808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969303076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2288041232435428808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,6 +611,34 @@ PrefabInstance:
     - target: {fileID: 199009430875835253, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 589675775117054601, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_Name
+      value: conteudo_noticia_aberta
+      objectReference: {fileID: 0}
+    - target: {fileID: 836675181873967211, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 836675181873967211, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontStyle
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 836675181873967211, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 887768182627878852, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 887768182627878852, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontStyle
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 887768182627878852, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1084534171880622967, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -586,9 +777,105 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: dataNoticia
+      value: 
+      objectReference: {fileID: 1114438037}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: data_noticia
+      value: 
+      objectReference: {fileID: 1114438035}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: tituloNoticia
+      value: 
+      objectReference: {fileID: 166413815}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: opcoesResposta
+      value: 
+      objectReference: {fileID: 1020190803}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: titulo_noticia
+      value: 
+      objectReference: {fileID: 166413813}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: conteudoNoticia
+      value: 
+      objectReference: {fileID: 1252225690}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: conteudo_noticia
+      value: 
+      objectReference: {fileID: 1252225688}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: linkFonteNoticia
+      value: 
+      objectReference: {fileID: 820118645}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: botoes.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: dataNoticiaAberta
+      value: 
+      objectReference: {fileID: 313101479}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: linkFonte_noticia
+      value: 
+      objectReference: {fileID: 820118643}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: data_noticia_aberta
+      value: 
+      objectReference: {fileID: 313101477}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: tituloNoticiaAberta
+      value: 
+      objectReference: {fileID: 1462836343}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1953469722}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1883214842}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1904041343}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoes.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1213541909}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoes.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1345618901}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoes.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1232256179}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: conteudoNoticiaAberta
+      value: 
+      objectReference: {fileID: 480131122}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: noticiaObj.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: titulo_noticia_aberta
+      value: 
+      objectReference: {fileID: 1462836341}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: linkFonteNoticiaAberta
+      value: 
+      objectReference: {fileID: 1969303078}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: conteudo_noticia_aberta
+      value: 
+      objectReference: {fileID: 480131120}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: linkFonte_noticia_aberta
+      value: 
+      objectReference: {fileID: 1969303076}
     - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: 'noticiaObj.Array.data[0]'
       value: 
@@ -597,6 +884,46 @@ PrefabInstance:
       propertyPath: 'noticiaObj.Array.data[1]'
       value: 
       objectReference: {fileID: 904467467}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: botoesResposta.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoesResposta.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1953469722}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoesResposta.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1883214842}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoesResposta.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1904041343}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoesResposta.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1213541909}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoesResposta.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1345618901}
+    - target: {fileID: 2813595592182184128, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: 'botoesResposta.Array.data[5]'
+      value: 
+      objectReference: {fileID: 1232256179}
+    - target: {fileID: 2935613913996177496, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935613913996177496, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontStyle
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2935613913996177496, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3542222806820283673, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: m_SizeDelta.x
       value: 2389.8
@@ -613,6 +940,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 12.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3887248210353574277, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887248210353574277, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontStyle
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887248210353574277, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4214485799918570567, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -684,10 +1023,46 @@ PrefabInstance:
     - target: {fileID: 4322193245500491045, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938210686516924286, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938210686516924286, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontStyle
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938210686516924286, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129935818243154084, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129935818243154084, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontStyle
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6129935818243154084, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384954699440287635, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_Name
+      value: linkFonte_noticia_aberta
       objectReference: {fileID: 0}
     - target: {fileID: 7498395723810843036, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: m_Name
       value: 13_fase1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682080666171500595, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_Name
+      value: data_noticia_aberta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7715782471493815076, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
+      propertyPath: m_Name
+      value: titulo_noticia_aberta
       objectReference: {fileID: 0}
     - target: {fileID: 8443865451486902421, guid: 6f7a0fbb3015a2e438c59ff6fa7767fd, type: 3}
       propertyPath: m_MatchWidthOrHeight

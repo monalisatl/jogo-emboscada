@@ -6,7 +6,20 @@ public class NoticiaManager : MonoBehaviour
 
     public static NoticiaManager instance;
     [SerializeField] private Noticia noticiaAtual;
-    [SerializeField] private GameObject[] noticiaObj = new GameObject[2];
+    [SerializeField] public GameObject[] noticiaObj = new GameObject[2];
+
+    [Header("Noticia aberta")]
+    [SerializeField] private GameObject titulo_noticia_aberta;
+    [SerializeField] private GameObject data_noticia_aberta;
+    [SerializeField] private GameObject conteudo_noticia_aberta;
+    [SerializeField] private GameObject linkFonte_noticia_aberta;
+    [Header("Noticia")]
+    [SerializeField] private GameObject titulo_noticia;
+    [SerializeField] private GameObject data_noticia;
+    [SerializeField] private GameObject conteudo_noticia;
+    [SerializeField] private GameObject linkFonte_noticia;
+    [Header("Botões")]
+    [SerializeField] private GameObject[] botoes = new GameObject[4];
 
     private void Awake()
         {
@@ -36,63 +49,52 @@ public class NoticiaManager : MonoBehaviour
         return;
     }
         noticiaAtual = Fase1Manager.instance.MostrarPerguntaAtual();
-        foreach (GameObject obj in noticiaObj)
+        if (noticiaAtual != null)
         {
-            GameObject titulo_noticia = GameObject.Find("titulo_noticia").gameObject;
-            GameObject data_noticia = GameObject.Find("data_noticia").gameObject;
-            GameObject conteudo_noticia = GameObject.Find("conteudo_noticia").gameObject;
-            GameObject linkFonte_noticia = GameObject.Find("linkFonte_noticia").gameObject;
-            GameObject opcoes_resposta =GameObject.Find("opcoes_resposta").gameObject;
-            titulo_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.titulo;
-            data_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.data;
-            conteudo_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.conteudo;
-            linkFonte_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.linkFonte;
-            GameObject[] botoes = new GameObject[noticiaAtual.opcoesResposta.Count];
-            if(obj.name == "noticia"){
-                for (int i = 0; i < noticiaAtual.opcoesResposta.Count; i++)
-                {     botoes[i] = GameObject.Find("botao "+ (i+1));
-                    botoes[i].GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.opcoesResposta[i].texto;
-                    if (noticiaAtual.opcoesResposta[i].isCorreto)
-                    {
-                        botoes[i].GetComponent<BotaoOpcao>().isCorreto = true;
-                    }
-                }
-            }
-        }   
+            carregarNoticia(noticiaAtual);
+        }
     }
     public void CarregarProximaNoticia()
     {
         noticiaAtual = Fase1Manager.instance.MostrarPerguntaAtual();
-        
-        if(noticiaAtual != null)
+        if (noticiaAtual != null)
         {
-                   foreach (GameObject obj in noticiaObj)
+            carregarNoticia(noticiaAtual);
+        }
+        else
         {
-            GameObject titulo_noticia = GameObject.Find("titulo_noticia").gameObject;
-            GameObject data_noticia = GameObject.Find("data_noticia").gameObject;
-            GameObject conteudo_noticia = GameObject.Find("conteudo_noticia").gameObject;
-            GameObject linkFonte_noticia = GameObject.Find("linkFonte_noticia").gameObject;
-            GameObject opcoes_resposta = GameObject.Find("opcoes_resposta").gameObject;
+            Debug.Log("Fim do quiz!");
+        }
+    }
+
+
+    void carregarNoticia(Noticia noticiaAtual)
+    {       
+
+            // titulo_noticia_aberta = GameObject.Find("titulo_noticia_aberta").gameObject;
+            // data_noticia_aberta = GameObject.Find("data_noticia_aberta").gameObject;
+            // conteudo_noticia_aberta = GameObject.Find("conteudo_noticia_aberta").gameObject;
+            // linkFonte_noticia_aberta = GameObject.Find("linkFonte_noticia_aberta").gameObject;
+            // titulo_noticia = GameObject.Find("titulo_noticia").gameObject;
+            // data_noticia = GameObject.Find("data_noticia").gameObject;
+            // conteudo_noticia = GameObject.Find("conteudo_noticia").gameObject;
+            // linkFonte_noticia = GameObject.Find("linkFonte_noticia").gameObject;
+            data_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.data;
+            titulo_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.titulo;
+            conteudo_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.conteudo;
+            linkFonte_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.linkFonte;
             titulo_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.titulo;
             data_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.data;
             conteudo_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.conteudo;
             linkFonte_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.linkFonte;
-            GameObject[] botoes = new GameObject[noticiaAtual.opcoesResposta.Count];
-            if(obj.name == "noticia"){
                 for (int i = 0; i < noticiaAtual.opcoesResposta.Count; i++)
-                {     botoes[i] = GameObject.Find("botao "+ (i+1));
-                    botoes[i].GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.opcoesResposta[i].texto;
+                { 
+                    botoes[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = noticiaAtual.opcoesResposta[i].texto;
                     if (noticiaAtual.opcoesResposta[i].isCorreto)
                     {
                         botoes[i].GetComponent<BotaoOpcao>().isCorreto = true;
                     }
                 }
-            }
-        }  
-        }
-        else
-        {
-            Debug.Log("Fim das notícias!");
         }
     }
-}
+
