@@ -1,6 +1,6 @@
 using System.Data.Common;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class botaofase1 : MonoBehaviour
 {
@@ -11,18 +11,18 @@ public class botaofase1 : MonoBehaviour
 
     void Start()
     {
-        image = button.GetComponent<Image>();
+        image = GetComponent<Image>();
     }
 
     void OnPres(){
         if (isPressed)
         {
-            image.tintColor = new Color(134f, 0f, 159f, 255f);
+            image.color = new Color(134f, 0f, 159f, 255f);
             isPressed = false;
         }
         else
         {
-            image.tintColor = new Color(134f, 0f, 159f, 255f);
+            image.color = new Color(134f, 0f, 159f, 255f);
             isPressed = true;
         }
 
