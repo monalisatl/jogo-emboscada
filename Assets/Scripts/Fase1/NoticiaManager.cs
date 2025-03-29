@@ -54,8 +54,8 @@ public class NoticiaManager : MonoBehaviour
             carregarNoticia(noticiaAtual);
         }
     }
-    public void CarregarProximaNoticia()
-    {
+    public void CarregarProximaNoticia(){
+        
         noticiaAtual = Fase1Manager.instance.MostrarPerguntaAtual();
         if (noticiaAtual != null)
         {
@@ -64,6 +64,7 @@ public class NoticiaManager : MonoBehaviour
         else
         {
             Debug.Log("Fim do quiz!");
+            
         }
     }
 
