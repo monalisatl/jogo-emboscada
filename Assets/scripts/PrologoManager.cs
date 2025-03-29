@@ -1,5 +1,7 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.iOS;
 
 public class PrologoManager : MonoBehaviour
 {
