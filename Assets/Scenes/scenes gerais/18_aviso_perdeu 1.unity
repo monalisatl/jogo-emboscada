@@ -427,19 +427,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3013314056246235991, guid: 485c8403790c99444b526aba58b2da30, type: 3}
-      propertyPath: m_text
-      value: "infelizmente, voc\xEA n\xE3o conseguiu concluir essa fase. Voc\xEA
-        ter\xE1 menos tempo para a segunda fase e segue como amador."
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013314056246235991, guid: 485c8403790c99444b526aba58b2da30, type: 3}
-      propertyPath: m_margin.z
-      value: -958.8698
-      objectReference: {fileID: 0}
-    - target: {fileID: 5068775924330452978, guid: 485c8403790c99444b526aba58b2da30, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 519420031}
     - target: {fileID: 5553222568803543664, guid: 485c8403790c99444b526aba58b2da30, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -523,14 +510,6 @@ PrefabInstance:
     - target: {fileID: 7792583908800980333, guid: 485c8403790c99444b526aba58b2da30, type: 3}
       propertyPath: m_Name
       value: 18.1_aviso_perdeu_1fase
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268939825906898777, guid: 485c8403790c99444b526aba58b2da30, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -492.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268939825906898777, guid: 485c8403790c99444b526aba58b2da30, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -476.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

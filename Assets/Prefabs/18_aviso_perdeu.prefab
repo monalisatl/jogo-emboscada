@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.305, y: 1350.5}
+  m_AnchoredPosition: {x: 1.305, y: 1371.8}
   m_SizeDelta: {x: 2.61, y: 1.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6150318137160380392
@@ -334,7 +334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.305, y: -1350.5}
+  m_AnchoredPosition: {x: 1.305, y: -1438}
   m_SizeDelta: {x: 2.61, y: 1.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1147266710705182380
@@ -596,8 +596,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -420.5, y: -431.9}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -400, y: -442}
+  m_SizeDelta: {x: 381.7173, y: 59.086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5109205045573599488
 CanvasRenderer:
@@ -627,8 +627,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Infelizmente, voc\xEA n\xE3o conseguiu realizar esta fase a tempo e perdeu
-    uma pista valiosa. "
+  m_text: "Fase n\xE3o conclu\xEDda! Infelizmente, voc\xEA n\xE3o ir\xE1 receber
+    uma  pista valiosa e ter\xE1 menos tempo na pr\xF3xima fase. \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
