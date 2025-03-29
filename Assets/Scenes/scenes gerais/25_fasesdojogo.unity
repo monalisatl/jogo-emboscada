@@ -427,6 +427,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 913848370818722535, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.44891423
+      objectReference: {fileID: 0}
+    - target: {fileID: 913848370818722535, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7356407
+      objectReference: {fileID: 0}
+    - target: {fileID: 913848370818722535, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084260337049078015, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_text
+      value: credencial
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084260337049078015, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_fontSize
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084260337049078015, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.91237986
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084260337049078015, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.91237986
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084260337049078015, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084260337049078015, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084260337049078015, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293519859
+      objectReference: {fileID: 0}
     - target: {fileID: 3404416965435754232, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -507,6 +547,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4590791270627255902, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590791270627255902, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.21176471
+      objectReference: {fileID: 0}
     - target: {fileID: 6348509754925194212, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
       propertyPath: m_Name
       value: 25_fasesdojogo
@@ -516,7 +564,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420031}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1659791987928142317, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a7fd584b00000a4ab542dbcba6311e9, type: 3}

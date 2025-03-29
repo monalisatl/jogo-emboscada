@@ -894,7 +894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -394.8, y: -62.6}
+  m_AnchoredPosition: {x: -407.9, y: -89.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1018939467936653561
@@ -925,10 +925,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Rep\xF3rter, para darmos in\xEDcio a nossa investiga\xE7\xE3o, precisamos
-    descobrir por que essas not\xEDcias s\xE3o falsas! Use sua habilidade investigativa
-    para encontrar inconsist\xEAncias nessas mat\xE9rias. Selecione tr\xEAs motivos
-    que indiquem o porqu\xEA delas serem forjadas."
+  m_text: "\u201CRep\xF3rter, agora podemos dar in\xEDcio \xE0 nossa investiga\xE7\xE3o.
+    Nessa fase, precisamos descobrir inconsist\xEAncias! Use sua habilidade investigativa
+    e analise estas quatro not\xEDcias suspeitas. Seu objetivo \xE9 identificar tr\xEAs
+    caracter\xEDsticas que indicam falsidade em cada uma delas. Use o que aprendeu
+    sobre verifica\xE7\xE3o para fundamentar sua an\xE1lise.\" \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -955,8 +956,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 51
+  m_fontSizeBase: 51
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -972,7 +973,7 @@ MonoBehaviour:
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
+  m_wordWrappingRatios: 0.23
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
@@ -993,7 +994,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -807.77124, w: 0}
+  m_margin: {x: 0, y: 0, z: -815.52814, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1035,8 +1036,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.1, y: 438.15}
-  m_SizeDelta: {x: 1275.8, y: 950.2}
+  m_AnchoredPosition: {x: -45, y: 422}
+  m_SizeDelta: {x: 1173.294, y: 1167.3599}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6496616016872043891
 CanvasRenderer:
@@ -1088,7 +1089,7 @@ GameObject:
   - component: {fileID: 585139294830419320}
   - component: {fileID: 7479582150727503779}
   m_Layer: 5
-  m_Name: Image
+  m_Name: lupa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1103,14 +1104,14 @@ RectTransform:
   m_GameObject: {fileID: 6464551331129335339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.09, y: 1.09, z: 1.09}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8902712881620716776}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 521, y: 788}
+  m_AnchoredPosition: {x: 422.65298, y: 869.18}
   m_SizeDelta: {x: 129.8, y: 158.1}
   m_Pivot: {x: 0.6273476, y: 0.33271024}
 --- !u!222 &585139294830419320
@@ -1321,7 +1322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -102.9, y: 261.1}
+  m_AnchoredPosition: {x: -84.2, y: 335.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6377333045016781593

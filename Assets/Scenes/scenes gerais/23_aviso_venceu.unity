@@ -515,6 +515,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: 23_aviso_venceu
       objectReference: {fileID: 0}
+    - target: {fileID: 4464896112917103648, guid: 08dca842b03be064bb5ba35736f06eda, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1017.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464896112917103648, guid: 08dca842b03be064bb5ba35736f06eda, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7021595479045773070, guid: 08dca842b03be064bb5ba35736f06eda, type: 3}
+      propertyPath: m_text
+      value: "Parab\xE9ns, voc\xEA conseguiu realizar esta fase e ter\xE1 mais tempo
+        para completar a pr\xF3xima fase.\r\n\r\nE na pr\xF3xima tela voc\xEA vai
+        receber uma pista valiosa."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
