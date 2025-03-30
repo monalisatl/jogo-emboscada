@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -1301.9}
+  m_AnchoredPosition: {x: 20, y: -1320}
   m_SizeDelta: {x: 1626.3, y: 198.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4751699397859027178
@@ -276,9 +276,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "parab\xE9ns, voc\xEA conseguiu realizar esta fase a tempo,  receba mais
-    credibilidade para as pr\xF3ximas fases.\n\nE Na pr\xF3xima tela voc\xEA vai
-    receber uma pista valiosa."
+  m_text: "Parab\xE9ns, voc\xEA conseguiu realizar esta etapa e ter\xE1 mais tempo
+    para completar a pr\xF3xima fase.\r\n\r\nE na pr\xF3xima tela voc\xEA vai receber
+    uma pista valiosa."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -383,7 +383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 1286}
+  m_AnchoredPosition: {x: 20, y: 1322}
   m_SizeDelta: {x: 1626.3, y: 198.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3581244628953998870
@@ -710,7 +710,7 @@ RectTransform:
   m_LocalRotation: {x: 0.002168253, y: -0.13956745, z: -0.99011046, w: -0.014057}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5332256833574381824}
   - {fileID: 6510412697603770574}
@@ -722,7 +722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -16.048, y: -0.022, z: -181.624}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: -1019}
+  m_AnchoredPosition: {x: 5, y: -1017.21}
   m_SizeDelta: {x: 218.8, y: 213.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8329695258190124376

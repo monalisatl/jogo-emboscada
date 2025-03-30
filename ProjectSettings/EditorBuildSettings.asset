@@ -39,58 +39,58 @@ EditorBuildSettings:
     path: Assets/Scenes/scenes gerais/8_aviso_fase_final.unity
     guid: d6214171587a09040b27c13f85614bcc
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/9_aviso_1_fase.unity
+    path: "Assets/Scenes/scenes gerais/17_fase2_instru\xE7ao.unity"
     guid: 6316b7b0ab32de741b4f6f43a9f2e559
   - enabled: 1
     path: Assets/Scenes/scenes gerais/10_rodadateste.unity
     guid: f65a916134ae95a49a3971c3cddbb16c
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/11_fases_do_jogo.unity
+    path: Assets/Scenes/scenes gerais/9_fase1_nivel.unity
     guid: d9b35e870b0a36c4784d789a53f478ac
   - enabled: 1
     path: Assets/Scenes/scenes gerais/12_rodadateste_1_fase.unity
     guid: 54ccb068ad281914599f6f8abec2e55e
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/13_fase1.unity
+    path: Assets/Scenes/scenes gerais/18_fase2_minigame.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/14_fase_ordem_cronologica.unity
+    path: "Assets/Scenes/scenes gerais/19_fase2_2instru\xE7ao.unity"
     guid: 869b9024f25b28246af6f4e06182c819
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/15_ordem_cronologica_fase.unity
+    path: Assets/Scenes/scenes gerais/20_fase2_2minigame.unity
     guid: 9e0b6e98591a3b1458d5c68fcf34ca29
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/16_aviso_venceu 1.unity
+    path: Assets/Scenes/scenes gerais/21_fase2_parabens.unity
     guid: 1fd2fd97c95d0fd4bbff0cb832b21a31
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/17_pista_assinatura.unity
+    path: Assets/Scenes/scenes gerais/22_fase2_pista1.unity
     guid: 957514424f91e8b419bf2c76efa2ced6
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/18_aviso_perdeu.unity
+    path: Assets/Scenes/scenes gerais/fase_n_concluida.unity
     guid: d264f55196a579740a4dfbb84547d4fe
   - enabled: 1
-    path: "Assets/Scenes/scenes gerais/19_informa\xE7ao_hacker.unity"
+    path: Assets/Scenes/scenes gerais/15_fase1_mensagemhacker.unity
     guid: 22be2a9f54ee4824a84ca7cccf9edee5
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/20_fasesdojogo.unity
+    path: Assets/Scenes/scenes gerais/23_fase3_nivel.unity
     guid: 7caa0241b9ed29d49a718096dcc9a3a4
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/21_aviso_coletiva.unity
+    path: "Assets/Scenes/scenes gerais/24_fase3_instru\xE7ao.unity"
     guid: 646a5e36996c3d148a64664f07d56b84
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/22_fase2.unity
+    path: Assets/Scenes/scenes gerais/25_fase3_minigame.unity
     guid: 756e4f879ba50ff489d6a27b0b05b778
   - enabled: 1
     path: Assets/Scenes/scenes gerais/22_fase2_minigame.unity
     guid: 5caee49cbc391164e8c8b6860d26e860
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/23_aviso_venceu.unity
+    path: Assets/Scenes/scenes gerais/fase3_parabens.unity
     guid: 887c176818cd4bd4fa72d9254d68e2c3
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/24_pista_marca.unity
+    path: Assets/Scenes/scenes gerais/fase3_pista.unity
     guid: ee13492abe762dc4c8e383122b67c182
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/25_fasesdojogo.unity
+    path: Assets/Scenes/scenes gerais/fase4.unity
     guid: d264dfdb3527d7944af699106061f358
   - enabled: 1
     path: Assets/Scenes/scenes gerais/26_aviso_3_fase.unity
@@ -99,22 +99,22 @@ EditorBuildSettings:
     path: Assets/Scenes/scenes gerais/27_fase3.unity
     guid: 371b7610bf8d9454a9e32f19616f76d2
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/28_aviso_parabens.unity
+    path: Assets/Scenes/scenes gerais/14_fase1_parabens.unity
     guid: d35617d820cf61044a330c1563849f65
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/29_pista_palavra.unity
+    path: Assets/Scenes/scenes gerais/fase4_pista.unity
     guid: d78d7f9591b84a240848d37142e65b6f
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/30_fasesdojogo.unity
+    path: Assets/Scenes/scenes gerais/16_fase2_nivel.unity
     guid: 1e8a4957e44fc934ea059af755fa9c4d
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/31_finalmensagem.unity
+    path: Assets/Scenes/scenes gerais/fase5.unity
     guid: e3487ce2973e3a24a8fbcf21088a6519
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/32_fase_final.unity
+    path: Assets/Scenes/scenes gerais/fase5.1_culpado.unity
     guid: caa58fd26749a184cbc6acfc64513fa6
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/33_recado_final 2.unity
+    path: Assets/Scenes/scenes gerais/fase5_sempistas.unity
     guid: b12a04951b2944147843000297509a75
   - enabled: 1
     path: Assets/Scenes/scenes gerais/34_fase_final.unity
@@ -126,10 +126,10 @@ EditorBuildSettings:
     path: Assets/Scenes/scenes gerais/36_fase_final 2.unity
     guid: 922261712f6a2344e9f52cebba08b893
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/37_recado_final.unity
+    path: Assets/Scenes/scenes gerais/fase5_compistas.unity
     guid: c0222a0aedbfeca4c82e2f5ffd096833
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/38_mensagemparabens.unity
+    path: Assets/Scenes/scenes gerais/fase5_parabens.unity
     guid: 8252e39c7e0271d43ae9a5a374a02ec7
   - enabled: 1
     path: Assets/Scenes/scenes gerais/39aviso_2.2_perdeu.unity
@@ -138,7 +138,7 @@ EditorBuildSettings:
     path: Assets/Scenes/scenes gerais/40_recado_final.unity
     guid: 03aa33c9cbb3fc743afcd630240ee9b9
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/41_botaofinal.unity
+    path: Assets/Scenes/scenes gerais/fase5.botaofim.unity
     guid: e06fa536b9b72c44c89bd10da9744dc9
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: f380d6c27cf462445b527f7a5fa42750, type: 2}

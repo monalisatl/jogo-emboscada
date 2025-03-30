@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8153563017958058157}
   - component: {fileID: 6626782837441050825}
   m_Layer: 5
-  m_Name: next (1)
+  m_Name: next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.469}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109.70001, y: -1009.69995}
+  m_AnchoredPosition: {x: 134.6, y: -1010.3}
   m_SizeDelta: {x: 165.7, y: 237.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &935498986034694503
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 7093055209920889560}
   - component: {fileID: 1916836560811226550}
   m_Layer: 5
-  m_Name: next
+  m_Name: back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87, y: -1010}
+  m_AnchoredPosition: {x: -123, y: -1010}
   m_SizeDelta: {x: 165.7, y: 237.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2966051983359253587
@@ -355,7 +355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -88.9, y: 466}
+  m_AnchoredPosition: {x: -87, y: 473.6}
   m_SizeDelta: {x: 356.5, y: 93.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1893228475007786193
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 2430808145729886627}
   - component: {fileID: 3623605858453424484}
   m_Layer: 5
-  m_Name: detalhe_topo (1)
+  m_Name: detalhe_baixo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: -1286}
+  m_AnchoredPosition: {x: 20, y: -1324}
   m_SizeDelta: {x: 1626.3, y: 198.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2430808145729886627
@@ -915,7 +915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -325.7, y: -136.64}
+  m_AnchoredPosition: {x: -325.7, y: -173.4}
   m_SizeDelta: {x: 198.9, y: 1289.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &57665600583021124
@@ -947,9 +947,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Rep\xF3rter, voc\xEA precisa agir r\xE1pido! O governo est\xE1 promovendo
-    uma coletiva de imprensa, essa \xE9 a chance de conseguir informa\xE7\xF5es cruciais.
-    Identifique inconsist\xEAncias, e quem est\xE1 falando a verdade! Fique atento
-    aos detalhes!"
+    uma coletiva de imprensa, essa \xE9 a sua chance de conseguir informa\xE7\xF5es
+    cruciais. Lembre-se das not\xEDcias falsas que voc\xEA investigou. Use as evid\xEAncias
+    aprendidas para confrontar a autoridade. Boas perguntas revelam mais pistas,
+    fique atento aos detalhes!\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -976,8 +977,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1054,7 +1055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 1286}
+  m_AnchoredPosition: {x: 20, y: 1311}
   m_SizeDelta: {x: 1626.3, y: 198.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1768512399767541083

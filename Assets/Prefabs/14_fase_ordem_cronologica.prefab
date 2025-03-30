@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000038147, y: 1280}
+  m_AnchoredPosition: {x: 0.0000038147, y: 1322}
   m_SizeDelta: {x: 1608.2155, y: 306.5862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4030118042000425095
@@ -696,8 +696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1308}
-  m_SizeDelta: {x: 1529.1, y: 257.9}
+  m_AnchoredPosition: {x: 2.4282, y: -1347}
+  m_SizeDelta: {x: 1603.359, y: 310.3179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5222112193882429522
 CanvasRenderer:
@@ -892,7 +892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -352.6, y: -55.4}
+  m_AnchoredPosition: {x: -369.3, y: -51}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5608845966751126802
@@ -923,8 +923,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Agora voc\xEA deve montar uma ordem cronol\xF3gica das  mat\xE9rias publicadas
-    e descobrir qual foi a primeira fake news!"
+  m_text: "\u201CExcelente an\xE1lise! Agora, organize estas not\xEDcias em ordem
+    cronol\xF3gica. Rep\xF3rteres investigativos sempre tra\xE7am a linha do tempo
+    da desinforma\xE7\xE3o para descobrir padr\xF5es. Isso revela como o criador
+    das fake news opera.\u201D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -951,8 +953,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63
-  m_fontSizeBase: 63
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -989,7 +991,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -701.24243, w: 0}
+  m_margin: {x: 0, y: 0, z: -724.6368, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1143,7 +1145,7 @@ GameObject:
   - component: {fileID: 381089466179650081}
   - component: {fileID: 7461159875270649415}
   m_Layer: 5
-  m_Name: Image
+  m_Name: caixa_de_texto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1167,8 +1169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: 440}
-  m_SizeDelta: {x: 1185.4, y: 762.5}
+  m_AnchoredPosition: {x: -1.59, y: 454}
+  m_SizeDelta: {x: 1236.9, y: 762.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &381089466179650081
 CanvasRenderer:
