@@ -2,9 +2,19 @@ using UnityEngine;
 
 public class entrar_fase1 : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public static entrar_fase1 instance;
+
     void Start()
     {
+       if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
         
     }
 
@@ -18,4 +28,5 @@ public class entrar_fase1 : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("11_fase1_minigame");
     }
+
 }

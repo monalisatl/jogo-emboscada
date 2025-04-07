@@ -5,8 +5,8 @@ public class mainManager : MonoBehaviour
 {
    [SerializeField] public List<GameObject> prefabs;
     private GameObject canva;
-    public int indiceCanvainicial = 0;
-    private int indice = 0;
+    public static int indiceCanvainicial = 0;
+    private  int indice = 0;
     public static mainManager main;
 
     void Start()
