@@ -274,7 +274,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6291203903093867192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2879812408339499006}
+        m_TargetAssemblyTypeName: nextPage, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3987915663581115973
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5410192327549113885}
-  - component: {fileID: 7072131119589017111}
+  - component: {fileID: 2879812408339499006}
   m_Layer: 0
   m_Name: "configura\xE7oes"
   m_TagString: Untagged
@@ -307,7 +319,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5683733452314871065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7072131119589017111
+--- !u!114 &2879812408339499006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,16 +328,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3987915663581115973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42369c678a84a79469c5ee5551144440, type: 3}
+  m_Script: {fileID: 11500000, guid: 477e81534d5027045a62c3d1f7cf4f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prologo: {fileID: 0}
-  texto: " Em um futuro pr\xF3ximo, Lide City, localizada na Am\xE9rica Noticiosa,
-    vive uma crise causada pelo processo de desinforma\xE7\xE3o. Um hacker se infiltrou
-    no sistema governamental e instalou um v\xEDrus capaz de manipular os meios de
-    comunica\xE7\xE3o, permitindo a dissemina\xE7\xE3o incontrol\xE1vel de desinforma\xE7\xE3o.
-    As redes sociais e a m\xEDdia agora est\xE3o tomadas por informa\xE7\xF5es forjadas,
-    teorias da conspira\xE7\xE3o e inverdades."
 --- !u!1 &4059091904272152762
 GameObject:
   m_ObjectHideFlags: 0
