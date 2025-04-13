@@ -510,7 +510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400.5, y: 391.6}
+  m_AnchoredPosition: {x: -380.8, y: 407.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8570575570854507171
@@ -542,9 +542,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u201CAgora, voc\xEA precisa organizar sua esta\xE7\xE3o de verifica\xE7\xE3o
-    antes de irmos  a campo e darmos in\xEDcio a nossa investiga\xE7\xE3o sobre 
-    as fake news que est\xE3o se espalhando. \nEm tempos de desinforma\xE7\xE3o,
-    cada ferramenta tem um papel espec\xEDfico na descoberta da verdade.\""
+    antes de irmos  a campo e darmos in\xEDcio a nossa investiga\xE7\xE3o. Em tempos
+    de desinforma\xE7\xE3o, cada ferramenta tem um papel espec\xEDfico na descoberta
+    da verdade.\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -571,8 +571,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 57
+  m_fontSizeBase: 57
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -805.5746, w: 0}
+  m_margin: {x: 0, y: 0, z: -755.821, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1073,7 +1073,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -6.57, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97.9, y: -935.8}
+  m_AnchoredPosition: {x: -88, y: -1030}
   m_SizeDelta: {x: 160, y: 227.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1379026732299497540
@@ -1194,7 +1194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.027, y: 6.57, z: -180.237}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101.1, y: -935.6}
+  m_AnchoredPosition: {x: 92, y: -1029.7999}
   m_SizeDelta: {x: 160, y: 227.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7579091694321063290
