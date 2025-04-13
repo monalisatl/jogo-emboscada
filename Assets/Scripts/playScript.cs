@@ -5,6 +5,7 @@ public class playScript : MonoBehaviour{
 
 public void playGame(){
     Debug.Log("Tentando passar para a main");
+    mainManager.indiceCanvainicial = 0;
     SceneManager.LoadScene("main");
     Debug.Log("enviado");
 }
