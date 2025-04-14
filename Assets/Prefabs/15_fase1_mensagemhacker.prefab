@@ -190,8 +190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.713}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 94, y: -1003}
-  m_SizeDelta: {x: 160, y: 265.2}
+  m_AnchoredPosition: {x: 80.72183, y: -1014.9514}
+  m_SizeDelta: {x: 140.1054, y: 219.6329}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &780737508915538031
 CanvasRenderer:
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"As fake news s\xE3o sempre divulgadas por sites com URLs suspeitos,
+  m_text: "\"As fake news s\xE3o sempre divulgadas por sites com URLs (links suspeitos),
     as imagens s\xE3o manipuladas e apresentam uma assinatura peculiar.\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1402,8 +1402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110.1, y: -1003}
-  m_SizeDelta: {x: 160, y: 265.2}
+  m_AnchoredPosition: {x: -98, y: -1015}
+  m_SizeDelta: {x: 140.1054, y: 219.6329}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8292784696014874414
 CanvasRenderer:

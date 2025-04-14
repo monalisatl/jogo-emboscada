@@ -189,7 +189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -483.41238, y: -1535.7379}
+  m_AnchoredPosition: {x: -483.41238, y: -1958.1874}
   m_SizeDelta: {x: 227.9, y: 174.1}
   m_Pivot: {x: 0.5, y: 0.24903414}
 --- !u!222 &1438722585471519607
@@ -281,7 +281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -483.41238, y: -1298.8127}
+  m_AnchoredPosition: {x: -483.41238, y: -1721.2622}
   m_SizeDelta: {x: 227.9, y: 174.1}
   m_Pivot: {x: 0.5, y: 0.24903414}
 --- !u!222 &8338891162323811480
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 8797670783755636981}
   - component: {fileID: 2574459314017699205}
   m_Layer: 5
-  m_Name: lista_fontes
+  m_Name: lista_contatos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 3321241659466481889}
   - component: {fileID: 2161836487284470224}
   m_Layer: 5
-  m_Name: "cita\xE7oes_duvidosas"
+  m_Name: gravar_entrevistas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -659,7 +659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -483.41238, y: -1984.0503}
+  m_AnchoredPosition: {x: -483.41238, y: -2406.4998}
   m_SizeDelta: {x: 227.9, y: 174.1}
   m_Pivot: {x: 0.5, y: 0.24903414}
 --- !u!222 &8002775555873608986
@@ -1023,7 +1023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -483.41238, y: -1757.8125}
+  m_AnchoredPosition: {x: -483.41238, y: -2180.262}
   m_SizeDelta: {x: 227.9, y: 174.1}
   m_Pivot: {x: 0.5, y: 0.24903414}
 --- !u!222 &2084936641892215312
@@ -1191,7 +1191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35228127, y: 0.56743264}
   m_AnchorMax: {x: 0.5, y: 0.56743264}
-  m_AnchoredPosition: {x: 575.3926, y: -1127.143}
+  m_AnchoredPosition: {x: 572.2851, y: 417.00024}
   m_SizeDelta: {x: 75.079956, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3194277056538092338
@@ -1339,7 +1339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -483.41238, y: -2225.2502}
+  m_AnchoredPosition: {x: -483.41238, y: -2647.6997}
   m_SizeDelta: {x: 227.9, y: 174.1}
   m_Pivot: {x: 0.5, y: 0.24903414}
 --- !u!222 &170170964609810598
@@ -1845,7 +1845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 86.625, y: 830.25}
+  m_AnchoredPosition: {x: -21, y: 782}
   m_SizeDelta: {x: 594.4, y: 286.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8697406038340655959
@@ -1876,7 +1876,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Associe as ferramentas de verifica\xE7\xE3o do jornalismo com seus prop\xF3sitos
+  m_text: "Associe as 6 ferramentas de verifica\xE7\xE3o do jornalista com seus prop\xF3sitos
     na checagem de not\xEDcias:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -291.83212, y: 0, z: -139.99875, w: 0}
+  m_margin: {x: -291.83212, y: 0, z: -320.63403, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2715,7 +2715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8682949037148893208
@@ -2773,8 +2773,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2855,7 +2855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35228127, y: 0.56743264}
   m_AnchorMax: {x: 0.5, y: 0.56743264}
-  m_AnchoredPosition: {x: 345.78, y: -1127.143}
+  m_AnchoredPosition: {x: -126, y: 417.00024}
   m_SizeDelta: {x: 75.87996, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7225769351799894817
@@ -3000,8 +3000,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.34, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -0.000021935, y: 0}
+  m_SizeDelta: {x: 100, y: 141.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7841117247496441957
 CanvasRenderer:
@@ -3078,7 +3078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011444, y: -0.000041962}
+  m_AnchoredPosition: {x: 0.000011444, y: -375.51068}
   m_SizeDelta: {x: 762.2446, y: 611.5529}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3234648107046948238
@@ -3514,7 +3514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233.10004, y: -7.8930206}
+  m_AnchoredPosition: {x: 233.10004, y: -6.91}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6870060279214619211
@@ -3545,7 +3545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: URL Suspeito
+  m_text: URL (link Suspeito)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3628,7 +3628,7 @@ GameObject:
   - component: {fileID: 2505180528641404579}
   - component: {fileID: 8353343182339294216}
   m_Layer: 5
-  m_Name: "frase_cita\xE7\xF5esduvidosa (1)"
+  m_Name: "frase_anotarinforma\xE7\xF5es"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3650,7 +3650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233.10013, y: -14.192872}
+  m_AnchoredPosition: {x: 233.10013, y: -7.5}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2505180528641404579
@@ -3681,7 +3681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "contradi\xE7\xF5es"
+  m_text: "anotar informa\xE7\xF5es"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3746,7 +3746,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -442.58774, w: 0}
+  m_margin: {x: 0, y: 0, z: -503.36572, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3839,7 +3839,7 @@ GameObject:
   - component: {fileID: 3950520952522090581}
   - component: {fileID: 8464656097729977088}
   m_Layer: 5
-  m_Name: "frase_cita\xE7\xF5esduvidosa"
+  m_Name: frase_gravarentrevistas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3861,7 +3861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233.10004, y: -12.893127}
+  m_AnchoredPosition: {x: 233.10004, y: -9}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3950520952522090581
@@ -3892,7 +3892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "cita\xE7\xF5es duvidosas"
+  m_text: gravar entrevistas
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3997,7 +3997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 529.5, y: -5.6930847}
+  m_AnchoredPosition: {x: 529.5, y: -5.21}
   m_SizeDelta: {x: 852.3, y: 148.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2659147041328061513
@@ -4125,7 +4125,7 @@ GameObject:
   - component: {fileID: 7793336429313136854}
   - component: {fileID: 15911785680053061}
   m_Layer: 5
-  m_Name: frase_listadefontes
+  m_Name: frase_listadecontatos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4147,7 +4147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233.10004, y: -11.193142}
+  m_AnchoredPosition: {x: 233.10004, y: -8.23}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7793336429313136854
@@ -4178,7 +4178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: lista de fontes
+  m_text: lista de contatos
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4287,7 +4287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35228127, y: 0.56743264}
   m_AnchorMax: {x: 0.5, y: 0.56743264}
-  m_AnchoredPosition: {x: -119.8575, y: -1127.143}
+  m_AnchoredPosition: {x: 105, y: 417.0002}
   m_SizeDelta: {x: 75.87996, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4914207586424743315
@@ -4510,7 +4510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -483.41238, y: -1061.5504}
+  m_AnchoredPosition: {x: -483.41238, y: -1484}
   m_SizeDelta: {x: 227.9, y: 174.1}
   m_Pivot: {x: 0.5, y: 0.24903414}
 --- !u!222 &6627184439893261072
@@ -4603,7 +4603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35228127, y: 0.56743264}
   m_AnchorMax: {x: 0.5, y: 0.56743264}
-  m_AnchoredPosition: {x: 109.64251, y: -1127.143}
+  m_AnchoredPosition: {x: -579, y: 417.00024}
   m_SizeDelta: {x: 75.87996, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1948469346053737690
@@ -4752,7 +4752,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35228127, y: 0.56743264}
   m_AnchorMax: {x: 0.5, y: 0.56743264}
-  m_AnchoredPosition: {x: -579.8925, y: -1127.143}
+  m_AnchoredPosition: {x: 339, y: 417.0002}
   m_SizeDelta: {x: 75.87996, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8936796458120479463
@@ -4938,7 +4938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35228127, y: 0.56743264}
   m_AnchorMax: {x: 0.5, y: 0.56743264}
-  m_AnchoredPosition: {x: -354.98236, y: -1127.1426}
+  m_AnchoredPosition: {x: -358, y: 417}
   m_SizeDelta: {x: 75.87996, y: 82.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7566187530833444927
@@ -5120,7 +5120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 233.10004, y: -12.993027}
+  m_AnchoredPosition: {x: 233.10004, y: -9.7}
   m_SizeDelta: {x: 186, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3227978552951990869
