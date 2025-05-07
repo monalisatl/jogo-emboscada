@@ -1421,7 +1421,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5054336844310744495}
-  - component: {fileID: 8166551698596723472}
   m_Layer: 0
   m_Name: "configura\xE7oes"
   m_TagString: Untagged
@@ -1444,22 +1443,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5274190536768460009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8166551698596723472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8820272421474953410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42369c678a84a79469c5ee5551144440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prologo: {fileID: 3119207759939178471}
-  texto: " Em um futuro pr\xF3ximo, Lide City, localizada na Am\xE9rica Noticiosa,
-    vive uma crise causada pelo processo de desinforma\xE7\xE3o. Um hacker se infiltrou
-    no sistema governamental e instalou um v\xEDrus capaz de manipular os meios de
-    comunica\xE7\xE3o, permitindo a dissemina\xE7\xE3o incontrol\xE1vel de desinforma\xE7\xE3o.
-    As redes sociais e a m\xEDdia agora est\xE3o tomadas por informa\xE7\xF5es forjadas,
-    teorias da conspira\xE7\xE3o e inverdades."
