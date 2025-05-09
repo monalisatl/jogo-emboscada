@@ -348,6 +348,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: fase4.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7163304488569993440, guid: 73e9277bbf05d3c4cb3669656bfac092, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8753276807668022715, guid: 73e9277bbf05d3c4cb3669656bfac092, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190319414199625461, guid: 73e9277bbf05d3c4cb3669656bfac092, type: 3}
+      propertyPath: cenaDerrota
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 9190319414199625461, guid: 73e9277bbf05d3c4cb3669656bfac092, type: 3}
+      propertyPath: cenaVitoria
+      value: 33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

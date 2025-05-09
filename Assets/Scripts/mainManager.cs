@@ -10,9 +10,19 @@ public class mainManager : MonoBehaviour
     public static mainManager main;
 
     void Start()
-    {
+    {   
+            if(main == null)
+        {
+            main = this;
+            DontDestroyOnLoad(main);
+
+        }
+        else
+        {
+            Destroy(main);
+            main = this;
+        }
         InstanciarCanva(indiceCanvainicial);
-        main = this;
     }
 
     // Update is called once per frame

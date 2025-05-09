@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a168fa2d2ecba7488da581d87cc4bda, type: 3}
+  m_Name: Enigma 2
+  m_EditorClassIdentifier: 
+  enigma: "Sirvo como uma pista crucial para as not\xEDcias, se estou escondida,
+    desconfie!   Quem sou eu? "
+  alternativas:
+  - fonte
+  - "t\xEDtulo"
+  - "coment\xE1rios"
+  idCorreto: 0
+  explicacao: "Eu sou uma fonte, posso ser uma pessoa, um registro ou qualquer outro
+    recurso que forne\xE7a dados sobre um assunto. Al\xE9m de passar credibilidade
+    e precis\xE3o \xE0s not\xEDcias. "
