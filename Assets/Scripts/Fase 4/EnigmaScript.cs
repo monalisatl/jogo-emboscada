@@ -57,24 +57,24 @@ public class EnigmaScript : MonoBehaviour
 
 			if (respostasCorretas >= 2)
 			{
-				if (mainManager.main == null)
+				if (MainManager.main == null)
 				{
-					mainManager.main = new mainManager();
+					MainManager.main = new MainManager();
 
                 }
-                mainManager.indiceCanvainicial = cenaVitoria;
-                SceneManager.LoadScene("main");
+                MainManager.indiceCanvainicial = cenaVitoria;
+                SceneManager.LoadSceneAsync("main");
 
             }
 			else
 			{
-				if (mainManager.main == null)
+				if (MainManager.main == null)
 				{
-					mainManager.main = new mainManager();
+					MainManager.main = new MainManager();
 
                 }
-                mainManager.indiceCanvainicial = cenaDerrota;
-                SceneManager.LoadScene("main");
+                MainManager.indiceCanvainicial = cenaDerrota;
+                SceneManager.LoadSceneAsync("main");
             }
 		}
 	}

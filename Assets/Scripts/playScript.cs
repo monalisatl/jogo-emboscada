@@ -8,14 +8,11 @@ public class playScript : MonoBehaviour{
 
     private void Awake()
     {
-
-       DontDestroyOnLoad(loading);
-       DontDestroyOnLoad(main);
     }
     public void playGame(){
     Debug.Log("Tentando passar para a main");
-    mainManager.indiceCanvainicial = 0;
-    SceneManager.LoadScene("main");
+    MainManager.indiceCanvainicial = 0;
+    SceneManager.LoadSceneAsync("main");
         // Debug.Log("enviado");
     }
 

@@ -27,7 +27,7 @@ public class entrar_fase1 : MonoBehaviour
 
     public void abrir_fase1()
     {
-        SceneManager.LoadScene("11_fase1_minigame");
+        SceneManager.LoadSceneAsync("11_fase1_minigame");
     }
 
 }

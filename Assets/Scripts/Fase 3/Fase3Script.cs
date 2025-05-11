@@ -1,64 +1,145 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class Fase3Manager : MonoBehaviour
 {
-    [Header("Prefabs de Etapas")]
-    [SerializeField] private Fase3InstrucaoScript instrucaoPrefab;
-    [SerializeField] private secretarioVideoConfig videoPrefab;
-    [SerializeField] private PerguntaScript pergunta1Prefab;
-    [SerializeField] private PerguntaScript pergunta2Prefab;
-    [SerializeField] private GameObject loadingScreen;
-    [SerializeField] private GameObject vitoriaPrefab;
-    [SerializeField] private GameObject derrotaPrefab;
+    [Header("objetos raiz")] [SerializeField]
+    private GameObject loadingScreen;
 
+    [SerializeField] private GameObject main;
+
+    [Header("Áudio de Instrução")] [SerializeField]
+    private AudioClip instrucoesClip;
+
+    [SerializeField] private AudioSource instrucaoAudioSource;
+    [SerializeField] private GameObject instrucaoGO;
+    private bool _skipInstrucao = false;
+    [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
+    [SerializeField] private VideoClip[] secretariosClip;
+
+    [Header("Perguntas")] [SerializeField] private PerguntaScript pergunta1Prefab;
+    [SerializeField] private PerguntaScript pergunta2Prefab;
+
+    [Header("Resultado")] [SerializeField] private GameObject vitoriaPrefab;
+    [SerializeField] private GameObject derrotaPrefab;
     private bool _resp1, _resp2;
 
     void Start()
     {
+        if (LoadingScreenController.Instance == null)
+        {
+            DontDestroyOnLoad(loadingScreen);
+        }
+
         StartCoroutine(RunFase());
     }
 
     private IEnumerator RunFase()
     {
-        var instr = Instantiate(instrucaoPrefab);
-        bool doneInstr = false;
-        instr.OnComplete += () => doneInstr = true;
-        yield return new WaitUntil(() => doneInstr);
-        
-        yield return ShowLoading();
-        var vid1 = Instantiate(videoPrefab);
-        bool doneVid1 = false;
-        vid1.OnVideoEnd += () => doneVid1 = true;
-        yield return new WaitUntil(() => doneVid1);
-        
-        var p1 = Instantiate(pergunta1Prefab);
-        bool answered1 = false;
-        p1.OnAnswered += (certo) => { _resp1 = certo; answered1 = true; };
-        yield return new WaitUntil(() => answered1);
-        
-        yield return ShowLoading();
-        var vid2 = Instantiate(videoPrefab);
-        bool doneVid2 = false;
-        vid2.OnVideoEnd += () => doneVid2 = true;
-        yield return new WaitUntil(() => doneVid2);
-        
-        var p2 = Instantiate(pergunta2Prefab);
-        bool answered2 = false;
-        p2.OnAnswered += (certo) => { _resp2 = certo; answered2 = true; };
-        yield return new WaitUntil(() => answered2);
+        yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+        {
+            () => PrepareAudio(instrucoesClip)
+        });
+        instrucaoAudioSource.clip = instrucoesClip;
+        instrucaoAudioSource.Play();
+        yield return new WaitUntil(() =>
+            _skipInstrucao
+        );
 
-        // 6) Vitória ou Derrota
-        if (_resp1 && _resp2)
-            Instantiate(vitoriaPrefab);
-        else
-            Instantiate(derrotaPrefab);
+        yield return PlayVideo(secretariosClip[0]);
+
+        yield return AskQuestion(pergunta1Prefab, correto => _resp1 = correto);
+
+        yield return PlayVideo(secretariosClip[1]);
+
+        yield return AskQuestion(pergunta2Prefab, correto => _resp2 = correto);
+
+        yield return StartCoroutine(EndFase3());
     }
 
-    private IEnumerator ShowLoading()
+
+    private IEnumerator EndFase3()
     {
-        loadingScreen.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        loadingScreen.SetActive(false);
+        // 1) configura o índice
+        if (_resp1 && _resp2)
+            MainManager.indiceCanvainicial = 29;
+        else
+            MainManager.indiceCanvainicial = 45;
+        var op = SceneManager.LoadSceneAsync("main");
+        
+        yield return LoadingScreenController.Instance.ShowLoading(op);
+    }
+
+
+private IEnumerator PrepareAudio(AudioClip clip)
+    {
+        if (clip.loadState != AudioDataLoadState.Loaded)
+            clip.LoadAudioData();
+
+        while (clip.loadState == AudioDataLoadState.Loading)
+            yield return null;
+
+        if (clip.loadState == AudioDataLoadState.Failed)
+            Debug.LogError("Falha ao carregar áudio de instrução.");
+    }
+
+    private IEnumerator PlayVideo(VideoClip clip)
+    {
+        var vpGO = Instantiate(videoPrefab);
+        var canva = vpGO.GetComponentInChildren<Canvas>();
+        canva.renderMode   = RenderMode.ScreenSpaceCamera;
+        canva.worldCamera  = Camera.main;
+        var vp = vpGO.GetComponentInChildren<VideoPlayer>();
+        vp.clip            = clip;
+        vp.renderMode      = VideoRenderMode.CameraNearPlane;
+        vp.targetCamera    = Camera.main;
+        
+        yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>> {
+            () => PrepareVideo(vp)
+        });
+
+        vpGO.SetActive(true);
+        vp.Play();
+        yield return new WaitUntil(() => !vp.isPlaying);
+
+        Destroy(vpGO);
+    }
+
+
+    private IEnumerator PrepareVideo(VideoPlayer vp)
+    {
+        bool pronto = false;
+        vp.prepareCompleted += _ => pronto = true;
+        vp.Prepare();
+        while (!pronto)
+            yield return null;
+    }
+
+    private IEnumerator AskQuestion(PerguntaScript prefab, Action<bool> onAnswered)
+    {
+        var p = Instantiate(prefab);
+        var canva = p.GetComponent<Canvas>();
+        canva.renderMode = RenderMode.ScreenSpaceCamera;
+        canva.worldCamera = Camera.main;
+        bool acabou = false;
+        p.OnAnswered += correto => {
+            onAnswered(correto);
+            acabou = true;
+        };
+        yield return new WaitUntil(() => acabou);
+    }
+    
+
+    public void OnPressSkipAudio()
+    {
+        _skipInstrucao = true;
+        instrucaoAudioSource.Stop();
+        instrucaoGO.SetActive(false);
+        Destroy(instrucaoGO);
     }
 }

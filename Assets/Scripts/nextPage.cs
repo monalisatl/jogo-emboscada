@@ -1,29 +1,22 @@
 using UnityEngine;
 
-public class nextPage : MonoBehaviour
+public class NextPage : MonoBehaviour
 {
-    public void NextPage()
+    public void NextPageButton()
     {
-        if(mainManager.main != null)
-        {
-            mainManager.main.ProximoCanvas();
-        }
+        if (MainManager.main != null)
+            MainManager.main.ProximoCanvas();
     }
 
-    public void PreviousPage()
+    public void PreviousPageButton()
     {
-        if(mainManager.main != null)
-        {
-            mainManager.main.CanvasAnterior();
-        }
+        if (MainManager.main != null)
+            MainManager.main.CanvasAnterior();
     }
 
-    public void GoToPage(int id)
+    public void GoToPageButton(int id)
     {
-        if(mainManager.main != null)
-        {
-            mainManager.main.InstanciarCanva(id);
-        }
+        if (MainManager.main != null)
+            MainManager.main.IrParaCanvas(id);
     }
-
 }

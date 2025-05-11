@@ -180,12 +180,12 @@ public class fase__1_parte_2 : MonoBehaviour
         
         try {
             if(fase_1_minigame.acertos_garais + fase__1_parte_2.acertos_garais >= 6){
-                mainManager.indiceCanvainicial = 14;
-                SceneManager.LoadScene("main");
+                MainManager.indiceCanvainicial = 14;
+                SceneManager.LoadSceneAsync("main");
             }
             else{
-                mainManager.indiceCanvainicial = 13;
-                SceneManager.LoadScene("main");
+                MainManager.indiceCanvainicial = 13;
+                SceneManager.LoadSceneAsync("main");
             }
         }
         catch (System.Exception e)

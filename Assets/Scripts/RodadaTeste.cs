@@ -31,10 +31,10 @@ public class RodadaTeste : MonoBehaviour
      }
 
      void next(){
-            if (mainManager.main != null)
+            if (MainManager.main != null)
             {
                 {
-                    mainManager.main.IrParaCanvas(13);
+                    MainManager.main.IrParaCanvas(13);
                 }
 
             }

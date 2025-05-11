@@ -48,7 +48,7 @@ public class PlantaoManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             if (!videoPlayer.isPlaying && videoPlayer != null && _videoStarted)
             {
-                mainManager.main.ProximoCanvas();
+                MainManager.main.ProximoCanvas();
                 yield break;
             }
         }
