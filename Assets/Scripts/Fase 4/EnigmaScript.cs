@@ -104,7 +104,7 @@ public class EnigmaScript : MonoBehaviour
 	{
 		if (prologoClip == null)
 		{
-			Debug.LogWarning("PrologoManager: prologoClip não atribuído.");
+			Debug.LogWarning("LoadAudio: prologoClip não atribuído.");
 			yield break;
 		}
 
@@ -113,7 +113,7 @@ public class EnigmaScript : MonoBehaviour
 		{
 			if (prologoClip.loadState == AudioDataLoadState.Failed)
 			{
-				Debug.LogError("PrologoManager: Falha ao carregar os dados de áudio.");
+				Debug.LogError("LoadAudio: Falha ao carregar os dados de áudio.");
 				yield break;
 			}
 			yield return null;

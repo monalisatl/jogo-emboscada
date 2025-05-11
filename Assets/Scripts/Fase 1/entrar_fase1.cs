@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class entrar_fase1 : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class entrar_fase1 : MonoBehaviour
 
     public void abrir_fase1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("11_fase1_minigame");
+        SceneManager.LoadScene("11_fase1_minigame");
     }
 
 }

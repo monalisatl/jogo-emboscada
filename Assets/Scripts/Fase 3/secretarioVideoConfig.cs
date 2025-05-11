@@ -1,22 +1,27 @@
-using UnityEngine;
-using UnityEngine.Video;
-using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
+using UnityEngine;
+using UnityEngine.Video;
 
-public class PlantaoManager : MonoBehaviour
+public class secretarioVideoConfig : MonoBehaviour
 {
+    [SerializeField] private VideoClip[] secretariosClip;
+    static int index = 0;
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject videoDisplay;
     private bool _videoReady = false;
     private bool _videoStarted = false;
-
     void Start()
     {
         StartCoroutine(LoadAll());
     }
-
+    void Update()
+    {
+        
+    }
+    
+    
     private IEnumerator LoadAll()
     {
         var steps = new List<Func<IEnumerator>>()
@@ -28,10 +33,9 @@ public class PlantaoManager : MonoBehaviour
         Debug.Log("videoDisplay: " + videoDisplay);
 
         yield return LoadingScreenController.Instance.ShowLoading(steps);
-
         videoDisplay.SetActive(true);
         videoPlayer.Play();
-        StartCoroutine(CheckAndPlayAudio());
+        StartCoroutine(CheckAndPlayVideo());
     }
 
     private IEnumerator PrepareVideo()
@@ -41,18 +45,17 @@ public class PlantaoManager : MonoBehaviour
         while (!_videoReady) yield return null;
     }
 
-    private IEnumerator CheckAndPlayAudio()
+    private IEnumerator CheckAndPlayVideo()
     {
         while (true)
         {
             yield return new WaitForSeconds(1);
             if (!videoPlayer.isPlaying && videoPlayer != null && _videoStarted)
             {
-                mainManager.main.ProximoCanvas();
+                
                 yield break;
             }
         }
     }
-
 
 }

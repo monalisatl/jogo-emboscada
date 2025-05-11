@@ -29,10 +29,7 @@ public class niveisfase1 : MonoBehaviour {
         Debug.Log("Exibindo painel inicial: " + painel_atual.name);
         Debug.Log("Total de tutoriais: " + tutoriais.Count);
     }
-
-    void Update() {
-        
-    }
+    
 
     public void ExibirProximoTutorial() {
         Debug.Log("Tentando exibir o próximo tutorial.");
