@@ -1,21 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fase1Manager : MonoBehaviour {
-    [SerializeField] public List<Noticia> poolNoticias = new List<Noticia>(); 
-    [SerializeField] private int quantidadePerguntas = 4;
-    public static List<Noticia> noticiasSelecionadas { get; private set; }
-    public static int perguntaAtualIndex = 0;
-    public static Fase1Manager instance;
-    private bool inicializado = false;
-     void Awake()
+public class Fase2Manager : MonoBehaviour
+{
+    public static Fase2Manager instance;
+
+    [Header("Pool de notícias")]
+    public List<Noticia> poolNoticias;
+    public int quantidadePerguntas = 4;
+    public static float statusFase2 =0;
+    public static List<Noticia> perguntasSelecionadas;
+    private int currentIndex = 0;
+
+    void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            noticiasSelecionadas = new List<Noticia>();
             DontDestroyOnLoad(gameObject);
-            InicializarFase();
+            SelecionarNoticias();
         }
         else
         {
@@ -23,39 +26,25 @@ public class Fase1Manager : MonoBehaviour {
         }
     }
 
-    private void InicializarFase()
+    // Sorteia sem repetição
+    private void SelecionarNoticias()
     {
-        SelecionarNoticiasAleatorias();
-        inicializado = true;
-    }
-
-    public bool EstaInicializado() => inicializado;
-    private void SelecionarNoticiasAleatorias() {
-        List<Noticia> noticiasDisponiveis = new List<Noticia>(poolNoticias);
-        noticiasSelecionadas.Clear();
-        Debug.Log("Selecionando notícias aleatórias...");
-        Debug.Log("Quantidade de perguntas: " + poolNoticias.Count);
-        Debug.Log("Quantidade de perguntas selecionadas: " + quantidadePerguntas);
-
-        for (int i = 0; i < quantidadePerguntas; i++) {
-            if (noticiasDisponiveis.Count == 0) break;
-
-            int index = UnityEngine.Random.Range(0, noticiasDisponiveis.Count);
-            noticiasSelecionadas.Add(noticiasDisponiveis[index]);
-            noticiasDisponiveis.RemoveAt(index);
+        var disponiveis = new List<Noticia>(poolNoticias);
+        perguntasSelecionadas = new List<Noticia>();
+        for (int i = 0; i < quantidadePerguntas && disponiveis.Count > 0; i++)
+        {
+            int idx = Random.Range(0, disponiveis.Count);
+            perguntasSelecionadas.Add(disponiveis[idx]);
+            disponiveis.RemoveAt(idx);
         }
     }
-
-    public Noticia MostrarPerguntaAtual() {
-        if (perguntaAtualIndex >= noticiasSelecionadas.Count) {
-            Debug.Log("Fim do quiz!");
-            return null;
-        }
-
-        Noticia noticia = noticiasSelecionadas[perguntaAtualIndex];
-        perguntaAtualIndex++;
-        return noticia;
+    
+    public Noticia GetNextQuestion()
+    {
+        if (currentIndex < perguntasSelecionadas.Count)
+            return perguntasSelecionadas[currentIndex++];
+        return null;
     }
 
-
+    public int TotalPerguntas => perguntasSelecionadas.Count;
 }

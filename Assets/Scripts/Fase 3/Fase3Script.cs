@@ -69,7 +69,7 @@ public class Fase3Manager : MonoBehaviour
         if (_resp1 && _resp2)
             MainManager.indiceCanvainicial = 29;
         else
-            MainManager.indiceCanvainicial = 45;
+            MainManager.indiceCanvainicial = 12;
         var op = SceneManager.LoadSceneAsync("main");
         
         yield return LoadingScreenController.Instance.ShowLoading(op);

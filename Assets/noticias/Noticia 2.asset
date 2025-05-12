@@ -13,25 +13,23 @@ MonoBehaviour:
   m_Name: Noticia 2
   m_EditorClassIdentifier: 
   titulo: "Governo ir\xE1 monitorar conversas privadas pelos chips dos celulares"
-  data: 'repostada: 21/02/2010'
+  data: 'repostada: 09/05/2030 '
   conteudo: "De acordo com informa\xE7\xF5es n\xE3o oficiais, operadoras de telefonia
     est\xE3o integrando um novo sistema de rastreamento exigido pelo governo. A tecnologia
     permite a capta\xE7\xE3o de liga\xE7\xF5es e mensagens de aplicativos, justificando
     a a\xE7\xE3o como forma de combater discursos de \xF3dio e not\xEDcias falsas.
     Quem tentar remover o chip ser\xE1 punido pela nova lei de seguran\xE7a digital. "
-  linkFonte: " www.verdadesn\xE3oditas.com"
+  linkFonte: "\U0001F5A5\uFE0F Verdades n\xE3o ditas - www.verdadesn\xE3oditas.com "
   opcoesResposta:
   - texto: "Op\xE7\xE3o a"
     isCorreto: 1
   - texto: "Op\xE7\xE3o b"
     isCorreto: 0
-  - texto: "Op\xE7\xE3o c"
+  - texto: "Op\xE7\xE3o b"
     isCorreto: 0
-  - texto: "Op\xE7\xE3o 4"
-    isCorreto: 1
-  - texto: "Op\xE7\xE3o 5"
-    isCorreto: 1
-  - texto: "Op\xE7\xE3o 6"
+  - texto: "Op\xE7\xE3o b"
     isCorreto: 0
-  - texto: "Op\xE7\xE3o 7"
+  - texto: "Op\xE7\xE3o b"
+    isCorreto: 0
+  - texto: "Op\xE7\xE3o b"
     isCorreto: 0
