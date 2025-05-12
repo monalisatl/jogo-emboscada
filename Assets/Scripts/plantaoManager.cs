@@ -9,8 +9,8 @@ public class PlantaoManager : MonoBehaviour
 {
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject videoDisplay;
-    private bool videoReady = false;
-    private bool videoStarted = false;
+    private bool _videoReady = false;
+    private bool _videoStarted = false;
 
     void Start()
     {
@@ -36,10 +36,9 @@ public class PlantaoManager : MonoBehaviour
 
     private IEnumerator PrepareVideo()
     {
-        bool ready = false;
-        videoPlayer.prepareCompleted += vp => ready = true;
+        videoPlayer.prepareCompleted += vp => _videoReady = true;
         videoPlayer.Prepare();
-        while (!ready) yield return null;
+        while (!_videoReady) yield return null;
     }
 
     private IEnumerator CheckAndPlayAudio()
@@ -47,9 +46,9 @@ public class PlantaoManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1);
-            if (!videoPlayer.isPlaying && videoPlayer != null && videoStarted)
+            if (!videoPlayer.isPlaying && videoPlayer != null && _videoStarted)
             {
-                mainManager.main.ProximoCanvas();
+                MainManager.main.ProximoCanvas();
                 yield break;
             }
         }

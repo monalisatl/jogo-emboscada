@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class entrar_fase1 : MonoBehaviour
 {
@@ -17,16 +18,11 @@ public class entrar_fase1 : MonoBehaviour
         }
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void abrir_fase1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("11_fase1_minigame");
+        SceneManager.LoadSceneAsync("11_fase1_minigame");
     }
 
 }

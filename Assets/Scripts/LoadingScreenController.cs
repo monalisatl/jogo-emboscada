@@ -23,11 +23,7 @@ public class LoadingScreenController : MonoBehaviour
         loadingScreen.SetActive(false);
     }
 
-    /// <summary>
-    /// Executa N operações de carregamento em sequência, mostrando progressão global.
-    /// </summary>
-    /// <param name="loadRoutines">Lista de funções que retornam IEnumerator (cada rotina de carga)</param>
-    /// <returns></returns>
+
     public IEnumerator ShowLoading(IEnumerable<Func<IEnumerator>> loadRoutines)
     {
         loadingScreen.SetActive(true);
@@ -71,6 +67,38 @@ public class LoadingScreenController : MonoBehaviour
         }
         canvasGroup.alpha = to;
     }
+    private void UpdateProgressBar(float progress)
+    {
+        progressBar.fillAmount = Mathf.Clamp01(progress);
+    }
 
+    public IEnumerator ShowLoading(AsyncOperation op)
+    {
+        loadingScreen.SetActive(true);
+        canvasGroup.alpha = 1f;
+        progressBar.fillAmount = 0f;
+        
+        op.allowSceneActivation = false;
+        while (op.progress < 0.9f)
+        {
+            float p = Mathf.Clamp01(op.progress / 0.9f);
+            UpdateProgressBar(p);
+            Debug.Log($"Loading progress: {p*100f:0.0}%");
+            yield return null;
+        }
+        UpdateProgressBar(1f);
+        float t0 = Time.time;
+        while (Time.time < t0 + fadeTime)
+        {
+            float t = (Time.time - t0) / fadeTime;
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, t);
+            yield return null;
+        }
+        canvasGroup.alpha = 0f;
+
+        op.allowSceneActivation = true;
+        yield return new WaitUntil(() => op.isDone);
+        loadingScreen.SetActive(false);
+    }
 
 }

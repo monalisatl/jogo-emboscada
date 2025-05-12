@@ -6,15 +6,17 @@ using UnityEngine;
 
 public class PrologoManager : MonoBehaviour
 {
-    [Header("UI")]
+    [Header("UI")] 
+    public GameObject Ui;
     public GameObject prologo;
     private TextMeshProUGUI textMesh;
     public string texto;
-
+    
     [Header("Áudio")]
     public AudioClip prologoClip;
     public AudioSource audioSource;
-
+    
+    
     void Start()
     {
         textMesh = prologo.GetComponent<TextMeshProUGUI>();
@@ -65,5 +67,20 @@ public class PrologoManager : MonoBehaviour
             textMesh.text = novoTexto;
         else
             Debug.LogWarning("O componente TextMeshProUGUI não foi encontrado.");
+    }
+
+    private IEnumerator prologo_build()
+    {
+        if (Ui == null)
+        {
+            Ui = this.gameObject;
+        }
+        var canvas = Ui.GetComponent<Canvas>();
+        if (canvas != null)
+        {   
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
+            canvas.worldCamera = Camera.main;
+        }
+        yield return null;
     }
 }

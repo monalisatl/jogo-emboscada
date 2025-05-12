@@ -1,35 +1,38 @@
+using System.Collections;
 using UnityEngine;
 
 public class FalhaManager : MonoBehaviour
 {
-    private GameObject audioPlay;
     private AudioSource player;
-    void Start()
+    
+    private IEnumerator Start()
     {
-        audioPlay = GameObject.Find("Audio");
-        player = audioPlay.GetComponent<AudioSource>();
-        if (player != null && player.gameObject.activeInHierarchy && player.enabled)
+        var audioGO = GameObject.Find("Audio");
+        if (audioGO == null)
         {
-            player.pitch = 2.0f;
-            player.Play();
+            Debug.LogError("FalhaManager: não encontrou GameObject 'Audio'");
+            yield break;
         }
-    }
-
-    void Update()
-    {
-        if (player != null && !player.isPlaying)
+        
+        player = audioGO.GetComponent<AudioSource>();
+        if (player == null)
         {
-            if (mainManager.main != null)
-            {
-                {
-                    mainManager.main.ProximoCanvas();
-                }
-
-            }
-            else
-            {
-                Debug.LogWarning("mainManager.main is not initialized.");
-            }
+            Debug.LogError("FalhaManager: AudioSource não encontrado em 'Audio'");
+            yield break;
+        }
+        
+        player.pitch = 2f;
+        player.Play();
+        
+        yield return new WaitUntil(() => !player.isPlaying);
+        if (MainManager.main != null)
+        {
+           
+            MainManager.main.ProximoCanvas();
+        }
+        else
+        {
+            Debug.LogWarning("FalhaManager: mainManager.main não inicializado.");
         }
     }
 }

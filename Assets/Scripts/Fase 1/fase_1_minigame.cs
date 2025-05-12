@@ -281,7 +281,7 @@ public class fase_1_minigame : MonoBehaviour
     // Método para avançar para a próxima fase após o delay
     private void AvancarParaProximaFase()
     {
-        SceneManager.LoadScene("13_fase1_2minigame");
+        SceneManager.LoadSceneAsync("13_fase1_2minigame");
     }
 
     // Método para resetar o jogo (pode ser chamado por um botão de "Tentar Novamente")
