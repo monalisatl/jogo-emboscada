@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,22 +11,29 @@ public class playScript : MonoBehaviour{
         if (playButton == null)
             playButton = GetComponent<Button>();
         EmboscadaController.gameData = new EmboscadaController.GameData();
-        SaveLoadManager.Instance.LoadGame();
+        EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "");
+        EmboscadaController.gameData.currentLevel = PlayerPrefs.GetInt("currentLevel", 0);
+        EmboscadaController.gameData.selectedCharacterId = PlayerPrefs.GetInt("selectedCharacterId", 0);
+        EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
+        EmboscadaController.gameData.niveisganhos = new bool[5];
+        for (int i = 0; i < EmboscadaController.gameData.niveisganhos.Length; i++)
+        {
+            EmboscadaController.gameData.niveisganhos[i] = PlayerPrefs.GetInt("nivel" + i, 0) == 1;
+        }
         if (EmboscadaController.gameData.currentLevel == 0 && EmboscadaController.gameData.playerName == "")
         {
             playButton.interactable = false;
         }
         else
         {
-            playButton.interactable = true;
+                 playButton.interactable = true;
         }
     }
 
 
-    public void playGame()
+    public void PlayGame()
     {
-        EmboscadaController.gameData = new EmboscadaController.GameData();
-        SaveLoadManager.Instance.LoadGame();
+        MainManager.indiceCanvainicial = EmboscadaController.gameData.currentLevel;
         SceneManager.LoadSceneAsync("main");
     }
 
@@ -36,7 +42,6 @@ public class playScript : MonoBehaviour{
         EmboscadaController.gameData = new EmboscadaController.GameData();
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        SaveLoadManager.Instance.SaveGame();
         SceneManager.LoadSceneAsync("main");
     }
 }

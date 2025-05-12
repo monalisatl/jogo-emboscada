@@ -181,29 +181,26 @@ public class fase__1_parte_2 : MonoBehaviour
     private IEnumerator SaveGame(bool result)
     {
         yield return new WaitForEndOfFrame();
-        if (SaveLoadManager.Instance == null)
+        
+        if (EmboscadaController.gameData == null)
         {
-            SaveLoadManager.Instance = gameObject.AddComponent<SaveLoadManager>();
-            Debug.Log("SaveLoadManager não encontrado!, Gerando um novo.");
+            Debug.LogError("gameData é nulo!");
+            yield break;
         }
-        EmboscadaController.gameData ??= new EmboscadaController.GameData();
         if (result)
         {
             EmboscadaController.gameData.niveisganhos[0] = true;
             EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Estagiário;
+            EmboscadaController.gameData.currentLevel = 15;
+            PlayerPrefs.SetInt("nivel0", 1);
+            PlayerPrefs.SetInt("classificacao", 1);
+            PlayerPrefs.SetInt("currentLevel", 15);
+            PlayerPrefs.Save();
         }
         else
         {
             EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
-        }
-        try
-        {
-            SaveLoadManager.Instance.SaveGame();
-            Debug.Log("Jogo salvo com sucesso!");
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Erro ao salvar o jogo: {e.Message}");
+            
         }
     }
     public void OnCancelButtonPress()

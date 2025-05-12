@@ -476,8 +476,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5001067884935412281}
-        m_TargetAssemblyTypeName: nextPage, Assembly-CSharp
-        m_MethodName: NextPage
+        m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
+        m_MethodName: NextPageButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1578,8 +1578,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5001067884935412281}
-        m_TargetAssemblyTypeName: nextPage, Assembly-CSharp
-        m_MethodName: PreviousPage
+        m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
+        m_MethodName: PreviousPageButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

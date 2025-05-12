@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -64,25 +65,29 @@ public class SelecaoPersonagem : MonoBehaviour
             Debug.LogWarning("Digite um nome antes de continuar!");
             return;
         }
-        
-        if (EmboscadaController.gameData == null)
-            EmboscadaController.gameData = new EmboscadaController.GameData();
-        if (SaveLoadManager.Instance == null)
+
+        try
         {
-            Debug.Log("SaveLoadManager não encontrado!, Gerando um novo.");
-            SaveLoadManager.Instance = panelName.AddComponent<SaveLoadManager>();
+            EmboscadaController.gameData ??= new EmboscadaController.GameData();
+            EmboscadaController.gameData.selectedCharacterId = personagens[currentIndex].id;
+            EmboscadaController.gameData.playerName = nome;
+            EmboscadaController.gameData.currentLevel = 5;
+            EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
+            PlayerPrefs.SetString("playerName", nome);
+            PlayerPrefs.SetInt("selectedCharacterId", personagens[currentIndex].id);
+            PlayerPrefs.SetInt("currentLevel", 5);
+            PlayerPrefs.SetInt("classification", 0);
+            PlayerPrefs.Save();
+            OnNextPage();
         }
-        
-        EmboscadaController.gameData.selectedCharacterId = personagens[currentIndex].id;
-        EmboscadaController.gameData.playerName = nome;
-        PlayerPrefs.SetString("playerName", nome);
-        PlayerPrefs.SetInt("selectedCharacterId", personagens[currentIndex].id);
-        PlayerPrefs.Save();
-        SaveLoadManager.Instance.SaveGame();
-        OnNextPage();
+        catch (Exception e)
+        {
+           Debug.Log($"Erro ao salvar dados do jogador: {e.Message}");
+            throw;
+        }
     }
 
-    void OnNextPage()
+    private void OnNextPage()
     {
         if (MainManager.main != null)
         {
