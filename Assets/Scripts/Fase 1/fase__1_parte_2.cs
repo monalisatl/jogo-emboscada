@@ -15,7 +15,6 @@ public class fase__1_parte_2 : MonoBehaviour
     
     [SerializeField] private Arrastavel[] allDraggableItems;
     
-    // Flag para controle de destruição
     private bool isBeingDestroyed = false;
     
     private void Awake()
@@ -37,23 +36,19 @@ public class fase__1_parte_2 : MonoBehaviour
     
     private void OnDestroy()
     {
-        // Evitar problemas ao destruir a instância
         isBeingDestroyed = true;
         
-        // Se este objeto for a instância atual, limpe a referência estática
         if (Instance == this)
             Instance = null;
     }
     
     private void Start()
     {
-        // Se não tiver a lista de items arrastáveis, tente encontrá-los automaticamente
         if (allDraggableItems == null || allDraggableItems.Length == 0)
         {
             allDraggableItems = FindObjectsByType<Arrastavel>(FindObjectsSortMode.None);
         }
         
-        // Inicializar os botões se necessário
         if (confirmButton != null)
         {
             confirmButton.onClick.RemoveAllListeners();
@@ -66,17 +61,13 @@ public class fase__1_parte_2 : MonoBehaviour
             rejectButton.onClick.AddListener(OnCancelButtonPress);
         }
         
-        // Verificar estado inicial com pequeno delay para garantir inicialização
         StartCoroutine(DelayedInitCheck());
     }
     
-    // Coroutine para verificação com delay
     private IEnumerator DelayedInitCheck()
     {
-        // Espera um frame para garantir que tudo está inicializado
         yield return null;
         
-        // Verifica os estados dos objetos
         CheckAllItemsPlaced();
     }
 
@@ -84,7 +75,6 @@ public class fase__1_parte_2 : MonoBehaviour
     {
         if (isBeingDestroyed) return;
         
-        // Proteção contra nulos
         if (dropZones == null || dropZones.Length == 0)
         {
             Debug.LogWarning("Não há zonas de drop definidas!");
@@ -93,7 +83,6 @@ public class fase__1_parte_2 : MonoBehaviour
         
         bool allZonesFilled = true;
         
-        // Verifica se todas as zonas têm itens
         foreach (ZonaSoltar zone in dropZones)
         {
             if (zone == null || !zone.HasItem())
@@ -103,7 +92,6 @@ public class fase__1_parte_2 : MonoBehaviour
             }
         }
         
-        // Gerenciar visibilidade dos botões com base no estado
         try {
             if (allZonesFilled)
             {
@@ -135,7 +123,6 @@ public class fase__1_parte_2 : MonoBehaviour
         Debug.Log("Confirmação realizada!");
         int acertos = 0;
         
-        // Proteção contra referências nulas
         if (dropZones == null)
         {
             Debug.LogError("dropZones é nulo!");
@@ -159,7 +146,6 @@ public class fase__1_parte_2 : MonoBehaviour
             }
         }
         
-        // Execute ações baseadas no resultado
         if (acertos == dropZones.Length+1)
             Debug.Log("Todos os itens estão nas colunas corretas!");
         else if (acertos >= (dropZones.Length + 1) / 2)
@@ -168,12 +154,10 @@ public class fase__1_parte_2 : MonoBehaviour
             Debug.Log("Há itens em colunas erradas!");
             
         acertos_garais = acertos;
-
-        // Usar um método seguro para carregar a cena
+        
         StartCoroutine(SafeLoadScene(acertos));
     }
     
-    // Método seguro para carregamento de cena
     private IEnumerator SafeLoadScene(int acertos)
     {
         yield return new WaitForEndOfFrame();
@@ -181,6 +165,7 @@ public class fase__1_parte_2 : MonoBehaviour
         try {
             if(fase_1_minigame.acertos_garais + fase__1_parte_2.acertos_garais >= 6){
                 MainManager.indiceCanvainicial = 14;
+                
                 SceneManager.LoadSceneAsync("main");
             }
             else{
@@ -193,16 +178,41 @@ public class fase__1_parte_2 : MonoBehaviour
             Debug.LogError($"Erro ao carregar cena: {e.Message}");
         }
     }
-
+    private IEnumerator SaveGame(bool result)
+    {
+        yield return new WaitForEndOfFrame();
+        if (SaveLoadManager.Instance == null)
+        {
+            SaveLoadManager.Instance = gameObject.AddComponent<SaveLoadManager>();
+            Debug.Log("SaveLoadManager não encontrado!, Gerando um novo.");
+        }
+        EmboscadaController.gameData ??= new EmboscadaController.GameData();
+        if (result)
+        {
+            EmboscadaController.gameData.niveisganhos[0] = true;
+            EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Estagiário;
+        }
+        else
+        {
+            EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
+        }
+        try
+        {
+            SaveLoadManager.Instance.SaveGame();
+            Debug.Log("Jogo salvo com sucesso!");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Erro ao salvar o jogo: {e.Message}");
+        }
+    }
     public void OnCancelButtonPress()
     {
         if (isBeingDestroyed) return;
         
-        // Fecha o painel de botões
         if (tableButtons)
             tableButtons.SetActive(false);
         
-        // Limpar todas as zonas com proteção contra nulos
         if (dropZones != null)
         {
             foreach (ZonaSoltar zone in dropZones)
@@ -211,8 +221,6 @@ public class fase__1_parte_2 : MonoBehaviour
                 zone.RemoveItem();
             }
         }
-        
-        // Retornar todos os itens para suas posições iniciais
         if (allDraggableItems != null)
         {
             foreach (Arrastavel item in allDraggableItems)
@@ -238,7 +246,6 @@ public class fase__1_parte_2 : MonoBehaviour
                 Debug.Log($"Zona {i}: NULL REFERENCE");
         }
         
-        // Verificar estado atual e mostrar no console
         bool allZonesFilled = true;
         foreach (ZonaSoltar zone in dropZones)
         {

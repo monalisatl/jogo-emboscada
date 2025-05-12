@@ -2,17 +2,17 @@ using System;
 using UnityEngine;
 
 public class EmboscadaController : MonoBehaviour
-{    
+{
     [Serializable]
     public class GameData
     {
-        public int currentLevel;
-        public Personagem player;
-        public string playerName;
-        public bool[] niveisganhos;
-        public Classificacao classificacao;
+        public int currentLevel = 1;
+        public int selectedCharacterId = 0;
+        public string playerName = "";
+        public bool[] niveisganhos = new bool[5];
+        public Classificacao classificacao = Classificacao.Amador;
     }
-    
+
     public enum Classificacao
     {
         Amador,
@@ -20,7 +20,6 @@ public class EmboscadaController : MonoBehaviour
         Júnior,
         Sênior
     }
+
     public static GameData gameData;
-
-
 }

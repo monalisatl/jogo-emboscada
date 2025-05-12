@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    public static SaveLoadManager Instance { get; private set; }
+    public static SaveLoadManager Instance { get; set; }
     private string _filePath;
 
     private void Awake()
@@ -44,6 +44,7 @@ public class SaveLoadManager : MonoBehaviour
             string json = File.ReadAllText(_filePath);
             EmboscadaController.GameData data = JsonUtility.FromJson<EmboscadaController.GameData>(json);
             EmboscadaController.gameData = data;
+            PlayerPrefs.Save();
             Debug.Log("Jogo carregado com sucesso!");
         }
         catch (Exception e)

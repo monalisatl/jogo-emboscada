@@ -14,7 +14,7 @@ public class MainManager : MonoBehaviour
 
     void Awake()
     {
-        if (main == null) { main = this; DontDestroyOnLoad(gameObject); }
+        if (main == null) { main = this;}
         else { Destroy(gameObject); return; }
         
         if (LoadingScreenController.Instance == null && loadingScreen != null)

@@ -5,38 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5616ee2-fc37-4e76-9166-9a5345da24a6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/1_prologo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/1_prologo.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/2_veritas_news.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/2_veritas_news.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/4_inicio_jogo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/4_inicio_jogo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/0_abertura_jogo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/0_abertura_jogo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10_fase1_instruçao.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/10_fase1_instruçao.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/14_fase1_parabens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/14_fase1_parabens.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/15_fase1_mensagemhacker.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/15_fase1_mensagemhacker.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/16_fase2_nivel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/16_fase2_nivel.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/5_personagem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/5_personagem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_1afirmaçao.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_1afirmaçao.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_1rodada.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_1rodada.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/main.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/main.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/6_apresentação_editora_chefe.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/6_apresentação_editora_chefe.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/8_aviso_fase_final.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/8_aviso_fase_final.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/9_fase1_nivel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/9_fase1_nivel.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/14_fase1_parabens.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/14_fase1_parabens.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/5_personagem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/5_personagem.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EmboscadaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EmboscadaController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 1/entrar_fase1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 1/entrar_fase1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 1/fase_1_minigame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 1/fase_1_minigame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 1/fase__1_parte_2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 1/fase__1_parte_2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 2/Fase2_in.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 2/Fase2_in.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3Script.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 4/EnigmaScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 4/EnigmaScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LoadingScreenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LoadingScreenController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RodadaTeste.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RodadaTeste.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveLoadManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveLoadManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SelecaoPersonagem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SelecaoPersonagem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/falhaManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/falhaManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/mainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/mainManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/nextPage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/nextPage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/plantaoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/plantaoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/personagens/player 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/personagens/player 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/personagens/player 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/personagens/player 2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/personagens/player 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/personagens/player 3.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/playScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/playScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/PrologoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/PrologoManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +46,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2431722e3e3e41d78b6718bb39ab91111df400/99/ffa2c14a/PlayerPrefs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94428ede71c74c05bf538dd4516056821f9c00/af/4c79f12f/LayoutDataStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d90163b6af2d4bc3bae6d280bb8df0c9be00/03/ac7731a8/VideoPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3InstrucaoScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3Script.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Personagem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveLoadManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@5ac417e07314/Samples~/12_BuildSetupCleanup_Solution/PlayModeTests_12s/SceneTests.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -73,27 +70,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "Attach to Unity Player.Unity.exe (jogo-emboscada).executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "XThreadsFramesViewSplitterKey": "0.40625",
-    "git-widget-placeholder": "feat/ajustes-da-fase-3",
-    "last_opened_file_path": "D:/projects/unity/jogo-emboscada",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;Attach to Unity Player.Unity.exe (jogo-emboscada).executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.40625&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/ajustes-da-fase-3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/unity/jogo-emboscada&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Programas\Unity\installs\6000.0.40f1\Editor\Unity.exe" />
@@ -131,13 +128,15 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9464">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="9464" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -174,6 +173,10 @@
       <workItem from="1746924877846" duration="2767000" />
       <workItem from="1746963298593" duration="13663000" />
       <workItem from="1746977909000" duration="2686000" />
+      <workItem from="1746996544062" duration="4707000" />
+      <workItem from="1747004190895" duration="49000" />
+      <workItem from="1747004280089" duration="1812000" />
+      <workItem from="1747006211837" duration="7876000" />
     </task>
     <task id="LOCAL-00001" summary="✨ feat: finaliza a base da fase quatro (❤️ ω ❤️)">
       <option name="closed" value="true" />

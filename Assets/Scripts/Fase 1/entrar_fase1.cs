@@ -18,12 +18,7 @@ public class entrar_fase1 : MonoBehaviour
         }
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void abrir_fase1()
     {

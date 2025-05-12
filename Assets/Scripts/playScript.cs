@@ -1,23 +1,42 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class playScript : MonoBehaviour{
-    public GameObject main;
-    public GameObject loading;
+    
+    [SerializeField] Button playButton;
 
-
-    private void Awake()
+    private void Start()
     {
-    }
-    public void playGame(){
-    Debug.Log("Tentando passar para a main");
-    MainManager.indiceCanvainicial = 0;
-    SceneManager.LoadSceneAsync("main");
-        // Debug.Log("enviado");
+        if (playButton == null)
+            playButton = GetComponent<Button>();
+        EmboscadaController.gameData = new EmboscadaController.GameData();
+        SaveLoadManager.Instance.LoadGame();
+        if (EmboscadaController.gameData.currentLevel == 0 && EmboscadaController.gameData.playerName == "")
+        {
+            playButton.interactable = false;
+        }
+        else
+        {
+            playButton.interactable = true;
+        }
     }
 
-public void quitGame(){
-    Console.WriteLine("Quit Game");
-    Application.Quit();
+
+    public void playGame()
+    {
+        EmboscadaController.gameData = new EmboscadaController.GameData();
+        SaveLoadManager.Instance.LoadGame();
+        SceneManager.LoadSceneAsync("main");
+    }
+
+    public void NewGame()
+    {
+        EmboscadaController.gameData = new EmboscadaController.GameData();
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        SaveLoadManager.Instance.SaveGame();
+        SceneManager.LoadSceneAsync("main");
     }
 }

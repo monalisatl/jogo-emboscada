@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -6,16 +7,14 @@ using UnityEngine.SceneManagement;
 public class SelecaoPersonagem : MonoBehaviour
 {
     [Header("Dados de Personagem")]
-    public List<Personagem> personagens;   
+    public List<Personagem> personagens;
     private int currentIndex = 0;
 
     [Header("Referências de UI")]
-    public Image displayImage;             // UI Image no Canvas onde mostraremos o sprite
-    public Button buttonLeft;
-    public Button buttonRight;
-    public Button buttonSelect;
-    public GameObject panelName;           // Painel que contém o InputField e o Continue
-    public InputField inputName;
+    public Image displayImage;
+    public Button buttonLeft, buttonRight, buttonSelect;
+    public GameObject panelName;
+    public TMP_InputField inputName;
     public Button buttonContinue;
 
     [Header("Escalas de Destaque")]
@@ -24,7 +23,6 @@ public class SelecaoPersonagem : MonoBehaviour
 
     void Start()
     {
-        // Conecta callbacks
         buttonLeft.onClick.AddListener(OnLeft);
         buttonRight.onClick.AddListener(OnRight);
         buttonSelect.onClick.AddListener(OnSelect);
@@ -36,7 +34,6 @@ public class SelecaoPersonagem : MonoBehaviour
 
     void UpdateDisplay()
     {
-        // Atualiza o sprite e reset de escala
         displayImage.sprite = personagens[currentIndex].sprite;
         displayImage.rectTransform.localScale = normalScale;
     }
@@ -55,9 +52,7 @@ public class SelecaoPersonagem : MonoBehaviour
 
     void OnSelect()
     {
-        // Destaca o sprite
         displayImage.rectTransform.localScale = highlightedScale;
-        // Abre painel de nome
         panelName.SetActive(true);
     }
 
@@ -69,13 +64,34 @@ public class SelecaoPersonagem : MonoBehaviour
             Debug.LogWarning("Digite um nome antes de continuar!");
             return;
         }
-        // Salva em PlayerPrefs (ou use seu GameManager)
-        PlayerPrefs.SetString("SelectedCharacterName", nome);
-        PlayerPrefs.SetInt("SelectedCharacterID", personagens[currentIndex].id);
+        
+        if (EmboscadaController.gameData == null)
+            EmboscadaController.gameData = new EmboscadaController.GameData();
+        if (SaveLoadManager.Instance == null)
+        {
+            Debug.Log("SaveLoadManager não encontrado!, Gerando um novo.");
+            SaveLoadManager.Instance = panelName.AddComponent<SaveLoadManager>();
+        }
+        
+        EmboscadaController.gameData.selectedCharacterId = personagens[currentIndex].id;
+        EmboscadaController.gameData.playerName = nome;
+        PlayerPrefs.SetString("playerName", nome);
+        PlayerPrefs.SetInt("selectedCharacterId", personagens[currentIndex].id);
         PlayerPrefs.Save();
+        SaveLoadManager.Instance.SaveGame();
+        OnNextPage();
+    }
 
-        // Carrega próxima cena (confira o nome exato na Build Settings)
-        SceneManager.LoadScene("CenaDoJogo");
+    void OnNextPage()
+    {
+        if (MainManager.main != null)
+        {
+            MainManager.main.ProximoCanvas();
+        }
+        else
+        {
+            MainManager.indiceCanvainicial = 5;
+            SceneManager.LoadSceneAsync("main");
+        }
     }
 }
-
