@@ -395,7 +395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "N\xE3o preste aten\xE7\xE3o s\xF3 no t\xEDtulo"
+  m_text: "N\xE3o preste aten\xE7\xE3o s\xF3 no t\xEDtulo\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1380,7 +1380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143.2, y: 50}
+  m_AnchoredPosition: {x: -144.77, y: 39}
   m_SizeDelta: {x: 237.2, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3047914962461394794
@@ -1411,8 +1411,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xE9 comum que not\xEDcias falsas n\xE3o tenham liga\xE7\xE3o entre o
-    t\xEDtulo e o corpo do texto, leia a mat\xE9ria completa.\_"
+  m_text: "\xC9 comum que not\xEDcias falsas n\xE3o tenham liga\xE7\xE3o entre o
+    t\xEDtulo e o corpo do texto, leia a mat\xE9ria completa. \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 9ad269c99dcf42b7aedefd83dd5a7b9d, type: 2}
