@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d544028c62203468d95a0d63cc2122, type: 3}
+  m_Name: Noticia 3
+  m_EditorClassIdentifier: 
+  titulo: "N\xE3o seja controlado pelo governo: nova vacina transforma o DNA humano "
+  data: publicada em:13/05/2030
+  conteudo: "Fontes an\xF4nimas alegam que a nova vacina \u201CFak30\u201D, desenvolvida
+    por cientistas em um laborat\xF3rio secreto, est\xE1 transformando o DNA humano,
+    para facilitar o acesso do governo \xE0s informa\xE7\xF5es dos cidad\xE3os e
+    promover controle sobre a popula\xE7\xE3o."
+  linkFonte: "\U0001F5A5\uFE0F Alerta mundial - www.alertamundial.com"
+  opcoesResposta:
+  - texto: "Op\xE7\xE3o a"
+    isCorreto: 1
+  - texto: "Op\xE7\xE3o b"
+    isCorreto: 0
+  - texto: "Op\xE7\xE3o c"
+    isCorreto: 0
+  - texto: "Op\xE7\xE3o 5"
+    isCorreto: 0
+  - texto: "Op\xE7\xE3o 6"
+    isCorreto: 0
+  - texto: "Op\xE7\xE3o 7"
+    isCorreto: 0

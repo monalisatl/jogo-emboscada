@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -393.8, y: -83.3}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 21.5735, y: -79.2076}
+  m_SizeDelta: {x: 1030.7474, y: 868.4702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &479835334929798897
 CanvasRenderer:
@@ -231,12 +231,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
+  m_fontSize: 54
   m_fontSizeBase: 55
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 54
   m_fontStyle: 17
   m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -784.8784, w: 0}
+  m_margin: {x: 0, y: 0, z: 25.40689, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -475,9 +475,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5001067884935412281}
-        m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
-        m_MethodName: NextPageButton
+      - m_Target: {fileID: 944701875812288006}
+        m_TargetAssemblyTypeName: Fase2_in, Assembly-CSharp
+        m_MethodName: onclickFase2In
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1599,6 +1599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4513334561350394253}
   - component: {fileID: 5001067884935412281}
+  - component: {fileID: 944701875812288006}
   m_Layer: 0
   m_Name: config
   m_TagString: Untagged
@@ -1631,5 +1632,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 477e81534d5027045a62c3d1f7cf4f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &944701875812288006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347677489156445980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b18dbb24df27644982089780dbc590b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -18,7 +18,7 @@ public class playScript : MonoBehaviour{
         EmboscadaController.gameData.niveisganhos = new bool[5];
         for (int i = 0; i < EmboscadaController.gameData.niveisganhos.Length; i++)
         {
-            EmboscadaController.gameData.niveisganhos[i] = PlayerPrefs.GetInt("nivel" + i, 0) == 1;
+            EmboscadaController.gameData.niveisganhos[i] = PlayerPrefs.GetInt("nivel"+i, 0) == 1;
         }
         if (EmboscadaController.gameData.currentLevel == 0 && EmboscadaController.gameData.playerName == "")
         {

@@ -192,7 +192,7 @@ public class fase__1_parte_2 : MonoBehaviour
             EmboscadaController.gameData.niveisganhos[0] = true;
             EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Estagiário;
             EmboscadaController.gameData.currentLevel = 15;
-            PlayerPrefs.SetInt("nivel0", 1);
+            PlayerPrefs.SetInt("nivel"+0, 1);
             PlayerPrefs.SetInt("classificacao", 1);
             PlayerPrefs.SetInt("currentLevel", 15);
             PlayerPrefs.Save();

@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titulo: "Governo pretende apreender celulares para controlar as informa\xE7\xF5es
     da popula\xE7\xE3o "
-  data: repostada:00/00/0000
+  data: 'repostada: 05/05/2030'
   conteudo: "Segundo um funcion\xE1rio do governo, que preferiu manter sua identidade
     em sigilo, as autoridades pretendem recolher os celulares dos cidad\xE3os em
     blitzes, a partir de segunda-feira, como medida para acabar com as fake news,
     controlando informa\xE7\xF5es manipuladas e mantendo a ordem social.  "
-  linkFonte: " www.verdadesn\xE3oditas.com"
+  linkFonte: "\U0001F5A5\uFE0F Verdades n\xE3o ditas - www.verdadesn\xE3oditas.com "
   opcoesResposta:
-  - texto: sensacionalismo
+  - texto: "FONTE CONFI\xC1VEL"
+    isCorreto: 1
+  - texto: SENSACIONALISMO
     isCorreto: 0
-  - texto: comprometimento
+  - texto: "T\xCDTULO INFORMATIVO"
     isCorreto: 0
-  - texto: "url cofi\xE1vel"
+  - texto: "T\xCDTULO INFORMATIVO"
     isCorreto: 0
-  - texto: "suposi\xE7\xF5es"
+  - texto: "T\xCDTULO INFORMATIVO"
     isCorreto: 0
-  - texto: fontes seguras
-    isCorreto: 0
-  - texto: "pseudoci\xEAncia"
+  - texto: "T\xCDTULO INFORMATIVO"
     isCorreto: 0

@@ -1,101 +1,143 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class NoticiaManager : MonoBehaviour
 {
+    public GameObject me;
+    public GameObject prefabInstructions;
+    [Header("Painéis")]
+    public GameObject closedPanel;    // painel “fechado” com título, data, opções e botão Confirmar
+    public GameObject openPanel;      // painel “aberto” mostrando conteúdo e link
 
-    public static NoticiaManager instance;
-    [SerializeField] private Noticia noticiaAtual;
-    [SerializeField] public GameObject[] noticiaObj = new GameObject[2];
+    [Header("Closed View")]
+    public TextMeshProUGUI closedTitulo;
+    public TextMeshProUGUI closedData;
+    public Toggle[] optionToggles;    // arraste aqui 4 Toggles
+    public Text[] optionTexts;
+    public Button confirmButton;
+    public Button openButton;         // botão “Abrir notícia”
 
-    [Header("Noticia aberta")]
-    [SerializeField] private GameObject titulo_noticia_aberta;
-    [SerializeField] private GameObject data_noticia_aberta;
-    [SerializeField] private GameObject conteudo_noticia_aberta;
-    [SerializeField] private GameObject linkFonte_noticia_aberta;
-    [Header("Noticia")]
-    [SerializeField] private GameObject titulo_noticia;
-    [SerializeField] private GameObject data_noticia;
-    [SerializeField] private GameObject conteudo_noticia;
-    [SerializeField] private GameObject linkFonte_noticia;
-    [Header("Botões")]
-    [SerializeField] private GameObject[] botoes = new GameObject[4];
+    [Header("Open View")]
+    public TextMeshProUGUI openTitulo;
+    public TextMeshProUGUI openData;
+    public TextMeshProUGUI openConteudo;
+    public TextMeshProUGUI openLink;
+    public Button closeButton;        // botão “Fechar notícia”
 
-    private void Awake()
+    [Header("Resultado")]
+    public GameObject resultPanel;
+    public TextMeshProUGUI resultText;
+
+    private Noticia currentNoticia;
+    private int totalAnswered = 0;
+    private int totalCorrect = 0;
+    private int totalQuestions;
+
+    void Start()
+    {
+        // UI inicial
+        resultPanel.SetActive(false);
+        openPanel.SetActive(false);
+        closedPanel.SetActive(true);
+
+        totalQuestions = Fase2Manager.instance.TotalPerguntas;
+
+        confirmButton.onClick.AddListener(OnConfirm);
+        openButton.onClick.AddListener(OnOpen);
+        closeButton.onClick.AddListener(OnClose);
+
+        ShowNextQuestion();
+    }
+
+    void ShowNextQuestion()
+    {
+        currentNoticia = Fase2Manager.instance.GetNextQuestion();
+        if (currentNoticia == null)
         {
-            if (instance == null)
+            ShowResult();
+            return;
+        }
+
+        // Preenche closed view
+        closedTitulo.text = currentNoticia.titulo;
+        closedData.text   = currentNoticia.data;
+
+        for (int i = 0; i < optionToggles.Length; i++)
+        {
+            if (i < currentNoticia.opcoesResposta.Count)
             {
-                instance = this;
+                optionToggles[i].gameObject.SetActive(true);
+                optionToggles[i].isOn = false;
+                optionTexts[i].text   = currentNoticia.opcoesResposta[i].texto;
             }
             else
             {
-                Destroy(gameObject);
+                optionToggles[i].gameObject.SetActive(false);
             }
         }
-    
-    private IEnumerator Start()
+
+        // Preenche open view
+        openTitulo.text    = currentNoticia.titulo;
+        openData.text      = currentNoticia.data;
+        openConteudo.text  = currentNoticia.conteudo;
+        openLink.text      = currentNoticia.linkFonte;
+    }
+
+    void OnOpen()
     {
-        // Espera até o Fase1Manager estar totalmente inicializado
-        yield return new WaitUntil(() => Fase1Manager.instance != null && Fase1Manager.instance.EstaInicializado());
-        
-        InicializarNoticia();
+        openPanel.SetActive(true);
     }
 
-    
-    void InicializarNoticia() {
+    void OnClose()
+    {
+        openPanel.SetActive(false);
+    }
 
-        if(noticiaObj[0] == null || noticiaObj[1] == null) {
-        Debug.LogError("Objetos da notícia não encontrados!");
-        return;
-    }
-        noticiaAtual = Fase1Manager.instance.MostrarPerguntaAtual();
-        if (noticiaAtual != null)
+    void OnConfirm()
+    {
+        // compara exata correspondência entre isOn e isCorreto
+        bool correct = true;
+        for (int i = 0; i < currentNoticia.opcoesResposta.Count; i++)
         {
-            carregarNoticia(noticiaAtual);
+            bool selecionado = optionToggles[i].isOn;
+            bool deviaSer   = currentNoticia.opcoesResposta[i].isCorreto;
+            if (selecionado != deviaSer)
+            {
+                correct = false;
+                break;
+            }
         }
+
+        totalAnswered++;
+        if (correct) totalCorrect++;
+
+        ShowNextQuestion();
     }
-    public void CarregarProximaNoticia(){
-        
-        noticiaAtual = Fase1Manager.instance.MostrarPerguntaAtual();
-        if (noticiaAtual != null)
+
+    void ShowResult()
+    {
+        closedPanel.SetActive(false);
+        openPanel.SetActive(false);
+        resultPanel.SetActive(true);
+        float taxa = (float) totalCorrect / totalQuestions * 100f;
+        if (taxa > 50f)
         {
-            carregarNoticia(noticiaAtual);
-        }
+            resultText.text = $"🎉 Você venceu! Acertos: {totalCorrect}/{totalQuestions}";
+            Fase2Manager.statusFase2 = taxa;
+        } 
+
         else
         {
-            Debug.Log("Fim do quiz!");
-            
+            Fase2Manager.statusFase2 = taxa;
+            resultText.text = $"😞 Você perdeu. Acertos: {totalCorrect}/{totalQuestions}";
         }
+        var inst =Instantiate(prefabInstructions, null);
+        var canvas = inst.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera = Camera.main;
+        canvas.sortingOrder = 10;
+        Destroy(me);
     }
-
-
-    void carregarNoticia(Noticia noticiaAtual)
-    {       
-
-            // titulo_noticia_aberta = GameObject.Find("titulo_noticia_aberta").gameObject;
-            // data_noticia_aberta = GameObject.Find("data_noticia_aberta").gameObject;
-            // conteudo_noticia_aberta = GameObject.Find("conteudo_noticia_aberta").gameObject;
-            // linkFonte_noticia_aberta = GameObject.Find("linkFonte_noticia_aberta").gameObject;
-            // titulo_noticia = GameObject.Find("titulo_noticia").gameObject;
-            // data_noticia = GameObject.Find("data_noticia").gameObject;
-            // conteudo_noticia = GameObject.Find("conteudo_noticia").gameObject;
-            // linkFonte_noticia = GameObject.Find("linkFonte_noticia").gameObject;
-            data_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.data;
-            titulo_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.titulo;
-            conteudo_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.conteudo;
-            linkFonte_noticia_aberta.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.linkFonte;
-            titulo_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.titulo;
-            data_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.data;
-            conteudo_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.conteudo;
-            linkFonte_noticia.GetComponent<TMPro.TextMeshProUGUI>().text = noticiaAtual.linkFonte;
-                for (int i = 0; i < noticiaAtual.opcoesResposta.Count; i++)
-                { 
-                    botoes[i].GetComponentInChildren<TMPro.TextMeshProUGUI>().text = noticiaAtual.opcoesResposta[i].texto;
-                    if (noticiaAtual.opcoesResposta[i].isCorreto)
-                    {
-                        botoes[i].GetComponent<BotaoOpcao>().isCorreto = true;
-                    }
-                }
-        }
-    }
-
+    
+}
