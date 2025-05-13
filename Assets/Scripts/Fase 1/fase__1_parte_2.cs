@@ -155,52 +155,74 @@ public class fase__1_parte_2 : MonoBehaviour
             
         acertos_garais = acertos;
         
-        StartCoroutine(SafeLoadScene(acertos));
+        StartCoroutine(SafeLoadScene());
     }
     
-    private IEnumerator SafeLoadScene(int acertos)
+    private IEnumerator SafeLoadScene()
     {
         yield return new WaitForEndOfFrame();
-        
-        try {
-            if(fase_1_minigame.acertos_garais + fase__1_parte_2.acertos_garais >= 6){
-                MainManager.indiceCanvainicial = 14;
-                
-                SceneManager.LoadSceneAsync("main");
-            }
-            else{
-                MainManager.indiceCanvainicial = 13;
-                SceneManager.LoadSceneAsync("main");
-            }
+    
+        if(fase_1_minigame.acertos_garais + fase__1_parte_2.acertos_garais >= 6){
+            MainManager.indiceCanvainicial = 14;
+            yield return SaveGameSafely(true);
+            LoadMainScene();
+        }
+        else{
+            yield return SaveGameSafely(false);
+            MainManager.indiceCanvainicial = 13;
+            LoadMainScene();
+        }
+    }
+
+    private void LoadMainScene()
+    {
+        try
+        {
+            SceneManager.LoadSceneAsync("main");
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Erro ao carregar cena: {e.Message}");
         }
     }
+
+    private IEnumerator SaveGameSafely(bool result)
+    {
+            yield return SaveGame(result);
+    }
     private IEnumerator SaveGame(bool result)
     {
         yield return new WaitForEndOfFrame();
-        
+
         if (EmboscadaController.gameData == null)
         {
             Debug.LogError("gameData é nulo!");
             yield break;
         }
-        if (result)
+
+        try
         {
-            EmboscadaController.gameData.niveisganhos[0] = true;
-            EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Estagiário;
-            EmboscadaController.gameData.currentLevel = 15;
-            PlayerPrefs.SetInt("nivel"+0, 1);
-            PlayerPrefs.SetInt("classificacao", 1);
+            if (result)
+            {
+                EmboscadaController.gameData.niveisganhos[0] = true;
+                EmboscadaController.gameData.classificacao += 1;
+                EmboscadaController.gameData.currentLevel = 15;
+                PlayerPrefs.SetInt("nivel0", 1);
+            }
+            else
+            {
+                EmboscadaController.gameData.niveisganhos[0] = false;
+                EmboscadaController.gameData.currentLevel = 15;
+                PlayerPrefs.SetInt("nivel0", 0);
+            }
+
+            PlayerPrefs.SetInt("classificacao", (int)EmboscadaController.gameData.classificacao);
             PlayerPrefs.SetInt("currentLevel", 15);
             PlayerPrefs.Save();
         }
-        else
+        catch (System.Exception e)
         {
-            EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
-            
+            Debug.LogError($"Erro ao salvar o jogo: {e.Message}");
         }
     }
     public void OnCancelButtonPress()

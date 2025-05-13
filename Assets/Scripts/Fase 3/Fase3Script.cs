@@ -10,8 +10,7 @@ public class Fase3Manager : MonoBehaviour
 {
     [Header("objetos raiz")] [SerializeField]
     private GameObject loadingScreen;
-
-    [SerializeField] private GameObject main;
+    
 
     [Header("Áudio de Instrução")] [SerializeField]
     private AudioClip instrucoesClip;
@@ -65,18 +64,41 @@ public class Fase3Manager : MonoBehaviour
 
     private IEnumerator EndFase3()
     {
-        // 1) configura o índice
         if (_resp1 && _resp2)
+        {
+            SaveGame(true);
             MainManager.indiceCanvainicial = 29;
+        }
+
+
         else
+        {   
+            SaveGame(false);
             MainManager.indiceCanvainicial = 12;
+        }
+           
+        
         var op = SceneManager.LoadSceneAsync("main");
         
         yield return LoadingScreenController.Instance.ShowLoading(op);
     }
 
+    private void SaveGame(bool b)
+    {
+        EmboscadaController.gameData ??= new EmboscadaController.GameData();
+        EmboscadaController.gameData.niveisganhos[2] = b;
+        int cls = PlayerPrefs.GetInt("classificacao", 0);
+        if (b) cls++;
+        EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao) cls;
+        EmboscadaController.gameData.currentLevel = 31;
+        PlayerPrefs.SetInt("nivel2", b ? 1 : 0);
+        PlayerPrefs.SetInt("classificacao", cls);
+        PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
+        PlayerPrefs.Save();
+    }
 
-private IEnumerator PrepareAudio(AudioClip clip)
+
+    private IEnumerator PrepareAudio(AudioClip clip)
     {
         if (clip.loadState != AudioDataLoadState.Loaded)
             clip.LoadAudioData();

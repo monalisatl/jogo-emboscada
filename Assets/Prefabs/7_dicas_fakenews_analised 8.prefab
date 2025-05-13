@@ -538,12 +538,12 @@ RectTransform:
   - {fileID: 5004800545994397569}
   - {fileID: 9014130432278114491}
   - {fileID: 8399042596787413836}
-  - {fileID: 5490624113333151694}
   - {fileID: 1012824282156236639}
   - {fileID: 8345471722459855159}
   - {fileID: 6138654743777715918}
   - {fileID: 6181041234199226711}
   - {fileID: 8918210776586749552}
+  - {fileID: 5490624113333151694}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -681,8 +681,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "COMO IDENTIFICAR UMA DESINFORMA\xC7\xC3O:"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: a00013af81304728b2be1f4309ee2433, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1143,12 +1143,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6601678406407139627}
         m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
-        m_MethodName: NextPageButton
-        m_Mode: 1
+        m_MethodName: GoToPageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

@@ -11,7 +11,8 @@ public class EnigmaScript : MonoBehaviour
 	public List<Enigma> enigmas;
 	public GameObject puzzleUIPrefab;
 	public Transform parentCanvas;
-	public int cenaVitoria, cenaDerrota;	
+	public int cenaVitoria;
+	public int cenaDerrota;	
     [SerializeField] private GameObject instruct;
 	private int respostasCorretas = 0;
 	private int totalRespondidos = 0;
@@ -36,8 +37,7 @@ public class EnigmaScript : MonoBehaviour
 
     public void SelecionarEnigma(int index, Button origemBtn)
     {
-        var go = Instantiate(puzzleUIPrefab);
-        go.transform.SetParent(null, false); 
+        var go = Instantiate(puzzleUIPrefab, null, false);
         Canvas cv = go.GetComponent<Canvas>();
         cv.renderMode      = RenderMode.ScreenSpaceCamera;
         cv.worldCamera     = Camera.main;
@@ -57,26 +57,39 @@ public class EnigmaScript : MonoBehaviour
 
 			if (respostasCorretas >= 2)
 			{
-				if (MainManager.main == null)
-				{
-					MainManager.main = new MainManager();
-
-                }
+				SaveGame(respostasCorretas >= 2);
                 MainManager.indiceCanvainicial = cenaVitoria;
                 SceneManager.LoadSceneAsync("main");
 
             }
 			else
 			{
-				if (MainManager.main == null)
-				{
-					MainManager.main = new MainManager();
-
-                }
+				SaveGame(respostasCorretas >= 2);
                 MainManager.indiceCanvainicial = cenaDerrota;
                 SceneManager.LoadSceneAsync("main");
             }
 		}
+	}
+
+	private void SaveGame(bool acertou)
+	{
+			EmboscadaController.gameData ??= new EmboscadaController.GameData();
+			EmboscadaController.gameData.niveisganhos[3] = acertou;
+			int cls = PlayerPrefs.GetInt("classificacao", 0);
+			if (acertou) cls++;
+			EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)cls;
+
+			// atualiza currentLevel (pode ser nivelIndex+1 ou outro valor de sua lógica)
+			EmboscadaController.gameData.currentLevel = 37;
+
+			// grava no PlayerPrefs
+			PlayerPrefs.SetInt("nivel4", acertou ? 1 : 0);
+			PlayerPrefs.SetInt("classificacao", cls);
+			PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
+			PlayerPrefs.Save();
+
+			Debug.Log($"[SaveGame] Fase 4 passed={acertou}  cls={cls.ToString()}");
+
 	}
 
 	public void CloseInstruct()

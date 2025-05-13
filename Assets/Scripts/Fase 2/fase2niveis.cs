@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,11 +13,11 @@ public class fase2niveis : MonoBehaviour
 
     private void Start()
     {
-        SaveFase();
-        MarcarFase();
+        StartCoroutine(SaveFase());
+        StartCoroutine(MarcarFase());
     }
 
-    void SaveFase()
+    private IEnumerator SaveFase()
     {
 
             if (PlayerPrefs.HasKey("playerName"))
@@ -31,7 +32,7 @@ public class fase2niveis : MonoBehaviour
 
             if (PlayerPrefs.HasKey("credencial"))
             {
-                EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("credencial", 0);
+                EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
             }
             else
             {
@@ -39,15 +40,23 @@ public class fase2niveis : MonoBehaviour
                 EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
             }
                 
-            if (!credencial) return;
+            if (credencial == null || playerName == null) {
+                Debug.LogError("Refs de UI não atribuídas!");
+                yield break;
+            }
             credencial.text = EmboscadaController.gameData.classificacao.ToString();
             playerName.text = EmboscadaController.gameData.playerName;
             PlayerPrefs.SetInt("currentLevel", 16);
             PlayerPrefs.Save();
     }
 
-    void MarcarFase()
-    {
+    IEnumerator MarcarFase()
+    {   
+        if(status.Length < 2)
+        {
+            Debug.LogError("Status array não preenchido!");
+            yield break;
+        }
         if (EmboscadaController.gameData.niveisganhos[0])
         {
             statusFase1.GetComponent<Image>().sprite = status[0].sprite;
@@ -57,5 +66,7 @@ public class fase2niveis : MonoBehaviour
         {
             statusFase1.GetComponent<Image>().sprite = status[1].sprite;
         }
+
+        yield return null;
     }
 }
