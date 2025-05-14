@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5616ee2-fc37-4e76-9166-9a5345da24a6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_parabens 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_parabens 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 4/fase4_in.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 4/fase4_in.cs" afterDir="false" />
-    </list>
+    <list default="true" id="f5616ee2-fc37-4e76-9166-9a5345da24a6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,7 +170,7 @@
       <workItem from="1747006211837" duration="7876000" />
       <workItem from="1747050052561" duration="20861000" />
       <workItem from="1747099882209" duration="5958000" />
-      <workItem from="1747200646602" duration="889000" />
+      <workItem from="1747200646602" duration="1128000" />
     </task>
     <task id="LOCAL-00001" summary="✨ feat: finaliza a base da fase quatro (❤️ ω ❤️)">
       <option name="closed" value="true" />
@@ -209,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747071217984</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=":bug: fix: deixa o fluxo da abertura até fase 4 ok (❤️ ω ❤️)">
+      <option name="closed" value="true" />
+      <created>1747201784482</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1747201784482</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +243,8 @@
     <MESSAGE value=" feat: adiciona logica e fluxo da fase 3" />
     <MESSAGE value=":sparkles: fix: corrige save e melhora as marcas de fase" />
     <MESSAGE value=":bug: fix: correcoes de erros na fase 2 e fluxo de jogo semi-completo" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix: correcoes de erros na fase 2 e fluxo de jogo semi-completo" />
+    <MESSAGE value=":bug: fix: deixa o fluxo da abertura até fase 4 ok (❤️ ω ❤️)" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix: deixa o fluxo da abertura até fase 4 ok (❤️ ω ❤️)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
