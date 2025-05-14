@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class niveisFase4 : MonoBehaviour
@@ -88,5 +89,15 @@ public class niveisFase4 : MonoBehaviour
                 : status[1].sprite;
 
         yield return null;
+    }
+
+    public void OnCameraPress()
+    {
+        Invoke("OpenFase4", 1.0f);
+    }
+
+    private void OpenFase4()
+    {
+        SceneManager.LoadSceneAsync("fase4.1");
     }
 }
