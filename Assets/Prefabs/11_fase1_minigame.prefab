@@ -1296,10 +1296,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3251669722322308248, guid: a8fcfef9d1b61954890289dd8b4c2ca4, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2614,6 +2614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c5f4e094a57fa4980fbf84ba240647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tempoLimite: 30
+  cronometro: {fileID: 6230695944045790112}
   Buttons_corretos:
   - {fileID: 8381864589741757014}
   - {fileID: 4934028697644168428}

@@ -22,15 +22,15 @@ MonoBehaviour:
     de questionar decis\xF5es importantes."
   linkFonte: "\U0001F5A5\uFE0F Revolu\xE7\xE3o secreta - www.revolu\xE7\xE3osecreta.com  "
   opcoesResposta:
-  - texto: "Op\xE7\xE3o a"
+  - texto: "EVID\xCANCIAS CIENT\xCDFICAS"
+    isCorreto: 0
+  - texto: MANCHETE SENSACIONALISTA
+    isCorreto: 0
+  - texto: FATOS COMPROVADOS
+    isCorreto: 0
+  - texto: SENSACIONALISMO
     isCorreto: 1
-  - texto: "Op\xE7\xE3o b"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o c"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o 4"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o 5"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o 6"
-    isCorreto: 0
+  - texto: MEDO INFUNDADO
+    isCorreto: 1
+  - texto: "DADOS CIENT\xCDFICOS"
+    isCorreto: 1

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class fase_1_minigame : MonoBehaviour
 {
+    [Header("Timer")]
+    [Tooltip("Tempo máximo para selecionar os botões")] 
+    public float tempoLimite = 45f;
+    [Tooltip("Referência ao objeto de texto do cronômetro")]
+    public Image cronometro;
+    
+    private float _tempoRestante;
+
+    private bool _cronometroAtivo = true;
     // Botões corretos e errados definidos no inspector
     public List<GameObject> Buttons_corretos;
     public List<GameObject> Buttons_errados;
@@ -65,6 +75,41 @@ public class fase_1_minigame : MonoBehaviour
 
         // Verificar se todos os botões têm o componente BotaoSelecionavel
         VerificarComponentesBotoes();
+        if (!cronometro)
+        {
+            Debug.LogError("Timer não adicionado!");
+        }
+        _tempoRestante = tempoLimite;
+        UpdateCronometro();
+    }
+
+    private void UpdateCronometro()
+    {
+        cronometro.fillAmount = _tempoRestante/tempoLimite;
+    }
+
+    private void Update()
+    {
+        if (!_cronometroAtivo)
+        {
+            return;
+        }
+        
+        _tempoRestante -= Time.deltaTime;
+        
+        _tempoRestante = Mathf.Max(_tempoRestante, 0f);
+        UpdateCronometro();
+        
+        
+        if (_tempoRestante <= 0f)
+        {
+            Debug.Log("Tempo esgotado!");
+            _cronometroAtivo = false;
+            vitoria_fase_1 = false;
+            Invoke("AvancarParaProximaFase", 1.0f);
+        }
+        
+        
     }
 
     // Novo método para verificar componentes
@@ -275,7 +320,7 @@ public class fase_1_minigame : MonoBehaviour
 
         // Aqui você pode adicionar um pequeno delay antes de avançar para a próxima fase
         // para que o jogador possa ver o feedback visual
-        Invoke("AvancarParaProximaFase", 2.0f);
+        Invoke("AvancarParaProximaFase", 1.0f);
     }
 
     // Método para avançar para a próxima fase após o delay

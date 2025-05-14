@@ -125,8 +125,8 @@ public class Arrastavel : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         }
         
         // Verificar se todos os itens foram colocados
-        if (fase__1_parte_2.Instance != null)
-            fase__1_parte_2.Instance.CheckAllItemsPlaced();
+        if (Fase1Parte2.Instance != null)
+            Fase1Parte2.Instance.CheckAllItemsPlaced();
     }
 
     // Método seguro para definir o parent
@@ -156,8 +156,8 @@ public class Arrastavel : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             rectTransform.anchoredPosition = newPosition;
         
         // Notificar o gerenciador que um item foi posicionado
-        if (fase__1_parte_2.Instance != null)
-            fase__1_parte_2.Instance.CheckAllItemsPlaced();
+        if (Fase1Parte2.Instance != null)
+            Fase1Parte2.Instance.CheckAllItemsPlaced();
     }
 
     // Método para forçar retorno à posição INICIAL do jogo

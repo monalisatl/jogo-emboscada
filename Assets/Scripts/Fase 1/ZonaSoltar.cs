@@ -56,11 +56,11 @@ public class ZonaSoltar : MonoBehaviour, IDropHandler
     // Método seguro para verificar se todos os itens foram colocados
     private void SafeCheckAllItemsPlaced()
     {
-        if (fase__1_parte_2.Instance != null)
+        if (Fase1Parte2.Instance != null)
         {
             try
             {
-                fase__1_parte_2.Instance.CheckAllItemsPlaced();
+                Fase1Parte2.Instance.CheckAllItemsPlaced();
             }
             catch (System.Exception e)
             {

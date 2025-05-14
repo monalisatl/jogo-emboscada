@@ -30,7 +30,7 @@ public class fase2niveis : MonoBehaviour
                 EmboscadaController.gameData.playerName = "Jogador";
             }
 
-            if (PlayerPrefs.HasKey("credencial"))
+            if (PlayerPrefs.HasKey("classificacao"))
             {
                 EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
             }

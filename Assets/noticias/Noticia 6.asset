@@ -21,15 +21,15 @@ MonoBehaviour:
     de indiv\xEDduos que n\xE3o seguirem as novas regras estabelecidas. "
   linkFonte: "\U0001F5A5\uFE0F Revolu\xE7\xE3o secreta - www.revolu\xE7\xE3osecreta.com  "
   opcoesResposta:
-  - texto: "Op\xE7\xE3o a"
+  - texto: MANCHETE OBJETIVA
+    isCorreto: 0
+  - texto: ' LINGUAGEM ALARMISTA'
     isCorreto: 1
-  - texto: "Op\xE7\xE3o b"
+  - texto: "FATOS CONFI\xC1VEIS"
     isCorreto: 0
-  - texto: "Op\xE7\xE3o c"
+  - texto: PLURALIDADE DE FONTES
     isCorreto: 0
-  - texto: "Op\xE7\xE3o 4"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o 5"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o 6"
-    isCorreto: 0
+  - texto: "DISTOR\xC7\xC3O DE TECNOLOGIA"
+    isCorreto: 1
+  - texto: "SUPOSI\xC7\xC3O SEM BASE CIENT\xCDFICA"
+    isCorreto: 1

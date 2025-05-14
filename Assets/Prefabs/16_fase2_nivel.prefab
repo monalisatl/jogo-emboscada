@@ -2024,8 +2024,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6960609978683933950}
-        m_TargetAssemblyTypeName: nextPage, Assembly-CSharp
-        m_MethodName: NextPage
+        m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
+        m_MethodName: NextPageButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5741,7 +5741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5205368191379000156
 RectTransform:
   m_ObjectHideFlags: 0

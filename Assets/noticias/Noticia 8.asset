@@ -21,15 +21,15 @@ MonoBehaviour:
     o caso. "
   linkFonte: "\U0001F5A5\uFE0F Verdades n\xE3o ditas - www.verdadesn\xE3oditas.com  "
   opcoesResposta:
-  - texto: "Op\xE7\xE3o a"
+  - texto: "INFORMA\xC7\xC3O CONFI\xC1VEL"
+    isCorreto: 0
+  - texto: "MANIPULA\xC7\xC3O DE MEDO"
     isCorreto: 1
-  - texto: "Op\xE7\xE3o b"
+  - texto: "DADOS N\xC3O CONFIRMADOS"
+    isCorreto: 1
+  - texto: "COMPROVA\xC7\xC3O POR DADOS"
     isCorreto: 0
-  - texto: "Op\xE7\xE3o c"
+  - texto: LINGUAGEM INFORMATIVA
     isCorreto: 0
-  - texto: "Op\xE7\xE3o 4"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o 5"
-    isCorreto: 0
-  - texto: "Op\xE7\xE3o 6"
-    isCorreto: 0
+  - texto: TEORIA SEM FUNDAMENTO
+    isCorreto: 1

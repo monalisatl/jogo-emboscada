@@ -22,14 +22,14 @@ MonoBehaviour:
   linkFonte: "\U0001F5A5\uFE0F Verdades n\xE3o ditas - www.verdadesn\xE3oditas.com "
   opcoesResposta:
   - texto: "FONTE CONFI\xC1VEL"
+    isCorreto: 0
+  - texto: "T\xCDTULO INFORMATIVO"
+    isCorreto: 0
+  - texto: PROVAS CONCRETAS
+    isCorreto: 0
+  - texto: "FONTE AN\xD4NIMA"
     isCorreto: 1
-  - texto: SENSACIONALISMO
-    isCorreto: 0
-  - texto: "T\xCDTULO INFORMATIVO"
-    isCorreto: 0
-  - texto: "T\xCDTULO INFORMATIVO"
-    isCorreto: 0
-  - texto: "T\xCDTULO INFORMATIVO"
-    isCorreto: 0
-  - texto: "T\xCDTULO INFORMATIVO"
-    isCorreto: 0
+  - texto: "FALTA DE EVID\xCANCIAS"
+    isCorreto: 1
+  - texto: 'APELO AO MEDO '
+    isCorreto: 1

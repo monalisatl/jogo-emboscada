@@ -1,52 +1,113 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class NoticiaManager : MonoBehaviour
 {
-    public GameObject me;
-    public GameObject prefabInstructions;
+    [Header("Cores de seleção")] 
+    public Color32 normalColor = Color.white; // #86009F new Color32(0x86, 0x00, 0x9F, 0xFF);
+    public Color32 selectedColor = new Color32(0xCA, 0x80, 0x07, 0xFF); // #CA8007
+
     [Header("Painéis")]
-    public GameObject closedPanel;    // painel “fechado” com título, data, opções e botão Confirmar
-    public GameObject openPanel;      // painel “aberto” mostrando conteúdo e link
+    public GameObject closedPanel;
+    public GameObject openPanel;
+    public GameObject resultPanel;
 
     [Header("Closed View")]
     public TextMeshProUGUI closedTitulo;
+    public TextMeshProUGUI closedConteudo;
+    public TextMeshProUGUI closedLink;
     public TextMeshProUGUI closedData;
-    public Toggle[] optionToggles;    // arraste aqui 4 Toggles
+    public Toggle[] optionToggles;
     public Text[] optionTexts;
     public Button confirmButton;
-    public Button openButton;         // botão “Abrir notícia”
+    public Button openButton;
 
     [Header("Open View")]
     public TextMeshProUGUI openTitulo;
     public TextMeshProUGUI openData;
     public TextMeshProUGUI openConteudo;
     public TextMeshProUGUI openLink;
-    public Button closeButton;        // botão “Fechar notícia”
+    public Button closeButton;
 
     [Header("Resultado")]
-    public GameObject resultPanel;
     public TextMeshProUGUI resultText;
+    public GameObject prefabInstructions;
+    public GameObject me;
 
     private Noticia currentNoticia;
-    private int totalAnswered = 0;
-    private int totalCorrect = 0;
-    private int totalQuestions;
+    private int totalQuestions, totalAnswered, totalCorrect;
+    [SerializeField] private TextMeshProUGUI credencial;
+    void Awake()
+    {
+        // Quebra qualquer ToggleGroup herdado
+        foreach (var tog in optionToggles)
+            tog.group = null;
+
+        // Inscreve um único listener para cada toggle:
+        for (int i = 0; i < optionToggles.Length; i++)
+        {
+            int idx = i;
+            var tog = optionToggles[idx];
+            var txt = optionTexts[idx];
+            
+
+            tog.onValueChanged.AddListener(isOn =>
+            {
+                // 1) controla máximo de 3
+                if (isOn)
+                {
+                    int count = 0;
+                    foreach (var t in optionToggles)
+                        if (t.isOn) count++;
+                    if (count > 3)
+                    {
+                        tog.isOn = false;
+                        Debug.Log("Você só pode escolher até 3 opções.");
+                        return;
+                    }
+                }
+                var cb = tog.colors;
+                cb.normalColor      = isOn ? selectedColor : normalColor;
+                cb.highlightedColor = isOn ? selectedColor : normalColor;
+                cb.pressedColor     = isOn ? selectedColor : normalColor;
+                cb.selectedColor    = isOn ? selectedColor : normalColor;
+                cb.disabledColor    = normalColor;
+                tog.colors = cb;
+
+                // 4) habilita o botão de confirmar apenas quando tiver exatamente 3
+                int onCount = 0;
+                foreach (var t in optionToggles)
+                    if (t.isOn) onCount++;
+                confirmButton.interactable = (onCount == 3);
+            });
+        }
+
+        // Listeners de botões
+        confirmButton.onClick.AddListener(OnConfirm);
+        openButton.onClick.AddListener(OnOpen);
+        closeButton.onClick.AddListener(OnClose);
+    }
 
     void Start()
-    {
-        // UI inicial
+    { if(EmboscadaController.gameData == null)
+        {
+            EmboscadaController.gameData = new EmboscadaController.GameData();
+            EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "Jogador");
+            EmboscadaController.gameData.classificacao =
+                (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
+        }
+        credencial.text = EmboscadaController.gameData.classificacao.ToString();
+        // desativa resultados / open view, ativa closed view
         resultPanel.SetActive(false);
         openPanel.SetActive(false);
         closedPanel.SetActive(true);
 
+        // pé-de-obra do botão
+        confirmButton.interactable = false;
+
         totalQuestions = Fase2Manager.instance.TotalPerguntas;
-
-        confirmButton.onClick.AddListener(OnConfirm);
-        openButton.onClick.AddListener(OnOpen);
-        closeButton.onClick.AddListener(OnClose);
-
         ShowNextQuestion();
     }
 
@@ -60,9 +121,12 @@ public class NoticiaManager : MonoBehaviour
         }
 
         // Preenche closed view
-        closedTitulo.text = currentNoticia.titulo;
-        closedData.text   = currentNoticia.data;
+        closedTitulo.text   = currentNoticia.titulo;
+        closedData.text     = currentNoticia.data;
+        closedLink.text     = currentNoticia.linkFonte;
+        closedConteudo.text = currentNoticia.conteudo;
 
+        // Reseta toggles e cores
         for (int i = 0; i < optionToggles.Length; i++)
         {
             if (i < currentNoticia.opcoesResposta.Count)
@@ -70,6 +134,14 @@ public class NoticiaManager : MonoBehaviour
                 optionToggles[i].gameObject.SetActive(true);
                 optionToggles[i].isOn = false;
                 optionTexts[i].text   = currentNoticia.opcoesResposta[i].texto;
+
+                var cb = optionToggles[i].colors;
+                cb.normalColor      = normalColor;
+                cb.highlightedColor = normalColor;
+                cb.pressedColor     = normalColor;
+                cb.selectedColor    = selectedColor;
+                cb.disabledColor    = normalColor;
+                optionToggles[i].colors = cb;
             }
             else
             {
@@ -78,31 +150,24 @@ public class NoticiaManager : MonoBehaviour
         }
 
         // Preenche open view
-        openTitulo.text    = currentNoticia.titulo;
-        openData.text      = currentNoticia.data;
-        openConteudo.text  = currentNoticia.conteudo;
-        openLink.text      = currentNoticia.linkFonte;
+        openTitulo.text   = currentNoticia.titulo;
+        openData.text     = currentNoticia.data;
+        openConteudo.text = currentNoticia.conteudo;
+        openLink.text     = currentNoticia.linkFonte;
+
+        // desabilita o confirmar até o jogador escolher 3 novamente
+        confirmButton.interactable = false;
     }
 
-    void OnOpen()
-    {
-        openPanel.SetActive(true);
-    }
-
-    void OnClose()
-    {
-        openPanel.SetActive(false);
-    }
+    void OnOpen()   => openPanel.SetActive(true);
+    void OnClose()  => openPanel.SetActive(false);
 
     void OnConfirm()
     {
-        // compara exata correspondência entre isOn e isCorreto
         bool correct = true;
         for (int i = 0; i < currentNoticia.opcoesResposta.Count; i++)
         {
-            bool selecionado = optionToggles[i].isOn;
-            bool deviaSer   = currentNoticia.opcoesResposta[i].isCorreto;
-            if (selecionado != deviaSer)
+            if (optionToggles[i].isOn != currentNoticia.opcoesResposta[i].isCorreto)
             {
                 correct = false;
                 break;
@@ -111,7 +176,6 @@ public class NoticiaManager : MonoBehaviour
 
         totalAnswered++;
         if (correct) totalCorrect++;
-
         ShowNextQuestion();
     }
 
@@ -120,24 +184,20 @@ public class NoticiaManager : MonoBehaviour
         closedPanel.SetActive(false);
         openPanel.SetActive(false);
         resultPanel.SetActive(true);
-        float taxa = (float) totalCorrect / totalQuestions * 100f;
-        if (taxa > 50f)
-        {
-            resultText.text = $"🎉 Você venceu! Acertos: {totalCorrect}/{totalQuestions}";
-            Fase2Manager.statusFase2 = taxa;
-        } 
 
+        float taxa = (float)totalCorrect / totalQuestions * 100f;
+        Fase2Manager.statusFase2 = taxa;
+
+        if (taxa > 50f)
+            resultText.text = $"🎉 Você venceu! Acertos: {totalCorrect}/{totalQuestions}";
         else
-        {
-            Fase2Manager.statusFase2 = taxa;
             resultText.text = $"😞 Você perdeu. Acertos: {totalCorrect}/{totalQuestions}";
-        }
-        var inst =Instantiate(prefabInstructions, null);
+
+        var inst   = Instantiate(prefabInstructions, null);
         var canvas = inst.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
-        canvas.worldCamera = Camera.main;
-        canvas.sortingOrder = 10;
+        canvas.renderMode    = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera   = Camera.main;
+        canvas.sortingOrder  = 10;
         Destroy(me);
     }
-    
 }

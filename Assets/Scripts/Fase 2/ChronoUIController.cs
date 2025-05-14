@@ -33,9 +33,19 @@ public class ChronoUIController : MonoBehaviour
     private List<Noticia> ordemSelecionada = new List<Noticia>();
     private int nextChronoIndex = 1;
     private Color defaultButtonColor;
+    
+    [SerializeField] private TextMeshProUGUI credencial;
 
     void Start()
     {
+        if(EmboscadaController.gameData == null)
+        {
+            EmboscadaController.gameData = new EmboscadaController.GameData();
+            EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "Jogador");
+            EmboscadaController.gameData.classificacao =
+                (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
+        }
+        credencial.text = EmboscadaController.gameData.classificacao.ToString();
         // pega as 4 notícias da fase 1
         listaNoticias = Fase2Manager.perguntasSelecionadas;
 
@@ -140,16 +150,16 @@ public class ChronoUIController : MonoBehaviour
 
     void OnContinue()
     {
-        float faseQuizOK = Fase2Manager.statusFase2;
+        float faseQuizOk = Fase2Manager.statusFase2;
         float ordenacaoPct = verificarResultado();
         
-        bool fase2OK =( (faseQuizOK+ordenacaoPct)/2 >=50f);
+        bool fase2Ok =( (faseQuizOk+ordenacaoPct)/2 >=50f);
         
-        saveFase(fase2OK);
+        SaveFase(fase2Ok);
 
-        if (fase2OK)
+        if (fase2Ok)
         {
-            MainManager.indiceCanvainicial = 23;
+            MainManager.indiceCanvainicial = 21;
         }
         else
         {
@@ -174,16 +184,29 @@ public class ChronoUIController : MonoBehaviour
             newsButtons[i].GetComponent<Image>().color = defaultButtonColor;
         }
     }
-    
-    void saveFase(bool status)
+
+    private void SaveFase(bool status)
     {
         EmboscadaController.gameData ??= new EmboscadaController.GameData();
         EmboscadaController.gameData.niveisganhos[1] = status;
         EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
-        EmboscadaController.gameData.classificacao = status ? EmboscadaController.gameData.classificacao + 1 : EmboscadaController.gameData.classificacao;
+        var cls = (int)EmboscadaController.gameData.classificacao;
+       
+        if (status)
+        {
+            cls++;
+            EmboscadaController.gameData.niveisganhos[1] = true;
+        }
+        else
+        {
+            EmboscadaController.gameData.niveisganhos[1] = false;
+        }
+        EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)cls;
+        Debug.Log("Salvando fase 2: " + status + " Terminou com classificacao"+ EmboscadaController.gameData.classificacao);
         EmboscadaController.gameData.currentLevel = 23;
         PlayerPrefs.SetInt("nivel" + 1, EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
         PlayerPrefs.SetInt("currentLevel", 23);
+        PlayerPrefs.SetInt("classificacao", cls);
         PlayerPrefs.Save();
     }
 }
