@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class playScript : MonoBehaviour{
     
     [SerializeField] Button playButton;
+    
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class playScript : MonoBehaviour{
         if (EmboscadaController.gameData.currentLevel == 0 && EmboscadaController.gameData.playerName == "")
         {
             playButton.interactable = false;
+            playButton.gameObject.SetActive(false);
         }
         else
         {
@@ -33,15 +35,16 @@ public class playScript : MonoBehaviour{
 
     public void PlayGame()
     {
-        MainManager.indiceCanvainicial = EmboscadaController.gameData.currentLevel;
-        SceneManager.LoadSceneAsync("main");
+               EmboscadaController.gameData = new EmboscadaController.GameData();
+               PlayerPrefs.DeleteAll();
+               PlayerPrefs.Save();
+               SceneManager.LoadSceneAsync("main");
     }
 
-    public void NewGame()
+    public void ContinueGame()
     {
-        EmboscadaController.gameData = new EmboscadaController.GameData();
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-        SceneManager.LoadSceneAsync("main");
+             MainManager.indiceCanvainicial = EmboscadaController.gameData.currentLevel;
+             SceneManager.LoadSceneAsync("main");
+
     }
 }
