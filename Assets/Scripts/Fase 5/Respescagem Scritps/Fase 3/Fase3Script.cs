@@ -1,0 +1,169 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+
+namespace Fase_5.Respescagem_Scritps.Fase_3
+{
+    public class Fase3RepescagemManager : MonoBehaviour
+    {
+        [Header("objetos raiz")] [SerializeField]
+        private GameObject loadingScreen;
+    
+
+        [Header("Áudio de Instrução")] [SerializeField]
+        private AudioClip instrucoesClip;
+
+        [SerializeField] private AudioSource instrucaoAudioSource;
+        [SerializeField] private GameObject instrucaoGO;
+        private bool _skipInstrucao = false;
+        [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
+        [SerializeField] private VideoClip[] secretariosClip;
+
+        [Header("Perguntas")] [SerializeField] private PerguntaRepescagemScript pergunta1Prefab;
+        [SerializeField] private PerguntaRepescagemScript pergunta2Prefab;
+
+        [Header("Resultado")] [SerializeField] private GameObject vitoriaPrefab;
+        [SerializeField] private GameObject derrotaPrefab;
+        private bool _resp1, _resp2;
+
+        void Start()
+        {
+            if (LoadingScreenController.Instance == null)
+            {
+                DontDestroyOnLoad(loadingScreen);
+            }
+
+            StartCoroutine(RunFase());
+        }
+
+        private IEnumerator RunFase()
+        {
+            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+            {
+                () => PrepareAudio(instrucoesClip)
+            });
+            instrucaoAudioSource.clip = instrucoesClip;
+            instrucaoAudioSource.Play();
+            yield return new WaitUntil(() =>
+                _skipInstrucao
+            );
+
+            yield return PlayVideo(secretariosClip[0]);
+
+            yield return AskQuestion(pergunta1Prefab, correto => _resp1 = correto);
+
+            yield return PlayVideo(secretariosClip[1]);
+
+            yield return AskQuestion(pergunta2Prefab, correto => _resp2 = correto);
+
+            yield return StartCoroutine(EndFase3());
+        }
+
+
+        private IEnumerator EndFase3()
+        {
+            if (_resp1 && _resp2)
+            {
+                SaveGame(true);
+                MainManager.indiceCanvainicial = 29;
+            }
+
+
+            else
+            {   
+                SaveGame(false);
+                MainManager.indiceCanvainicial = 12;
+            }
+           
+        
+            var op = SceneManager.LoadSceneAsync("main");
+        
+            yield return LoadingScreenController.Instance.ShowLoading(op);
+        }
+
+        private void SaveGame(bool b)
+        {
+            EmboscadaController.gameData ??= new EmboscadaController.GameData();
+            EmboscadaController.gameData.niveisganhos[2] = b;
+            int cls = PlayerPrefs.GetInt("classificacao", 0);
+            if (b) cls++;
+            EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao) cls;
+            EmboscadaController.gameData.currentLevel = 31;
+            PlayerPrefs.SetInt("nivel2", b ? 1 : 0);
+            PlayerPrefs.SetInt("classificacao", cls);
+            PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
+            PlayerPrefs.Save();
+        }
+
+
+        private IEnumerator PrepareAudio(AudioClip clip)
+        {
+            if (clip.loadState != AudioDataLoadState.Loaded)
+                clip.LoadAudioData();
+
+            while (clip.loadState == AudioDataLoadState.Loading)
+                yield return null;
+
+            if (clip.loadState == AudioDataLoadState.Failed)
+                Debug.LogError("Falha ao carregar áudio de instrução.");
+        }
+
+        private IEnumerator PlayVideo(VideoClip clip)
+        {
+            var vpGO = Instantiate(videoPrefab);
+            var canva = vpGO.GetComponentInChildren<Canvas>();
+            canva.renderMode   = RenderMode.ScreenSpaceCamera;
+            canva.worldCamera  = Camera.main;
+            var vp = vpGO.GetComponentInChildren<VideoPlayer>();
+            vp.clip            = clip;
+            vp.renderMode      = VideoRenderMode.CameraNearPlane;
+            vp.targetCamera    = Camera.main;
+        
+            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>> {
+                () => PrepareVideo(vp)
+            });
+
+            vpGO.SetActive(true);
+            vp.Play();
+            yield return new WaitUntil(() => !vp.isPlaying);
+
+            Destroy(vpGO);
+        }
+
+
+        private IEnumerator PrepareVideo(VideoPlayer vp)
+        {
+            bool pronto = false;
+            vp.prepareCompleted += _ => pronto = true;
+            vp.Prepare();
+            while (!pronto)
+                yield return null;
+        }
+
+        private IEnumerator AskQuestion(PerguntaRepescagemScript prefab, Action<bool> onAnswered)
+        {
+            var p = Instantiate(prefab);
+            var canva = p.GetComponent<Canvas>();
+            canva.renderMode = RenderMode.ScreenSpaceCamera;
+            canva.worldCamera = Camera.main;
+            bool acabou = false;
+            p.OnAnswered += correto => {
+                onAnswered(correto);
+                acabou = true;
+            };
+            yield return new WaitUntil(() => acabou);
+        }
+    
+
+        public void OnPressSkipAudio()
+        {
+            _skipInstrucao = true;
+            instrucaoAudioSource.Stop();
+            instrucaoGO.SetActive(false);
+            Destroy(instrucaoGO);
+        }
+    }
+}

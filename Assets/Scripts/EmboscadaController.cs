@@ -11,6 +11,7 @@ public class EmboscadaController : MonoBehaviour
         public string playerName = "";
         public bool[] niveisganhos = new bool[5];
         public Classificacao classificacao = Classificacao.Amador;
+        public bool[] niveisRepescagem = new bool[5];
     }
 
     public enum Classificacao
