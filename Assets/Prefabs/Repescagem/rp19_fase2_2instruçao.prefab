@@ -644,7 +644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4566526480762829812}
-  - component: {fileID: 6573656294428215781}
+  - component: {fileID: 8706019839955066049}
   m_Layer: 0
   m_Name: "configura\xE7oes"
   m_TagString: Untagged
@@ -667,7 +667,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7696604028400303624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6573656294428215781
+--- !u!114 &8706019839955066049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -676,12 +676,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2337945298952839125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3398cf2a7407833479cc04a3a7143189, type: 3}
+  m_Script: {fileID: 11500000, guid: 517af8494840b2c4b8f43a48ee11f9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvasInstructions: {fileID: 8248801725472367396}
   startButton: {fileID: 2272440867823740368}
-  chronoPrefab: {fileID: 2751723201617302465, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
+  chronoPrefab: {fileID: 2751723201617302465, guid: 296398c0c96ad8a4584b231b3e624ede, type: 3}
 --- !u!1 &2896297190038403412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1269,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8349777078477657411}
   - {fileID: 8680461221312056832}
   - {fileID: 4528503964402382411}
   - {fileID: 5829385241990255738}
@@ -1280,6 +1279,7 @@ RectTransform:
   - {fileID: 5956028899495920803}
   - {fileID: 3427113446639019352}
   - {fileID: 3086509117793574951}
+  - {fileID: 8349777078477657411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

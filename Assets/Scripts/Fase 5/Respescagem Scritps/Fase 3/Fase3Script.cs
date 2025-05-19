@@ -3,31 +3,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 namespace Fase_5.Respescagem_Scritps.Fase_3
 {
     public class Fase3RepescagemManager : MonoBehaviour
     {
-        [Header("objetos raiz")] [SerializeField]
-        private GameObject loadingScreen;
+        public static Fase3RepescagemManager instance;
+        public static float statusFase3 = 0f;
+
+        [Header("objetos raiz")] 
+        [SerializeField] private GameObject loadingScreen;
+        [SerializeField] private GameObject repescagem_aviso;
+        [SerializeField] private GameObject repescagem_aviso_vitoria;
     
-
-        [Header("Áudio de Instrução")] [SerializeField]
-        private AudioClip instrucoesClip;
-
+        [Header("Áudio de Instrução")] 
+        [SerializeField] private AudioClip instrucoesClip;
         [SerializeField] private AudioSource instrucaoAudioSource;
         [SerializeField] private GameObject instrucaoGO;
         private bool _skipInstrucao = false;
-        [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
+        
+        [Header("Vídeo")] 
+        [SerializeField] private GameObject videoPrefab;
         [SerializeField] private VideoClip[] secretariosClip;
 
-        [Header("Perguntas")] [SerializeField] private PerguntaRepescagemScript pergunta1Prefab;
-        [SerializeField] private PerguntaRepescagemScript pergunta2Prefab;
+        [Header("Perguntas")] 
+        [SerializeField] private PerguntaScript pergunta1Prefab;
+        [SerializeField] private PerguntaScript pergunta2Prefab;
 
-        [Header("Resultado")] [SerializeField] private GameObject vitoriaPrefab;
-        [SerializeField] private GameObject derrotaPrefab;
         private bool _resp1, _resp2;
+        private bool fase3Ok = false;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         void Start()
         {
@@ -59,45 +78,68 @@ namespace Fase_5.Respescagem_Scritps.Fase_3
 
             yield return AskQuestion(pergunta2Prefab, correto => _resp2 = correto);
 
-            yield return StartCoroutine(EndFase3());
+            yield return OnContinue();
         }
 
-
-        private IEnumerator EndFase3()
+        private IEnumerator OnContinue()
         {
-            if (_resp1 && _resp2)
+            statusFase3 = (_resp1 && _resp2) ? 100f : 0f;
+            fase3Ok = statusFase3 >= 50f;
+
+            if (!fase3Ok)
             {
-                SaveGame(true);
-                MainManager.indiceCanvainicial = 29;
+                var obj = Instantiate(repescagem_aviso, null);
+                obj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+                obj.GetComponent<Canvas>().worldCamera = Camera.main;
+                obj.GetComponent<Canvas>().sortingOrder = 3;
+                var btn = GameObject.FindWithTag("buttonFase3");
+                if (btn != null)
+                    btn.GetComponent<Button>().onClick.AddListener(OnRestart);
             }
-
-
             else
-            {   
-                SaveGame(false);
-                MainManager.indiceCanvainicial = 12;
+            {
+                var obj = Instantiate(repescagem_aviso_vitoria, null);
+                obj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+                obj.GetComponent<Canvas>().worldCamera = Camera.main;
+                obj.GetComponent<Canvas>().sortingOrder = 3;
+                SaveFase(true);
             }
-           
-        
-            var op = SceneManager.LoadSceneAsync("main");
-        
-            yield return LoadingScreenController.Instance.ShowLoading(op);
+
+            yield break;
         }
 
-        private void SaveGame(bool b)
+        public void OnRestart()
         {
-            EmboscadaController.gameData ??= new EmboscadaController.GameData();
-            EmboscadaController.gameData.niveisganhos[2] = b;
-            int cls = PlayerPrefs.GetInt("classificacao", 0);
-            if (b) cls++;
-            EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao) cls;
-            EmboscadaController.gameData.currentLevel = 31;
-            PlayerPrefs.SetInt("nivel2", b ? 1 : 0);
-            PlayerPrefs.SetInt("classificacao", cls);
-            PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
-            PlayerPrefs.Save();
+            StartCoroutine(RestartScene());
         }
 
+        private IEnumerator RestartScene()
+        {
+            // Destroi o singleton se existir
+            if (instance)
+                Destroy(instance.gameObject);
+
+            var loadingObj = Instantiate(loadingScreen);
+
+            var asyncOp = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    
+            yield return LoadingScreenController.Instance.ShowLoading(asyncOp);
+        }
+
+        private void SaveFase(bool sucesso)
+        {
+            if (sucesso)
+            {
+                // Atualizar dados para repescagem da Fase 3
+                Fase5Comeco.Repescagens[2] = true;
+                EmboscadaController.gameData ??= new EmboscadaController.GameData();
+                EmboscadaController.gameData.niveisRepescagem[2] = true;
+                PlayerPrefs.SetInt("repescagem2", 1);
+                PlayerPrefs.SetInt("currentLevel", 50);
+                
+;
+            }
+        }
 
         private IEnumerator PrepareAudio(AudioClip clip)
         {
@@ -133,7 +175,6 @@ namespace Fase_5.Respescagem_Scritps.Fase_3
             Destroy(vpGO);
         }
 
-
         private IEnumerator PrepareVideo(VideoPlayer vp)
         {
             bool pronto = false;
@@ -143,7 +184,7 @@ namespace Fase_5.Respescagem_Scritps.Fase_3
                 yield return null;
         }
 
-        private IEnumerator AskQuestion(PerguntaRepescagemScript prefab, Action<bool> onAnswered)
+        private IEnumerator AskQuestion(PerguntaScript prefab, Action<bool> onAnswered)
         {
             var p = Instantiate(prefab);
             var canva = p.GetComponent<Canvas>();
@@ -156,7 +197,6 @@ namespace Fase_5.Respescagem_Scritps.Fase_3
             };
             yield return new WaitUntil(() => acabou);
         }
-    
 
         public void OnPressSkipAudio()
         {

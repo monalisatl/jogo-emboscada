@@ -120,19 +120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3236430675945295664}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9190319414199625461}
-        m_TargetAssemblyTypeName: EnigmaScript, Assembly-CSharp
-        m_MethodName: SelecionarEnigma
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &75007736761742109
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +480,6 @@ GameObject:
   - component: {fileID: 1894840928786264736}
   - component: {fileID: 3454097353414120795}
   - component: {fileID: 3902233620634487540}
-  - component: {fileID: 4253697395621053478}
   m_Layer: 5
   m_Name: botao 6
   m_TagString: buttonFase1
@@ -601,33 +588,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3454097353414120795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4253697395621053478}
-        m_TargetAssemblyTypeName: botaofase1, Assembly-CSharp
-        m_MethodName: OnPres
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &4253697395621053478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541580467338713661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 541580467338713661}
+      m_Calls: []
 --- !u!1 &827935694457092395
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,19 +709,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6401665501757040144}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9190319414199625461}
-        m_TargetAssemblyTypeName: EnigmaScript, Assembly-CSharp
-        m_MethodName: SelecionarEnigma
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &994870017289243361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,19 +966,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 977696878710799784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9190319414199625461}
-        m_TargetAssemblyTypeName: EnigmaScript, Assembly-CSharp
-        m_MethodName: SelecionarEnigma
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1144799553555370211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3020,9 +2957,13 @@ MonoBehaviour:
   parentCanvas: {fileID: 592992595105329707}
   cenaVitoria: 0
   cenaDerrota: 0
-  Instruct: {fileID: 1275028523898129558}
+  instruct: {fileID: 0}
   prologoClip: {fileID: 8300000, guid: 37026dfa372c6774b82d115175321d05, type: 3}
   audioSource: {fileID: 7163304488569993440}
+  botoesEnigmas:
+  - {fileID: 1915859309730106038}
+  - {fileID: 864552384297298093}
+  - {fileID: 8251639867278539396}
 --- !u!1 &3768409531659176005
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,7 +2976,6 @@ GameObject:
   - component: {fileID: 1509810626343056279}
   - component: {fileID: 5722948954010548135}
   - component: {fileID: 9153805386511829650}
-  - component: {fileID: 7923659759200452136}
   m_Layer: 5
   m_Name: botao 3
   m_TagString: buttonFase1
@@ -3144,33 +3084,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5722948954010548135}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7923659759200452136}
-        m_TargetAssemblyTypeName: botaofase1, Assembly-CSharp
-        m_MethodName: OnPres
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7923659759200452136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3768409531659176005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 3768409531659176005}
+      m_Calls: []
 --- !u!1 &3871206906426550304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,7 +3405,6 @@ GameObject:
   - component: {fileID: 8090325370545546534}
   - component: {fileID: 8065167375289930475}
   - component: {fileID: 1526944267988080066}
-  - component: {fileID: 4640999719932746404}
   m_Layer: 5
   m_Name: botao 5
   m_TagString: buttonFase1
@@ -3600,33 +3513,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8065167375289930475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4640999719932746404}
-        m_TargetAssemblyTypeName: botaofase1, Assembly-CSharp
-        m_MethodName: OnPres
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &4640999719932746404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4294294523025228279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 4294294523025228279}
+      m_Calls: []
 --- !u!1 &4330859673533575698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4191,13 +4078,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3463824456380959745}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 9190319414199625461}
+        m_TargetAssemblyTypeName: EnigmaScript, Assembly-CSharp
+        m_MethodName: CloseInstruct
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4641,7 +4528,6 @@ GameObject:
   - component: {fileID: 2384019506549999591}
   - component: {fileID: 4718961125876165504}
   - component: {fileID: 2820132056138586810}
-  - component: {fileID: 260061323206107154}
   m_Layer: 5
   m_Name: botao 2
   m_TagString: buttonFase1
@@ -4750,33 +4636,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4718961125876165504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 260061323206107154}
-        m_TargetAssemblyTypeName: botaofase1, Assembly-CSharp
-        m_MethodName: OnPres
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &260061323206107154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5791649771354297888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 5791649771354297888}
+      m_Calls: []
 --- !u!1 &5860506316877607444
 GameObject:
   m_ObjectHideFlags: 0
@@ -5030,7 +4890,6 @@ GameObject:
   - component: {fileID: 1418613090492157666}
   - component: {fileID: 6448975764377548870}
   - component: {fileID: 4004677433956287625}
-  - component: {fileID: 5377597495468147355}
   m_Layer: 5
   m_Name: botao 1
   m_TagString: buttonFase1
@@ -5139,33 +4998,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6448975764377548870}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5377597495468147355}
-        m_TargetAssemblyTypeName: botaofase1, Assembly-CSharp
-        m_MethodName: OnPres
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5377597495468147355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5942176910363592360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 5942176910363592360}
+      m_Calls: []
 --- !u!1 &6059012442786554245
 GameObject:
   m_ObjectHideFlags: 0
@@ -7745,7 +7578,6 @@ GameObject:
   - component: {fileID: 7311351399675506754}
   - component: {fileID: 8096599536340038413}
   - component: {fileID: 6050882872523407643}
-  - component: {fileID: 1032171089966821648}
   m_Layer: 5
   m_Name: botao 4
   m_TagString: buttonFase1
@@ -7854,33 +7686,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8096599536340038413}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1032171089966821648}
-        m_TargetAssemblyTypeName: botaofase1, Assembly-CSharp
-        m_MethodName: OnPres
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1032171089966821648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9034474005868290119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 9034474005868290119}
+      m_Calls: []
 --- !u!1 &9166724382419058706
 GameObject:
   m_ObjectHideFlags: 0

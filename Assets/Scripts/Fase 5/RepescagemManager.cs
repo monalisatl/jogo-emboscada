@@ -1,58 +1,79 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class RepescagemManager : MonoBehaviour
+namespace Fase_5
 {
-    [Header("Arraste aqui os 4 Toggles (nível 1..4)")]
-    public List<Toggle> nivelToggles;
-
-    private Queue<int> filaDeNiveis = new Queue<int>();
-    [SerializeField] private List<Scene> scenasfase = new List<Scene>();
-    private void Start()
+    public class CoroutineRunner : MonoBehaviour
     {
-        for (int i = 0; i < nivelToggles.Count; i++)
-            nivelToggles[i].isOn = Fase5Comeco.Repescagens[i];
+        private static CoroutineRunner instance;
+        
+        public static CoroutineRunner Instance 
+        {
+            get 
+            {
+                if (instance) return instance;
+                var go = new GameObject("CoroutineRunner");
+                instance = go.AddComponent<CoroutineRunner>();
+                DontDestroyOnLoad(go);
+                return instance;
+            }
+        }
     }
+    
+    public static class RepescagemManager
+    {
+        public static GameObject LoadingPagePrefab;
+        
+        public static void CheckAllRepescagensComplete()
+        {
+            bool allComplete = true;
+        
+            for (int i = 1; i < 4; i++)
+            {
+                if (PlayerPrefs.GetInt($"repescagem{i}", 0) != 1)
+                {
+                    allComplete = false;
+                    break;
+                }
+            }
+            CoroutineRunner.Instance.StartCoroutine(LoadingScene(allComplete));
+        }
 
+        public static IEnumerator LoadingScene(bool allComplete)
+        {
+            GameObject loadingPage = null;
+            if (LoadingPagePrefab)
+            {
+                loadingPage = Object.Instantiate(LoadingPagePrefab);
+            }
+            
+            string sceneToLoad = allComplete ? "fase5" : "faserepescagem";
+            
+            AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneToLoad);
 
-    //
-    // private IEnumerator ProcessarRepescagem()
-    // {
-    //     while (filaDeNiveis.Count > 0)
-    //     {
-    //         var nivel = filaDeNiveis.Dequeue();
-    //         var terminou = false;
-    //         var venceu = false;
-    //         
-    //         void OnLevelEnd(bool win)
-    //         {
-    //             terminou = true;
-    //             venceu = win;
-    //         }
-    //         EmboscadaController.OnLevelEnd += OnLevelEnd;
-    //     
-    //         // Carrega a cena (por exemplo "Level1", "Level2", etc)
-    //         SceneManager.LoadScene($"Level{nivel}");
-    //     
-    //         // espera até o player terminar a fase
-    //         yield return new WaitUntil(() => terminou);
-    //     
-    //         EmboscadaController.OnLevelEnd -= OnLevelEnd;
-    //     
-    //         if (!venceu)
-    //         {
-    //             // reenfileira o mesmo nível pra jogar de novo
-    //             filaDeNiveis.Enqueue(nivel);
-    //         }
-    //         // se venceu, ele segue naturalmente para o próximo da fila
-    //     }
-    //     
-    //     // quando a fila zerar, acabou a repescagem
-    //     Debug.Log("Repescagem concluída!");
-    //     // aqui você pode, por exemplo, voltar ao menu ou avançar
-    //     SceneManager.LoadScene("MainMenu");
-    // }
+            Slider progressBar = loadingPage?.GetComponentInChildren<Slider>();
+            
+            while (!asyncOp.isDone)
+            {
+                if (progressBar != null)
+                {
+                    progressBar.value = asyncOp.progress;
+                }
+                yield return null;
+            }
+            
+            yield return new WaitForSecondsRealtime(1.0f);
+            
+            if (loadingPage is not null)
+            {
+                Object.Destroy(loadingPage);
+            }
+        }
+        public static void SetLoadingPagePrefab(GameObject prefab)
+        {
+            LoadingPagePrefab = prefab;
+        }
+    }
 }

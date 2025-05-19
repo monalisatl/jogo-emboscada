@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personagens:
-  - {fileID: 11400000, guid: afb3e503b3550704c94de4df614399d7, type: 2}
   - {fileID: 11400000, guid: aec3a471b758659458142569b6379224, type: 2}
+  - {fileID: 11400000, guid: afb3e503b3550704c94de4df614399d7, type: 2}
   - {fileID: 11400000, guid: 66ccf563efcccda469e3dcd59260f19b, type: 2}
   displayImage: {fileID: 7321765205377966470}
   buttonLeft: {fileID: 2274539076218769436}
@@ -1101,8 +1101,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.7683716, y: 71.599976}
-  m_SizeDelta: {x: -224.34, y: -1107.2}
+  m_AnchoredPosition: {x: -7.5368, y: 47}
+  m_SizeDelta: {x: -370.989, y: -1234.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9095935359933491339
 CanvasRenderer:

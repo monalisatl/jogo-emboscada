@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -9,50 +8,137 @@ public class PlantaoManager : MonoBehaviour
 {
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject videoDisplay;
+    [SerializeField] private GameObject loadingPrefab;
+    
     private bool _videoReady = false;
     private bool _videoStarted = false;
 
     void Start()
     {
+        // Inicia o processo de carregamento do vídeo
         StartCoroutine(LoadAll());
     }
 
     private IEnumerator LoadAll()
     {
+        // Mostra a tela de loading enquanto prepara o vídeo
+        GameObject loadingInstance = null;
+        if (loadingPrefab != null)
+        {
+            loadingInstance = Instantiate(loadingPrefab);
+            loadingInstance.SetActive(true);
+        }
+        
+        // Lista de passos para a inicialização
         var steps = new List<Func<IEnumerator>>()
         {
             () => PrepareVideo(),
         };
-        Debug.Log("Instance de LoadingScreenController: " + LoadingScreenController.Instance);
-        Debug.Log("videoPlayer: " + videoPlayer);
-        Debug.Log("videoDisplay: " + videoDisplay);
-
-        yield return LoadingScreenController.Instance.ShowLoading(steps);
-
-        videoDisplay.SetActive(true);
-        videoPlayer.Play();
-        StartCoroutine(CheckAndPlayAudio());
+        
+        // Executa cada passo de inicialização
+        foreach (var step in steps)
+        {
+            yield return StartCoroutine(step());
+        }
+        
+        // Remove a tela de loading se estiver presente
+        if (loadingInstance != null)
+        {
+            Destroy(loadingInstance);
+        }
+        
+        // Ativa o display do vídeo e começa a reprodução
+        if (videoDisplay != null)
+        {
+            videoDisplay.SetActive(true);
+        }
+        
+        if (videoPlayer != null)
+        {
+            videoPlayer.Play();
+            _videoStarted = true;
+            
+            // Inicia a verificação para detectar quando o vídeo terminar
+            StartCoroutine(CheckVideoEnd());
+        }
+        else
+        {
+            // Caso não haja vídeo configurado, avança direto
+            AvançarParaProximoCanvas();
+        }
     }
 
     private IEnumerator PrepareVideo()
     {
-        videoPlayer.prepareCompleted += vp => _videoReady = true;
-        videoPlayer.Prepare();
-        while (!_videoReady) yield return null;
-    }
-
-    private IEnumerator CheckAndPlayAudio()
-    {
-        while (true)
+        if (videoPlayer == null)
         {
-            yield return new WaitForSeconds(1);
-            if (!videoPlayer.isPlaying && videoPlayer != null && _videoStarted)
-            {
-                MainManager.main.ProximoCanvas();
-                yield break;
-            }
+            Debug.LogWarning("VideoPlayer não configurado!");
+            yield break;
+        }
+        
+        // Configura o callback para quando o vídeo estiver pronto
+        videoPlayer.prepareCompleted += vp => _videoReady = true;
+        
+        // Inicia a preparação do vídeo
+        videoPlayer.Prepare();
+        
+        // Aguarda até que o vídeo esteja pronto
+        float timeoutSeconds = 10f; // timeout de segurança
+        float elapsed = 0f;
+        
+        while (!_videoReady && elapsed < timeoutSeconds)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        
+        if (!_videoReady)
+        {
+            Debug.LogWarning("Timeout ao preparar o vídeo!");
         }
     }
 
+    private IEnumerator CheckVideoEnd()
+    {
+        if (videoPlayer == null) yield break;
+        
+        // Aguarda um pequeno intervalo inicial para garantir que o vídeo começou
+        yield return new WaitForSeconds(0.5f);
+        
+        while (true)
+        {
+            // Verifica se o vídeo está tocando
+            if (!videoPlayer.isPlaying && _videoStarted)
+            {
+                // O vídeo terminou, avança para o próximo canvas
+                AvançarParaProximoCanvas();
+                yield break;
+            }
+            
+            // Verifica a cada 0.5 segundos
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
 
+    private void AvançarParaProximoCanvas()
+    {
+        // Verifica se o MainManager existe
+        if (MainManager.main != null)
+        {
+            MainManager.main.ProximoCanvas();
+        }
+        else
+        {
+            Debug.LogError("MainManager não encontrado! Não foi possível avançar para o próximo canvas.");
+        }
+    }
+
+    public void PularVideo()
+    {
+        if (videoPlayer != null && _videoStarted)
+        {
+            videoPlayer.Stop();
+            AvançarParaProximoCanvas();
+        }
+    }
 }

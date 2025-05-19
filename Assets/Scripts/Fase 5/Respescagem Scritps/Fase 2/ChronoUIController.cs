@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -39,9 +40,9 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
         
         [Header("repescagem")]
         private bool fase2Ok = false;
-        public GameObject repescagem_aviso;
-        public GameObject repescagem_aviso_vitoria;
-        
+        [SerializeField] private GameObject repescagem_aviso;
+        [SerializeField] private GameObject repescagem_aviso_vitoria; 
+        [SerializeField] private GameObject loadScene;
     
         [SerializeField] private TextMeshProUGUI credencial;
 
@@ -58,7 +59,7 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
             // pega as 4 notícias da fase 1
             listaNoticias = Fase2ManagerRepescagem.perguntasSelecionadas;
 
-            // config painel completaão
+            // config painel completa
             completePanel.SetActive(false);
             continueButton.onClick.AddListener(OnContinue);
             resetButton.onClick.AddListener(OnReset);
@@ -129,28 +130,20 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
         }
         private float verificarResultado()
         {
-            // 1) Gera a lista “correta” ordenada por data
-            List<Noticia> correta = listaNoticias
+            var correta = listaNoticias
                 .OrderBy(n =>
                 {
-                    // tenta parsear "YYYY-MM-DD"
-                    DateTime dt;
-                    if (!DateTime.TryParseExact(n.data, "yyyy-MM-dd", 
-                            CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
-                    {
-                        Debug.LogWarning($"Formato de data inválido em {n.titulo}: '{n.data}'");
-                        dt = DateTime.MinValue;
-                    }
+                    if (DateTime.TryParseExact(n.FormaterData, "yyyy-MM-dd",
+                            CultureInfo.InvariantCulture, DateTimeStyles.None, out var dt)) return dt;
+                    Debug.LogWarning($"Formato de data inválido em {n.titulo}: '{n.data}'");
+                    dt = DateTime.MinValue;
                     return dt;
                 })
                 .ToList();
 
             // 2) Conta quantos índices batem
-            int acertos = 0;
-            for (int i = 0; i < ordemSelecionada.Count; i++)
-                if (ordemSelecionada[i] == correta[i])
-                    acertos++;
-            float percent = (float)acertos / listaNoticias.Count * 100f;
+            var acertos = ordemSelecionada.Where((t, i) => t == correta[i]).Count();
+            var percent = (float)acertos / listaNoticias.Count * 100f;
             Debug.Log($"Ordenação: {acertos}/{listaNoticias.Count} → {percent}%");
             return percent;
         }
@@ -167,7 +160,8 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
                 obj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
                 obj.GetComponent<Canvas>().worldCamera = Camera.main;
                 obj.GetComponent<Canvas>().sortingOrder = 3;
-
+                var btn = GameObject.FindWithTag("buttonFase1");
+                btn.GetComponent<Button>().onClick.AddListener(OnRestart);
             }
             else
             {
@@ -178,16 +172,55 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
                 
             }
             SaveFase(true);
-            MainManager.indiceCanvainicial = 50;
-            SceneManager.LoadSceneAsync("main");
         }
 
         public void OnRestart()
         {
+            StartCoroutine(RestartScene());
+        }
+
+        private IEnumerator RestartScene()
+        {
+            // Destroi o singleton se existir
             if (Fase2ManagerRepescagem.instance)
                 Destroy(Fase2ManagerRepescagem.instance.gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+            // Instancia o prefab de loading
+            var loadingObj = Instantiate(loadScene, repescagem_aviso.scene);
+
+            // Ajusta o Canvas, se presente
+            var canvas = loadingObj.GetComponent<Canvas>();
+            if (canvas != null)
+            {
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = Camera.main;
+            }
+
+            // Busca o Slider na hierarquia de loadingObj
+            var progress = loadingObj.GetComponentInChildren<Slider>();
+
+            if (progress == null)
+            {
+                Debug.LogWarning("Slider (barra de progresso) não encontrado no prefab de loading.");
+            }
+
+            // Inicia carregamento assíncrono da cena atual
+            var asyncOp = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    
+            while (asyncOp is { isDone: false })
+            {
+                if (progress != null)
+                    progress.value = Mathf.Clamp01(asyncOp.progress / 0.9f);
+
+                yield return null;
+            }
+            
+            yield return new WaitForSecondsRealtime(1f);
+            //Destroy(loadingObj);
         }
+
+
+        
         
         public void OnExit()
         {
@@ -217,7 +250,7 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
             EmboscadaController.gameData.niveisRepescagem[1] = status;
             var cls = (int)EmboscadaController.gameData.classificacao;
             Debug.Log("Salvando fase 2 da repescagem: " + status);
-            EmboscadaController.gameData.currentLevel = 51; //
+            EmboscadaController.gameData.currentLevel = 50; //
             PlayerPrefs.SetInt("repescagem" + 1, EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
             PlayerPrefs.SetInt("currentLevel", 50);
             PlayerPrefs.Save();

@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.65
+  m_fontSize: 72
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1624,8 +1624,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5270296337865682751}
         m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
-        m_MethodName: GoToPageButton
-        m_Mode: 3
+        m_MethodName: NextPageButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

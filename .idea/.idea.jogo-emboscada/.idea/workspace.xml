@@ -5,15 +5,127 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5616ee2-fc37-4e76-9166-9a5345da24a6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Android/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Plugins/Android/AndroidManifest.xml.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 4/Fase4endManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 4/Fase4endManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/10_fase1_instruçao.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/10_fase1_instruçao.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/11_fase1_minigame.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/11_fase1_minigame.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/2_veritas_news.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/2_veritas_news.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/5_personagem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/5_personagem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 6.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 7.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 7.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/8_aviso_fase_final.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/8_aviso_fase_final.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/rp18_fase2_minigame.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/rp18_fase2_minigame.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/rp19_fase2_2instruçao.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/rp19_fase2_2instruçao.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/rp20_fase2_2minigame.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/rp20_fase2_2minigame.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_1afirmaçao.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_1afirmaçao.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_1rodada.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_1rodada.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_minigame.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_minigame.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase4.1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase4.1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase4_enigmas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase4_enigmas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase4_minigame.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase4_minigame.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase4_parabens.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase4_parabens.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase4_pista.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase4_pista.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase5 nivel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase5 nivel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase5.1_culpado.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase5.1_culpado.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase5.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase5_parabens 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase5_parabens 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase5_sempistas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase5_sempistas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/10_fase1_instruçao.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/10_fase1_instruçao.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/13_fase1_2minigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/13_fase1_2minigame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/5_personagem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/5_personagem.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/2 repescagem fase 2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/2 repescagem fase 2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EmboscadaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EmboscadaController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/3 repescagem fase 3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/3 repescagem fase 3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/4 repescagem fase 4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/4 repescagem fase 4.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase4.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase4.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase4_parabens.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase4_parabens.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.1_culpado.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.1_culpado.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5_parabens.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5_parabens.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5_parabens.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5_parabens.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 2/Noticia.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 2/Noticia.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Fase5Começo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Fase5Começo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Fase5_plantao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Fase5_plantao.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/RepescagemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/RepescagemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/Arrastavel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/Arrastavel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/BotaoSelecionavel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/BotaoSelecionavel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/ItemZoneMatch.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/ItemZoneMatch.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/ZonaSoltar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/ZonaSoltar.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/entrar_fase1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/entrar_fase1.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/fase_1_minigame.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/fase_1_minigame.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/fase_1_onrganizacao.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/fase_1_onrganizacao.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/fase__1_parte_2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/fase__1_parte_2.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/passar instrucao.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/passar instrucao.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/savefase1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 1/savefase1.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 2/ChronoUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 2/ChronoUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 3/Fase3Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 3/Fase3Script.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 3/niveisFase3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 3/niveisFase3.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/Enigma.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/Enigma.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/EnigmaScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/EnigmaScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/fase4_in.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/fase4_in.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/plantaoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/plantaoManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Fonts/LiberationSans - OFL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Fonts/LiberationSans - OFL.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/SDFFunctions.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/SDFFunctions.hlsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Bitmap.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Bitmap.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-HDRP LIT.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-HDRP LIT.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-HDRP UNLIT.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-HDRP UNLIT.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile-2-Pass.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-URP Lit.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-URP Lit.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-URP Unlit.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF-URP Unlit.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_SDF.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Sprite.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMP_Sprite.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro_Mobile.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro_Mobile.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro_Properties.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro_Properties.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro_Surface.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Shaders/TMPro_Surface.cginc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Sprites/EmojiOne Attribution.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Sprites/EmojiOne Attribution.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Sprites/EmojiOne.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Sprites/EmojiOne.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/noticias/Noticia 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/noticias/Noticia 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/noticias/Noticia 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/noticias/Noticia 2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/noticias/Noticia 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/noticias/Noticia 3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/noticias/Noticia 4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/noticias/Noticia 4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/noticias/Noticia 5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/noticias/Noticia 5.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/noticias/Noticia 6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/noticias/Noticia 6.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/noticias/Noticia 7.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/noticias/Noticia 7.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +168,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 3/secretarioVideoConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 4/EnigmaScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 4/fase4_in.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 5/Fase5GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 2/Fase2Manager repescagem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 5/Video_5.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 5/niveisButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 5/toVideofinalScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@5ac417e07314/Samples~/12_BuildSetupCleanup_Solution/PlayModeTests_12s/SceneTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@03407c6d8751/Editor/UGUI/UI/GraphicEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@03407c6d8751/Runtime/TMP/TMP_SubMeshUI.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -93,7 +210,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSettingsPageId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -187,7 +304,10 @@
       <workItem from="1747260975146" duration="195000" />
       <workItem from="1747443642785" duration="1357000" />
       <workItem from="1747483370455" duration="14000" />
-      <workItem from="1747518121355" duration="9470000" />
+      <workItem from="1747518121355" duration="9531000" />
+      <workItem from="1747567556555" duration="213000" />
+      <workItem from="1747568088181" duration="7193000" />
+      <workItem from="1747582135420" duration="26789000" />
     </task>
     <task id="LOCAL-00001" summary="✨ feat: finaliza a base da fase quatro (❤️ ω ❤️)">
       <option name="closed" value="true" />
@@ -229,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747201784482</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: repescagem">
+      <option name="closed" value="true" />
+      <created>1747533362042</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747533362042</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +389,8 @@
     <MESSAGE value=":sparkles: fix: corrige save e melhora as marcas de fase" />
     <MESSAGE value=":bug: fix: correcoes de erros na fase 2 e fluxo de jogo semi-completo" />
     <MESSAGE value=":bug: fix: deixa o fluxo da abertura até fase 4 ok (❤️ ω ❤️)" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix: deixa o fluxo da abertura até fase 4 ok (❤️ ω ❤️)" />
+    <MESSAGE value="feat: repescagem" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: repescagem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

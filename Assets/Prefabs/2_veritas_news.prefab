@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 8687209396457751398}
   videoDisplay: {fileID: 8557069023456165401}
+  loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
 --- !u!114 &5127588634433355990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,9 +520,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5127588634433355990}
-        m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
-        m_MethodName: NextPageButton
+      - m_Target: {fileID: 3945968732185323007}
+        m_TargetAssemblyTypeName: PlantaoManager, Assembly-CSharp
+        m_MethodName: PularVideo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1006,7 +1007,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0

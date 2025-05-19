@@ -11,6 +11,32 @@ public class Noticia : ScriptableObject
     public string conteudo;
     public string linkFonte;
     public List<BotaoOpcao> opcoesResposta;
+
+    public string FormaterData
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(data) || data.Length < 10)
+            {
+                Debug.LogError("Data não possui o tamanho mínimo esperado: " + data);
+                return data;
+            }
+
+            var date = data[^10..];
+            if (DateTime.TryParseExact(date, "dd/MM/yyyy",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None, out var dt))
+            {
+                return dt.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                Debug.LogError("Data não está no formato esperado: " + date);
+                return date;
+            }
+        }
+
+    }
 }
 
 [Serializable]
