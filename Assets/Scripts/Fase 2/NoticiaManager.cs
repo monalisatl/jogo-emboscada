@@ -49,7 +49,7 @@ namespace Fase_2
         private Noticia currentNoticia;
         private int totalQuestions, totalAnswered, totalCorrect;
         [SerializeField] private TextMeshProUGUI credencial;
-    
+
         void Awake()
         {
             // Quebra qualquer ToggleGroup herdado

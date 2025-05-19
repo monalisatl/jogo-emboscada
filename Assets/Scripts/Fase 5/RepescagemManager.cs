@@ -8,7 +8,7 @@ namespace Fase_5
     public class CoroutineRunner : MonoBehaviour
     {
         private static CoroutineRunner instance;
-        
+    
         public static CoroutineRunner Instance 
         {
             get 
@@ -23,9 +23,9 @@ namespace Fase_5
     }
     
     public static class RepescagemManager
-    {
+    {  
         public static GameObject LoadingPagePrefab;
-        
+        public static int CurrentRepescagemLevel { get; private set; } = 0;
         public static void CheckAllRepescagensComplete()
         {
             bool allComplete = true;
@@ -40,7 +40,20 @@ namespace Fase_5
             }
             CoroutineRunner.Instance.StartCoroutine(LoadingScene(allComplete));
         }
+        public static void StartRepescagem(int nivel)
+        {
+            CurrentRepescagemLevel = nivel;
+        }
 
+        public static void Clear()
+        {
+            CurrentRepescagemLevel = 0;
+        }
+
+        public static bool IsRepescagemMode(int nivel)
+        {
+            return CurrentRepescagemLevel == nivel;
+        }
         public static IEnumerator LoadingScene(bool allComplete)
         {
             GameObject loadingPage = null;

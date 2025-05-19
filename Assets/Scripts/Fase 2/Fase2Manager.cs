@@ -20,6 +20,7 @@ namespace Fase_2
             {
                 instance = this;
                 DontDestroyOnLoad(gameObject);
+                ResetState();
                 SelecionarNoticias();
             }
             else
@@ -27,7 +28,12 @@ namespace Fase_2
                 Destroy(gameObject);
             }
         }
-
+        private void ResetState()
+        {
+            statusFase2 = 0f;
+            perguntasSelecionadas = null;
+            currentIndex = 0;
+        }
         // Sorteia sem repetição
         private void SelecionarNoticias()
         {

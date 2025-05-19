@@ -246,6 +246,8 @@ namespace Fase_5
             // Verifica se o botão clicado é válido
             if (nivelButton >= 1 && nivelButton <= 3)
             {
+                int nivel = nivelButton + 1;
+                RepescagemManager.StartRepescagem(nivel);
                 StartCoroutine(StartFaseRepescagem(nivelButton));
             }
             else

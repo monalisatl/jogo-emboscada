@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fase_5;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+// Se o RepescagemManager estiver num namespace, adicione o using correspondente.
+// using MeuNamespace.Repescagem;
 
 namespace Fase_4
 {
@@ -11,32 +14,56 @@ namespace Fase_4
     {
         [Header("Timer")]
         [Tooltip("Tempo total para resolver os enigmas (em segundos)")]
-        [SerializeField] private float tempoTotal = 300f; // 5 minutos para resolver os enigmas
-        [SerializeField] private Image timerImage; // Referência para a imagem do timer na UI
+        [SerializeField] private float tempoTotal = 30f;
+        [SerializeField] private Image timerImage;
+        [SerializeField] private GameObject timeOut;
+
         private float _tempoRestante;
         private bool _timerAtivo = false;
         private bool _tempoEsgotado = false;
-    
+
+        public static EnigmaScript instance;
         public List<Enigma> enigmas;
         public GameObject puzzleUIPrefab;
         public Transform parentCanvas;
         public int cenaVitoria;
-        public int cenaDerrota;    
+        public int cenaDerrota;
         [SerializeField] private GameObject instruct;
+
         private int respostasCorretas = 0;
         private int totalRespondidos = 0;
+
         public AudioClip prologoClip;
         public AudioSource audioSource;
         public Button[] botoesEnigmas;
+        private bool isRepescagemMode;
+        private const int thisLevel = 4;
 
-
-        void Start()
+        private void Awake()
         {
-            // Inicializa o tempo
+            // Singleton
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            // Detecta se estamos em repescagem deste nível
+            isRepescagemMode = RepescagemManager.IsRepescagemMode(thisLevel);
+        }
+
+        private void Start()
+        {
             _tempoRestante = tempoTotal;
-            _timerAtivo = true;
-        
+            PausarTimer();
+            timeOut.SetActive(false);
             StartCoroutine(RunAudio());
+
             // liga cada botão ao índice
             for (int i = 0; i < botoesEnigmas.Length; i++)
             {
@@ -47,22 +74,20 @@ namespace Fase_4
                 );
             }
         }
-    
-        void Update()
+
+        private void Update()
         {
             if (_timerAtivo && !_tempoEsgotado)
             {
                 _tempoRestante -= Time.deltaTime;
-                if (timerImage != null)
-                {
-                    timerImage.fillAmount = _tempoRestante / tempoTotal;
-                }
+                float fill = _tempoRestante / tempoTotal;
+                timerImage.fillAmount = fill;
+
                 if (_tempoRestante <= 0)
                 {
                     _tempoRestante = 0;
                     _timerAtivo = false;
                     _tempoEsgotado = true;
-                    Debug.Log("Tempo esgotado! O jogador perdeu.");
                     DesabilitarBotoesEnigma();
                     MostrarMensagemTempoEsgotado();
                     StartCoroutine(FinalizarComDerrota(1.5f));
@@ -72,16 +97,15 @@ namespace Fase_4
 
         public void SelecionarEnigma(int index, Button origemBtn)
         {
-            // Se o tempo acabou, não permite mais selecionar enigmas
-            if (_tempoEsgotado)
-                return;
-            
-            var go = Instantiate(puzzleUIPrefab, null, false);
-            Canvas cv = go.GetComponent<Canvas>();
-            cv.renderMode      = RenderMode.ScreenSpaceCamera;
-            cv.worldCamera     = Camera.main;
-            cv.sortingOrder    = 3;
+            if (_tempoEsgotado) return;
+
+            var go = Instantiate(puzzleUIPrefab, parentCanvas, false);
+            var cv = go.GetComponent<Canvas>();
+            cv.renderMode = RenderMode.ScreenSpaceCamera;
+            cv.worldCamera = Camera.main;
+            cv.sortingOrder = 3;
             go.transform.SetAsLastSibling();
+
             var ui = go.GetComponentInChildren<EnigmaUI>();
             ui.Inicializar(enigmas[index], OnEnigmaRespondido, origemBtn);
         }
@@ -93,60 +117,62 @@ namespace Fase_4
 
             if (totalRespondidos >= enigmas.Count)
             {
-                _timerAtivo = false; 
-            
+                _timerAtivo = false;
                 if (respostasCorretas >= 2)
-                {
-                    SaveGame(true);
-                    MainManager.indiceCanvainicial = cenaVitoria;
-                    SceneManager.LoadSceneAsync("main");
-                }
+                    HandleWin();
                 else
-                {
-                    SaveGame(false);
-                    MainManager.indiceCanvainicial = cenaDerrota;
-                    SceneManager.LoadSceneAsync("main");
-                }
+                    HandleLose();
             }
         }
-    
-        private void DesabilitarBotoesEnigma()
+
+        private void HandleWin()
         {
-            // Desabilita todos os botões de enigmas
-            foreach (var botao in botoesEnigmas)
+            
+            if (isRepescagemMode)
             {
-                botao.interactable = false;
+                PlayerPrefs.SetInt($"repescagem{thisLevel}", 0);
+                PlayerPrefs.SetInt("nivel3", 1);
+                PlayerPrefs.Save();
+                RepescagemManager.Clear();
+                SceneManager.LoadScene("faserepescagem");
+            }
+            else
+            { SaveGame(true);
+                MainManager.indiceCanvainicial = cenaVitoria;
+                SceneManager.LoadSceneAsync("main");
             }
         }
-    
-        private void MostrarMensagemTempoEsgotado()
+
+        private void HandleLose()
         {
-            GameObject mensagem = new GameObject("MensagemTempoEsgotado");
-            mensagem.transform.SetParent(parentCanvas, false);
-        
-            RectTransform rt = mensagem.AddComponent<RectTransform>();
-            rt.anchorMin = new Vector2(0.5f, 0.5f);
-            rt.anchorMax = new Vector2(0.5f, 0.5f);
-            rt.pivot = new Vector2(0.5f, 0.5f);
-            rt.anchoredPosition = Vector2.zero;
-            rt.sizeDelta = new Vector2(800, 200);
-        
-            Text texto = mensagem.AddComponent<Text>();
-            texto.text = "TEMPO ESGOTADO!";
-            texto.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-            texto.fontSize = 48;
-            texto.alignment = TextAnchor.MiddleCenter;
-            texto.color = Color.red;
+
+            if (isRepescagemMode)
+            {
+                // Reinicia a própria cena até passar
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else
+            { SaveGame(false);
+                MainManager.indiceCanvainicial = cenaDerrota;
+                SceneManager.LoadSceneAsync("main");
+            }
         }
-    
+
         private IEnumerator FinalizarComDerrota(float delay)
         {
-            // Aguarda um pequeno delay antes de finalizar o jogo
             yield return new WaitForSeconds(delay);
-        
-            SaveGame(false);
-            MainManager.indiceCanvainicial = cenaDerrota;
-            SceneManager.LoadSceneAsync("main");
+            HandleLose();
+        }
+
+        private void DesabilitarBotoesEnigma()
+        {
+            foreach (var botao in botoesEnigmas)
+                botao.interactable = false;
+        }
+
+        private void MostrarMensagemTempoEsgotado()
+        {
+            timeOut.SetActive(true);
         }
 
         private void SaveGame(bool acertou)
@@ -156,12 +182,9 @@ namespace Fase_4
             int cls = PlayerPrefs.GetInt("classificacao", 0);
             if (acertou) cls++;
             EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)cls;
-            
             EmboscadaController.gameData.currentLevel = 80;
 
-            // grava no PlayerPrefs
             PlayerPrefs.SetInt("nivel3", acertou ? 1 : 0);
-            Debug.Log($"salvo nivel3 com valor:{acertou}\nbuscando o valor{PlayerPrefs.GetInt("nivel3")}");
             PlayerPrefs.SetInt("classificacao", cls);
             PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
             PlayerPrefs.Save();
@@ -173,6 +196,7 @@ namespace Fase_4
             {
                 instruct.SetActive(false);
                 Destroy(instruct);
+                LigarTimer();
             }
         }
 
@@ -187,34 +211,16 @@ namespace Fase_4
             audioSource.Play();
         }
 
-        private IEnumerator PrepareAudio(AudioClip prologoClip)
+        private IEnumerator PrepareAudio(AudioClip clip)
         {
-            if (prologoClip == null)
-            {
-                Debug.LogWarning("LoadAudio: prologoClip não atribuído.");
-                yield break;
-            }
-
-            prologoClip.LoadAudioData();
-            while (prologoClip.loadState != AudioDataLoadState.Loaded)
-            {
-                if (prologoClip.loadState == AudioDataLoadState.Failed)
-                {
-                    Debug.LogError("LoadAudio: Falha ao carregar os dados de áudio.");
-                    yield break;
-                }
+            if (clip == null) yield break;
+            clip.LoadAudioData();
+            while (clip.loadState != AudioDataLoadState.Loaded)
                 yield return null;
-            }
         }
-        public void PausarTimer()
-        {
-            _timerAtivo = false;
-        }
-        
-        public void RetornarTimer()
-        {
-            if (!_tempoEsgotado)
-                _timerAtivo = true;
-        }
+
+        public void PausarTimer() => _timerAtivo = false;
+        public void RetornarTimer() { if (!_tempoEsgotado) _timerAtivo = true; }
+        public void LigarTimer()    => _timerAtivo = true;
     }
 }

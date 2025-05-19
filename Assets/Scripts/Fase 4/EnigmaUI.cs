@@ -69,13 +69,16 @@ namespace Fase_4
             if (UiGameObject == null)
             {
                 UiGameObject = GameObject.FindWithTag("EnigmaPainel");
+                
                 if (UiGameObject == null)
                 {
                     Debug.LogError("UiGameObject n�o encontrado!");
                     return;
                 }
+                
             }
             painelExplic.SetActive(true);
+            EnigmaScript.instance.PausarTimer();
             if (fecharButton == null)
             {
                 fecharButton = painelExplic.GetComponentInChildren<Button>();
@@ -87,6 +90,7 @@ namespace Fase_4
                 cols.color = acertou ? corCerta : corErrada;
                 origemButton.image = cols;
                 origemButton.interactable = false;
+                EnigmaScript.instance.LigarTimer();
                 callback(acertou);
                 Destroy(UiGameObject);
             }); 
