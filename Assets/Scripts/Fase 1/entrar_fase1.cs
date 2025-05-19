@@ -1,28 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class entrar_fase1 : MonoBehaviour
+namespace Fase_1
 {
-    public static entrar_fase1 instance;
-
-    void Start()
+    public class entrar_fase1 : MonoBehaviour
     {
-       if (instance == null)
+        public static entrar_fase1 instance;
+
+        void Start()
         {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(instance.gameObject);
-            instance = this;
-        }
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(instance.gameObject);
+                instance = this;
+            }
         
-    }
+        }
     
 
-    public void abrir_fase1()
-    {
-        SceneManager.LoadSceneAsync("11_fase1_minigame");
-    }
+        public void abrir_fase1()
+        {
+            SceneManager.LoadSceneAsync("11_fase1_minigame");
+        }
 
+    }
 }

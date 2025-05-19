@@ -283,15 +283,16 @@ RectTransform:
   m_GameObject: {fileID: 1769033563}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99982226, y: 0.99982226, z: 0.99982226}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2807019122900390646}
   - {fileID: 976133460688305802}
-  m_Father: {fileID: 2807019122900390646}
+  m_Father: {fileID: 592992596262053990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 0}
+  m_AnchoredPosition: {x: 11, y: 935.097}
   m_SizeDelta: {x: 288.8, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769033565
@@ -307,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.043137256, a: 1}
+  m_Color: {r: 0.05406728, g: 0.14150941, b: 0.057839297, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -315,10 +316,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3251669722322308248, guid: a8fcfef9d1b61954890289dd8b4c2ca4, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -864,7 +865,7 @@ RectTransform:
   - {fileID: 4229710145034635676}
   - {fileID: 5241576583036266550}
   - {fileID: 4198373036663260389}
-  - {fileID: 2807019122900390646}
+  - {fileID: 1769033564}
   - {fileID: 4796631026309660364}
   - {fileID: 5185046621002220414}
   - {fileID: 1762306342298822935}
@@ -2951,16 +2952,15 @@ RectTransform:
   m_GameObject: {fileID: 2275619202292955671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99982226, y: 0.99982226, z: 0.99982226}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1769033564}
-  m_Father: {fileID: 592992596262053990}
+  m_Children: []
+  m_Father: {fileID: 1769033564}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11, y: -203.19995}
-  m_SizeDelta: {x: -991.2, y: 100}
+  m_AnchoredPosition: {x: 0, y: -50.000015}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2820132055147823351
 MonoBehaviour:
@@ -5129,10 +5129,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3251669722322308248, guid: a8fcfef9d1b61954890289dd8b4c2ca4, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -8972,6 +8972,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9b258dedd6850458e5a0a902b73b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tempoTotal: 300
+  timerImage: {fileID: 5221148107015020066}
+  timerText: {fileID: 0}
   enigmas:
   - {fileID: 11400000, guid: 6afffce797587a44e8ac0b1067df45a7, type: 2}
   - {fileID: 11400000, guid: 98a0d6e11470c72448d09cb254d16427, type: 2}

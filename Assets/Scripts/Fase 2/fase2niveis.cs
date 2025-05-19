@@ -1,24 +1,25 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class fase2niveis : MonoBehaviour
+namespace Fase_2
 {
-    [SerializeField] private TextMeshProUGUI credencial;
-    [SerializeField] private TextMeshProUGUI playerName;
-    [SerializeField] private GameObject statusFase1;
-    [SerializeField] private Image[] status;
-
-    private void Start()
+    public class fase2niveis : MonoBehaviour
     {
-        StartCoroutine(SaveFase());
-        StartCoroutine(MarcarFase());
-    }
+        [SerializeField] private TextMeshProUGUI credencial;
+        [SerializeField] private TextMeshProUGUI playerName;
+        [SerializeField] private GameObject statusFase1;
+        [SerializeField] private Image[] status;
 
-    private IEnumerator SaveFase()
-    {
+        private void Start()
+        {
+            StartCoroutine(SaveFase());
+            StartCoroutine(MarcarFase());
+        }
+
+        private IEnumerator SaveFase()
+        {
 
             if (PlayerPrefs.HasKey("playerName"))
             {
@@ -48,25 +49,26 @@ public class fase2niveis : MonoBehaviour
             playerName.text = EmboscadaController.gameData.playerName;
             PlayerPrefs.SetInt("currentLevel", 16);
             PlayerPrefs.Save();
-    }
-
-    IEnumerator MarcarFase()
-    {   
-        if(status.Length < 2)
-        {
-            Debug.LogError("Status array não preenchido!");
-            yield break;
         }
-        if (EmboscadaController.gameData.niveisganhos[0])
-        {
-            statusFase1.GetComponent<Image>().sprite = status[0].sprite;
+
+        IEnumerator MarcarFase()
+        {   
+            if(status.Length < 2)
+            {
+                Debug.LogError("Status array não preenchido!");
+                yield break;
+            }
+            if (EmboscadaController.gameData.niveisganhos[0])
+            {
+                statusFase1.GetComponent<Image>().sprite = status[0].sprite;
             
-        }
-        else
-        {
-            statusFase1.GetComponent<Image>().sprite = status[1].sprite;
-        }
+            }
+            else
+            {
+                statusFase1.GetComponent<Image>().sprite = status[1].sprite;
+            }
 
-        yield return null;
+            yield return null;
+        }
     }
 }

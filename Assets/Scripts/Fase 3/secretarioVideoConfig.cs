@@ -3,23 +3,26 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class secretarioVideoConfig : MonoBehaviour
+namespace Fase_3
 {
-    public event Action OnVideoEnd;
-    [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private GameObject videoDisplay;
-
-    void Start() => StartCoroutine(LoadAndPlay());
-
-    private IEnumerator LoadAndPlay()
+    public class secretarioVideoConfig : MonoBehaviour
     {
-        videoPlayer.prepareCompleted += vp => {
-            videoDisplay.SetActive(true);
-            vp.Play();
-        };
-        videoPlayer.loopPointReached += vp => OnVideoEnd?.Invoke();
-        videoPlayer.Prepare();
-        while (!videoPlayer.isPrepared)
-            yield return null;
+        public event Action OnVideoEnd;
+        [SerializeField] private VideoPlayer videoPlayer;
+        [SerializeField] private GameObject videoDisplay;
+
+        void Start() => StartCoroutine(LoadAndPlay());
+
+        private IEnumerator LoadAndPlay()
+        {
+            videoPlayer.prepareCompleted += vp => {
+                videoDisplay.SetActive(true);
+                vp.Play();
+            };
+            videoPlayer.loopPointReached += vp => OnVideoEnd?.Invoke();
+            videoPlayer.Prepare();
+            while (!videoPlayer.isPrepared)
+                yield return null;
+        }
     }
 }

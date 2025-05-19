@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Fase2_in : MonoBehaviour
+namespace Fase_2
 {
-   public void onclickFase2In()
+    public class Fase2_in : MonoBehaviour
     {
-        SceneManager.LoadSceneAsync("18_fase2_minigame");
+        public void OnclickFase2In()
+        {
+            SceneManager.LoadSceneAsync("18_fase2_minigame");
+        }
     }
 }

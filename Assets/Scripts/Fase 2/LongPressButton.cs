@@ -1,38 +1,41 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class LongPressButton : MonoBehaviour,
-    IPointerDownHandler, IPointerUpHandler
+namespace Fase_2
 {
-    public float holdThreshold = 0.5f;
-    public UnityEvent onLongPress =  new UnityEvent();
-    private bool isPointerDown = false;
-    private float pointerDownTimer = 0f;
-
-    void Update()
+    public class LongPressButton : MonoBehaviour,
+        IPointerDownHandler, IPointerUpHandler
     {
-        if (isPointerDown)
+        public float holdThreshold = 0.5f;
+        public UnityEvent onLongPress =  new UnityEvent();
+        private bool isPointerDown = false;
+        private float pointerDownTimer = 0f;
+
+        void Update()
         {
-            pointerDownTimer += Time.deltaTime;
-            if (pointerDownTimer >= holdThreshold)
+            if (isPointerDown)
             {
-                isPointerDown = false;
-                pointerDownTimer = 0f;
-                onLongPress?.Invoke();
+                pointerDownTimer += Time.deltaTime;
+                if (pointerDownTimer >= holdThreshold)
+                {
+                    isPointerDown = false;
+                    pointerDownTimer = 0f;
+                    onLongPress?.Invoke();
+                }
             }
         }
-    }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        isPointerDown = true;
-        pointerDownTimer = 0f;
-    }
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            isPointerDown = true;
+            pointerDownTimer = 0f;
+        }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        isPointerDown = false;
-        pointerDownTimer = 0f;
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            isPointerDown = false;
+            pointerDownTimer = 0f;
+        }
     }
 }

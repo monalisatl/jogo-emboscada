@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class noticia_aberta : MonoBehaviour
+namespace Fase_2
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    void Start()
+    public class noticia_aberta : MonoBehaviour
     {
-        gameObject.SetActive(false);
-    }
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    // Update is called once per frame
-    void Update()
-    {
+        void Start()
+        {
+            gameObject.SetActive(false);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

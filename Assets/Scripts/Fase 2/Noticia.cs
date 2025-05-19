@@ -3,44 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Noticia", menuName = "Scriptable Objects/Noticia")]
-public class Noticia : ScriptableObject
-{
-    public string titulo;
-    public string data;
-    public string conteudo;
-    public string linkFonte;
-    public List<BotaoOpcao> opcoesResposta;
-
-    public string FormaterData
+    [CreateAssetMenu(fileName = "Noticia", menuName = "Scriptable Objects/Noticia")]
+    public class Noticia : ScriptableObject
     {
-        get
+        public string titulo;
+        public string data;
+        public string conteudo;
+        public string linkFonte;
+        public List<BotaoOpcao> opcoesResposta;
+
+        public string FormaterData
         {
-            if (string.IsNullOrEmpty(data) || data.Length < 10)
+            get
             {
-                Debug.LogError("Data não possui o tamanho mínimo esperado: " + data);
-                return data;
+                if (string.IsNullOrEmpty(data) || data.Length < 10)
+                {
+                    Debug.LogError("Data não possui o tamanho mínimo esperado: " + data);
+                    return data;
+                }
+
+                var date = data[^10..];
+                if (DateTime.TryParseExact(date, "dd/MM/yyyy",
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        System.Globalization.DateTimeStyles.None, out var dt))
+                {
+                    return dt.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    Debug.LogError("Data não está no formato esperado: " + date);
+                    return date;
+                }
             }
 
-            var date = data[^10..];
-            if (DateTime.TryParseExact(date, "dd/MM/yyyy",
-                    System.Globalization.CultureInfo.InvariantCulture,
-                    System.Globalization.DateTimeStyles.None, out var dt))
-            {
-                return dt.ToString("yyyy-MM-dd");
-            }
-            else
-            {
-                Debug.LogError("Data não está no formato esperado: " + date);
-                return date;
-            }
         }
-
     }
-}
 
-[Serializable]
-public class BotaoOpcao {
-    public string texto;
-    public bool isCorreto;
-}
+    [Serializable]
+    public class BotaoOpcao
+    {
+        public string texto;
+        public bool isCorreto;
+    }

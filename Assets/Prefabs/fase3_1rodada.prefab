@@ -979,6 +979,7 @@ MonoBehaviour:
   - {fileID: 4088992402892996031}
   - {fileID: 2993456499359411731}
   indiceCorreto: 1
+  textoCorreto: {fileID: 0}
 --- !u!1 &4390744355998306377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1675,7 @@ GameObject:
   - component: {fileID: 3313345612843407019}
   m_Layer: 5
   m_Name: tempo_ativo
-  m_TagString: Untagged
+  m_TagString: Timer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

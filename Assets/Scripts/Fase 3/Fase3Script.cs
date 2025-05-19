@@ -1,167 +1,258 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class Fase3Manager : MonoBehaviour
+namespace Fase_3
 {
-    [Header("objetos raiz")] [SerializeField]
-    private GameObject loadingScreen;
+    public class Fase3Manager : MonoBehaviour
+    {
+        [Header("Timer")]
+        [Tooltip("Tempo total compartilhado para responder as duas perguntas (em segundos)")]
+        [SerializeField] private float tempoTotal = 120f;
+        private float _tempoRestante;
+        private bool _timerAtivo = false;
+        private Image _timerImage; // Referência para a imagem do timer no prefab atual
     
+        [Header("objetos raiz")] [SerializeField]
+        private GameObject loadingScreen;
+    
+        [Header("Áudio de Instrução")] [SerializeField]
+        private AudioClip instrucoesClip;
 
-    [Header("Áudio de Instrução")] [SerializeField]
-    private AudioClip instrucoesClip;
+        [SerializeField] private AudioSource instrucaoAudioSource;
+        [SerializeField] private GameObject instrucaoGO;
+        private bool _skipInstrucao = false;
+        [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
+        [SerializeField] private VideoClip[] secretariosClip;
 
-    [SerializeField] private AudioSource instrucaoAudioSource;
-    [SerializeField] private GameObject instrucaoGO;
-    private bool _skipInstrucao = false;
-    [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
-    [SerializeField] private VideoClip[] secretariosClip;
+        [Header("Perguntas")] [SerializeField] private PerguntaScript pergunta1Prefab;
+        [SerializeField] private PerguntaScript pergunta2Prefab;
 
-    [Header("Perguntas")] [SerializeField] private PerguntaScript pergunta1Prefab;
-    [SerializeField] private PerguntaScript pergunta2Prefab;
+        [Header("Resultado")] [SerializeField] private GameObject vitoriaPrefab;
+        [SerializeField] private GameObject derrotaPrefab;
+        private bool _resp1, _resp2;
+    
+        private PerguntaScript _perguntaAtual;
+        private bool _tempoEsgotado = false;
 
-    [Header("Resultado")] [SerializeField] private GameObject vitoriaPrefab;
-    [SerializeField] private GameObject derrotaPrefab;
-    private bool _resp1, _resp2;
-
-    void Start()
-    {
-        if (LoadingScreenController.Instance == null)
+        void Start()
         {
-            DontDestroyOnLoad(loadingScreen);
+            if (LoadingScreenController.Instance == null)
+            {
+                DontDestroyOnLoad(loadingScreen);
+            }
+        
+            _tempoRestante = tempoTotal;
+        
+            StartCoroutine(RunFase());
+        }
+    
+        void Update()
+        {
+            if (_timerAtivo)
+            {
+                _tempoRestante -= Time.deltaTime;
+            
+                // Atualiza a UI do timer
+                if (_timerImage != null)
+                {
+                    _timerImage.fillAmount = _tempoRestante / tempoTotal;
+                }
+            
+                // Verifica se o tempo acabou
+                if (_tempoRestante <= 0)
+                {
+                    _tempoRestante = 0;
+                    _timerAtivo = false;
+                    _tempoEsgotado = true;
+                
+                    Debug.Log("Tempo esgotado! O jogador perdeu.");
+                    if (_perguntaAtual != null)
+                    {
+                        _perguntaAtual.ForceFinish(false);
+                    }
+                }
+            }
         }
 
-        StartCoroutine(RunFase());
-    }
-
-    private IEnumerator RunFase()
-    {
-        yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+        private IEnumerator RunFase()
         {
-            () => PrepareAudio(instrucoesClip)
-        });
-        instrucaoAudioSource.clip = instrucoesClip;
-        instrucaoAudioSource.Play();
-        yield return new WaitUntil(() =>
-            _skipInstrucao
-        );
+            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+            {
+                () => PrepareAudio(instrucoesClip)
+            });
+            instrucaoAudioSource.clip = instrucoesClip;
+            instrucaoAudioSource.Play();
+            yield return new WaitUntil(() =>
+                _skipInstrucao
+            );
 
-        yield return PlayVideo(secretariosClip[0]);
+            yield return PlayVideo(secretariosClip[0]);
 
-        yield return AskQuestion(pergunta1Prefab, correto => _resp1 = correto);
+            // Primeira pergunta
+            yield return AskQuestion(pergunta1Prefab, correto => 
+            {
+                _resp1 = correto;
+                _timerAtivo = false;
+            });
+            if (_tempoEsgotado)
+            {
+                yield return StartCoroutine(EndFase3());
+                yield break;
+            }
 
-        yield return PlayVideo(secretariosClip[1]);
+            yield return PlayVideo(secretariosClip[1]);
 
-        yield return AskQuestion(pergunta2Prefab, correto => _resp2 = correto);
+            // Segunda pergunta
+            yield return AskQuestion(pergunta2Prefab, correto => 
+            {
+                _resp2 = correto;
+                _timerAtivo = false;
+            });
 
-        yield return StartCoroutine(EndFase3());
-    }
-
-
-    private IEnumerator EndFase3()
-    {
-        if (_resp1 && _resp2)
-        {
-            SaveGame(true);
-            MainManager.indiceCanvainicial = 29;
+            yield return StartCoroutine(EndFase3());
         }
 
-
-        else
-        {   
-            SaveGame(false);
-            MainManager.indiceCanvainicial = 12;
-        }
+        private IEnumerator EndFase3()
+        {
+            bool ganhou = (_resp1 | _resp2) && !_tempoEsgotado;
+        
+            if (ganhou)
+            {
+                SaveGame(true);
+                MainManager.indiceCanvainicial = 29;
+            }
+            else
+            {   
+                SaveGame(false);
+                MainManager.indiceCanvainicial = 12;
+            }
            
+            var op = SceneManager.LoadSceneAsync("main");
         
-        var op = SceneManager.LoadSceneAsync("main");
+            yield return LoadingScreenController.Instance.ShowLoading(op);
+        }
+
+        private void SaveGame(bool b)
+        {
+            EmboscadaController.gameData ??= new EmboscadaController.GameData();
+            EmboscadaController.gameData.niveisganhos[2] = b;
+            int cls = PlayerPrefs.GetInt("classificacao", 0);
+            if (b) cls++;
+            EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao) cls;
+            EmboscadaController.gameData.currentLevel = 31;
+            PlayerPrefs.SetInt("nivel2", b ? 1 : 0);
+            PlayerPrefs.SetInt("classificacao", cls);
+            PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
+            PlayerPrefs.Save();
+        }
+
+        private IEnumerator PrepareAudio(AudioClip clip)
+        {
+            if (clip.loadState != AudioDataLoadState.Loaded)
+                clip.LoadAudioData();
+
+            while (clip.loadState == AudioDataLoadState.Loading)
+                yield return null;
+
+            if (clip.loadState == AudioDataLoadState.Failed)
+                Debug.LogError("Falha ao carregar áudio de instrução.");
+        }
+
+        private IEnumerator PlayVideo(VideoClip clip)
+        {
+            var vpGO = Instantiate(videoPrefab);
+            var canva = vpGO.GetComponentInChildren<Canvas>();
+            canva.renderMode   = RenderMode.ScreenSpaceCamera;
+            canva.worldCamera  = Camera.main;
+            var vp = vpGO.GetComponentInChildren<VideoPlayer>();
+            vp.clip            = clip;
+            vp.renderMode      = VideoRenderMode.CameraNearPlane;
+            vp.targetCamera    = Camera.main;
         
-        yield return LoadingScreenController.Instance.ShowLoading(op);
-    }
+            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>> {
+                () => PrepareVideo(vp)
+            });
 
-    private void SaveGame(bool b)
-    {
-        EmboscadaController.gameData ??= new EmboscadaController.GameData();
-        EmboscadaController.gameData.niveisganhos[2] = b;
-        int cls = PlayerPrefs.GetInt("classificacao", 0);
-        if (b) cls++;
-        EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao) cls;
-        EmboscadaController.gameData.currentLevel = 31;
-        PlayerPrefs.SetInt("nivel2", b ? 1 : 0);
-        PlayerPrefs.SetInt("classificacao", cls);
-        PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
-        PlayerPrefs.Save();
-    }
+            vpGO.SetActive(true);
+            vp.Play();
+            yield return new WaitUntil(() => !vp.isPlaying);
 
+            Destroy(vpGO);
+        }
 
-    private IEnumerator PrepareAudio(AudioClip clip)
-    {
-        if (clip.loadState != AudioDataLoadState.Loaded)
-            clip.LoadAudioData();
+        private IEnumerator PrepareVideo(VideoPlayer vp)
+        {
+            bool pronto = false;
+            vp.prepareCompleted += _ => pronto = true;
+            vp.Prepare();
+            while (!pronto)
+                yield return null;
+        }
 
-        while (clip.loadState == AudioDataLoadState.Loading)
-            yield return null;
-
-        if (clip.loadState == AudioDataLoadState.Failed)
-            Debug.LogError("Falha ao carregar áudio de instrução.");
-    }
-
-    private IEnumerator PlayVideo(VideoClip clip)
-    {
-        var vpGO = Instantiate(videoPrefab);
-        var canva = vpGO.GetComponentInChildren<Canvas>();
-        canva.renderMode   = RenderMode.ScreenSpaceCamera;
-        canva.worldCamera  = Camera.main;
-        var vp = vpGO.GetComponentInChildren<VideoPlayer>();
-        vp.clip            = clip;
-        vp.renderMode      = VideoRenderMode.CameraNearPlane;
-        vp.targetCamera    = Camera.main;
+        private IEnumerator AskQuestion(PerguntaScript prefab, Action<bool> onAnswered)
+        {
+            var p = Instantiate(prefab);
+            _perguntaAtual = p;
+            var canva = p.GetComponent<Canvas>();
+            canva.renderMode = RenderMode.ScreenSpaceCamera;
+            canva.worldCamera = Camera.main;
+            _timerImage = p.GetComponentInChildren<Image>(true);
+            if (_timerImage == null || !_timerImage.CompareTag("Timer"))
+            {
+                Image[] images = p.GetComponentsInChildren<Image>(true);
+                foreach (var img in images)
+                {
+                    if (img.name.Contains("Timer") || img.name.Contains("Cronometro"))
+                    {
+                        _timerImage = img;
+                        break;
+                    }
+                }
+            }
+            if (_timerImage != null)
+            {
+                _timerImage.type = Image.Type.Filled;
+                _timerImage.fillMethod = Image.FillMethod.Radial360;
+                _timerImage.fillAmount = _tempoRestante / tempoTotal;
+            }
+            else
+            {
+                Debug.LogWarning("Imagem do timer não encontrada no prefab da pergunta!");
+            }
         
-        yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>> {
-            () => PrepareVideo(vp)
-        });
+            _timerAtivo = true;
+        
+            bool acabou = false;
+            p.OnAnswered += correto => {
+                onAnswered(correto);
+                acabou = true;
+                _perguntaAtual = null;
+            };
+        
+            yield return new WaitUntil(() => acabou || _tempoEsgotado);
+        
+            if (_tempoEsgotado && !acabou)
+            {
+                onAnswered(false);
+            }
 
-        vpGO.SetActive(true);
-        vp.Play();
-        yield return new WaitUntil(() => !vp.isPlaying);
+            if (p != null)
+            {
+                Destroy(p.gameObject);
+            }
+        }
 
-        Destroy(vpGO);
-    }
-
-
-    private IEnumerator PrepareVideo(VideoPlayer vp)
-    {
-        bool pronto = false;
-        vp.prepareCompleted += _ => pronto = true;
-        vp.Prepare();
-        while (!pronto)
-            yield return null;
-    }
-
-    private IEnumerator AskQuestion(PerguntaScript prefab, Action<bool> onAnswered)
-    {
-        var p = Instantiate(prefab);
-        var canva = p.GetComponent<Canvas>();
-        canva.renderMode = RenderMode.ScreenSpaceCamera;
-        canva.worldCamera = Camera.main;
-        bool acabou = false;
-        p.OnAnswered += correto => {
-            onAnswered(correto);
-            acabou = true;
-        };
-        yield return new WaitUntil(() => acabou);
-    }
-    
-
-    public void OnPressSkipAudio()
-    {
-        _skipInstrucao = true;
-        instrucaoAudioSource.Stop();
-        instrucaoGO.SetActive(false);
-        Destroy(instrucaoGO);
+        public void OnPressSkipAudio()
+        {
+            _skipInstrucao = true;
+            instrucaoAudioSource.Stop();
+            instrucaoGO.SetActive(false);
+            Destroy(instrucaoGO);
+        }
     }
 }
