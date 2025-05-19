@@ -198,7 +198,7 @@ namespace Fase_2
             var canvas = inst.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = Camera.main;
-            canvas.sortingOrder = 10;
+            canvas.sortingOrder = 5;
             Destroy(me);
         }
 
@@ -306,7 +306,7 @@ namespace Fase_2
             var canvas = inst.GetComponent<Canvas>();
             canvas.renderMode    = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera   = Camera.main;
-            canvas.sortingOrder  = 10;
+            canvas.sortingOrder  = 5;
             Destroy(me);
         }
     }

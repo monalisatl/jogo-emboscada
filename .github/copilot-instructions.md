@@ -2,13 +2,13 @@
 - Project name: jogo-emboscada
 - Unity version: Unity 6000.0.40f1
 - Active scene:
-  - Name: abertura
+  - Name: 2 repescagem fase 2
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, GameControl, noticia, tempo, buttonFase1, totorial_panel, enigma, EnigmaPainel, Timer
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: Configuracoes
+  - Name: configs
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

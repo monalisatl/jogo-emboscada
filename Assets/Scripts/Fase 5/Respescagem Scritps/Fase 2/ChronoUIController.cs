@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Fase_2;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,7 +13,16 @@ using UnityEngine.UI;
 namespace Fase_5.Respescagem_Scritps.Fase_2
 {
     public class ChronoUIControllerRepescagem : MonoBehaviour
-    {
+ {
+        [Header("Timer")]
+        [Tooltip("Tempo máximo para completar a ordenação (em segundos)")]
+        public float tempoLimite = 120f;
+        [Tooltip("Referência ao objeto de imagem do cronômetro")]
+        public Image cronometro;
+        
+        private float _tempoRestante;
+        private bool _cronometroAtivo = true;
+
         [Header("Detalhe de Notícia (reaproveita OpenView)")]
         public GameObject openPanel;
         public TextMeshProUGUI openTitulo, openData, openConteudo, openLink;
@@ -20,15 +30,19 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
 
         [Header("Botões de notícia")]
         public Button[] newsButtons;          
-        public TextMeshProUGUI[] buttonTexts; 
+        public TextMeshProUGUI[] buttonTexts;
 
         [Header("Feedback de ordem")]
-        public TextMeshProUGUI feedbackText;  
+        public TextMeshProUGUI feedbackText;
 
         [Header("Painel de conclusão")]
         public GameObject completePanel;      
         public Button continueButton;
         public Button resetButton;
+        
+        [Header("Painel de tempo esgotado")]
+        public GameObject timeoutPanel;
+        public Button timeoutButton;
 
         [Header("Cores")]
         public Color selectedColor = Color.green;
@@ -37,12 +51,6 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
         private List<Noticia> ordemSelecionada = new List<Noticia>();
         private int nextChronoIndex = 1;
         private Color defaultButtonColor;
-        
-        [Header("repescagem")]
-        private bool fase2Ok = false;
-        [SerializeField] private GameObject repescagem_aviso;
-        [SerializeField] private GameObject repescagem_aviso_vitoria; 
-        [SerializeField] private GameObject loadScene;
     
         [SerializeField] private TextMeshProUGUI credencial;
 
@@ -57,12 +65,20 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
             }
             credencial.text = EmboscadaController.gameData.classificacao.ToString();
             // pega as 4 notícias da fase 1
-            listaNoticias = Fase2ManagerRepescagem.perguntasSelecionadas;
+            listaNoticias = Fase2Manager.perguntasSelecionadas;
 
-            // config painel completa
+            // config painel completação
             completePanel.SetActive(false);
             continueButton.onClick.AddListener(OnContinue);
             resetButton.onClick.AddListener(OnReset);
+            
+            // config painel de tempo esgotado (se existir)
+            if (timeoutPanel != null)
+            {
+                timeoutPanel.SetActive(false);
+                if (timeoutButton != null)
+                    timeoutButton.onClick.AddListener(OnTimeoutContinue);
+            }
 
             // salva cor preta padrão do botão (assume todos iguais)
             if (newsButtons.Length > 0)
@@ -70,7 +86,11 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
 
             // fecha detalhe
             openPanel.SetActive(false);
-            closeButton.onClick.AddListener(() => openPanel.SetActive(false));
+            closeButton.onClick.AddListener(() => {
+                openPanel.SetActive(false);
+                // Retoma o cronômetro quando fecha os detalhes
+                _cronometroAtivo = true;
+            });
 
             feedbackText.text = $"Selecione a notícia #{nextChronoIndex}";
 
@@ -85,10 +105,87 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
                 newsButtons[i].onClick.AddListener(() => OpenDetail(idx));
 
                 // longo = selecionar ordem
-                var lp = newsButtons[i].gameObject.GetComponent<LongPressButtonRepescagem>();
+                var lp = newsButtons[i].gameObject.GetComponent<LongPressButton>();
                 lp.holdThreshold = 0.5f;
                 lp.onLongPress.AddListener(() => OnSelectChrono(idx));
             }
+            
+            // Inicializa o cronômetro
+            InicializarCronometro();
+        }
+        
+        void Update()
+        {
+            // Atualiza o cronômetro a cada frame
+            AtualizarCronometro();
+        }
+        
+        private void InicializarCronometro()
+        {
+            if (cronometro == null)
+            {
+                Debug.LogError("Componente de imagem do cronômetro não atribuído!");
+                return;
+            }
+            _tempoRestante = tempoLimite;
+            _cronometroAtivo = true;
+            UpdateCronometro();
+        }
+        
+        private void UpdateCronometro()
+        {
+            if (cronometro != null)
+            {
+                cronometro.fillAmount = _tempoRestante/tempoLimite;
+            }
+        }
+        
+        private void AtualizarCronometro()
+        {
+            if (!_cronometroAtivo)
+            {
+                return;
+            }
+            
+            _tempoRestante -= Time.deltaTime;
+            _tempoRestante = Mathf.Max(_tempoRestante, 0f);
+            UpdateCronometro();
+            
+            if (_tempoRestante <= 0f)
+            {
+                Debug.Log("Tempo esgotado!");
+                _cronometroAtivo = false;
+                OnTempoEsgotado();
+            }
+        }
+        
+        private void OnTempoEsgotado()
+        {
+            // Se o tempo acabou, o jogador perde a fase automaticamente
+            Debug.Log("Tempo esgotado! Jogador perdeu a fase.");
+            
+            // Desativa interação com os botões
+            foreach (var button in newsButtons)
+            {
+                button.interactable = false;
+            }
+            openPanel.SetActive(false);
+            completePanel.SetActive(false);
+            if (timeoutPanel != null)
+            {
+                timeoutPanel.SetActive(true);
+            }
+            else
+            {
+                OnTimeoutContinue();
+            }
+        }
+        
+        private void OnTimeoutContinue()
+        {
+            SaveFase(false);
+            MainManager.indiceCanvainicial = 11;
+            SceneManager.LoadSceneAsync("main");
         }
 
         void OpenDetail(int i)
@@ -99,6 +196,9 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
             openData.text     = n.data;
             openConteudo.text = n.conteudo;
             openLink.text     = n.linkFonte;
+            
+            // Pausa o cronômetro enquanto visualiza os detalhes
+            _cronometroAtivo = false;
         }
 
         void OnSelectChrono(int i)
@@ -125,128 +225,80 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
 
         void OnChronoComplete()
         {
+            // Pausa o cronômetro quando completa a ordenação
+            _cronometroAtivo = false;
+            
             feedbackText.text = "Ordenação completa!";
             completePanel.SetActive(true);
         }
-        private float verificarResultado()
+        
+        private float VerificarResultado()
         {
-            var correta = listaNoticias
+            List<Noticia> correta = listaNoticias
                 .OrderBy(n => n.FormaterData)
                 .ToList();
-
-            // 2) Conta quantos índices batem
-            var acertos = ordemSelecionada.Where((t, i) => t == correta[i]).Count();
-            var percent = (float)acertos / listaNoticias.Count * 100f;
+            int acertos = 0;
+            for (int i = 0; i < ordemSelecionada.Count; i++)
+                if (ordemSelecionada[i] == correta[i])
+                    acertos++;
+            float percent = (float)acertos / listaNoticias.Count * 100f;
             Debug.Log($"Ordenação: {acertos}/{listaNoticias.Count} → {percent}%");
             return percent;
         }
 
         void OnContinue()
         {
-            float faseQuizOk    = Fase2ManagerRepescagem.statusFase2;
-            float ordenacaoPct  = verificarResultado();
-            fase2Ok  = ((faseQuizOk + ordenacaoPct) / 2f >= 50f);
+            float faseQuizOk = Fase2ManagerRepescagem.statusFase2;
+            float ordenacaoPct = VerificarResultado();
+        
+            bool fase2Ok = ((faseQuizOk+ordenacaoPct)/2 >= 50f);
+        
+            SaveFase(fase2Ok);
 
-            if (!fase2Ok)
+            if (fase2Ok)
             {
-                var obj = Instantiate(repescagem_aviso, null);
-                obj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
-                obj.GetComponent<Canvas>().worldCamera = Camera.main;
-                obj.GetComponent<Canvas>().sortingOrder = 3;
-                var btn = GameObject.FindWithTag("buttonFase1");
-                btn.GetComponent<Button>().onClick.AddListener(OnRestart);
+                MainManager.indiceCanvainicial = 21;
             }
             else
             {
-                var obj = Instantiate(repescagem_aviso_vitoria, null);
-                obj.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
-                obj.GetComponent<Canvas>().worldCamera = Camera.main;
-                obj.GetComponent<Canvas>().sortingOrder = 3;
-                
+                MainManager.indiceCanvainicial = 11;
             }
-            SaveFase(true);
-        }
-
-        public void OnRestart()
-        {
-            StartCoroutine(RestartScene());
-        }
-
-        private IEnumerator RestartScene()
-        {
-            // Destroi o singleton se existir
-            if (Fase2ManagerRepescagem.instance)
-                Destroy(Fase2ManagerRepescagem.instance.gameObject);
-
-            // Instancia o prefab de loading
-            var loadingObj = Instantiate(loadScene, repescagem_aviso.scene);
-
-            // Ajusta o Canvas, se presente
-            var canvas = loadingObj.GetComponent<Canvas>();
-            if (canvas != null)
-            {
-                canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                canvas.worldCamera = Camera.main;
-            }
-
-            // Busca o Slider na hierarquia de loadingObj
-            var progress = loadingObj.GetComponentInChildren<Slider>();
-
-            if (progress == null)
-            {
-                Debug.LogWarning("Slider (barra de progresso) não encontrado no prefab de loading.");
-            }
-
-            // Inicia carregamento assíncrono da cena atual
-            var asyncOp = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-    
-            while (asyncOp is { isDone: false })
-            {
-                if (progress != null)
-                    progress.value = Mathf.Clamp01(asyncOp.progress / 0.9f);
-
-                yield return null;
-            }
-            
-            yield return new WaitForSecondsRealtime(1f);
-            //Destroy(loadingObj);
-        }
-
-
-        
-        
-        public void OnExit()
-        {
-            if (Fase2ManagerRepescagem.instance)
-                Destroy(Fase2ManagerRepescagem.instance.gameObject);
-            SceneManager.LoadScene("");
+            SceneManager.LoadSceneAsync("main");
         }
 
         void OnReset()
         {
+            // Reinicia a ordenação e o cronômetro
             ordemSelecionada.Clear();
             nextChronoIndex = 1;
             feedbackText.text = $"Selecione a notícia #{nextChronoIndex}";
             completePanel.SetActive(false);
             openPanel.SetActive(false);
+            
             for (int i = 0; i < newsButtons.Length; i++)
             {
                 newsButtons[i].interactable = true;
                 buttonTexts[i].text = listaNoticias[i].titulo;
                 newsButtons[i].GetComponent<Image>().color = defaultButtonColor;
             }
+            
+            // Reinicia o cronômetro
+            _tempoRestante = tempoLimite;
+            _cronometroAtivo = true;
         }
 
         private void SaveFase(bool status)
         {
             EmboscadaController.gameData ??= new EmboscadaController.GameData();
             EmboscadaController.gameData.niveisRepescagem[0] = status;
-            var cls = (int)EmboscadaController.gameData.classificacao;
-            Debug.Log("Salvando fase 2 da repescagem: " + status);
-            EmboscadaController.gameData.currentLevel = 82; //
-            PlayerPrefs.SetInt("repescagem" + 0, EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
-            PlayerPrefs.SetInt("currentLevel", 82);
+            Debug.Log("Salvando Repescagem 0: " + status + " Terminou com classificacao"+ EmboscadaController.gameData.classificacao);
+            EmboscadaController.gameData.currentLevel = 23;
+            PlayerPrefs.SetInt("repescagem0", EmboscadaController.gameData.niveisRepescagem[0] ? 1 : 0);
+            Debug.Log($"salvo repescagem1 com valor:{EmboscadaController.gameData.niveisRepescagem[0]}\nbuscando o valor{PlayerPrefs.GetInt("repescagem0")}");
+            PlayerPrefs.SetInt("currentLevel", 23);
             PlayerPrefs.Save();
+            
         }
     }
 }
+
