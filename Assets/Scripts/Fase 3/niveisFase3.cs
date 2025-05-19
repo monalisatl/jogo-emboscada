@@ -13,15 +13,20 @@ namespace Fase_3
         [SerializeField] private GameObject statusFase1;
         [SerializeField] private GameObject statusFase2;
         [SerializeField] private Image[] status;  // 0 = sprite de sucesso, 1 = sprite de falha
-
+        [SerializeField] private GameObject dicas;
+        [SerializeField] private GameObject marcadovilao;
         private void Start()
-        {
+        {   
+            dicas.SetActive(false);
             StartCoroutine(SaveFase());
             StartCoroutine(MarcarFases());
         }
 
+   
+
         private IEnumerator SaveFase()
         {
+            EmboscadaController.gameData ??= new EmboscadaController.GameData();
             // Carrega nome do jogador
             if (PlayerPrefs.HasKey("playerName"))
                 EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "Jogador");
@@ -40,7 +45,8 @@ namespace Fase_3
                 Debug.LogError("Nenhuma classificação encontrada. Usando 'Amador' como padrão.");
                 EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
             }
-
+             var tmp = EmboscadaController.gameData.niveisganhos[1] = PlayerPrefs.GetInt("nivel1", 0) == 1;
+            VerificarDica(tmp);
             // Verifica referências de UI
             if (!credencial || !playerName)
             {
@@ -55,10 +61,16 @@ namespace Fase_3
             // Atualiza level atual
             PlayerPrefs.SetInt("currentLevel", 23);
             PlayerPrefs.Save();
-
+            
             yield return null;
         }
-
+        private void VerificarDica(bool tmp)
+        {
+            if (tmp)
+            {
+                marcadovilao.SetActive(false);
+            }
+        }
         private IEnumerator MarcarFases()
         {
             // Precisa de ao menos 2 sprites (sucesso/falha)
@@ -96,6 +108,17 @@ namespace Fase_3
         {
             SceneManager.LoadSceneAsync("fase3");
         }
+        public void OnDicasOpen()
+        {
+            dicas.SetActive(true);
+        }
+
+        public void OnDicasClose()
+        {
+            dicas.SetActive(false);
+        }
     }
+    
+
 }
 

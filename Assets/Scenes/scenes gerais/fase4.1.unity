@@ -290,10 +290,10 @@ RectTransform:
   - {fileID: 976133460688305802}
   m_Father: {fileID: 592992596262053990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: 935.097}
-  m_SizeDelta: {x: 288.8, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 11, y: -202.90302}
+  m_SizeDelta: {x: -991.2, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769033565
 MonoBehaviour:
@@ -547,8 +547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 5791649772378639469}
 --- !u!224 &286237141088979095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1306,8 +1304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 9034474004778711562}
 --- !u!114 &1119137280585170782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4129,8 +4125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 541580466215567472}
 --- !u!222 &4268167757071469736
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4468,8 +4462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 4294294521899998138}
 --- !u!224 &4693661384895022488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5217,8 +5209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 5942176911354649829}
 --- !u!222 &5378043023129654434
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7683,8 +7673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5849cb6e1bbd674b913161cd1925926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  corNormal: {r: 0, g: 0, b: 0, a: 0}
-  button: {fileID: 3768409530500616712}
 --- !u!222 &7998604232969665679
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8974,7 +8962,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempoTotal: 300
   timerImage: {fileID: 5221148107015020066}
-  timerText: {fileID: 0}
   enigmas:
   - {fileID: 11400000, guid: 6afffce797587a44e8ac0b1067df45a7, type: 2}
   - {fileID: 11400000, guid: 98a0d6e11470c72448d09cb254d16427, type: 2}

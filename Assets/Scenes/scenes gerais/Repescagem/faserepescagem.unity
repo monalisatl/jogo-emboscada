@@ -5743,12 +5743,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30b71697147dc94fa1c0a7a686007c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nivelButtons:
+  - {fileID: 2927279831551526575}
+  - {fileID: 3169164349739858124}
+  - {fileID: 8966043910766504780}
   imagensbutton:
-  - {fileID: 927137433}
   - {fileID: 447351122259253297}
   - {fileID: 779646598869871566}
   - {fileID: 927137433}
-  Loadpage: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
+  loadpage: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
   credencial: {fileID: 5334659901581171023}
   nome: {fileID: 2076856950721022233}
 --- !u!114 &7735986909634051630

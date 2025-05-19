@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1013928752583091423, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
+      propertyPath: load
+      value: 
+      objectReference: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
     - target: {fileID: 1428523016822115482, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
       propertyPath: m_Camera
       value: 
@@ -134,6 +138,10 @@ PrefabInstance:
     - target: {fileID: 4300175518836265356, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
       propertyPath: m_Name
       value: 0_abertura_jogo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501988271560103553, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ContinueGame
       objectReference: {fileID: 0}
     - target: {fileID: 8302895645186413321, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
       propertyPath: m_Pivot.x
@@ -214,18 +222,6 @@ PrefabInstance:
     - target: {fileID: 8302895645186413321, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8763370855980945907, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8763370855980945907, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8763370855980945907, guid: aab59b74b24c6f74aa99f115655ce5f1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

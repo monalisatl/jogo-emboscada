@@ -24,12 +24,11 @@ namespace Fase_5.Respescagem_Scritps.Fase_4
         
         void OnSaveVitoria()
         {
-            Fase5Comeco.Repescagens[3] = true;
+            Fase5Comeco.Repescagens[2] = true;
             EmboscadaController.gameData ??= new EmboscadaController.GameData();
-            EmboscadaController.gameData.niveisRepescagem[3] = true;
+            EmboscadaController.gameData.niveisRepescagem[2] = true;
             PlayerPrefs.SetInt("repescagem3", 1);
-            PlayerPrefs.SetInt("currentLevel", 50);
-            
+            PlayerPrefs.SetInt("currentLevel", 83);
             RepescagemManager.SetLoadingPagePrefab(load);
             RepescagemManager.CheckAllRepescagensComplete();
         }

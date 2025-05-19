@@ -1,189 +1,330 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Fase_5
 {
     public class Fase5Comeco : MonoBehaviour
     {
-        private static bool _firstOpen = false;
-        public static List<bool> Repescagens = new List<bool>{ false, false, false, false, false};
-        public static List<niveisButton> nivelButtons = new List<niveisButton>(3);
-        [SerializeField] private List<Image> imagensbutton = new List<Image>(3);
-        [SerializeField] private GameObject Loadpage;
-        
-        [Header("fases Opções")]
-        [SerializeField] private TextMeshProUGUI credencial;
+        // Só precisamos controlar os níveis 2, 3 e 4 para repescagem
+        public static bool[] Repescagens = new bool[3];
+
+        [SerializeField] private Button[] nivelButtons = new Button[3];
+        [SerializeField] private Image[] imagensbutton = new Image[3];
+        [FormerlySerializedAs("Loadpage")] [SerializeField] private GameObject loadpage;
+
+        [Header("Informações do Jogador")] [SerializeField]
+        private TextMeshProUGUI credencial;
+
         [SerializeField] private TextMeshProUGUI nome;
+
         private void Awake()
         {
-            
-             _firstOpen = PlayerPrefs.GetInt("repescagem", 0) == 1;
-             LoadName();
-             LoadRepescagem();
-            InicializarBotoes();
-            if (!_firstOpen)
-                LoadSave();
-            HabilitarFases();
-            if (!RepescagemManager.LoadingPagePrefab)
+            Debug.Log($"Fase 2 (nivel1): {PlayerPrefs.GetInt("nivel1", 0)}");
+            Debug.Log($"Fase 3 (nivel2): {PlayerPrefs.GetInt("nivel2", 0)}");
+            Debug.Log($"Fase 4 (nivel3): {PlayerPrefs.GetInt("nivel3", 0)}");
+            // Carrega dados do jogador
+            LoadName();
+
+            // Carrega estado das repescagens
+            LoadRepescagemStatus();
+
+            // Configura os botões baseado nas repescagens necessárias
+            AtualizarBotoesRepescagem();
+
+            // Configura o prefab de loading, se necessário
+            if (RepescagemManager.LoadingPagePrefab == null && loadpage != null)
             {
-                RepescagemManager.SetLoadingPagePrefab(Loadpage);
+                RepescagemManager.SetLoadingPagePrefab(loadpage);
             }
         }
-        private void Start()
-        {
 
-        }
-
+        // Verifica se todas as repescagens necessárias foram completadas
         public void CheckAllRepescagensComplete()
         {
-            bool allComplete = true;
-    
-            // Verificamos das fases 1 a 4 (excluindo a 0 e a própria 5)
-            for (int i = 1; i < 5; i++)
+            bool todasCompletadas = true;
+            
+            for (int i = 0; i < 3; i++)
             {
-                // Se a fase precisa de repescagem e ainda não foi concluída
-                if (Repescagens[i] == false)
+                if (Repescagens[i])
                 {
-                    allComplete = false;
+                    todasCompletadas = false;
                     break;
                 }
             }
-    
-            if (allComplete)
+
+            if (todasCompletadas)
             {
-                // Todas as repescagens foram completadas, carregar a fase 5
+                // Todas as repescagens foram completadas, seguir para fase 5
                 StartCoroutine(LoadFase5());
             }
             else
             {
-                // Ainda há repescagens pendentes, voltar para a tela de repescagem
+                // Ainda há repescagens pendentes, recarregar tela de repescagem
                 StartCoroutine(ReturnToRepescagemScreen());
             }
         }
 
         private IEnumerator LoadFase5()
         {
-            var loadI = Instantiate(Loadpage);
+            // Verifica se o prefab de loading existe
+            if (loadpage == null)
+            {
+                Debug.LogError("Prefab de Loading não configurado!");
+                SceneManager.LoadScene("fase5");
+                yield break;
+            }
+
+            // Cria a tela de loading
+            GameObject loadI = Instantiate(loadpage);
             loadI.SetActive(true);
-            var progress = SceneManager.LoadSceneAsync("fase5");
-    
+
+            // Busca o slider para atualizar o progresso
+            Slider progressBar = loadI.GetComponentInChildren<Slider>();
+
+            // Inicia o carregamento da fase 5
+            AsyncOperation progress = SceneManager.LoadSceneAsync("fase5");
+
+            // Atualiza a barra de progresso enquanto carrega
             while (progress is { isDone: false })
             {
-                loadI.GetComponent<Slider>().value = progress.progress;
+                if (progressBar != null)
+                {
+                    progressBar.value = progress.progress;
+                }
+
                 yield return null;
             }
+
+            // Pequeno delay para garantir que a animação de loading seja vista
             yield return new WaitForSecondsRealtime(1.0f);
+
+            // Limpa o objeto de loading
+            if (loadI != null)
+            {
+                Destroy(loadI);
+            }
         }
 
         private IEnumerator ReturnToRepescagemScreen()
         {
-            var loadI = Instantiate(Loadpage);
-            loadI.SetActive(true);
-            var progress = SceneManager.LoadSceneAsync("faserepescagem");
-    
-            while (progress is { isDone: false })
+            // Verifica se o prefab de loading existe
+            if (loadpage == null)
             {
-                loadI.GetComponent<Slider>().value = progress.progress;
+                Debug.LogError("Prefab de Loading não configurado!");
+                SceneManager.LoadScene("faserepescagem");
+                yield break;
+            }
+
+            // Cria a tela de loading
+            GameObject loadI = Instantiate(loadpage);
+            loadI.SetActive(true);
+
+            // Busca o slider para atualizar o progresso
+            Slider progressBar = loadI.GetComponentInChildren<Slider>();
+
+            // Inicia o carregamento da tela de repescagem
+            AsyncOperation progress = SceneManager.LoadSceneAsync("faserepescagem");
+
+            // Atualiza a barra de progresso enquanto carrega
+            while (!progress.isDone)
+            {
+                if (progressBar != null)
+                {
+                    progressBar.value = progress.progress;
+                }
+
                 yield return null;
             }
+
+            // Pequeno delay para garantir que a animação de loading seja vista
             yield return new WaitForSecondsRealtime(1.0f);
+
+            // Limpa o objeto de loading
+            if (loadI != null)
+            {
+                Destroy(loadI);
+            }
         }
+
         private void LoadName()
         {
+            // Inicializa os dados do jogador se necessário
             EmboscadaController.gameData ??= new EmboscadaController.GameData();
-            EmboscadaController.gameData.classificacao = 
+
+            // Carrega a classificação
+            EmboscadaController.gameData.classificacao =
                 (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
-            credencial.text = EmboscadaController.gameData.classificacao.ToString();
+
+            // Atualiza o texto da credencial
+            if (credencial != null)
+            {
+                credencial.text = EmboscadaController.gameData.classificacao.ToString();
+            }
+
+            // Carrega o nível atual
             EmboscadaController.gameData.currentLevel = PlayerPrefs.GetInt("currentLevel", 0);
-            EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName");
-            nome.text = EmboscadaController.gameData.playerName;
-            EmboscadaController.gameData.selectedCharacterId = PlayerPrefs.GetInt("selectedCharacterId");
+
+            // Carrega o nome do jogador
+            EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "Detetive");
+
+            // Atualiza o texto do nome
+            if (nome != null)
+            {
+                nome.text = EmboscadaController.gameData.playerName;
+            }
+
+            // Carrega o ID do personagem selecionado
+            EmboscadaController.gameData.selectedCharacterId = PlayerPrefs.GetInt("selectedCharacterId", 0);
         }
 
-        private static void LoadSave()
+        // Carrega o status de repescagem para os níveis 2, 3 e 4
+        private void LoadRepescagemStatus()
         {
-            
-            for(var i = 0; i < EmboscadaController.gameData.niveisganhos.Length; i++)
+            for (int i = 0; i < 3; i++)
             {
-                var ganhou = PlayerPrefs.GetInt($"nivel{i}", 0) == 1;
-                EmboscadaController.gameData.niveisganhos[i] = ganhou;
-                Repescagens.Add(!ganhou);
-                EmboscadaController.gameData.niveisRepescagem[i] = !ganhou;
-                PlayerPrefs.SetInt($"repescagem{i}", ganhou ? 1 : 0);
+                int numeroNivel = i + 1;
+
+                // Carrega o status do nível
+                bool ganhouFase = PlayerPrefs.GetInt($"nivel{numeroNivel}", 0) == 1;
+                Repescagens[i] = !ganhouFase;
+
+                // Se estiver no primeiro carregamento, salva o status
+                if (PlayerPrefs.GetInt("repescagem", 0) == 0)
+                {
+                    PlayerPrefs.SetInt($"repescagem{numeroNivel}", !ganhouFase ? 1 : 0);
+                    if (EmboscadaController.gameData.niveisRepescagem.Length > numeroNivel)
+                    {
+                        EmboscadaController.gameData.niveisRepescagem[numeroNivel] = !ganhouFase;
+                    }
+                }
+                else
+                {
+                    // Se não for o primeiro carregamento, carrega o status salvo
+                    Repescagens[i] = PlayerPrefs.GetInt($"repescagem{numeroNivel}", 0) == 1;
+                }
+
+                Debug.Log($"Nível {numeroNivel}: Precisa repescagem = {Repescagens[i]}");
             }
-            _firstOpen = true;
+
+            // Marca como inicializado
             PlayerPrefs.SetInt("repescagem", 1);
-            PlayerPrefs.SetInt("currentLevel", 50);
         }
 
-        private void InicializarBotoes()
+        // Atualiza os botões baseado no status de repescagem
+        private void AtualizarBotoesRepescagem()
         {
-            foreach (var button in nivelButtons)
+            for (int i = 0; i < 3; i++)
             {
-                button.button.interactable = false;
-                button.button.gameObject.SetActive(false);
+                // Verifica se o botão está configurado
+                if (nivelButtons[i] != null )
+                {
+                    // Ativa o botão apenas se precisar de repescagem
+                    //nivelButtons[i].gameObject.SetActive(Repescagens[i]);
+                    nivelButtons[i].interactable = Repescagens[i];
+                    // Atualiza a imagem status relacionada (se existir)
+                    if (i < imagensbutton.Length && imagensbutton[i] != null)
+                    {
+                        imagensbutton[i].gameObject.SetActive(!Repescagens[i]);
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Botão para nível {i + 1} não configurado!");
+                }
             }
         }
-        
 
-        private void HabilitarFases()
+        // Método para ser chamado pelo botão (1 = nível 2, 2 = nível 3, 3 = nível 4)
+        public void OnClickNivel(int nivelButton)
         {
-            for (var i = 1; i < nivelButtons.Count; i++)
+            Debug.Log($"Clicou no botão: {nivelButton} para nível {nivelButton + 1}");
+
+            // Verifica se o botão clicado é válido
+            if (nivelButton >= 1 && nivelButton <= 3)
             {
-                nivelButtons[i].button.gameObject.SetActive(Repescagens[i+1]);
-                nivelButtons[i].button.interactable = Repescagens[i+1];
-                nivelButtons[i].status = Repescagens[i+1];
-                if ( nivelButtons[i].status)
-                    imagensbutton[i].gameObject.SetActive(false);
+                StartCoroutine(StartFaseRepescagem(nivelButton));
+            }
+            else
+            {
+                Debug.LogError($"Botão inválido: {nivelButton}");
             }
         }
 
-    
-        public void OnClickNivel(int nivel)
+        private IEnumerator StartFaseRepescagem(int nivelButton)
         {
-            StartCoroutine(StartFaseRepescagem(nivel));
-        }
+            // Verifica se o prefab de loading existe
+            if (loadpage == null)
+            {
+                Debug.LogError("Prefab de Loading não configurado!");
+                SceneManager.LoadScene($"{nivelButton + 1} repescagem fase {nivelButton + 1}");
+                yield break;
+            }
 
-        private IEnumerator StartFaseRepescagem(int nivel)
-        {
-            var loadI = Instantiate(Loadpage);
+            // Cria a tela de loading
+            GameObject loadI = Instantiate(loadpage);
             loadI.SetActive(true);
-            AsyncOperation progress = new AsyncOperation();
-            switch (nivel)
+
+            // Busca o slider para atualizar o progresso
+            Slider progressBar = loadI.GetComponentInChildren<Slider>();
+
+            // Define o nome da cena - formato principal
+            string sceneName = $"{nivelButton + 1} repescagem fase {nivelButton + 1}";
+            Debug.Log($"Tentando carregar cena: {sceneName}");
+
+            // Verifica se a cena existe no build
+            int sceneIndex = SceneUtility.GetBuildIndexByScenePath(sceneName);
+
+            // Se não existe, tenta o formato alternativo
+            if (sceneIndex < 0)
             {
-                case 1:
-                   progress =  SceneManager.LoadSceneAsync("2 repescagem fase 2");
-                    break;
-                case 2:
-                    progress = SceneManager.LoadSceneAsync("3 repescagem fase 3");
-                    break;
-                case 3:
-                    progress =   SceneManager.LoadSceneAsync("4 repescagem fase 4");
-                    break;
+                sceneName = $"{nivelButton} repescagem fase {nivelButton + 1}";
+                Debug.Log($"Tentando formato alternativo: {sceneName}");
+                sceneIndex = SceneUtility.GetBuildIndexByScenePath(sceneName);
+
+                // Se ainda não existe, tenta o terceiro formato
+                if (sceneIndex < 0)
+                {
+                    sceneName = $"repescagem fase {nivelButton + 1}";
+                    Debug.Log($"Tentando último formato: {sceneName}");
+                    sceneIndex = SceneUtility.GetBuildIndexByScenePath(sceneName);
+
+                    // Se nenhum formato funcionar
+                    if (sceneIndex < 0)
+                    {
+                        Debug.LogError(
+                            $"Nenhum formato de nome de cena válido encontrado para nível {nivelButton + 1}");
+                        Destroy(loadI);
+                        yield break;
+                    }
+                }
             }
-            while (progress is { isDone: false })
+
+            // Carrega a cena pelo índice encontrado
+            AsyncOperation progress = SceneManager.LoadSceneAsync(sceneIndex);
+
+            // Atualiza a barra de progresso enquanto carrega
+            while (!progress.isDone)
             {
-                loadI.GetComponent<Slider>().value = progress.progress;
+                if (progressBar != null)
+                {
+                    progressBar.value = progress.progress;
+                }
+
                 yield return null;
             }
-            yield return new WaitForSecondsRealtime(1.0f);
-        }
-        
 
-        private void LoadRepescagem()
-        {
-            for (var i = 0; i < 5; i++)
+            // Pequeno delay para garantir que a animação de loading seja vista
+            yield return new WaitForSecondsRealtime(1.0f);
+
+            // Limpa o objeto de loading
+            if (loadI != null)
             {
-                Repescagens[i] = PlayerPrefs.GetInt("repescagem"+i, 0) == 1;
+                Destroy(loadI);
             }
         }
-
-
-    
     }
 }

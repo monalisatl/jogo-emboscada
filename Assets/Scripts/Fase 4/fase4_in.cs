@@ -14,15 +14,19 @@ namespace Fase_4
         [SerializeField] private GameObject statusFase2;
         [SerializeField] private GameObject statusFase3;
         [SerializeField] private Image[] status;  // 0 = sucesso, 1 = falha
-
+        [SerializeField] private GameObject dica;
+        [SerializeField] private GameObject[] bloqueios;
         private void Start()
-        {
+        {   ConfigurarBloqueios();
             StartCoroutine(SaveFase());
             StartCoroutine(MarcarFases());
         }
 
+
+
         private IEnumerator SaveFase()
         {
+            EmboscadaController.gameData ??= new EmboscadaController.GameData();
             // --- Carrega dados do jogador ---
             if (PlayerPrefs.HasKey("playerName"))
                 EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName");
@@ -40,12 +44,14 @@ namespace Fase_4
                 Debug.LogError("Nenhuma classificação salva: usando Amador");
                 EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
             }
-        
+            
+            VerificarDicas();
             if (!credencial || !playerName)
             {
                 Debug.LogError("Campos de UI não atribuídos!");
                 yield break;
             }
+
             credencial.text = EmboscadaController.gameData.classificacao.ToString();
             playerName.text = EmboscadaController.gameData.playerName;
             PlayerPrefs.SetInt("currentLevel", 31);
@@ -102,5 +108,37 @@ namespace Fase_4
         {
             SceneManager.LoadSceneAsync("fase4.1");
         }
+        
+        private void ConfigurarBloqueios()
+        {
+            dica.SetActive(false);
+            foreach (var bloqueio in bloqueios)
+            {
+                bloqueio.SetActive(true);
+            }
+
+        }
+
+        private void VerificarDicas()
+        {
+            for (int i = 1; i < 3; i++)
+            {
+                if (EmboscadaController.gameData.niveisganhos[i] = (PlayerPrefs.GetInt("nivel" + i, 0) == 1))
+                {
+                    bloqueios[i-1].SetActive(false);
+                }
+            }
+        }
+        
+        public void OnDicasOpen()
+        {
+            dica.SetActive(true);
+        }
+
+        public void OnDicasClose()
+        {
+            dica.SetActive(false);
+        }
+        
     }
 }

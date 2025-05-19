@@ -12,14 +12,14 @@ using UnityEngine;
         public string linkFonte;
         public List<BotaoOpcao> opcoesResposta;
 
-        public string FormaterData
+        public DateTime FormaterData
         {
             get
             {
                 if (string.IsNullOrEmpty(data) || data.Length < 10)
                 {
                     Debug.LogError("Data não possui o tamanho mínimo esperado: " + data);
-                    return data;
+                    return  new DateTime();
                 }
 
                 var date = data[^10..];
@@ -27,12 +27,12 @@ using UnityEngine;
                         System.Globalization.CultureInfo.InvariantCulture,
                         System.Globalization.DateTimeStyles.None, out var dt))
                 {
-                    return dt.ToString("yyyy-MM-dd");
+                    return dt;
                 }
                 else
                 {
                     Debug.LogError("Data não está no formato esperado: " + date);
-                    return date;
+                    return new DateTime();
                 }
             }
 

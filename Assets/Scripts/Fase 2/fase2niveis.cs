@@ -11,9 +11,11 @@ namespace Fase_2
         [SerializeField] private TextMeshProUGUI playerName;
         [SerializeField] private GameObject statusFase1;
         [SerializeField] private Image[] status;
+        [SerializeField] private GameObject dicas;
 
         private void Start()
         {
+            dicas.SetActive(false);
             StartCoroutine(SaveFase());
             StartCoroutine(MarcarFase());
         }
@@ -69,6 +71,16 @@ namespace Fase_2
             }
 
             yield return null;
+        }
+
+        public void OnDicasClose()
+        {
+            dicas.SetActive(false);
+        }
+
+        public void OnDicasOpen()
+        {
+            dicas.SetActive(true);
         }
     }
 }

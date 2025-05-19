@@ -131,14 +131,7 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
         private float verificarResultado()
         {
             var correta = listaNoticias
-                .OrderBy(n =>
-                {
-                    if (DateTime.TryParseExact(n.FormaterData, "yyyy-MM-dd",
-                            CultureInfo.InvariantCulture, DateTimeStyles.None, out var dt)) return dt;
-                    Debug.LogWarning($"Formato de data inválido em {n.titulo}: '{n.data}'");
-                    dt = DateTime.MinValue;
-                    return dt;
-                })
+                .OrderBy(n => n.FormaterData)
                 .ToList();
 
             // 2) Conta quantos índices batem
@@ -247,12 +240,12 @@ namespace Fase_5.Respescagem_Scritps.Fase_2
         private void SaveFase(bool status)
         {
             EmboscadaController.gameData ??= new EmboscadaController.GameData();
-            EmboscadaController.gameData.niveisRepescagem[1] = status;
+            EmboscadaController.gameData.niveisRepescagem[0] = status;
             var cls = (int)EmboscadaController.gameData.classificacao;
             Debug.Log("Salvando fase 2 da repescagem: " + status);
-            EmboscadaController.gameData.currentLevel = 50; //
-            PlayerPrefs.SetInt("repescagem" + 1, EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
-            PlayerPrefs.SetInt("currentLevel", 50);
+            EmboscadaController.gameData.currentLevel = 82; //
+            PlayerPrefs.SetInt("repescagem" + 0, EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
+            PlayerPrefs.SetInt("currentLevel", 82);
             PlayerPrefs.Save();
         }
     }

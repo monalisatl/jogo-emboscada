@@ -93,7 +93,7 @@ namespace Fase_4
 
             if (totalRespondidos >= enigmas.Count)
             {
-                _timerAtivo = false; // Para o timer quando todos os enigmas forem respondidos
+                _timerAtivo = false; 
             
                 if (respostasCorretas >= 2)
                 {
@@ -156,17 +156,15 @@ namespace Fase_4
             int cls = PlayerPrefs.GetInt("classificacao", 0);
             if (acertou) cls++;
             EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)cls;
-
-            // atualiza currentLevel (pode ser nivelIndex+1 ou outro valor de sua lógica)
-            EmboscadaController.gameData.currentLevel = 37;
+            
+            EmboscadaController.gameData.currentLevel = 80;
 
             // grava no PlayerPrefs
-            PlayerPrefs.SetInt("nivel4", acertou ? 1 : 0);
+            PlayerPrefs.SetInt("nivel3", acertou ? 1 : 0);
+            Debug.Log($"salvo nivel3 com valor:{acertou}\nbuscando o valor{PlayerPrefs.GetInt("nivel3")}");
             PlayerPrefs.SetInt("classificacao", cls);
             PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
             PlayerPrefs.Save();
-
-            Debug.Log($"[SaveGame] Fase 4 passed={acertou}  cls={cls.ToString()}");
         }
 
         public void CloseInstruct()
@@ -208,14 +206,11 @@ namespace Fase_4
                 yield return null;
             }
         }
-    
-        // Método para pausar o timer (pode ser útil em alguma situação)
         public void PausarTimer()
         {
             _timerAtivo = false;
         }
-    
-        // Método para retomar o timer
+        
         public void RetornarTimer()
         {
             if (!_tempoEsgotado)

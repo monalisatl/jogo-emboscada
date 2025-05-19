@@ -308,9 +308,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
-        m_MethodName: NextPageButton
+      - m_Target: {fileID: 8930973097948570794}
+        m_TargetAssemblyTypeName: Fase_4.Fase4EndManager, Assembly-CSharp
+        m_MethodName: CarregarTela
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -652,7 +652,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5653058345912396094}
         m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
         m_MethodName: PreviousPageButton
         m_Mode: 1
@@ -809,6 +809,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1846062082994299908}
+  - component: {fileID: 5653058345912396094}
+  - component: {fileID: 8930973097948570794}
   m_Layer: 0
   m_Name: config
   m_TagString: Untagged
@@ -831,6 +833,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1572279411576581370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5653058345912396094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237494641254845345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 477e81534d5027045a62c3d1f7cf4f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8930973097948570794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237494641254845345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7110cc4a571d4f07b376fccc53bc3831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
+  faseName: fase5
 --- !u!1 &4478247210035467688
 GameObject:
   m_ObjectHideFlags: 0

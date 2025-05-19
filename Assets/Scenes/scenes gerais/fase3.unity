@@ -163,7 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fd52e054442f4dbcd1596bae5c241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 2045453426}
+  tempoTotal: 120
+  loadingScreen: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
   instrucoesClip: {fileID: 8300000, guid: ea8a59dedefafa842ad529baf64cee6e, type: 3}
   instrucaoAudioSource: {fileID: 2461622098914832553}
   instrucaoGO: {fileID: 3256317399447624812}
@@ -417,11 +418,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
---- !u!1 &2045453426 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 131606214874875394, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
-  m_PrefabInstance: {fileID: 2045453425}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8151752183312720
 RectTransform:
   m_ObjectHideFlags: 0

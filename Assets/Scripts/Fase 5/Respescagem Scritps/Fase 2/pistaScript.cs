@@ -23,7 +23,7 @@ public class pistaScript : MonoBehaviour
     void OnSaveVitoria()
     {
         // Salva o progresso da fase 2 (índice 1)
-        Fase5Comeco.Repescagens[1] = true;
+        Fase5Comeco.Repescagens[0] = true;
         EmboscadaController.gameData ??= new EmboscadaController.GameData();
         EmboscadaController.gameData.classificacao =
             (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
@@ -32,7 +32,7 @@ public class pistaScript : MonoBehaviour
         EmboscadaController.gameData.selectedCharacterId = PlayerPrefs.GetInt("selectedCharacterId");
         EmboscadaController.gameData.niveisRepescagem[1] = true;
         PlayerPrefs.SetInt("repescagem1", EmboscadaController.gameData.niveisRepescagem[1]? 1:0);
-        PlayerPrefs.SetInt("currentLevel", 50);
+        PlayerPrefs.SetInt("currentLevel", 81);
         
         // Configura o prefab de loading e verifica se todas as repescagens foram completadas
         // RepescagemManager.SetLoadingPagePrefab(load);

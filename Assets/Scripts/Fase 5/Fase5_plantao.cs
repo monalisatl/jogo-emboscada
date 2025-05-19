@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Fase_5
 {
-    public class Fase5_plantao : MonoBehaviour
+    public class Fase5Plantao : MonoBehaviour
     {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()

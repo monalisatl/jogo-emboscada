@@ -231,29 +231,13 @@ namespace Fase_2
         
         private float VerificarResultado()
         {
-            // 1) Gera a lista "correta" ordenada por data
             List<Noticia> correta = listaNoticias
-                .OrderBy(n =>
-                {
-                    // tenta parsear "YYYY-MM-DD"
-                    DateTime dt;
-                    if (!DateTime.TryParseExact(n.FormaterData, "yyyy-MM-dd",
-                            CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
-                    {
-                        Debug.LogWarning($"Formato de data inválido em {n.titulo}: '{n.data}'");
-                        dt = DateTime.MinValue;
-                    }
-                    return dt;
-                })
+                .OrderBy(n => n.FormaterData)
                 .ToList();
-
-            // 2) Conta quantos índices batem
             int acertos = 0;
             for (int i = 0; i < ordemSelecionada.Count; i++)
                 if (ordemSelecionada[i] == correta[i])
                     acertos++;
-
-            // 3) Retorna porcentagem [0..100]
             float percent = (float)acertos / listaNoticias.Count * 100f;
             Debug.Log($"Ordenação: {acertos}/{listaNoticias.Count} → {percent}%");
             return percent;
@@ -319,7 +303,8 @@ namespace Fase_2
             EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)cls;
             Debug.Log("Salvando fase 2: " + status + " Terminou com classificacao"+ EmboscadaController.gameData.classificacao);
             EmboscadaController.gameData.currentLevel = 23;
-            PlayerPrefs.SetInt("nivel" + 1, EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
+            PlayerPrefs.SetInt("nivel1", EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
+            Debug.Log($"salvo nivel1 com valor:{EmboscadaController.gameData.niveisganhos[1]}\nbuscando o valor{PlayerPrefs.GetInt("nivel1")}");
             PlayerPrefs.SetInt("currentLevel", 23);
             PlayerPrefs.SetInt("classificacao", cls);
             PlayerPrefs.Save();
