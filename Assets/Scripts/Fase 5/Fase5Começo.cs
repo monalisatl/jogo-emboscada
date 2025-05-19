@@ -258,11 +258,23 @@ namespace Fase_5
 
         private IEnumerator StartFaseRepescagem(int nivelButton)
         {
-            // Verifica se o prefab de loading existe
+            var name = "";
+            switch (nivelButton)
+            {
+                case 1:
+                    name = "18_fase2_minigame";
+                    break;
+                case 2:
+                    name = "fase3";
+                    break;
+                case 3:
+                    name = "fase4.1";
+                    break;
+            }
             if (loadpage == null)
             {
                 Debug.LogError("Prefab de Loading não configurado!");
-                SceneManager.LoadScene($"{nivelButton + 1} repescagem fase {nivelButton + 1}");
+                SceneManager.LoadScene($"{name}");
                 yield break;
             }
 
@@ -274,7 +286,7 @@ namespace Fase_5
             Slider progressBar = loadI.GetComponentInChildren<Slider>();
 
             // Define o nome da cena - formato principal
-            string sceneName = $"{nivelButton + 1} repescagem fase {nivelButton + 1}";
+            string sceneName = $"{name}";
             Debug.Log($"Tentando carregar cena: {sceneName}");
 
             // Verifica se a cena existe no build
@@ -286,11 +298,10 @@ namespace Fase_5
                 sceneName = $"{nivelButton} repescagem fase {nivelButton + 1}";
                 Debug.Log($"Tentando formato alternativo: {sceneName}");
                 sceneIndex = SceneUtility.GetBuildIndexByScenePath(sceneName);
-
-                // Se ainda não existe, tenta o terceiro formato
+                
                 if (sceneIndex < 0)
                 {
-                    sceneName = $"repescagem fase {nivelButton + 1}";
+                    sceneName = $"{name}";
                     Debug.Log($"Tentando último formato: {sceneName}");
                     sceneIndex = SceneUtility.GetBuildIndexByScenePath(sceneName);
 

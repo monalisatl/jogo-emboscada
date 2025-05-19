@@ -78,7 +78,6 @@ namespace Fase_4
                 
             }
             painelExplic.SetActive(true);
-            EnigmaScript.instance.PausarTimer();
             if (fecharButton == null)
             {
                 fecharButton = painelExplic.GetComponentInChildren<Button>();
@@ -90,7 +89,6 @@ namespace Fase_4
                 cols.color = acertou ? corCerta : corErrada;
                 origemButton.image = cols;
                 origemButton.interactable = false;
-                EnigmaScript.instance.LigarTimer();
                 callback(acertou);
                 Destroy(UiGameObject);
             }); 

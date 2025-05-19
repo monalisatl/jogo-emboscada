@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Fase_5;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,55 +13,52 @@ namespace Fase_2
 {
     public class ChronoUIController : MonoBehaviour
     {
-        [Header("Timer")]
-        [Tooltip("Tempo máximo para completar a ordenação (em segundos)")]
+        [Header("Timer")] [Tooltip("Tempo máximo para completar a ordenação (em segundos)")]
         public float tempoLimite = 120f;
+
         [Tooltip("Referência ao objeto de imagem do cronômetro")]
         public Image cronometro;
-        
+
         private float _tempoRestante;
         private bool _cronometroAtivo = true;
 
         [Header("Detalhe de Notícia (reaproveita OpenView)")]
         public GameObject openPanel;
+
         public TextMeshProUGUI openTitulo, openData, openConteudo, openLink;
         public Button closeButton;
 
-        [Header("Botões de notícia")]
-        public Button[] newsButtons;          
+        [Header("Botões de notícia")] public Button[] newsButtons;
         public TextMeshProUGUI[] buttonTexts;
 
-        [Header("Feedback de ordem")]
-        public TextMeshProUGUI feedbackText;
+        [Header("Feedback de ordem")] public TextMeshProUGUI feedbackText;
 
-        [Header("Painel de conclusão")]
-        public GameObject completePanel;      
+        [Header("Painel de conclusão")] public GameObject completePanel;
         public Button continueButton;
         public Button resetButton;
-        
-        [Header("Painel de tempo esgotado")]
-        public GameObject timeoutPanel;
+
+        [Header("Painel de tempo esgotado")] public GameObject timeoutPanel;
         public Button timeoutButton;
 
-        [Header("Cores")]
-        public Color selectedColor = Color.green;
+        [Header("Cores")] public Color selectedColor = Color.green;
 
         private List<Noticia> listaNoticias;
         private List<Noticia> ordemSelecionada = new List<Noticia>();
         private int nextChronoIndex = 1;
         private Color defaultButtonColor;
-    
+
         [SerializeField] private TextMeshProUGUI credencial;
 
         void Start()
         {
-            if(EmboscadaController.gameData == null)
+            if (EmboscadaController.gameData == null)
             {
                 EmboscadaController.gameData = new EmboscadaController.GameData();
                 EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "Jogador");
                 EmboscadaController.gameData.classificacao =
                     (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
             }
+
             credencial.text = EmboscadaController.gameData.classificacao.ToString();
             // pega as 4 notícias da fase 1
             listaNoticias = Fase2Manager.perguntasSelecionadas;
@@ -68,7 +67,7 @@ namespace Fase_2
             completePanel.SetActive(false);
             continueButton.onClick.AddListener(OnContinue);
             resetButton.onClick.AddListener(OnReset);
-            
+
             // config painel de tempo esgotado (se existir)
             if (timeoutPanel != null)
             {
@@ -83,7 +82,8 @@ namespace Fase_2
 
             // fecha detalhe
             openPanel.SetActive(false);
-            closeButton.onClick.AddListener(() => {
+            closeButton.onClick.AddListener(() =>
+            {
                 openPanel.SetActive(false);
                 // Retoma o cronômetro quando fecha os detalhes
                 _cronometroAtivo = true;
@@ -106,17 +106,17 @@ namespace Fase_2
                 lp.holdThreshold = 0.5f;
                 lp.onLongPress.AddListener(() => OnSelectChrono(idx));
             }
-            
+
             // Inicializa o cronômetro
             InicializarCronometro();
         }
-        
+
         void Update()
         {
             // Atualiza o cronômetro a cada frame
             AtualizarCronometro();
         }
-        
+
         private void InicializarCronometro()
         {
             if (cronometro == null)
@@ -124,30 +124,31 @@ namespace Fase_2
                 Debug.LogError("Componente de imagem do cronômetro não atribuído!");
                 return;
             }
+
             _tempoRestante = tempoLimite;
             _cronometroAtivo = true;
             UpdateCronometro();
         }
-        
+
         private void UpdateCronometro()
         {
             if (cronometro != null)
             {
-                cronometro.fillAmount = _tempoRestante/tempoLimite;
+                cronometro.fillAmount = _tempoRestante / tempoLimite;
             }
         }
-        
+
         private void AtualizarCronometro()
         {
             if (!_cronometroAtivo)
             {
                 return;
             }
-            
+
             _tempoRestante -= Time.deltaTime;
             _tempoRestante = Mathf.Max(_tempoRestante, 0f);
             UpdateCronometro();
-            
+
             if (_tempoRestante <= 0f)
             {
                 Debug.Log("Tempo esgotado!");
@@ -155,17 +156,18 @@ namespace Fase_2
                 OnTempoEsgotado();
             }
         }
-        
+
         private void OnTempoEsgotado()
         {
             // Se o tempo acabou, o jogador perde a fase automaticamente
             Debug.Log("Tempo esgotado! Jogador perdeu a fase.");
-            
+
             // Desativa interação com os botões
             foreach (var button in newsButtons)
             {
                 button.interactable = false;
             }
+
             openPanel.SetActive(false);
             completePanel.SetActive(false);
             if (timeoutPanel != null)
@@ -177,7 +179,7 @@ namespace Fase_2
                 OnTimeoutContinue();
             }
         }
-        
+
         private void OnTimeoutContinue()
         {
             SaveFase(false);
@@ -189,11 +191,11 @@ namespace Fase_2
         {
             var n = listaNoticias[i];
             openPanel.SetActive(true);
-            openTitulo.text   = n.titulo;
-            openData.text     = n.data;
+            openTitulo.text = n.titulo;
+            openData.text = n.data;
             openConteudo.text = n.conteudo;
-            openLink.text     = n.linkFonte;
-            
+            openLink.text = n.linkFonte;
+
             // Pausa o cronômetro enquanto visualiza os detalhes
             _cronometroAtivo = false;
         }
@@ -224,11 +226,11 @@ namespace Fase_2
         {
             // Pausa o cronômetro quando completa a ordenação
             _cronometroAtivo = false;
-            
+
             feedbackText.text = "Ordenação completa!";
             completePanel.SetActive(true);
         }
-        
+
         private float VerificarResultado()
         {
             List<Noticia> correta = listaNoticias
@@ -247,20 +249,60 @@ namespace Fase_2
         {
             float faseQuizOk = Fase2Manager.statusFase2;
             float ordenacaoPct = VerificarResultado();
-        
-            bool fase2Ok = ((faseQuizOk+ordenacaoPct)/2 >= 50f);
-        
+
+            bool fase2Ok = ((faseQuizOk + ordenacaoPct) / 2 >= 50f);
+
             SaveFase(fase2Ok);
 
-            if (fase2Ok)
+            if (Fase2Manager.isRepescagemMode)
             {
-                MainManager.indiceCanvainicial = 21;
+                if (fase2Ok)
+                {
+                    // Repescagem concluída com sucesso - marcar como concluída
+                    PlayerPrefs.SetInt("repescagem1", 0);
+                    PlayerPrefs.SetInt("nivel1", 1);
+                    PlayerPrefs.Save();
+
+                    // Mostrar mensagem de sucesso antes de voltar
+                    StartCoroutine(MostrarMensagemSucesso());
+                }
+                else
+                {
+                    // Falhou na repescagem após completar ambas as partes - reiniciar a fase inteira
+                    StartCoroutine(ReiniciarRepescagem());
+                }
             }
             else
             {
-                MainManager.indiceCanvainicial = 11;
+                // Comportamento normal do jogo
+                if (fase2Ok)
+                {
+                    MainManager.indiceCanvainicial = 21;
+                }
+                else
+                {
+                    MainManager.indiceCanvainicial = 11;
+                }
+
+                SceneManager.LoadSceneAsync("main");
             }
-            SceneManager.LoadSceneAsync("main");
+        }
+
+        IEnumerator MostrarMensagemSucesso()
+        {
+            yield return new WaitForSeconds(1.0f);
+            RepescagemManager.CheckAllRepescagensComplete();
+        }
+
+        IEnumerator ReiniciarRepescagem()
+        {
+            var op = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+            
+            while (op.isDone == false)
+            {
+                yield return null;
+            }
+            yield return new WaitForSeconds(1.0f);
         }
 
         void OnReset()
@@ -271,14 +313,14 @@ namespace Fase_2
             feedbackText.text = $"Selecione a notícia #{nextChronoIndex}";
             completePanel.SetActive(false);
             openPanel.SetActive(false);
-            
+
             for (int i = 0; i < newsButtons.Length; i++)
             {
                 newsButtons[i].interactable = true;
                 buttonTexts[i].text = listaNoticias[i].titulo;
                 newsButtons[i].GetComponent<Image>().color = defaultButtonColor;
             }
-            
+
             // Reinicia o cronômetro
             _tempoRestante = tempoLimite;
             _cronometroAtivo = true;
@@ -288,9 +330,10 @@ namespace Fase_2
         {
             EmboscadaController.gameData ??= new EmboscadaController.GameData();
             EmboscadaController.gameData.niveisganhos[1] = status;
-            EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
+            EmboscadaController.gameData.classificacao =
+                (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
             var cls = (int)EmboscadaController.gameData.classificacao;
-       
+
             if (status)
             {
                 cls++;
@@ -300,11 +343,14 @@ namespace Fase_2
             {
                 EmboscadaController.gameData.niveisganhos[1] = false;
             }
+
             EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)cls;
-            Debug.Log("Salvando fase 2: " + status + " Terminou com classificacao"+ EmboscadaController.gameData.classificacao);
+            Debug.Log("Salvando fase 2: " + status + " Terminou com classificacao" +
+                      EmboscadaController.gameData.classificacao);
             EmboscadaController.gameData.currentLevel = 23;
             PlayerPrefs.SetInt("nivel1", EmboscadaController.gameData.niveisganhos[1] ? 1 : 0);
-            Debug.Log($"salvo nivel1 com valor:{EmboscadaController.gameData.niveisganhos[1]}\nbuscando o valor{PlayerPrefs.GetInt("nivel1")}");
+            Debug.Log(
+                $"salvo nivel1 com valor:{EmboscadaController.gameData.niveisganhos[1]}\nbuscando o valor{PlayerPrefs.GetInt("nivel1")}");
             PlayerPrefs.SetInt("currentLevel", 23);
             PlayerPrefs.SetInt("classificacao", cls);
             PlayerPrefs.Save();

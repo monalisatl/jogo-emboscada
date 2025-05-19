@@ -41,7 +41,6 @@ namespace Fase_4
 
         private void Awake()
         {
-            // Singleton
             if (instance == null)
             {
                 instance = this;
