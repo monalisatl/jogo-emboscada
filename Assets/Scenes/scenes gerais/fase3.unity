@@ -163,9 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fd52e054442f4dbcd1596bae5c241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 2045453426}
   instrucoesClip: {fileID: 8300000, guid: ea8a59dedefafa842ad529baf64cee6e, type: 3}
   instrucaoAudioSource: {fileID: 2461622098914832553}
-  loadingScreen: {fileID: 2045453426}
   instrucaoGO: {fileID: 3256317399447624812}
   videoPrefab: {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
   secretariosClip:
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.6
+  m_fontSize: 56.05
   m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 1
