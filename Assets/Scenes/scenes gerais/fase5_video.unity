@@ -741,7 +741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 178.934}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -154, y: 247}
+  m_AnchoredPosition: {x: -112.4, y: 275.9}
   m_SizeDelta: {x: 136.79999, y: 185.59998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6258036329473310749
@@ -783,9 +783,6 @@ MonoBehaviour:
   skipButton: {fileID: 8910902371901523280}
   loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
   targetSceneName: fase5.1_culpado
-  videoDisplay: {fileID: 1088584535965044547}
-  prepareOnStart: 1
-  disableAudio: 0
 --- !u!1 &7538698986902830238
 GameObject:
   m_ObjectHideFlags: 0
