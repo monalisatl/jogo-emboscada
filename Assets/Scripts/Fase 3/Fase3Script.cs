@@ -5,45 +5,46 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using Fase_5;  // para RepescagemManager
+using Fase_5; // para RepescagemManager
 
 namespace Fase_3
 {
+
     public class Fase3Manager : MonoBehaviour
     {
         [Header("Timer")]
         [Tooltip("Tempo total compartilhado para responder as duas perguntas (em segundos)")]
-        [SerializeField] private float tempoTotal = 120f;
+        [SerializeField]
+        private float tempoTotal = 30f;
+
         private float _tempoRestante;
         private bool _timerAtivo = false;
         private bool _tempoEsgotado = false;
         private Image _timerImage;
 
-        [Header("objetos raiz")]
-        [SerializeField] private GameObject loadingScreen;
+        [Header("objetos raiz")] [SerializeField]
+        private GameObject loadingScreen;
 
-        [Header("Áudio de Instrução")]
-        [SerializeField] private AudioClip instrucoesClip;
+        [Header("Áudio de Instrução")] [SerializeField]
+        private AudioClip instrucoesClip;
+
         [SerializeField] private AudioSource instrucaoAudioSource;
         [SerializeField] private GameObject instrucaoGO;
         private bool _skipInstrucao = false;
 
-        [Header("Vídeo")]
-        [SerializeField] private GameObject videoPrefab;
+        [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
         [SerializeField] private VideoClip[] secretariosClip;
 
-        [Header("Perguntas")]
-        [SerializeField] private PerguntaScript pergunta1Prefab;
+        [Header("Perguntas")] [SerializeField] private PerguntaScript pergunta1Prefab;
         [SerializeField] private PerguntaScript pergunta2Prefab;
 
-        [Header("Resultado")]
-        [SerializeField] private GameObject vitoriaPrefab;
+        [Header("Resultado")] [SerializeField] private GameObject vitoriaPrefab;
         [SerializeField] private GameObject derrotaPrefab;
         [SerializeField] private GameObject pistaPrefab;
         [SerializeField] private bool debug = false;
         private PerguntaScript _perguntaAtual;
         private bool _resp1, _resp2;
-        
+
         public static bool _isRepescagemMode = false;
         private const int ThisLevel = 2;
 
@@ -59,7 +60,6 @@ namespace Fase_3
         }
 
 
-
         private IEnumerator RunFase()
         {
             yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
@@ -72,7 +72,7 @@ namespace Fase_3
             yield return new WaitUntil(() => _skipInstrucao);
 
             yield return PlayVideo(secretariosClip[0]);
-            
+
             yield return AskQuestion(pergunta1Prefab, correto =>
             {
                 _resp1 = correto;
@@ -83,6 +83,7 @@ namespace Fase_3
                 yield return StartCoroutine(EndFase3());
                 yield break;
             }
+
             yield return PlayVideo(secretariosClip[1]);
             _timerAtivo = true;
             // Segunda pergunta
@@ -94,6 +95,7 @@ namespace Fase_3
 
             yield return StartCoroutine(EndFase3());
         }
+
         void Update()
         {
             if (_timerAtivo)
@@ -112,22 +114,22 @@ namespace Fase_3
                 }
             }
         }
+
         private IEnumerator EndFase3()
         {
             bool ganhou = (_resp1 || _resp2) && !_tempoEsgotado;
-            
+
             if (_isRepescagemMode)
             {
                 if (ganhou)
                 {
                     TelaVitoria();
-
                 }
                 else
                 {
-                   TelaDerrota();
+                    TelaDerrota();
                 }
-               
+
                 yield break;
             }
 
@@ -142,6 +144,7 @@ namespace Fase_3
                 loadingCanvas.worldCamera = Camera.main;
                 loadingCanvas.sortingOrder = 10;
             }
+
             loadingInstance.SetActive(true);
 
             AsyncOperation op = SceneManager.LoadSceneAsync("main");
@@ -155,6 +158,7 @@ namespace Fase_3
                     progressBar.value = Mathf.Lerp(progressBar.value, p, Time.deltaTime * 5f);
                 yield return null;
             }
+
             if (progressBar != null)
             {
                 while (progressBar.value < 1f)
@@ -164,6 +168,7 @@ namespace Fase_3
                     yield return null;
                 }
             }
+
             yield return new WaitForSecondsRealtime(1f);
             op.allowSceneActivation = true;
         }
@@ -183,6 +188,7 @@ namespace Fase_3
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
             }
+
             var btn = vitoria.GetComponentInChildren<Button>();
             if (btn)
             {
@@ -205,18 +211,17 @@ namespace Fase_3
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
             }
+
             var btn = pista.GetComponentInChildren<Button>();
             if (!btn) return;
             btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() =>
-            {
-                StartCoroutine(CarregaVitoria());
-            });
+            btn.onClick.AddListener(() => { StartCoroutine(CarregaVitoria()); });
         }
+
         private IEnumerator CarregaVitoria()
         {
             _isRepescagemMode = false;
-           const string nameScene = "faserepescagem";
+            const string nameScene = "faserepescagem";
             var li = Instantiate(loadingScreen);
             var load = li.GetComponent<Canvas>();
             if (load != null)
@@ -225,6 +230,7 @@ namespace Fase_3
                 load.worldCamera = Camera.main;
                 load.sortingOrder = 10;
             }
+
             li.SetActive(true);
             AsyncOperation opt = SceneManager.LoadSceneAsync(nameScene);
             opt.allowSceneActivation = false;
@@ -237,6 +243,7 @@ namespace Fase_3
                     prBar.value = Mathf.Lerp(prBar.value, p, Time.deltaTime * 5f);
                 yield return null;
             }
+
             if (prBar != null)
             {
                 while (prBar.value < 1f)
@@ -246,6 +253,7 @@ namespace Fase_3
                     yield return null;
                 }
             }
+
             yield return new WaitForSecondsRealtime(1f);
             opt.allowSceneActivation = true;
         }
@@ -260,17 +268,15 @@ namespace Fase_3
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
             }
+
             var btn = derrota.GetComponentInChildren<Button>();
             if (btn)
             {
                 btn.onClick.RemoveAllListeners();
-                btn.onClick.AddListener(() =>
-                {
-                    StartCoroutine(CarregarDerrota());
-                });
+                btn.onClick.AddListener(() => { StartCoroutine(CarregarDerrota()); });
             }
         }
-        
+
         private IEnumerator CarregarDerrota()
         {
             GameObject li = Instantiate(loadingScreen);
@@ -281,6 +287,7 @@ namespace Fase_3
                 load.worldCamera = Camera.main;
                 load.sortingOrder = 10;
             }
+
             li.SetActive(true);
             AsyncOperation opt = SceneManager.LoadSceneAsync(gameObject.scene.name);
             opt.allowSceneActivation = false;
@@ -293,6 +300,7 @@ namespace Fase_3
                     prBar.value = Mathf.Lerp(prBar.value, p, Time.deltaTime * 5f);
                 yield return null;
             }
+
             if (prBar != null)
             {
                 while (prBar.value < 1f)
@@ -302,6 +310,7 @@ namespace Fase_3
                     yield return null;
                 }
             }
+
             yield return new WaitForSecondsRealtime(1f);
             opt.allowSceneActivation = true;
         }
@@ -340,7 +349,8 @@ namespace Fase_3
             vp.clip = clip;
             vp.renderMode = VideoRenderMode.RenderTexture;
 
-            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>> {
+            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+            {
                 () => PrepareVideo(vp)
             });
 
@@ -366,8 +376,14 @@ namespace Fase_3
             var canva = p.GetComponent<Canvas>();
             canva.renderMode = RenderMode.ScreenSpaceCamera;
             canva.worldCamera = Camera.main;
-            _timerImage = p.GetComponentInChildren<Image>(true);
-            // busca imagem de timer se precisar...
+            _timerImage = GameObject.FindWithTag("Timer").GetComponent<Image>();
+
+            // Verificar se encontrou alguma imagem para o timer
+            if (_timerImage == null)
+                Debug.LogError("Não foi possível encontrar o sprite do timer!");
+            else
+                Debug.Log("Timer sprite encontrado: " + _timerImage.name);
+
             _timerAtivo = true;
 
             bool acabou = false;
@@ -387,6 +403,7 @@ namespace Fase_3
                 Destroy(p.gameObject);
         }
 
+
         public void OnPressSkipAudio()
         {
             _skipInstrucao = true;
@@ -394,7 +411,5 @@ namespace Fase_3
             instrucaoGO.SetActive(false);
             Destroy(instrucaoGO);
         }
-        
-        
     }
 }
