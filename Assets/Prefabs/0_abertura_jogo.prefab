@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 4304327648886683850}
   - component: {fileID: 4501988271560103553}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.1106, y: -853.452}
+  m_AnchoredPosition: {x: 9.1107, y: -892}
   m_SizeDelta: {x: 625.085, y: 161.993}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2232537985018588682
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 98.6
+  m_fontSize: 118.45
   m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 1367927743741677730}
   - component: {fileID: 6240167386627712217}
   m_Layer: 5
-  m_Name: Button
+  m_Name: start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,7 +419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.1082, y: -662}
+  m_AnchoredPosition: {x: 9.1082, y: -693}
   m_SizeDelta: {x: 625.08, y: 161.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2236242301196554383
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.44705883, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9582815, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2268113555672827357, guid: 649f246402d4cd84a83a508af4b5bb69, type: 3}
+  m_Sprite: {fileID: -4433867442557111527, guid: 3e59a35dd09dd1e4ea722fba7ce10396, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 108.3
+  m_fontSize: 113.75
   m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 1
