@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1785315652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,7 +1820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1429384512598068563
 GameObject:
   m_ObjectHideFlags: 0
@@ -6871,7 +6871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8754235559106178299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7159,6 +7159,7 @@ MonoBehaviour:
   tempoTotal: 30
   timerImage: {fileID: 5221148107015020066}
   timeOut: {fileID: 1785315651}
+  debug: 0
   enigmas:
   - {fileID: 11400000, guid: 6afffce797587a44e8ac0b1067df45a7, type: 2}
   - {fileID: 11400000, guid: 98a0d6e11470c72448d09cb254d16427, type: 2}
@@ -7174,6 +7175,10 @@ MonoBehaviour:
   - {fileID: 1915859310785908987}
   - {fileID: 864552385388983008}
   - {fileID: 8251639866086187209}
+  VitoriaPrefab: {fileID: 6908444403675990290, guid: 5775e437eff75cd489de4456d7e76aba, type: 3}
+  DerrotaPrefab: {fileID: 3182707776592639926, guid: a7db220fd70fc0a44a682af612543f4b, type: 3}
+  loadPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
+  dicaPrefab: {fileID: 280433514674976591, guid: f3451adb9b4a4e94d9f383b1cbd7c272, type: 3}
 --- !u!224 &9198806136371095737
 RectTransform:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ namespace Fase_2
     public class ChronoUIController : MonoBehaviour
     {
         [Header("Timer")] [Tooltip("Tempo máximo para completar a ordenação (em segundos)")]
-        public float tempoLimite = 120f;
+        public float tempoLimite = 30f;
 
         [Tooltip("Referência ao objeto de imagem do cronômetro")]
         public Image cronometro;
@@ -46,11 +46,25 @@ namespace Fase_2
         private List<Noticia> ordemSelecionada = new List<Noticia>();
         private int nextChronoIndex = 1;
         private Color defaultButtonColor;
-
         [SerializeField] private TextMeshProUGUI credencial;
+        
+        [Header("Repescagem")]
+        [SerializeField] private GameObject vitoria;
+        [SerializeField] private GameObject derrota;
+        [SerializeField] private GameObject pista;
+        [SerializeField] private GameObject loading;
+        [SerializeField] private bool debug;
+        public static bool _isRepescagem = false;
+        private const int Nivel = 1;
 
         void Start()
         {
+            _isRepescagem = RepescagemManager.IsRepescagemMode(Nivel);
+            if (debug)
+            {
+                _isRepescagem = debug;
+            }
+            
             if (EmboscadaController.gameData == null)
             {
                 EmboscadaController.gameData = new EmboscadaController.GameData();
@@ -174,10 +188,12 @@ namespace Fase_2
             {
                 timeoutPanel.SetActive(true);
             }
-            else
+
+            if (_isRepescagem)
             {
-                OnTimeoutContinue();
+                TelaDerrota();
             }
+            OnTimeoutContinue();
         }
 
         private void OnTimeoutContinue()
@@ -249,31 +265,21 @@ namespace Fase_2
         {
             float faseQuizOk = Fase2Manager.statusFase2;
             float ordenacaoPct = VerificarResultado();
-
             bool fase2Ok = ((faseQuizOk + ordenacaoPct) / 2 >= 50f);
-
-            SaveFase(fase2Ok);
-
-            if (Fase2Manager.isRepescagemMode)
+            if (_isRepescagem)
             {
                 if (fase2Ok)
                 {
-                    // Repescagem concluída com sucesso - marcar como concluída
-                    PlayerPrefs.SetInt("repescagem1", 0);
-                    PlayerPrefs.SetInt("nivel1", 1);
-                    PlayerPrefs.Save();
-
-                    // Mostrar mensagem de sucesso antes de voltar
-                    StartCoroutine(MostrarMensagemSucesso());
+                    TelaVitoria();
                 }
                 else
                 {
-                    // Falhou na repescagem após completar ambas as partes - reiniciar a fase inteira
-                    StartCoroutine(ReiniciarRepescagem());
+                    TelaDerrota();
                 }
             }
             else
             {
+                SaveFase(fase2Ok);
                 // Comportamento normal do jogo
                 if (fase2Ok)
                 {
@@ -288,21 +294,146 @@ namespace Fase_2
             }
         }
 
+        private void TelaVitoria()
+        {
+            PlayerPrefs.SetInt("repescagem1", 0);
+            PlayerPrefs.SetInt("nivel1", 1);
+            PlayerPrefs.SetInt("currentLevel", 81);
+            PlayerPrefs.Save();
+            _isRepescagem = false;
+            var vitoria = Instantiate(this.vitoria);
+            var canvas = vitoria.GetComponent<Canvas>();
+            if (canvas != null)
+            {
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = Camera.main;
+                canvas.sortingOrder = 5;
+            }
+            var btn = vitoria.GetComponentInChildren<Button>();
+            if (btn)
+            {
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() =>
+                {
+                    Destroy(vitoria.gameObject);
+                    CarregarPista();
+                });
+            }
+        }
+        
+        private void CarregarPista()
+        {
+            var pista = Instantiate(this.pista);
+            var canvas = pista.GetComponent<Canvas>();
+            if (canvas != null)
+            {
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = Camera.main;
+                canvas.sortingOrder = 5;
+            }
+            var btn = pista.GetComponentInChildren<Button>();
+            if (btn)
+            {
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() =>
+                {
+                    Destroy(pista.gameObject);
+                    StartCoroutine(MostrarMensagemSucesso());
+                });
+            }
+        }
         IEnumerator MostrarMensagemSucesso()
         {
-            yield return new WaitForSeconds(1.0f);
-            RepescagemManager.CheckAllRepescagensComplete();
-        }
-
-        IEnumerator ReiniciarRepescagem()
-        {
-            var op = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-            
-            while (op.isDone == false)
+            const string nameScene = "faserepescagem";
+            var li = Instantiate(loading);
+            var load = li.GetComponent<Canvas>();
+            if (load != null)
             {
+                load.renderMode = RenderMode.ScreenSpaceCamera;
+                load.worldCamera = Camera.main;
+                load.sortingOrder = 10;
+            }
+            li.SetActive(true);
+            AsyncOperation opt = SceneManager.LoadSceneAsync(nameScene);
+            opt.allowSceneActivation = false;
+            Slider prBar = li.GetComponentInChildren<Slider>();
+
+            while (opt.progress < 0.9f)
+            {
+                float p = opt.progress / 0.9f;
+                if (prBar != null)
+                    prBar.value = Mathf.Lerp(prBar.value, p, Time.deltaTime * 5f);
                 yield return null;
             }
-            yield return new WaitForSeconds(1.0f);
+            if (prBar != null)
+            {
+                while (prBar.value < 1f)
+                {
+                    prBar.value = Mathf.Lerp(prBar.value, 1f, Time.deltaTime * 5f);
+                    if (prBar.value >= 0.99f) prBar.value = 1f;
+                    yield return null;
+                }
+            }
+            yield return new WaitForSecondsRealtime(1f);
+            opt.allowSceneActivation = true;
+        }
+
+        private void TelaDerrota()
+        {
+            var derrotaT = Instantiate(this.derrota);
+            var canvas = derrotaT.GetComponent<Canvas>();
+            if (canvas != null)
+            {
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = Camera.main;
+                canvas.sortingOrder = 5;
+            }
+            var btn = derrotaT.GetComponentInChildren<Button>();
+            if (btn)
+            {
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() =>
+                {
+                    Destroy(derrotaT.gameObject);
+                    StartCoroutine(ReiniciarRepescagem());
+                });
+            }
+        }
+        IEnumerator ReiniciarRepescagem()
+        {
+
+            string nameScene = SceneManager.GetActiveScene().name;
+            var li = Instantiate(loading);
+            var load = li.GetComponent<Canvas>();
+            if (load != null)
+            {
+                load.renderMode = RenderMode.ScreenSpaceCamera;
+                load.worldCamera = Camera.main;
+                load.sortingOrder = 10;
+            }
+            li.SetActive(true);
+            AsyncOperation opt = SceneManager.LoadSceneAsync(nameScene);
+            opt.allowSceneActivation = false;
+            Slider prBar = li.GetComponentInChildren<Slider>();
+
+            while (opt.progress < 0.9f)
+            {
+                float p = opt.progress / 0.9f;
+                if (prBar != null)
+                    prBar.value = Mathf.Lerp(prBar.value, p, Time.deltaTime * 5f);
+                yield return null;
+            }
+            if (prBar != null)
+            {
+                while (prBar.value < 1f)
+                {
+                    prBar.value = Mathf.Lerp(prBar.value, 1f, Time.deltaTime * 5f);
+                    if (prBar.value >= 0.99f) prBar.value = 1f;
+                    yield return null;
+                }
+            }
+            yield return new WaitForSecondsRealtime(1f);
+            opt.allowSceneActivation = true;
         }
 
         void OnReset()

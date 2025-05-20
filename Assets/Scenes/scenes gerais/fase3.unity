@@ -174,8 +174,10 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 56cc85207bbe03a4d8d84af9b38be836, type: 3}
   pergunta1Prefab: {fileID: 3736304886945475647, guid: 5ef9410371b93b0479a5fa7c051cd8c2, type: 3}
   pergunta2Prefab: {fileID: 628913696984513271, guid: d9ce6555f7043e5418234b9df4653d3b, type: 3}
-  vitoriaPrefab: {fileID: 1883391141394169580, guid: 09b4dcd12e9ebd9418e5508f2da45155, type: 3}
-  derrotaPrefab: {fileID: 3182707776592639926, guid: bbee22fa29ecbbd4994cc38137d6b89f, type: 3}
+  vitoriaPrefab: {fileID: 1883391141394169580, guid: 6710c27a9bb99f2468cd4ff22009f8e7, type: 3}
+  derrotaPrefab: {fileID: 3182707776592639926, guid: 9668277db1e40a64eabb538a1ed6d240, type: 3}
+  pistaPrefab: {fileID: 1149841232130745503, guid: f4e72a830b9f4524d919d70b1ce93478, type: 3}
+  debug: 0
 --- !u!1 &1669369563
 GameObject:
   m_ObjectHideFlags: 0

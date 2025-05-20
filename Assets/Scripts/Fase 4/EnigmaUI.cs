@@ -72,7 +72,7 @@ namespace Fase_4
                 
                 if (UiGameObject == null)
                 {
-                    Debug.LogError("UiGameObject n�o encontrado!");
+                    Debug.LogError("UiGameObject não encontrado!");
                     return;
                 }
                 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fase_5;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -50,10 +51,15 @@ namespace Fase_2
         private int totalQuestions, totalAnswered, totalCorrect;
         [SerializeField] private TextMeshProUGUI credencial;
         private bool isRepescagemMode;
-
+        [SerializeField] private bool debug = false;
+        private readonly int _thisLevel = 1;
         void Awake()
         {
-            // Quebra qualquer ToggleGroup herdado
+            isRepescagemMode = RepescagemManager.IsRepescagemMode(_thisLevel);
+            if (debug)
+            {
+                isRepescagemMode = debug;
+            }
             foreach (var tog in optionToggles)
                 tog.group = null;
 
@@ -179,13 +185,8 @@ namespace Fase_2
 
         private void OnTempoEsgotado()
         {
-            // Se o tempo acabou, o jogador perde a fase automaticamente
             Debug.Log("Tempo esgotado! Jogador perdeu a fase.");
-
-            // Define uma taxa de acertos de 0% para garantir a derrota
             Fase2Manager.statusFase2 = 0f;
-
-            // Mostra a tela de resultado com mensagem de derrota
             ShowTempoEsgotadoResult();
         }
 

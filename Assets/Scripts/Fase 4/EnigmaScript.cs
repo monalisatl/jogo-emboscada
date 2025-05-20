@@ -17,7 +17,7 @@ namespace Fase_4
         [SerializeField] private float tempoTotal = 30f;
         [SerializeField] private Image timerImage;
         [SerializeField] private GameObject timeOut;
-
+        [SerializeField] private bool debug;
         private float _tempoRestante;
         private bool _timerAtivo = false;
         private bool _tempoEsgotado = false;
@@ -36,9 +36,14 @@ namespace Fase_4
         public AudioClip prologoClip;
         public AudioSource audioSource;
         public Button[] botoesEnigmas;
-        private bool isRepescagemMode;
-        private const int thisLevel = 4;
-
+        public static bool isRepescagemMode = false;
+        private const int thisLevel = 3;
+        private List<Image> _timerImages = new List<Image>();
+        [Header("Repescagem")]
+        [SerializeField] private GameObject VitoriaPrefab;
+        [SerializeField] private GameObject DerrotaPrefab;
+        [SerializeField] private GameObject loadPrefab;
+        [SerializeField] private GameObject dicaPrefab;
         private void Awake()
         {
             if (instance == null)
@@ -51,9 +56,8 @@ namespace Fase_4
                 Destroy(gameObject);
                 return;
             }
-
-            // Detecta se estamos em repescagem deste nível
-            isRepescagemMode = RepescagemManager.IsRepescagemMode(thisLevel);
+            if (debug)
+                isRepescagemMode = debug; 
         }
 
         private void Start()
@@ -73,7 +77,15 @@ namespace Fase_4
                 );
             }
         }
-
+        private void AtualizarListaTimers()
+        {
+            _timerImages.Clear();
+            foreach (var go in GameObject.FindGameObjectsWithTag("Timer"))
+            {
+                var img = go.GetComponent<Image>();
+                if (img != null) _timerImages.Add(img);
+            }
+        }
         private void Update()
         {
             if (_timerAtivo && !_tempoEsgotado)
@@ -81,7 +93,13 @@ namespace Fase_4
                 _tempoRestante -= Time.deltaTime;
                 float fill = _tempoRestante / tempoTotal;
                 timerImage.fillAmount = fill;
-
+                if(_timerImages.Contains(null))
+                    AtualizarListaTimers();
+                foreach (var img in _timerImages)
+                {
+                    if (img != null) 
+                        img.fillAmount = fill;
+                }
                 if (_tempoRestante <= 0)
                 {
                     _tempoRestante = 0;
@@ -97,12 +115,14 @@ namespace Fase_4
         public void SelecionarEnigma(int index, Button origemBtn)
         {
             if (_tempoEsgotado) return;
-
-            var go = Instantiate(puzzleUIPrefab, parentCanvas, false);
+            
+            var go = Instantiate(puzzleUIPrefab, null, false);
+            AtualizarListaTimers();
             var cv = go.GetComponent<Canvas>();
+            
             cv.renderMode = RenderMode.ScreenSpaceCamera;
             cv.worldCamera = Camera.main;
-            cv.sortingOrder = 3;
+            cv.sortingOrder = 6;
             go.transform.SetAsLastSibling();
 
             var ui = go.GetComponentInChildren<EnigmaUI>();
@@ -113,7 +133,7 @@ namespace Fase_4
         {
             totalRespondidos++;
             if (acertou) respostasCorretas++;
-
+            AtualizarListaTimers();
             if (totalRespondidos >= enigmas.Count)
             {
                 _timerAtivo = false;
@@ -129,11 +149,7 @@ namespace Fase_4
             
             if (isRepescagemMode)
             {
-                PlayerPrefs.SetInt($"repescagem{thisLevel}", 0);
-                PlayerPrefs.SetInt("nivel3", 1);
-                PlayerPrefs.Save();
-                RepescagemManager.Clear();
-                SceneManager.LoadScene("faserepescagem");
+                RodarVitoria();
             }
             else
             { SaveGame(true);
@@ -142,13 +158,86 @@ namespace Fase_4
             }
         }
 
+        public void RodarVitoria()
+        {
+            var tmp = Instantiate(VitoriaPrefab);
+            tmp.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+            tmp.GetComponent<Canvas>().worldCamera = Camera.main;
+            tmp.GetComponent<Canvas>().sortingOrder = 4;
+            var btn = tmp.GetComponentInChildren<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() =>
+            {
+                Destroy(tmp);
+                tmp = Instantiate(dicaPrefab);
+            });
+                btn = tmp.GetComponentInChildren<Button>();
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() =>
+                {
+                    Destroy(tmp);
+                    StartCoroutine(CarregarVitoria());
+                });
+        }
+
+        private IEnumerator CarregarVitoria()
+        {
+            PlayerPrefs.SetInt($"repescagem{thisLevel}", 0);
+            PlayerPrefs.SetInt("nivel3", 1);
+            PlayerPrefs.Save();
+            RepescagemManager.Clear();
+            isRepescagemMode = false;
+            var loadingPage = Instantiate(loadPrefab);
+            var slider = loadingPage.GetComponentInChildren<Slider>();
+            var op = SceneManager.LoadSceneAsync("faserepescagem");
+
+            while (op is { isDone: false })
+            {
+                if (slider is not null)
+                {
+                    slider.value = op.progress;
+                }
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(1.0f);
+        }
+        public void RodarDerrota()
+        {
+            var tmp = Instantiate(DerrotaPrefab);
+            tmp.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+            tmp.GetComponent<Canvas>().worldCamera = Camera.main;
+            tmp.GetComponent<Canvas>().sortingOrder = 4;
+            var btn = tmp.GetComponentInChildren<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() =>
+            {
+                Destroy(tmp);
+                StartCoroutine(CarregarDerrota());
+            });
+
+        }
+
+        private IEnumerator CarregarDerrota()
+        {
+            var loadingPage = Instantiate(loadPrefab);
+            var slider = loadingPage.GetComponentInChildren<Slider>();
+            var op = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+
+            while (op is { isDone: false })
+            {
+                if (slider is not null)
+                {
+                    slider.value = op.progress;
+                }
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(1.0f);
+        }
         private void HandleLose()
         {
-
             if (isRepescagemMode)
             {
-                // Reinicia a própria cena até passar
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                RodarDerrota();
             }
             else
             { SaveGame(false);

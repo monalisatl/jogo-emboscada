@@ -4,18 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-
+using Fase_2;
+using Fase_3;
+using Fase_4;
 namespace Fase_5
 {
     public class Fase5Comeco : MonoBehaviour
     {
-        // Só precisamos controlar os níveis 2, 3 e 4 para repescagem
-        public static bool[] Repescagens = new bool[3];
-
+        public static bool[] Repescagens = {false, false, false};
+        [SerializeField] private GameObject pistas;
+        [SerializeField] private GameObject[] statusFase = new GameObject[3];
         [SerializeField] private Button[] nivelButtons = new Button[3];
         [SerializeField] private Image[] imagensbutton = new Image[3];
         [FormerlySerializedAs("Loadpage")] [SerializeField] private GameObject loadpage;
-
+        
         [Header("Informações do Jogador")] [SerializeField]
         private TextMeshProUGUI credencial;
 
@@ -28,21 +30,21 @@ namespace Fase_5
             Debug.Log($"Fase 4 (nivel3): {PlayerPrefs.GetInt("nivel3", 0)}");
             // Carrega dados do jogador
             LoadName();
-
+            VerificarPistas();
             // Carrega estado das repescagens
             LoadRepescagemStatus();
-
+            ClosePistas();
             // Configura os botões baseado nas repescagens necessárias
             AtualizarBotoesRepescagem();
 
             // Configura o prefab de loading, se necessário
-            if (RepescagemManager.LoadingPagePrefab == null && loadpage != null)
+            if (!RepescagemManager.LoadingPagePrefab && loadpage)
             {
                 RepescagemManager.SetLoadingPagePrefab(loadpage);
             }
-        }
 
-        // Verifica se todas as repescagens necessárias foram completadas
+            CheckAllRepescagensComplete();
+        }
         public void CheckAllRepescagensComplete()
         {
             bool todasCompletadas = true;
@@ -58,13 +60,7 @@ namespace Fase_5
 
             if (todasCompletadas)
             {
-                // Todas as repescagens foram completadas, seguir para fase 5
                 StartCoroutine(LoadFase5());
-            }
-            else
-            {
-                // Ainda há repescagens pendentes, recarregar tela de repescagem
-                StartCoroutine(ReturnToRepescagemScreen());
             }
         }
 
@@ -111,7 +107,7 @@ namespace Fase_5
 
         private IEnumerator ReturnToRepescagemScreen()
         {
-            // Verifica se o prefab de loading existe
+            
             if (loadpage == null)
             {
                 Debug.LogError("Prefab de Loading não configurado!");
@@ -183,16 +179,13 @@ namespace Fase_5
 
         // Carrega o status de repescagem para os níveis 2, 3 e 4
         private void LoadRepescagemStatus()
-        {
+        {   Debug.Log($"Tamanho de repescagem: {Repescagens.Length}");
             for (int i = 0; i < 3; i++)
             {
                 int numeroNivel = i + 1;
-
-                // Carrega o status do nível
+                
                 bool ganhouFase = PlayerPrefs.GetInt($"nivel{numeroNivel}", 0) == 1;
                 Repescagens[i] = !ganhouFase;
-
-                // Se estiver no primeiro carregamento, salva o status
                 if (PlayerPrefs.GetInt("repescagem", 0) == 0)
                 {
                     PlayerPrefs.SetInt($"repescagem{numeroNivel}", !ganhouFase ? 1 : 0);
@@ -263,12 +256,15 @@ namespace Fase_5
             {
                 case 1:
                     name = "18_fase2_minigame";
+                    ChronoUIController._isRepescagem = true;
                     break;
                 case 2:
                     name = "fase3";
+                    Fase3Manager._isRepescagemMode = true;
                     break;
                 case 3:
                     name = "fase4.1";
+                    EnigmaScript.isRepescagemMode = true;
                     break;
             }
             if (loadpage == null)
@@ -339,5 +335,27 @@ namespace Fase_5
                 Destroy(loadI);
             }
         }
+
+        public void OpenPistas()
+        {
+            pistas.gameObject.SetActive(true);
+        }
+        
+        public void ClosePistas()
+        {
+            pistas.gameObject.SetActive(false);
+        }
+
+        private void VerificarPistas()
+        {
+            for (int i = 1; i < 4; i++)
+            {
+                if (PlayerPrefs.GetInt($"nivel{i}", 0) == 1)
+                {
+                    statusFase[i-1].gameObject.SetActive(false);
+                }
+            }
+        }
     }
+    
 }

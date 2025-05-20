@@ -1749,6 +1749,12 @@ MonoBehaviour:
   timeoutButton: {fileID: 7258106263847304147}
   selectedColor: {r: 0.8679245, g: 0.4773585, b: 0, a: 1}
   credencial: {fileID: 2391945175168950339}
+  vitoria: {fileID: 6129148451045567819, guid: e47c6b2aebbf59f43bef652dd3428617, type: 3}
+  derrota: {fileID: 3182707776592639926, guid: f039d093799b55b478ed7d6bedf1044e, type: 3}
+  pista: {fileID: 6472050143455741220, guid: 618613f4811e32c49a48019e5dca7af5, type: 3}
+  loading: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
+  debug: 0
+  _isRepescagem: 0
 --- !u!1 &2522069933308266302
 GameObject:
   m_ObjectHideFlags: 0
