@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42369c678a84a79469c5ee5551144440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ui: {fileID: 0}
   prologo: {fileID: 4804634507511708566}
   texto: " Em um futuro pr\xF3ximo, Lide City, localizada na Am\xE9rica Noticiosa,
     vive uma crise causada pelo processo de desinforma\xE7\xE3o. Um hacker se infiltrou
@@ -51,6 +52,8 @@ MonoBehaviour:
     comunica\xE7\xE3o, permitindo a dissemina\xE7\xE3o incontrol\xE1vel de desinforma\xE7\xE3o.
     As redes sociais e a m\xEDdia agora est\xE3o tomadas por informa\xE7\xF5es forjadas,
     teorias da conspira\xE7\xE3o e inverdades."
+  prologoClip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &218395386721741536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,10 +1034,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4430564540819241992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517576, y: -0.00015258789}
-  m_SizeDelta: {x: 1705.2, y: 2802.1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8733991736351229898
 CanvasRenderer:

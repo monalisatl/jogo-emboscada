@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class niveisfase1 : MonoBehaviour {
@@ -9,7 +10,10 @@ public class niveisfase1 : MonoBehaviour {
     public GameObject[] panels;
     public GameObject painel_atual;
     [SerializeField] private GameObject button;
+    [SerializeField] private TextMeshProUGUI credencial;
+    [SerializeField] private TextMeshProUGUI playerName;
     void Start() {
+        SaveFase();
         tutoriais = new Queue<GameObject>();
         button = GameObject.Find("passar_tutorial");
         if (panels.Length == 0) {
@@ -29,10 +33,7 @@ public class niveisfase1 : MonoBehaviour {
         Debug.Log("Exibindo painel inicial: " + painel_atual.name);
         Debug.Log("Total de tutoriais: " + tutoriais.Count);
     }
-
-    void Update() {
-        
-    }
+    
 
     public void ExibirProximoTutorial() {
         Debug.Log("Tentando exibir o próximo tutorial.");
@@ -50,5 +51,29 @@ public class niveisfase1 : MonoBehaviour {
         }
     }
 
+    private void SaveFase(){
+        if(EmboscadaController.gameData != null){
+            if (PlayerPrefs.HasKey("playerName"))
+            {
+                EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "Jogador");
+            }
+            else
+            {
+                Debug.LogError("Nenhum nome de jogador emboscada.");
+                EmboscadaController.gameData.playerName = "Jogador";
+            }
+                
+            EmboscadaController.gameData.currentLevel = 8;
+            
+            EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
+            PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);
+            PlayerPrefs.Save();
+            playerName.text = EmboscadaController.gameData.playerName;
+            credencial.text = EmboscadaController.gameData.classificacao.ToString();
+        }
+        else{
+            Debug.LogError("gameData é nulo?????");
+        }
+    }
 
 }

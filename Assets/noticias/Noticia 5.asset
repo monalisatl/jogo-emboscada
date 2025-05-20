@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d544028c62203468d95a0d63cc2122, type: 3}
+  m_Name: Noticia 5
+  m_EditorClassIdentifier: 
+  titulo: "Saiba tudo sobre o \u201Cnovo experimento global\u201D disfar\xE7ado de
+    inova\xE7\xE3o tecnol\xF3gica "
+  data: 'publicada em: 21/05/2030'
+  conteudo: "Relatos indicam que uma nova tecnologia, recentemente testada em algumas
+    cidades, \xE9 capaz de emitir ondas de frequ\xEAncia que alteram o comportamento
+    humano. Fontes an\xF4nimas afirmam que essas ondas s\xE3o disparadas para produzir
+    passividade e aceita\xE7\xE3o das pol\xEDticas governamentais, impedindo a popula\xE7\xE3o
+    de questionar decis\xF5es importantes."
+  linkFonte: "\U0001F5A5\uFE0F Revolu\xE7\xE3o secreta - www.revolu\xE7\xE3osecreta.com  "
+  opcoesResposta:
+  - texto: FONTES OFICIAIS
+    isCorreto: 0
+  - texto: "DADOS T\xC9CNICOS"
+    isCorreto: 0
+  - texto: "APURA\xC7\xC3O JORNAL\xCDSTICA"
+    isCorreto: 0
+  - texto: MEDO INFUNDADO
+    isCorreto: 1
+  - texto: LINGUAGEM EXAGERADA
+    isCorreto: 1
+  - texto: "DECLARA\xC7\xD5ES SEM PROVAS"
+    isCorreto: 1

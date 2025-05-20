@@ -18,23 +18,29 @@ EditorBuildSettings:
     path: Assets/Scenes/scenes gerais/13_fase1_2minigame.unity
     guid: bf0958b8b53a7bd4ab638776725dfc3b
   - enabled: 1
-    path: Assets/Scenes/scenes gerais/18_fase2_minigame.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/scenes gerais/20_fase2_2minigame.unity
-    guid: 9e0b6e98591a3b1458d5c68fcf34ca29
+    path: "Assets/Scenes/scenes gerais/fase3_1afirma\xE7ao.unity"
+    guid: 0d8c2ac80706bf0448393d63fd3f84f2
   - enabled: 1
     path: Assets/Scenes/scenes gerais/fase4.unity
-    guid: d264dfdb3527d7944af699106061f358
-  - enabled: 1
-    path: Assets/Scenes/scenes gerais/25_fase3_minigame.unity
-    guid: 756e4f879ba50ff489d6a27b0b05b778
-  - enabled: 1
-    path: Assets/Scenes/scenes gerais/fase4.1.unity
-    guid: 313daff88dedf6a4d947c349aaf3191f
+    guid: ed18df049edc1664e83949f9df7a39be
   - enabled: 1
     path: Assets/Scenes/scenes gerais/fase5.unity
     guid: e3487ce2973e3a24a8fbcf21088a6519
+  - enabled: 1
+    path: Assets/Scenes/scenes gerais/fase5.1_culpado.unity
+    guid: caa58fd26749a184cbc6acfc64513fa6
+  - enabled: 1
+    path: Assets/Scenes/scenes gerais/Repescagem/faserepescagem.unity
+    guid: d264dfdb3527d7944af699106061f358
+  - enabled: 1
+    path: Assets/Scenes/scenes gerais/fase5_video.unity
+    guid: 26b11097b8ad389458d1e92d8ea58e1a
+  - enabled: 1
+    path: Assets/Scenes/scenes gerais/video_FINAL.unity
+    guid: 01b30124b48db9643809133d160fdf7f
+  - enabled: 1
+    path: Assets/Scenes/scenes gerais/FINAL_certificado.unity
+    guid: 8252e39c7e0271d43ae9a5a374a02ec7
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: f380d6c27cf462445b527f7a5fa42750, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 7035e338560e35242aa9736aaf814f8c, type: 2}

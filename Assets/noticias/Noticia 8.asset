@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d544028c62203468d95a0d63cc2122, type: 3}
+  m_Name: Noticia 8
+  m_EditorClassIdentifier: 
+  titulo: "Esc\xE2ndalo! Novo ministro da educa\xE7\xE3o faz parte de seita secreta "
+  data: 'publicada em: 29/05/2030'
+  conteudo: "Segundo fontes confi\xE1veis, o rec\xE9m-nomeado ministro da educa\xE7\xE3o
+    faz parte de uma seita secreta que busca controlar e influenciar a opini\xE3o
+    p\xFAblica. Atrav\xE9s de rituais, eles querem conquistar mais poder pol\xEDtico
+    e aquisi\xE7\xF5es financeiras. As autoridades alegam que est\xE3o investigando
+    o caso. "
+  linkFonte: "\U0001F5A5\uFE0F Verdades n\xE3o ditas - www.verdadesn\xE3oditas.com  "
+  opcoesResposta:
+  - texto: "INFORMA\xC7\xC3O CONFI\xC1VEL"
+    isCorreto: 0
+  - texto: "MANIPULA\xC7\xC3O DE MEDO"
+    isCorreto: 1
+  - texto: "DADOS N\xC3O CONFIRMADOS"
+    isCorreto: 1
+  - texto: "COMPROVA\xC7\xC3O POR DADOS"
+    isCorreto: 0
+  - texto: LINGUAGEM INFORMATIVA
+    isCorreto: 0
+  - texto: TEORIA SEM FUNDAMENTO
+    isCorreto: 1
