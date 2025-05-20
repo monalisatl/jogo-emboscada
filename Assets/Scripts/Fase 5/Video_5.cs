@@ -18,7 +18,7 @@ namespace Fase_5
         private void Start()
         {
             // Configurar o evento para quando o vídeo terminar
-            if (videoPlayer != null)
+            if (videoPlayer)
             {
                 videoPlayer.loopPointReached += OnVideoFinished;
                 videoPlayer.Play();
