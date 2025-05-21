@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ public class playScript : MonoBehaviour{
     
     [SerializeField] Button playButton;
     [SerializeField] private GameObject load;
+    [SerializeField] private TextMeshProUGUI botaoinicio;
 
     private void Start()
     {
@@ -35,6 +37,8 @@ public class playScript : MonoBehaviour{
         else
         {
                  playButton.interactable = true;
+                 botaoinicio.text = "Novo Jogo";
+                 
         }
     }
 

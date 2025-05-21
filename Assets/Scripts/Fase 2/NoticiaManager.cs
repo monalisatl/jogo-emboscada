@@ -189,17 +189,7 @@ namespace Fase_2
             Fase2Manager.statusFase2 = 0f;
             ShowTempoEsgotadoResult();
         }
-
-        private IEnumerator RestartFase()
-        {
-            var op = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-            while (op.isDone == false)
-            {
-                yield return null;
-            }
-
-            yield return new WaitForSecondsRealtime(0.5f);
-        }
+        
 
         private void ShowTempoEsgotadoResult()
         {
@@ -209,23 +199,12 @@ namespace Fase_2
             openPanel.SetActive(false);
             resultPanel.SetActive(true);
 
-            if (Fase2Manager.isRepescagemMode)
-            {
-                StartCoroutine(RestartFase());
-            }
-            else
-            {
                 var inst = Instantiate(prefabInstructions, null);
                 var canvas = inst.GetComponent<Canvas>();
                 canvas.renderMode = RenderMode.ScreenSpaceCamera;
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
-            }
-
-            if (!Fase2Manager.isRepescagemMode)
-            {
                 Destroy(me);
-            }
         }
 
         void ShowNextQuestion()
@@ -236,18 +215,15 @@ namespace Fase_2
                 ShowResult();
                 return;
             }
-
-            // Reinicia o cronômetro para a próxima pergunta
-            _tempoRestante = tempoLimite;
-            _cronometroAtivo = true;
-
-            // Preenche closed view
+            
+            // _tempoRestante = tempoLimite;
+            // _cronometroAtivo = true;
+            
             closedTitulo.text = currentNoticia.titulo;
             closedData.text = currentNoticia.data;
             closedLink.text = currentNoticia.linkFonte;
             closedConteudo.text = currentNoticia.conteudo;
-
-            // Reseta toggles e cores
+            
             for (int i = 0; i < optionToggles.Length; i++)
             {
                 if (i < currentNoticia.opcoesResposta.Count)
@@ -269,29 +245,23 @@ namespace Fase_2
                     optionToggles[i].gameObject.SetActive(false);
                 }
             }
-
-            // Preenche open view
+            
             openTitulo.text = currentNoticia.titulo;
             openData.text = currentNoticia.data;
             openConteudo.text = currentNoticia.conteudo;
             openLink.text = currentNoticia.linkFonte;
-
-            // desabilita o confirmar até o jogador escolher 3 novamente
+            
             confirmButton.interactable = false;
         }
 
         void OnOpen()
         {
             openPanel.SetActive(true);
-            // Pausa o cronômetro enquanto visualiza os detalhes
-            _cronometroAtivo = false;
         }
 
         void OnClose()
         {
             openPanel.SetActive(false);
-            // Retoma o cronômetro quando fecha os detalhes
-            _cronometroAtivo = true;
         }
 
         void OnConfirm()
@@ -334,24 +304,13 @@ namespace Fase_2
             }
             else
             {
-                if (Fase2Manager.isRepescagemMode)
-                {
-                    StartCoroutine(RestartFase());
-                }
-                else
-                {
-                    var inst = Instantiate(prefabInstructions, null);
-                    var canvas = inst.GetComponent<Canvas>();
-                    canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                    canvas.worldCamera = Camera.main;
-                    canvas.sortingOrder = 5;
-                }
+                var inst = Instantiate(prefabInstructions, null);
+                var canvas = inst.GetComponent<Canvas>();
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = Camera.main;
+                canvas.sortingOrder = 5;
             }
-
-            if (!Fase2Manager.isRepescagemMode)
-            {
-                Destroy(me);
-            }
+            Destroy(me);
         }
     }
 }

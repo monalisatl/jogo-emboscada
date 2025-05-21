@@ -257,6 +257,7 @@ namespace Fase_5
                 case 1:
                     name = "18_fase2_minigame";
                     ChronoUIController._isRepescagem = true;
+                    Fase2Manager.ResetRepescagem();
                     break;
                 case 2:
                     name = "fase3";

@@ -237,7 +237,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1013928752583091423}
         m_TargetAssemblyTypeName: playScript, Assembly-CSharp
-        m_MethodName: NewGame
+        m_MethodName: ContinueGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 118.45
+  m_fontSize: 98.6
   m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playButton: {fileID: 4501988271560103553}
-  load: {fileID: 0}
+  load: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
 --- !u!1 &7927338228102453180
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +836,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 113.75
+  m_fontSize: 108.3
   m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 1
