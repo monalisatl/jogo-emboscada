@@ -32,11 +32,15 @@ namespace Fase_2
             }
             else
             {
-                // Se já existe instância, mas estamos em repescagem, precisamos recriar as perguntas
-                if (isRepescagemMode && perguntasSelecionadas == null)
+                if (isRepescagemMode)
                 {
-                    instance.ResetState();
-                    instance.SelecionarNoticias();
+                    if (perguntasSelecionadas == null || perguntasSelecionadas.Count == 0)
+                    {
+                        instance.ResetState();
+                        instance.SelecionarNoticias();
+                        Debug.Log("Recriadas perguntas para repescagem");
+                    }
+                    
                 }
                 Destroy(gameObject);
             }
@@ -48,7 +52,14 @@ namespace Fase_2
             perguntasSelecionadas = null;
             currentIndex = 0;
         }
-        
+        public static void ResetRepescagem()
+        {
+            perguntasSelecionadas = null;
+            statusFase2 = 0;
+            isRepescagemMode = true;
+            PlayerPrefs.SetInt("repescagem1", 1);
+            PlayerPrefs.Save();
+        }
         // Sorteia sem repetição
         private void SelecionarNoticias()
         {
@@ -61,8 +72,6 @@ namespace Fase_2
             
             var disponiveis = new List<Noticia>(poolNoticias);
             perguntasSelecionadas = new List<Noticia>();
-            
-            // Garantir que não tentamos selecionar mais perguntas do que existem
             int qtdReal = Mathf.Min(quantidadePerguntas, disponiveis.Count);
             
             for (int i = 0; i < qtdReal; i++)

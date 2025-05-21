@@ -47,9 +47,10 @@ namespace Fase_2
         private int nextChronoIndex = 1;
         private Color defaultButtonColor;
         [SerializeField] private TextMeshProUGUI credencial;
-        
-        [Header("Repescagem")]
-        [SerializeField] private GameObject vitoria;
+
+        [Header("Repescagem")] [SerializeField]
+        private GameObject vitoria;
+
         [SerializeField] private GameObject derrota;
         [SerializeField] private GameObject pista;
         [SerializeField] private GameObject loading;
@@ -64,7 +65,7 @@ namespace Fase_2
             {
                 _isRepescagem = debug;
             }
-            
+
             if (EmboscadaController.gameData == null)
             {
                 EmboscadaController.gameData = new EmboscadaController.GameData();
@@ -193,11 +194,18 @@ namespace Fase_2
             {
                 TelaDerrota();
             }
+
             OnTimeoutContinue();
         }
 
         private void OnTimeoutContinue()
         {
+            if (!_isRepescagem)
+            {
+                PlayerPrefs.SetInt("repescagem1", 1);
+                PlayerPrefs.Save();
+                Fase2Manager.ResetRepescagem();
+            }
             SaveFase(false);
             MainManager.indiceCanvainicial = 11;
             SceneManager.LoadSceneAsync("main");
@@ -263,10 +271,12 @@ namespace Fase_2
 
         void OnContinue()
         {
+            bool verificaRepescagem = PlayerPrefs.GetInt("repescagem1", 0) == 1;
             float faseQuizOk = Fase2Manager.statusFase2;
             float ordenacaoPct = VerificarResultado();
             bool fase2Ok = ((faseQuizOk + ordenacaoPct) / 2 >= 50f);
-            if (_isRepescagem)
+
+            if (_isRepescagem || verificaRepescagem)
             {
                 if (fase2Ok)
                 {
@@ -280,7 +290,13 @@ namespace Fase_2
             else
             {
                 SaveFase(fase2Ok);
-                // Comportamento normal do jogo
+                if (!fase2Ok)
+                {
+                    PlayerPrefs.SetInt("repescagem1", 1);
+                    PlayerPrefs.Save();
+                    Fase2Manager.ResetRepescagem();
+                }
+                
                 if (fase2Ok)
                 {
                     MainManager.indiceCanvainicial = 21;
@@ -309,6 +325,7 @@ namespace Fase_2
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
             }
+
             var btn = vitoria.GetComponentInChildren<Button>();
             if (btn)
             {
@@ -320,7 +337,7 @@ namespace Fase_2
                 });
             }
         }
-        
+
         private void CarregarPista()
         {
             var pista = Instantiate(this.pista);
@@ -331,6 +348,7 @@ namespace Fase_2
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
             }
+
             var btn = pista.GetComponentInChildren<Button>();
             if (btn)
             {
@@ -342,6 +360,7 @@ namespace Fase_2
                 });
             }
         }
+
         IEnumerator MostrarMensagemSucesso()
         {
             const string nameScene = "faserepescagem";
@@ -353,6 +372,7 @@ namespace Fase_2
                 load.worldCamera = Camera.main;
                 load.sortingOrder = 10;
             }
+
             li.SetActive(true);
             AsyncOperation opt = SceneManager.LoadSceneAsync(nameScene);
             opt.allowSceneActivation = false;
@@ -365,6 +385,7 @@ namespace Fase_2
                     prBar.value = Mathf.Lerp(prBar.value, p, Time.deltaTime * 5f);
                 yield return null;
             }
+
             if (prBar != null)
             {
                 while (prBar.value < 1f)
@@ -374,20 +395,22 @@ namespace Fase_2
                     yield return null;
                 }
             }
+
             yield return new WaitForSecondsRealtime(1f);
             opt.allowSceneActivation = true;
         }
 
         private void TelaDerrota()
         {
-            var derrotaT = Instantiate(this.derrota);
+            var derrotaT = Instantiate(derrota);
             var canvas = derrotaT.GetComponent<Canvas>();
-            if (canvas != null)
+            if (canvas)
             {
                 canvas.renderMode = RenderMode.ScreenSpaceCamera;
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
             }
+
             var btn = derrotaT.GetComponentInChildren<Button>();
             if (btn)
             {
@@ -399,9 +422,12 @@ namespace Fase_2
                 });
             }
         }
-        IEnumerator ReiniciarRepescagem()
-        {
 
+        IEnumerator ReiniciarRepescagem()
+        {   
+            Fase2Manager.perguntasSelecionadas = null;
+            Fase2Manager.statusFase2 = 0;
+            
             string nameScene = SceneManager.GetActiveScene().name;
             var li = Instantiate(loading);
             var load = li.GetComponent<Canvas>();
@@ -411,6 +437,7 @@ namespace Fase_2
                 load.worldCamera = Camera.main;
                 load.sortingOrder = 10;
             }
+
             li.SetActive(true);
             AsyncOperation opt = SceneManager.LoadSceneAsync(nameScene);
             opt.allowSceneActivation = false;
@@ -423,6 +450,7 @@ namespace Fase_2
                     prBar.value = Mathf.Lerp(prBar.value, p, Time.deltaTime * 5f);
                 yield return null;
             }
+
             if (prBar != null)
             {
                 while (prBar.value < 1f)
@@ -432,6 +460,7 @@ namespace Fase_2
                     yield return null;
                 }
             }
+
             yield return new WaitForSecondsRealtime(1f);
             opt.allowSceneActivation = true;
         }
