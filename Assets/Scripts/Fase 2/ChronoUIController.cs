@@ -248,7 +248,6 @@ namespace Fase_2
 
         void OnChronoComplete()
         {
-            // Pausa o cronômetro quando completa a ordenação
             _cronometroAtivo = false;
 
             feedbackText.text = "Ordenação completa!";
@@ -257,17 +256,51 @@ namespace Fase_2
 
         private float VerificarResultado()
         {
-            List<Noticia> correta = listaNoticias
-                .OrderBy(n => n.FormaterData)
+            var gruposDataCorreta = listaNoticias
+                .GroupBy(n => n.FormaterData)
+                .OrderBy(g => g.Key)
                 .ToList();
+            var gruposSelecionados = new Dictionary<DateTime, List<Noticia>>();
+    
+            foreach (var noticia in ordemSelecionada)
+            {
+                if (!gruposSelecionados.ContainsKey(noticia.FormaterData))
+                    gruposSelecionados[noticia.FormaterData] = new List<Noticia>();
+            
+                gruposSelecionados[noticia.FormaterData].Add(noticia);
+            }
             int acertos = 0;
-            for (int i = 0; i < ordemSelecionada.Count; i++)
-                if (ordemSelecionada[i] == correta[i])
-                    acertos++;
+            int posicaoAtual = 0;
+            
+            foreach (var grupo in gruposDataCorreta)
+            {
+                DateTime data = grupo.Key;
+                int tamanhoGrupo = grupo.Count();
+                if (gruposSelecionados.ContainsKey(data) && 
+                    gruposSelecionados[data].Count == tamanhoGrupo)
+                {
+                    bool grupoCorreto = true;
+                    for (int i = 0; i < tamanhoGrupo; i++)
+                    {
+                        if (!grupo.Contains(ordemSelecionada[posicaoAtual + i]))
+                        {
+                            grupoCorreto = false;
+                            break;
+                        }
+                    }
+            
+                    if (grupoCorreto)
+                        acertos += tamanhoGrupo;
+                }
+        
+                posicaoAtual += tamanhoGrupo;
+            }
+    
             float percent = (float)acertos / listaNoticias.Count * 100f;
             Debug.Log($"Ordenação: {acertos}/{listaNoticias.Count} → {percent}%");
             return percent;
         }
+
 
         void OnContinue()
         {
