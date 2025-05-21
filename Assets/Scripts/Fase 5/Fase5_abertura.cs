@@ -37,7 +37,7 @@ namespace Fase_5
         {
             int fasesAprovadas = 0;
             EmboscadaController.gameData ??= new EmboscadaController.GameData();
-            for (int i = 0; i < 5; i++)
+            for (int i = 1; i < 4; i++)
             {
                 EmboscadaController.gameData.niveisganhos[i] = PlayerPrefs.GetInt($"nivel{i}", 0) == 1;
                 if (EmboscadaController.gameData.niveisganhos[i])

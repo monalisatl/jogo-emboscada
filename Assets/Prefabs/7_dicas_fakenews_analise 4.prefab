@@ -168,10 +168,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7435053449633311800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101.614334, y: 88.461655}
-  m_SizeDelta: {x: 91.6572, y: 102.5191}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 66.20706, y: -157}
+  m_SizeDelta: {x: -1218.112, y: 70.707}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6467742924119978976
 CanvasRenderer:
@@ -747,8 +747,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.846298, y: -16.115479}
-  m_SizeDelta: {x: 64.8309, y: 73.7951}
+  m_AnchoredPosition: {x: 18, y: -13}
+  m_SizeDelta: {x: 48.2816, y: 49.664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6031346464277671901
 CanvasRenderer:
@@ -898,7 +898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 406}
+  m_AnchoredPosition: {x: -1.5, y: 352.71}
   m_SizeDelta: {x: -3, y: 329.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2380667086862202648
@@ -974,8 +974,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.14}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110.00001, y: -8.888245}
-  m_SizeDelta: {x: 67.3147, y: 74.7321}
+  m_AnchoredPosition: {x: -78, y: -78}
+  m_SizeDelta: {x: 45.74, y: 49.961}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4061405285633245213
 CanvasRenderer:
@@ -1049,7 +1049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -173.26404}
+  m_AnchoredPosition: {x: 0, y: -188}
   m_SizeDelta: {x: -337.273, y: 751.928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &735429875061585624
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 64.35
   m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 1

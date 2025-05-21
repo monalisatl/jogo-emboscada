@@ -11,6 +11,7 @@ namespace Fase_5
         [Header("Telas")]
         [SerializeField] private GameObject telaExplicacaoInicial;  // Canvas com a explicação inicial
         [SerializeField] private GameObject telaMensagemErro;       // Canvas com mensagem de erro
+        [SerializeField] private GameObject telaTempEsgotado;       // Canvas com mensagem de tempo esgotado
         [SerializeField] private GameObject loadingPrefab;
         
         [Header("Botões")]
@@ -19,6 +20,13 @@ namespace Fase_5
         [SerializeField] private Button botaoPersonagem3;
         [SerializeField] private Button botaoComecarJogo;           // Botão "Next" na tela de explicação
         [SerializeField] private Button botaoTentarNovamente;       // Botão na tela de erro
+        [SerializeField] private Button botaoTentarNovoTempo;       // Botão na tela de tempo esgotado
+        
+        [Header("Timer")]
+        [SerializeField] private float tempoTotal = 30f;            // Tempo em segundos
+        [SerializeField] private Image barraTimer;                  // Imagem do timer (tipo Fill)
+        private float tempoRestante;
+        private bool timerAtivo = false;
         
         [Header("Configurações")]
         [SerializeField] private int personagemVilaoIndex;          // 1, 2 ou 3 (qual é o vilão correto)
@@ -34,26 +42,94 @@ namespace Fase_5
             classificacaoAtual = EmboscadaController.gameData.classificacao;
             EmboscadaController.gameData.playerName = PlayerPrefs.GetString("playerName", "Jogador");
             textoClassificacao.text = classificacaoAtual.ToString();
-            
         }
+        
         private void Start()
-        {   saveload();
+        {   
+            saveload();
             telaExplicacaoInicial.SetActive(true);
             telaMensagemErro.SetActive(false);
+            
+            if (telaTempEsgotado != null)
+                telaTempEsgotado.SetActive(false);
             
             if (botaoComecarJogo != null)
             {
                 botaoComecarJogo.onClick.AddListener(ComecarJogo);
             }
+            
             if (botaoTentarNovamente != null)
             {
                 botaoTentarNovamente.onClick.AddListener(FecharMensagemErro);
             }
             
+            if (botaoTentarNovoTempo != null)
+            {
+                botaoTentarNovoTempo.onClick.AddListener(ReiniciarTimer);
+            }
+            
             // Configura os botões de personagens
             ConfigurarBotoesPersonagens();
             
+            // Configura o timer
+            tempoRestante = tempoTotal;
             AtualizarTextoClassificacao();
+            AtualizarVisualTimer();
+        }
+        
+        private void Update()
+        {
+            if (timerAtivo)
+            {
+                if (tempoRestante > 0)
+                {
+                    tempoRestante -= Time.deltaTime;
+                    AtualizarVisualTimer();
+                }
+                else
+                {
+                    TempoEsgotado();
+                }
+            }
+        }
+        
+        private void AtualizarVisualTimer()
+        {
+            if (barraTimer != null)
+            {
+                barraTimer.fillAmount = tempoRestante / tempoTotal;
+            }
+
+        }
+        
+        private void TempoEsgotado()
+        {
+            timerAtivo = false;
+            
+            // Reduz a classificação se não estiver em 0
+            if (classificacaoAtual > 0)
+            {
+                classificacaoAtual--;
+            }
+            
+            AtualizarTextoClassificacao();
+            
+            // Mostra a tela de tempo esgotado
+            if (telaTempEsgotado != null)
+            {
+                telaTempEsgotado.SetActive(true);
+            }
+        }
+        
+        private void ReiniciarTimer()
+        {
+            tempoRestante = tempoTotal;
+            if (telaTempEsgotado != null)
+            {
+                telaTempEsgotado.SetActive(false);
+            }
+            timerAtivo = true;
+            AtualizarVisualTimer();
         }
         
         private void ConfigurarBotoesPersonagens()
@@ -78,10 +154,16 @@ namespace Fase_5
         {
             // Esconde a tela de explicação e mostra o jogo
             telaExplicacaoInicial.SetActive(false);
+            
+            // Inicia o timer
+            timerAtivo = true;
         }
         
         private void SelecionarPersonagem(int personagemIndex)
         {
+            // Para o timer quando selecionar um personagem
+            timerAtivo = false;
+            
             if (personagemIndex == personagemVilaoIndex)
             {
                 // Acertou o vilão
@@ -106,19 +188,19 @@ namespace Fase_5
         private void FecharMensagemErro()
         {
             telaMensagemErro.SetActive(false);
+            ReiniciarTimer();
         }
         
         private void AtualizarTextoClassificacao()
         {
-            if (textoClassificacao != null)
+            if (textoClassificacao)
             {
-                textoClassificacao.text = "Classificação: " + classificacaoAtual;
+                textoClassificacao.text = classificacaoAtual.ToString();
             }
         }
         
         private IEnumerator CarregarCenaVitoria()
         {
-            // Salva a classificação final para uso na próxima cena
             PlayerPrefs.SetInt("classificacaoFinal", (int)classificacaoAtual);
             PlayerPrefs.Save();
             

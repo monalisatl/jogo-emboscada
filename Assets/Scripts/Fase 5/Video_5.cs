@@ -17,11 +17,11 @@ namespace Fase_5
         
         private void Start()
         {
-            // Configurar o evento para quando o vídeo terminar
-            if (videoPlayer != null)
+                            // Configurar o evento para quando o vídeo terminar
+            if (videoPlayer)
             {
                 videoPlayer.loopPointReached += OnVideoFinished;
-                videoPlayer.Play();
+               StartCoroutine(PrepareVideo());
             }
             
             // Configurar o botão de pular/continuar
@@ -31,16 +31,37 @@ namespace Fase_5
             }
         }
 
+        private IEnumerator PrepareVideo()
+        {
+            videoPlayer.Prepare();
+            while (!videoPlayer.isPrepared)
+            {
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(0.3f);
+            videoPlayer.Play();
+        }
+
         private void OnVideoFinished(VideoPlayer vp)
         {
             // Evita que este método seja chamado várias vezes
             if (videoFinished) return;
             videoFinished = true;
-            
-            // Carrega a próxima cena após o vídeo terminar
             StartCoroutine(LoadNextScene());
         }
-
+        private void Update()
+        {
+            if (videoPlayer != null && videoPlayer.isPlaying)
+            {
+                // Se o vídeo parar inexperadamente (não por causa do botão de pular)
+                if (videoPlayer.time >= 1.0f && videoPlayer.time < videoPlayer.length - 0.5f && videoPlayer.isPlaying == false && !videoFinished)
+                {
+                    Debug.Log("Vídeo parou inesperadamente. Tentando retomar...");
+                    videoPlayer.Play();
+                }
+            }
+        }
         private void OnSkipButtonClicked()
         {
             // Interrompe o vídeo se estiver reproduzindo
