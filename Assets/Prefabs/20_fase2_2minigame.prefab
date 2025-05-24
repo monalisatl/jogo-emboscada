@@ -306,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 36.149994, y: 11}
+  m_AnchoredPosition: {x: 36.150024, y: 12.956055}
   m_SizeDelta: {x: 369.09998, y: 203}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7453924085182622032
@@ -1379,7 +1379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.9260864, y: -457}
+  m_AnchoredPosition: {x: 7.9260864, y: -619}
   m_SizeDelta: {x: -15.852295, y: 121.08826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3915963817442369518
@@ -1517,7 +1517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.3, y: -27.838282}
+  m_AnchoredPosition: {x: -11, y: -153.89}
   m_SizeDelta: {x: 255.45, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6997129886144679201
@@ -1754,7 +1754,6 @@ MonoBehaviour:
   pista: {fileID: 6472050143455741220, guid: 618613f4811e32c49a48019e5dca7af5, type: 3}
   loading: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
   debug: 0
-  _isRepescagem: 0
 --- !u!1 &2522069933308266302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,7 +2683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -403.11267, y: -6.8888755}
+  m_AnchoredPosition: {x: -403.11267, y: -126}
   m_SizeDelta: {x: 255.45, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7284824517912917338
@@ -4691,8 +4690,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.9260864, y: -597}
-  m_SizeDelta: {x: -140.19482, y: 101.05481}
+  m_AnchoredPosition: {x: 0.48046875, y: -811}
+  m_SizeDelta: {x: -133.1678, y: 122.1355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5686006758860285959
 CanvasRenderer:
@@ -4751,7 +4750,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.55
+  m_fontSize: 53.85
   m_fontSizeBase: 47.57
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5984,7 +5983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 411, y: -27.838}
+  m_AnchoredPosition: {x: 411, y: -146.94899}
   m_SizeDelta: {x: 255.45, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3167824424104264973
