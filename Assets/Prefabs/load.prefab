@@ -31,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 131606214874875394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 247388781879742113}
@@ -179,8 +179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1.0106211, y: 179}
-  m_SizeDelta: {x: -1069.3898, y: 1.4966}
+  m_AnchoredPosition: {x: 0, y: 94.16}
+  m_SizeDelta: {x: -466.8851, y: 1.1402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8750702477095546309
 CanvasRenderer:
@@ -254,8 +254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 287}
-  m_SizeDelta: {x: -741.82, y: 400.2}
+  m_AnchoredPosition: {x: 0, y: 118}
+  m_SizeDelta: {x: -337.0566, y: 181.1436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &827810413770879282
 CanvasRenderer:
@@ -329,8 +329,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -49.7}
-  m_SizeDelta: {x: -477.5, y: 99.4}
+  m_AnchoredPosition: {x: 0, y: -41.5}
+  m_SizeDelta: {x: -275.4333, y: 41.4782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2085048295557611110
 CanvasRenderer:
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 24.8
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -465,8 +465,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1, y: 179}
-  m_SizeDelta: {x: -1069.4238, y: 1.4966}
+  m_AnchoredPosition: {x: -0.00030517578, y: 93.00101}
+  m_SizeDelta: {x: -466.8857, y: 1.1785}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &562958397422340977
 CanvasRenderer:

@@ -472,6 +472,54 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6048736757700791952, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1169.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048736757700791952, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 156.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048736757700791952, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6048736757700791952, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 254
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338645803555242064, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338645803555242064, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338645803555242064, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -650.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747360186704601074, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5491091
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747360186704601074, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -831.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747360186704601074, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 656
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747360186704601074, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -54.062
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747360186704601074, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -378
+      objectReference: {fileID: 0}
     - target: {fileID: 7388112347021951488, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
       propertyPath: m_Name
       value: fase5_instrucoes

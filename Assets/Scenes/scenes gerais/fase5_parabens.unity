@@ -391,33 +391,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2112134296439970537, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112134296439970537, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112134296439970537, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1221465112}
-    - target: {fileID: 2112134296439970537, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112134296439970537, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: IrParaCertificado
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112134296439970537, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Fase_5.VitoriaManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112134296439970537, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2614161823221070049, guid: 296b8fbe71d7b3f49ad60807faacfed9, type: 3}
       propertyPath: m_Camera
       value: 

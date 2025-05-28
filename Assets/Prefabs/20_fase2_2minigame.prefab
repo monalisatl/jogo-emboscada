@@ -1379,7 +1379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.9260864, y: -619}
+  m_AnchoredPosition: {x: 7.9260864, y: -468}
   m_SizeDelta: {x: -15.852295, y: 121.08826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3915963817442369518
@@ -1437,10 +1437,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
+  m_fontSize: 69.65
   m_fontSizeBase: 64
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 17
@@ -1859,7 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fbe37175f172c438d3f852a830079a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempoLimite: 10
+  tempoLimite: 60
   cronometro: {fileID: 3300887337478699319}
   openPanel: {fileID: 6433824490527163086}
   openTitulo: {fileID: 7648255404026908068}
@@ -4736,7 +4736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1393245752782911851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5162,7 +5162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.48046875, y: -811}
+  m_AnchoredPosition: {x: 7.9260864, y: -589.61}
   m_SizeDelta: {x: -133.1678, y: 122.1355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5686006758860285959
@@ -6121,8 +6121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -138.0509}
-  m_SizeDelta: {x: 0, y: 276.103}
+  m_AnchoredPosition: {x: 0, y: -70.25}
+  m_SizeDelta: {x: 0, y: 140.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3921553572830282397
 CanvasRenderer:
