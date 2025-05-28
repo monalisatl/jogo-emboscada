@@ -17,11 +17,12 @@ namespace Fase_4
         [SerializeField] private float tempoTotal = 30f;
         [SerializeField] private Image timerImage;
         [SerializeField] private GameObject timeOut;
+        [SerializeField] private Button timerButton;
         [SerializeField] private bool debug;
         private float _tempoRestante;
         private bool _timerAtivo = false;
         private bool _tempoEsgotado = false;
-
+        private EnigmaUI _currentUI;
         public static EnigmaScript instance;
         public List<Enigma> enigmas;
         public GameObject puzzleUIPrefab;
@@ -107,7 +108,6 @@ namespace Fase_4
                     _tempoEsgotado = true;
                     DesabilitarBotoesEnigma();
                     MostrarMensagemTempoEsgotado();
-                    StartCoroutine(FinalizarComDerrota(1.5f));
                 }
             }
         }
@@ -115,18 +115,17 @@ namespace Fase_4
         public void SelecionarEnigma(int index, Button origemBtn)
         {
             if (_tempoEsgotado) return;
-            
             var go = Instantiate(puzzleUIPrefab, null, false);
             AtualizarListaTimers();
             var cv = go.GetComponent<Canvas>();
-            
             cv.renderMode = RenderMode.ScreenSpaceCamera;
             cv.worldCamera = Camera.main;
             cv.sortingOrder = 6;
             go.transform.SetAsLastSibling();
-
             var ui = go.GetComponentInChildren<EnigmaUI>();
             ui.Inicializar(enigmas[index], OnEnigmaRespondido, origemBtn);
+            _currentUI = ui;
+            RetornarTimer();
         }
 
         private void OnEnigmaRespondido(bool acertou)
@@ -258,9 +257,25 @@ namespace Fase_4
                 botao.interactable = false;
         }
 
+
         private void MostrarMensagemTempoEsgotado()
         {
-            timeOut.SetActive(true);
+            DesabilitarBotoesEnigma();
+
+            if (_currentUI != null)
+            {
+                _currentUI.ShowTimeoutPanel(() =>
+                    StartCoroutine(FinalizarComDerrota(0.7f))
+                );
+            }
+            else
+            {
+                timeOut.SetActive(true);
+                timerButton.onClick.RemoveAllListeners();
+                timerButton.onClick.AddListener(() =>
+                    StartCoroutine(FinalizarComDerrota(0.7f))
+                );
+            }
         }
 
         private void SaveGame(bool acertou)
@@ -269,9 +284,9 @@ namespace Fase_4
             EmboscadaController.gameData.niveisganhos[3] = acertou;
             int cls = PlayerPrefs.GetInt("classificacao", 0);
             if (acertou) cls++;
+            if(cls > 3) cls = 3;
             EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)cls;
             EmboscadaController.gameData.currentLevel = 80;
-
             PlayerPrefs.SetInt("nivel3", acertou ? 1 : 0);
             PlayerPrefs.SetInt("classificacao", cls);
             PlayerPrefs.SetInt("currentLevel", EmboscadaController.gameData.currentLevel);

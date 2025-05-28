@@ -14,17 +14,20 @@ namespace Fase_3
     {
         [Header("Timer")]
         [Tooltip("Tempo total compartilhado para responder as duas perguntas (em segundos)")]
-        [SerializeField]
-        private float tempoTotal = 30f;
-
+        [SerializeField] private float tempoTotal = 30f;
+        
         private float _tempoRestante;
         private bool _timerAtivo = false;
         private bool _tempoEsgotado = false;
         private Image _timerImage;
-
+        
         [Header("objetos raiz")] [SerializeField]
         private GameObject loadingScreen;
 
+        [Header("Falha Tempo")] [SerializeField]
+        private GameObject falhaTempoPanel;
+        private bool _falhaTempoClicked = false;
+        
         [Header("Áudio de Instrução")] [SerializeField]
         private AudioClip instrucoesClip;
 
@@ -44,35 +47,45 @@ namespace Fase_3
         [SerializeField] private bool debug = false;
         private PerguntaScript _perguntaAtual;
         private bool _resp1, _resp2;
-
+        private GameObject pregunta;
         public static bool _isRepescagemMode = false;
         private const int ThisLevel = 2;
-
+        public static Fase3Manager instance;
         void Start()
-        {
+        {      
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
             if (!LoadingScreenController.Instance)
                 DontDestroyOnLoad(loadingScreen);
 
             _tempoRestante = tempoTotal;
-            if (debug)
-                _isRepescagemMode = debug;
+            if (debug) _isRepescagemMode = true;
+
             StartCoroutine(RunFase());
         }
 
-
         private IEnumerator RunFase()
         {
+            // Instruções
             yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
             {
                 () => PrepareAudio(instrucoesClip)
             });
-
             instrucaoAudioSource.clip = instrucoesClip;
             instrucaoAudioSource.Play();
             yield return new WaitUntil(() => _skipInstrucao);
 
+            // Vídeo 1
             yield return PlayVideo(secretariosClip[0]);
 
+            // Pergunta 1
             yield return AskQuestion(pergunta1Prefab, correto =>
             {
                 _resp1 = correto;
@@ -84,37 +97,57 @@ namespace Fase_3
                 yield break;
             }
 
+            // Vídeo 2
             yield return PlayVideo(secretariosClip[1]);
-            _timerAtivo = true;
-            // Segunda pergunta
+
+            // Pergunta 2
             yield return AskQuestion(pergunta2Prefab, correto =>
             {
                 _resp2 = correto;
                 _timerAtivo = false;
             });
+            if (_tempoEsgotado)
+            {
+                yield return StartCoroutine(EndFase3());
+                yield break;
+            }
 
+            // Finaliza normalmente
             yield return StartCoroutine(EndFase3());
         }
 
         void Update()
         {
-            if (_timerAtivo)
-            {
-                _tempoRestante -= Time.deltaTime;
-                if (_timerImage != null)
-                    _timerImage.fillAmount = _tempoRestante / tempoTotal;
+            if (!_timerAtivo) return;
 
-                if (_tempoRestante <= 0)
-                {
-                    _tempoRestante = 0;
-                    _timerAtivo = false;
-                    _tempoEsgotado = true;
-                    if (_perguntaAtual != null)
-                        _perguntaAtual.ForceFinish(false);
-                }
+            _tempoRestante -= Time.deltaTime;
+            if (_timerImage != null)
+                _timerImage.fillAmount = _tempoRestante / tempoTotal;
+
+            if (_tempoRestante <= 0f)
+            {
+                _tempoRestante = 0f;
+                _timerAtivo = false;
+                _tempoEsgotado = true;
+                if (_perguntaAtual != null)
+                    _perguntaAtual.ForceFinish(false);
             }
         }
+        private IEnumerator WaitForFalhaTempo()
+        {
+            falhaTempoPanel.SetActive(true);
+            _falhaTempoClicked = false;
+            var btn = falhaTempoPanel.GetComponentInChildren<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() =>
+            {
+                _falhaTempoClicked = true;
+            });
+            while (!_falhaTempoClicked)
+                yield return null;
 
+            falhaTempoPanel.SetActive(false);
+        }
         private IEnumerator EndFase3()
         {
             bool ganhou = (_resp1 || _resp2) && !_tempoEsgotado;
@@ -134,7 +167,6 @@ namespace Fase_3
             }
 
             SaveGame(ganhou);
-            // MODO NORMAL: carrega a MAIN como antes
             MainManager.indiceCanvainicial = ganhou ? 29 : 12;
             GameObject loadingInstance = Instantiate(loadingScreen);
             var loadingCanvas = loadingInstance.GetComponent<Canvas>();
@@ -348,15 +380,15 @@ namespace Fase_3
             var vp = vpGO.GetComponentInChildren<VideoPlayer>();
             vp.clip = clip;
             vp.renderMode = VideoRenderMode.RenderTexture;
-
             yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
             {
                 () => PrepareVideo(vp)
             });
-
             vpGO.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
             vp.Play();
             yield return new WaitUntil(() => !vp.isPlaying);
+            yield return new WaitForSeconds(0.5f);
             Destroy(vpGO);
         }
 
@@ -376,14 +408,9 @@ namespace Fase_3
             var canva = p.GetComponent<Canvas>();
             canva.renderMode = RenderMode.ScreenSpaceCamera;
             canva.worldCamera = Camera.main;
-            _timerImage = GameObject.FindWithTag("Timer").GetComponent<Image>();
-
-            // Verificar se encontrou alguma imagem para o timer
-            if (_timerImage == null)
-                Debug.LogError("Não foi possível encontrar o sprite do timer!");
-            else
-                Debug.Log("Timer sprite encontrado: " + _timerImage.name);
-
+            _timerImage = GameObject.FindWithTag("Timer")?.GetComponent<Image>();
+            _tempoRestante = tempoTotal;
+            _tempoEsgotado = false;
             _timerAtivo = true;
 
             bool acabou = false;
@@ -393,16 +420,16 @@ namespace Fase_3
                 acabou = true;
                 _perguntaAtual = null;
             };
-
             yield return new WaitUntil(() => acabou || _tempoEsgotado);
 
             if (_tempoEsgotado && !acabou)
+            {
+                p.ShowFalhaTempo();
+                yield return p.WaitForFalhaNext();
                 onAnswered(false);
-
-            if (p != null)
-                Destroy(p.gameObject);
+            }
+            
         }
-
 
         public void OnPressSkipAudio()
         {
@@ -410,6 +437,11 @@ namespace Fase_3
             instrucaoAudioSource.Stop();
             instrucaoGO.SetActive(false);
             Destroy(instrucaoGO);
+        }
+
+        public void destroyPergunta()
+        {
+            Destroy(_perguntaAtual.gameObject);
         }
     }
 }

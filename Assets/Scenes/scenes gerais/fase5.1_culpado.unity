@@ -472,10 +472,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 4187058724115465528, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7388112347021951488, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
       propertyPath: m_Name
       value: fase5_instrucoes
@@ -611,59 +607,6 @@ PrefabInstance:
     - target: {fileID: 4656573243178074502, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086223858067139568, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 410.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086223858067139568, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -35.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -3251669722322308248, guid: a8fcfef9d1b61954890289dd8b4c2ca4, type: 3}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Color.b
-      value: 0.043137312
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714002808129394584, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_text
-      value: Tempo esgotou!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714002808129394584, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_fontSize
-      value: 62.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154702334482852798, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_text
-      value: "Infelizmente, o tempo para selecionar o vil\xE3o esgotou. \nSua investiga\xE7\xE3o
-        precisa ser mais r\xE1pida. \nRevise suas pistas e tente novamente!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154702334482852798, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_fontSize
-      value: 49.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

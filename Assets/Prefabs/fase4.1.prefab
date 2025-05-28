@@ -2949,6 +2949,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9b258dedd6850458e5a0a902b73b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tempoTotal: 30
+  timerImage: {fileID: 0}
+  timeOut: {fileID: 0}
+  debug: 0
   enigmas:
   - {fileID: 11400000, guid: 6afffce797587a44e8ac0b1067df45a7, type: 2}
   - {fileID: 11400000, guid: 98a0d6e11470c72448d09cb254d16427, type: 2}
@@ -2964,6 +2968,10 @@ MonoBehaviour:
   - {fileID: 1915859309730106038}
   - {fileID: 864552384297298093}
   - {fileID: 8251639867278539396}
+  VitoriaPrefab: {fileID: 0}
+  DerrotaPrefab: {fileID: 0}
+  loadPrefab: {fileID: 0}
+  dicaPrefab: {fileID: 0}
 --- !u!1 &3768409531659176005
 GameObject:
   m_ObjectHideFlags: 0
