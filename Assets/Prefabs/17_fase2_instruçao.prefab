@@ -170,8 +170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.5, y: -60}
-  m_SizeDelta: {x: 895.1, y: 630.4}
+  m_AnchoredPosition: {x: 18.714, y: -52.992}
+  m_SizeDelta: {x: 917.527, y: 644.417}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &479835334929798897
 CanvasRenderer:
@@ -203,7 +203,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\"Rep\xF3rter! Agora podemos dar in\xEDcio \xE0 nossa investiga\xE7\xE3o.
     Nessa fase, precisamos descobrir inconsist\xEAncias! Use sua habilidade investigativa
-    e analise estas 4 not\xEDcias suspeitas. Seu objetivo \xE9 identificar 3 caracter\xEDsticas
+    e analise estas 4 not\xEDcias suspeitas. Seu objetivo \xE9 identificar  3 caracter\xEDsticas
     que indicam falsidade em cada uma delas\"."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.85
+  m_fontSize: 49.7
   m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1415,7 +1415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -791}
+  m_AnchoredPosition: {x: 0, y: -700}
   m_SizeDelta: {x: -238.09998, y: 916.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7049202826172225181

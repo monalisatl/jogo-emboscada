@@ -14,7 +14,7 @@ namespace Fase_2
     public class ChronoUIController : MonoBehaviour
     {
         [Header("Timer")] [Tooltip("Tempo máximo para completar a ordenação (em segundos)")]
-        public float tempoLimite = 30f;
+        public float tempoLimite = 10f;
 
         [Tooltip("Referência ao objeto de imagem do cronômetro")]
         public Image cronometro;
@@ -82,8 +82,6 @@ namespace Fase_2
             completePanel.SetActive(false);
             continueButton.onClick.AddListener(OnContinue);
             resetButton.onClick.AddListener(OnReset);
-
-            // config painel de tempo esgotado (se existir)
             if (timeoutPanel != null)
             {
                 timeoutPanel.SetActive(false);
@@ -174,10 +172,8 @@ namespace Fase_2
 
         private void OnTempoEsgotado()
         {
-            // Se o tempo acabou, o jogador perde a fase automaticamente
             Debug.Log("Tempo esgotado! Jogador perdeu a fase.");
 
-            // Desativa interação com os botões
             foreach (var button in newsButtons)
             {
                 button.interactable = false;
@@ -189,13 +185,16 @@ namespace Fase_2
             {
                 timeoutPanel.SetActive(true);
             }
-
-            if (_isRepescagem)
+            timeoutButton.onClick.RemoveAllListeners();
+            timeoutButton.onClick.AddListener((() =>
             {
-                TelaDerrota();
-            }
+                if (_isRepescagem)
+                {
+                    TelaDerrota();
+                }
 
-            OnTimeoutContinue();
+                OnTimeoutContinue();
+            }));
         }
 
         private void OnTimeoutContinue()

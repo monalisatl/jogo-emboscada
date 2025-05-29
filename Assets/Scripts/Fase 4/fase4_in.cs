@@ -13,15 +13,16 @@ namespace Fase_4
         [SerializeField] private GameObject statusFase1;
         [SerializeField] private GameObject statusFase2;
         [SerializeField] private GameObject statusFase3;
-        [SerializeField] private Image[] status;  // 0 = sucesso, 1 = falha
+        [SerializeField] private Image[] status; // 0 = sucesso, 1 = falha
         [SerializeField] private GameObject dica;
         [SerializeField] private GameObject[] bloqueios;
+        [SerializeField] private string classificacao = "";
         private void Start()
-        {   ConfigurarBloqueios();
+        {
+            ConfigurarBloqueios();
             StartCoroutine(SaveFase());
             StartCoroutine(MarcarFases());
         }
-
 
 
         private IEnumerator SaveFase()
@@ -37,14 +38,16 @@ namespace Fase_4
             }
 
             if (PlayerPrefs.HasKey("classificacao"))
+            {
                 EmboscadaController.gameData.classificacao =
                     (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
+                print("Classificação salva: " + EmboscadaController.gameData.classificacao);
+            }
             else
             {
                 Debug.LogError("Nenhuma classificação salva: usando Amador");
                 EmboscadaController.gameData.classificacao = EmboscadaController.Classificacao.Amador;
             }
-            
             VerificarDicas();
             if (!credencial || !playerName)
             {
@@ -53,6 +56,7 @@ namespace Fase_4
             }
 
             credencial.text = EmboscadaController.gameData.classificacao.ToString();
+            classificacao = EmboscadaController.gameData.classificacao.ToString();
             playerName.text = EmboscadaController.gameData.playerName;
             PlayerPrefs.SetInt("currentLevel", 31);
             PlayerPrefs.Save();
@@ -68,6 +72,7 @@ namespace Fase_4
                 Debug.LogError("Array status não configurado (esperava 2 sprites)");
                 yield break;
             }
+
             // valida GameObjects
             if (!statusFase1 || !statusFase2 || !statusFase3)
             {
@@ -108,7 +113,7 @@ namespace Fase_4
         {
             SceneManager.LoadSceneAsync("fase4.1");
         }
-        
+
         private void ConfigurarBloqueios()
         {
             dica.SetActive(false);
@@ -116,7 +121,6 @@ namespace Fase_4
             {
                 bloqueio.SetActive(true);
             }
-
         }
 
         private void VerificarDicas()
@@ -125,11 +129,11 @@ namespace Fase_4
             {
                 if (EmboscadaController.gameData.niveisganhos[i] = (PlayerPrefs.GetInt("nivel" + i, 0) == 1))
                 {
-                    bloqueios[i-1].SetActive(false);
+                    bloqueios[i - 1].SetActive(false);
                 }
             }
         }
-        
+
         public void OnDicasOpen()
         {
             dica.SetActive(true);
@@ -139,6 +143,5 @@ namespace Fase_4
         {
             dica.SetActive(false);
         }
-        
     }
 }

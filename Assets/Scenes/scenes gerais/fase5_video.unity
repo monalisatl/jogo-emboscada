@@ -869,10 +869,10 @@ RectTransform:
   - {fileID: 8507642245221407090}
   m_Father: {fileID: 2276961614585301211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 178.934}
-  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -112.77, y: 275.9}
-  m_SizeDelta: {x: 136.79999, y: 185.59998}
+  m_AnchoredPosition: {x: 527.23, y: 275.9}
+  m_SizeDelta: {x: -1143.2, y: 185.59998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6258036329473310749
 CanvasRenderer:
@@ -913,6 +913,7 @@ MonoBehaviour:
   skipButton: {fileID: 8910902371901523280}
   loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
   targetSceneName: fase5.1_culpado
+  videoDisplay: {fileID: 8480706309056915987}
 --- !u!1 &7538698986902830238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,19 +1060,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5443617891461552650}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NextPage, Assembly-CSharp
-        m_MethodName: NextPageButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!328 &8934718826593310572
 VideoPlayer:
   m_ObjectHideFlags: 0

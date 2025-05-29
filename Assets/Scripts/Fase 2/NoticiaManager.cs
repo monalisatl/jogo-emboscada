@@ -12,17 +12,16 @@ namespace Fase_2
     {
         [Header("Timer")] [Tooltip("Tempo máximo para responder às perguntas")]
         public float tempoLimite = 60f;
-
         [Tooltip("Referência ao objeto de imagem do cronômetro")]
         public Image cronometro;
-
+        public GameObject falhatempo;
+        public Button timeOutButton;
         private float _tempoRestante;
         private bool _cronometroAtivo = true;
-
         [Header("Cores de seleção")]
-        public Color32 normalColor = Color.white; // #86009F new Color32(0x86, 0x00, 0x9F, 0xFF);
+        public Color32 normalColor = Color.white;
 
-        public Color32 selectedColor = new Color32(0xCA, 0x80, 0x07, 0xFF); // #CA8007
+        public Color32 selectedColor = new Color32(0xCA, 0x80, 0x07, 0xFF);
 
         [Header("Painéis")] public GameObject closedPanel;
         public GameObject openPanel;
@@ -129,7 +128,6 @@ namespace Fase_2
             isRepescagemMode = Fase2Manager.isRepescagemMode;
             // pé-de-obra do botão
             confirmButton.interactable = false;
-
             totalQuestions = Fase2Manager.instance.TotalPerguntas;
 
             // Inicializa o cronômetro
@@ -193,18 +191,23 @@ namespace Fase_2
 
         private void ShowTempoEsgotadoResult()
         {
-            // Desativa o cronômetro e os painéis
             _cronometroAtivo = false;
-            closedPanel.SetActive(false);
             openPanel.SetActive(false);
-            resultPanel.SetActive(true);
-
+            closedPanel.GetComponent<Button>().interactable = false;
+            foreach (var toggle in optionToggles)
+            {
+                toggle.interactable = false;
+            }
+            falhatempo.SetActive(true);
+            timeOutButton.onClick.AddListener(() =>
+            {
                 var inst = Instantiate(prefabInstructions, null);
                 var canvas = inst.GetComponent<Canvas>();
                 canvas.renderMode = RenderMode.ScreenSpaceCamera;
                 canvas.worldCamera = Camera.main;
                 canvas.sortingOrder = 5;
                 Destroy(me);
+            });
         }
 
         void ShowNextQuestion()

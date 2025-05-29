@@ -21,7 +21,24 @@ namespace Fase_4
         private bool respondido = false;
         private bool acertou;
 
+        [Header("Timeout interno")]
+        public GameObject timeoutPanel;
+        public Button   timeoutButton;
 
+        void Start()
+        {
+            timeoutPanel.SetActive(false);
+        }
+        public void ShowTimeoutPanel(Action onTimeout)
+        {
+            foreach (var b in botoesAlt) b.interactable = false;
+
+            timeoutPanel.SetActive(true);
+            timeoutPanel.transform.SetAsLastSibling();
+
+            timeoutButton.onClick.RemoveAllListeners();
+            timeoutButton.onClick.AddListener(() => onTimeout());
+        }
         public void Inicializar(Enigma e,
             Action<bool> onFinish,
             Button origemBtn)
