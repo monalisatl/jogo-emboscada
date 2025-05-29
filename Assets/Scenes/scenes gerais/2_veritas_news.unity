@@ -453,6 +453,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2_veritas_news
       objectReference: {fileID: 0}
+    - target: {fileID: 8687209396457751398, guid: 0a65fe806167d004b8edc37710d7f23d, type: 3}
+      propertyPath: m_Url
+      value: "file://D:/projects/unity/jogo-emboscada/Assets/layout/libs/audio/novo_plant\xE3o.mp4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687209396457751398, guid: 0a65fe806167d004b8edc37710d7f23d, type: 3}
+      propertyPath: m_DataSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687209396457751398, guid: 0a65fe806167d004b8edc37710d7f23d, type: 3}
+      propertyPath: m_TimeUpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
