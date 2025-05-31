@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3222057006016343623, guid: aaa95e741e0e9df4ab91c0f11b79404c, type: 3}
+      propertyPath: tempoLimite
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 5697227498918977565, guid: aaa95e741e0e9df4ab91c0f11b79404c, type: 3}
       propertyPath: m_Name
       value: 11_fase1_minigame

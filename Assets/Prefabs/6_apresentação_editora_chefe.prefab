@@ -502,7 +502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: -1.8999023, y: -55}
   m_SizeDelta: {x: -254.9, y: 524.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5567661163471348819
@@ -615,6 +615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2164858087949420541}
+  - component: {fileID: 3551258766776927854}
   - component: {fileID: 575296398118319521}
   m_Layer: 0
   m_Name: "6_apresenta\xE7\xE3o"
@@ -632,12 +633,28 @@ Transform:
   m_GameObject: {fileID: 2505581828874404177}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000015259, y: 378, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7988563832831521596}
+  m_Father: {fileID: 8430895772510952678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3551258766776927854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2505581828874404177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb753ce438fae14db6238a3bb3c98c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 575296398118319521}
+  videoDisplay: {fileID: 5218321783165037213}
+  loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
+  videoname: "6_apresenta\xE7\xE3o.mp4"
 --- !u!328 &575296398118319521
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -650,14 +667,14 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 83802b0182490db41b755fe74ea33d87, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
-  m_TimeUpdateMode: 2
+  m_DataSource: 1
+  m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources:
@@ -668,10 +685,10 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 0
   m_Looping: 0
-  m_WaitForFirstFrame: 1
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!1 &2530779238308024538
@@ -1318,16 +1335,15 @@ RectTransform:
   m_GameObject: {fileID: 5218321783165037213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2164858087949420541}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
   m_Father: {fileID: 8430895772510952678}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: -378}
-  m_SizeDelta: {x: 406.6312, y: 672.3782}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -430}
+  m_SizeDelta: {x: -560, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &49071467831688311
 CanvasRenderer:
@@ -1357,7 +1373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 83802b0182490db41b755fe74ea33d87, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1742,12 +1758,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7988563832831521596}
   - {fileID: 8602254722251786688}
   - {fileID: 42581779945511391}
-  - {fileID: 3336635405731249175}
   - {fileID: 5603920878593398849}
   - {fileID: 7748908011848358002}
+  - {fileID: 2164858087949420541}
+  - {fileID: 7988563832831521596}
+  - {fileID: 3336635405731249175}
   - {fileID: 7429753872085117924}
   - {fileID: 4665409705210150457}
   - {fileID: 1016363567101076605}

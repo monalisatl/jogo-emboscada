@@ -36,8 +36,8 @@ namespace Fase_3
         private bool _skipInstrucao = false;
 
         [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
-        [SerializeField] private VideoClip[] secretariosClip;
-
+        public string[] urlvideos;
+        
         [Header("Perguntas")] [SerializeField] private PerguntaScript pergunta1Prefab;
         [SerializeField] private PerguntaScript pergunta2Prefab;
 
@@ -83,12 +83,13 @@ namespace Fase_3
             yield return new WaitUntil(() => _skipInstrucao);
 
             // Vídeo 1
-            yield return PlayVideo(secretariosClip[0]);
+            yield return PlayVideo(urlvideos[0]);
 
             // Pergunta 1
             yield return AskQuestion(pergunta1Prefab, correto =>
             {
                 _resp1 = correto;
+                Debug.Log("Resposta 1 correta: " + _resp1);
                 _timerAtivo = false;
             });
             if (_tempoEsgotado)
@@ -97,8 +98,18 @@ namespace Fase_3
                 yield break;
             }
 
+            if (_resp1)
+            {
+                yield return PlayVideo(urlvideos[1]);
+            }
+            else
+            {
+                yield return PlayVideo(urlvideos[2]);
+            }
+                // Espera 2 segundos antes de continuar
+            yield return new WaitForSeconds(1f);
             // Vídeo 2
-            yield return PlayVideo(secretariosClip[1]);
+            yield return PlayVideo(urlvideos[3]);
 
             // Pergunta 2
             yield return AskQuestion(pergunta2Prefab, correto =>
@@ -110,6 +121,14 @@ namespace Fase_3
             {
                 yield return StartCoroutine(EndFase3());
                 yield break;
+            }
+            if (_resp2)
+            {
+                yield return PlayVideo(urlvideos[4]);
+            }
+            else
+            {
+                yield return PlayVideo(urlvideos[5]);
             }
 
             // Finaliza normalmente
@@ -371,14 +390,33 @@ namespace Fase_3
                 Debug.LogError("Falha ao carregar áudio de instrução.");
         }
 
-        private IEnumerator PlayVideo(VideoClip clip)
-        {
+        private IEnumerator PlayVideo(string videoname)
+        {   
+            if (string.IsNullOrEmpty(videoname))
+            {
+                Debug.LogWarning("Nome do vídeo não fornecido.");
+                yield break;
+            }
+            
+            if( !videoname.EndsWith(".mp4"))
+            {
+                Debug.LogWarning($"O nome do vídeo '{videoname}' não termina com '.mp4'. Adicionando extensão.");
+                videoname += ".mp4";
+            }
+            var url = System.IO.Path.Combine(Application.streamingAssetsPath, videoname);
             var vpGO = Instantiate(videoPrefab);
             var canva = vpGO.GetComponentInChildren<Canvas>();
             canva.renderMode = RenderMode.ScreenSpaceCamera;
             canva.worldCamera = Camera.main;
             var vp = vpGO.GetComponentInChildren<VideoPlayer>();
-            vp.clip = clip;
+            if (vp == null)
+            {
+                Debug.LogError("VideoPlayer não encontrado no prefab.");
+                Destroy(vpGO);
+                yield break;
+            }
+            Debug.Log($"Preparando vídeo: {url}");
+            vp.url = url;
             vp.renderMode = VideoRenderMode.RenderTexture;
             yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
             {

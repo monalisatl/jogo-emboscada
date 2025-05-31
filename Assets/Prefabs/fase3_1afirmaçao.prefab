@@ -459,8 +459,8 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
-  m_TimeUpdateMode: 2
+  m_DataSource: 1
+  m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 1
   m_TargetAudioSources:
@@ -471,10 +471,10 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
-  m_SkipOnDrop: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 0
   m_Looping: 0
-  m_WaitForFirstFrame: 1
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!1 &5770207411367494204
@@ -487,6 +487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5431155660746555134}
   - component: {fileID: 707663647432634482}
+  - component: {fileID: 2002488889745154924}
   m_Layer: 0
   m_Name: Configuracoes
   m_TagString: Untagged
@@ -521,6 +522,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477e81534d5027045a62c3d1f7cf4f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2002488889745154924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770207411367494204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb753ce438fae14db6238a3bb3c98c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 2539566496713059485}
+  videoDisplay: {fileID: 3243849695911430577}
+  loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
+  videoname: secretario_afirmacao_2.mp4
 --- !u!1 &6687899599834978557
 GameObject:
   m_ObjectHideFlags: 0
