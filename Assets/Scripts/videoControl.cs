@@ -11,7 +11,6 @@ public class videoControl : MonoBehaviour
     [SerializeField] private GameObject loadingPrefab;
     [SerializeField] private string videoname;
     private bool _videoReady = false;
-    private bool _videoStarted = false;
 
     void Start()
     {
@@ -49,7 +48,6 @@ public class videoControl : MonoBehaviour
         if (videoPlayer != null)
         {
             videoPlayer.Play();
-            _videoStarted = true;
             
         }
         else

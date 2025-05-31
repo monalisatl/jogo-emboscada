@@ -449,17 +449,17 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4759087141940346843}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 4778fd41bb9c530429f415c96f431846, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: 6424dfa648fbf044b871181a913588c2, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: a0cfc1f65a10c074fb27e122f2f0fe8c, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_TimeUpdateMode: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 1
@@ -537,7 +537,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 2539566496713059485}
   videoDisplay: {fileID: 3243849695911430577}
   loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
-  videoname: secretario_afirmacao_2.mp4
+  videoname: 
 --- !u!1 &6687899599834978557
 GameObject:
   m_ObjectHideFlags: 0
