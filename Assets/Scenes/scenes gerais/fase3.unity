@@ -284,16 +284,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fd52e054442f4dbcd1596bae5c241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempoTotal: 160
+  tempoTotal: 300
   loadingScreen: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
   falhaTempoPanel: {fileID: 2070500959}
   instrucoesClip: {fileID: 8300000, guid: ea8a59dedefafa842ad529baf64cee6e, type: 3}
   instrucaoAudioSource: {fileID: 2461622098914832553}
   instrucaoGO: {fileID: 3256317399447624812}
   videoPrefab: {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
-  secretariosClip:
-  - {fileID: 32900000, guid: 4778fd41bb9c530429f415c96f431846, type: 3}
-  - {fileID: 32900000, guid: 56cc85207bbe03a4d8d84af9b38be836, type: 3}
+  urlvideos:
+  - secretario_afirmacao_1.mp4
+  - secretario_certa_1.mp4
+  - secretario_errada_1.mp4
+  - secretario_afirmacao_1.mp4
+  - secretario_certa_1.mp4
+  - secretario_errada_1.mp4
   pergunta1Prefab: {fileID: 3736304886945475647, guid: 5ef9410371b93b0479a5fa7c051cd8c2, type: 3}
   pergunta2Prefab: {fileID: 628913696984513271, guid: d9ce6555f7043e5418234b9df4653d3b, type: 3}
   vitoriaPrefab: {fileID: 1883391141394169580, guid: 6710c27a9bb99f2468cd4ff22009f8e7, type: 3}
@@ -957,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1669369565}
+    - target: {fileID: 5350594989780845722, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -19.375
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

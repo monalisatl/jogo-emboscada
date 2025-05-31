@@ -7,11 +7,15 @@ using UnityEngine;
 public class niveisfase1 : MonoBehaviour {
 
     [SerializeField] private Queue<GameObject> tutoriais;
+    [SerializeField] private Queue<GameObject> detailTutoriais;
     public GameObject[] panels;
     public GameObject painel_atual;
+    [SerializeField] private GameObject detailPanelAtual;
     [SerializeField] private GameObject button;
     [SerializeField] private TextMeshProUGUI credencial;
     [SerializeField] private TextMeshProUGUI playerName;
+    [SerializeField] private GameObject[] detailImage;
+    
     void Start() {
         SaveFase();
         tutoriais = new Queue<GameObject>();
@@ -23,12 +27,29 @@ public class niveisfase1 : MonoBehaviour {
                 return;
             }
         }
-        Debug.Log("Painéis encontrados: " + panels.Length);
+        if (detailImage.Length == 0)
+        {
+            detailImage = GameObject.FindGameObjectsWithTag("detail_image");
+            if (detailImage.Length == 0)
+            {
+                Debug.LogError("Nenhuma imagem de detalhe encontrada com a tag 'detail_image'.");
+                return;
+            }
+        }
+       // Debug.Log("Painéis encontrados: " + panels.Length);
         foreach (GameObject panel in panels) {
             panel.SetActive(false);
+            
             tutoriais.Enqueue(panel);
         }
+        foreach (GameObject image in detailImage)
+        {
+            image.SetActive(false);
+            detailTutoriais.Enqueue(image);
+        }
         painel_atual = tutoriais.Dequeue();
+        detailPanelAtual = detailTutoriais.Dequeue();
+        detailPanelAtual.SetActive(true);
         painel_atual.SetActive(true);
         Debug.Log("Exibindo painel inicial: " + painel_atual.name);
         Debug.Log("Total de tutoriais: " + tutoriais.Count);
@@ -36,17 +57,17 @@ public class niveisfase1 : MonoBehaviour {
     
 
     public void ExibirProximoTutorial() {
-        Debug.Log("Tentando exibir o próximo tutorial.");
         if (tutoriais.Count > 0) {
-            Debug.Log("Removendo painel atual: " + painel_atual.name);
             painel_atual.SetActive(false);
+            detailPanelAtual.SetActive(false);
+            detailPanelAtual = detailTutoriais.Dequeue();
              painel_atual = tutoriais.Dequeue();
-            Debug.Log("Exibindo próximo tutorial: " + painel_atual.name);
             painel_atual.SetActive(true);
+            detailPanelAtual.SetActive(true);
         }
         else {
             painel_atual.SetActive(false);
-            Debug.Log("Não há mais tutoriais disponíveis.");
+            detailPanelAtual.SetActive(false);
             button.SetActive(false);
         }
     }
