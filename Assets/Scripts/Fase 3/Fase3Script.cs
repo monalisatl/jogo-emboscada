@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,7 +15,7 @@ namespace Fase_3
         [Header("Timer")]
         [Tooltip("Tempo total compartilhado para responder as duas perguntas (em segundos)")]
         [SerializeField]
-        private float tempoTotal = 30f;
+        private float tempoTotal = 300f;
 
         private float _tempoRestante;
         private bool _timerAtivo = false;
@@ -36,8 +37,8 @@ namespace Fase_3
         [SerializeField] private GameObject instrucaoGO;
         private bool _skipInstrucao = false;
 
-        [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
-        public string[] urlvideos;
+        [Header("Vídeo")] public string[] urlvideos;
+        public GameObject[] videoPrefabs;
 
         [Header("Perguntas")] [SerializeField] private PerguntaScript pergunta1Prefab;
         [SerializeField] private PerguntaScript pergunta2Prefab;
@@ -52,6 +53,7 @@ namespace Fase_3
         public static bool _isRepescagemMode = false;
         private const int ThisLevel = 2;
         public static Fase3Manager instance;
+        private GameObject _currentVideoGO;
 
         void Start()
         {
@@ -86,7 +88,7 @@ namespace Fase_3
             yield return new WaitUntil(() => _skipInstrucao);
 
             // Vídeo 1
-            yield return PlayVideo(urlvideos[0]);
+            yield return PlayVideo(videoPrefabs[0], urlvideos[0]);
 
             // Pergunta 1
             yield return AskQuestion(pergunta1Prefab, correto =>
@@ -103,17 +105,15 @@ namespace Fase_3
 
             if (_resp1)
             {
-                yield return PlayVideo(urlvideos[1]);
+                yield return PlayVideo(videoPrefabs[1], urlvideos[1]);
             }
             else
             {
-                yield return PlayVideo(urlvideos[2]);
+                yield return PlayVideo(videoPrefabs[2], urlvideos[2]);
             }
-
-            // Espera 2 segundos antes de continuar
-            yield return new WaitForSeconds(1f);
+            
             // Vídeo 2
-            yield return PlayVideo(urlvideos[3]);
+            yield return PlayVideo(videoPrefabs[3], urlvideos[3]);
 
             // Pergunta 2
             yield return AskQuestion(pergunta2Prefab, correto =>
@@ -129,11 +129,11 @@ namespace Fase_3
 
             if (_resp2)
             {
-                yield return PlayVideo(urlvideos[4]);
+                yield return PlayVideo(videoPrefabs[4], urlvideos[4]);
             }
             else
             {
-                yield return PlayVideo(urlvideos[5]);
+                yield return PlayVideo(videoPrefabs[5], urlvideos[5]);
             }
 
             // Finaliza normalmente
@@ -396,6 +396,7 @@ namespace Fase_3
 
 
         #region Video Control
+
         // private IEnumerator PlayVideo(string videoname)
         // {   
         //     if (string.IsNullOrEmpty(videoname))
@@ -435,103 +436,161 @@ namespace Fase_3
         //     yield return new WaitForSeconds(0.5f);
         //     Destroy(vpGO);
         // }
+
         #endregion
 
-        private IEnumerator PlayVideo(string videoname)
+        // private IEnumerator PlayVideo(GameObject videoPrefab, string videoname)
+        // {
+        //     if (string.IsNullOrEmpty(videoname))
+        //     {
+        //         Debug.LogWarning("Nome do vídeo não fornecido.");
+        //         yield break;
+        //     }
+        //
+        //     if (!videoname.EndsWith(".mp4"))
+        //     {
+        //         // Debug.LogWarning($"O nome do vídeo '{videoname}' não termina com '.mp4'. Adicionando extensão.");
+        //         videoname += ".mp4";
+        //     }
+        //     
+        //     var url = System.IO.Path.Combine(Application.streamingAssetsPath, videoname);
+        //     GameObject vpGO = Instantiate(videoPrefab);
+        //     var canva = vpGO.GetComponentInChildren<Canvas>();
+        //     if (canva != null)
+        //     {
+        //         canva.renderMode = RenderMode.ScreenSpaceCamera;
+        //         canva.worldCamera = Camera.main;
+        //         canva.sortingOrder = 5;
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("Canvas não encontrado no videoPrefab instanciado.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //
+        //     VideoPlayer vp = vpGO.GetComponentInChildren<VideoPlayer>();
+        //     RawImage rawImage = vpGO.GetComponentInChildren<RawImage>(); // Obtenha o RawImage
+        //
+        //     if (vp == null)
+        //     {
+        //         Debug.LogError("VideoPlayer não encontrado no prefab.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //
+        //     if (rawImage == null)
+        //     {
+        //         Debug.LogError("RawImage não encontrado no prefab para exibir o vídeo.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //     rawImage.texture = null;
+        //     rawImage.color = Color.clear;
+        //     vp.source = VideoSource.Url;
+        //     vp.url = url;
+        //
+        //     Debug.Log($"Preparando vídeo: {url}");
+        //     vp.errorReceived += (source, message) =>
+        //         Debug.LogError($"VideoPlayer Error: {message} para URL: {source.url}");
+        //     yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+        //     {
+        //         () => PrepareVideoInternal(vp)
+        //     });
+        //     if (!vp.isPrepared)
+        //     {
+        //         Debug.LogError($"Falha ao preparar o vídeo: {url}. O VideoPlayer não está pronto.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //     if (vp.texture != null)
+        //     {
+        //         rawImage.texture = vp.texture;
+        //         rawImage.color = Color.white;
+        //     }
+        //     else
+        //     {
+        //         Debug.LogWarning(
+        //             $"VideoPlayer.texture é nula após preparação para {url}. O vídeo pode não ser exibido.");
+        //     }
+        //
+        //
+        //     vpGO.SetActive(true);
+        //
+        //     vp.Play();
+        //     Debug.Log($"Reproduzindo vídeo: {url}");
+        //     bool playedOnce = false;
+        //     while (vp.isPlaying || (vp.isPrepared && !playedOnce && vp.time > 0.01 && !vp.isLooping &&
+        //                             vp.frameCount > 0 && (ulong)vp.frame < vp.frameCount - 1))
+        //     {
+        //         if (vp.isPlaying) playedOnce = true;
+        //         yield return null;
+        //     }
+        //     if (vp.isLooping && vp.isPlaying)
+        //     {
+        //         yield return new WaitUntil(() => !vp.isPlaying);
+        //     }
+        //
+        //     Debug.Log($"Vídeo concluído: {url}");
+        //     yield return new WaitForSeconds(0.2f);
+        //     Destroy(vpGO);
+        // }
+
+        private IEnumerator PlayVideo(GameObject videoPrefab, string videoname)
         {
-            if (string.IsNullOrEmpty(videoname))
-            {
-                Debug.LogWarning("Nome do vídeo não fornecido.");
-                yield break;
-            }
+            var loading = Instantiate(loadingScreen);
+            var canvaload = loading.GetComponentInChildren<Canvas>();
+            canvaload.renderMode = RenderMode.ScreenSpaceCamera;
+            canvaload.worldCamera = Camera.main;
+            canvaload.sortingOrder = 10;
+            loading.SetActive(true);
 
-            if (!videoname.EndsWith(".mp4"))
-            {
-                // Debug.LogWarning($"O nome do vídeo '{videoname}' não termina com '.mp4'. Adicionando extensão.");
-                videoname += ".mp4";
-            }
-            
-            var url = System.IO.Path.Combine(Application.streamingAssetsPath, videoname);
-            GameObject vpGO = Instantiate(videoPrefab);
-            var canva = vpGO.GetComponentInChildren<Canvas>();
-            if (canva != null)
-            {
-                canva.renderMode = RenderMode.ScreenSpaceCamera;
-                canva.worldCamera = Camera.main;
-                canva.sortingOrder = 5;
-            }
-            else
-            {
-                Debug.LogError("Canvas não encontrado no videoPrefab instanciado.");
-                Destroy(vpGO);
-                yield break;
-            }
-
-            VideoPlayer vp = vpGO.GetComponentInChildren<VideoPlayer>();
-            RawImage rawImage = vpGO.GetComponentInChildren<RawImage>(); // Obtenha o RawImage
-
-            if (vp == null)
-            {
-                Debug.LogError("VideoPlayer não encontrado no prefab.");
-                Destroy(vpGO);
-                yield break;
-            }
-
-            if (rawImage == null)
-            {
-                Debug.LogError("RawImage não encontrado no prefab para exibir o vídeo.");
-                Destroy(vpGO);
-                yield break;
-            }
-            rawImage.texture = null;
-            rawImage.color = Color.clear;
+            // 2) instancia o próximo prefab de vídeo
+            string arquivo = videoname.EndsWith(".mp4") ? videoname : videoname + ".mp4";
+            string url = Path.Combine(Application.streamingAssetsPath, arquivo);
+            GameObject nextGO = Instantiate(videoPrefab);
+            var canva = nextGO.GetComponentInChildren<Canvas>();
+            canva.renderMode = RenderMode.ScreenSpaceCamera;
+            canva.worldCamera = Camera.main;
+            canva.sortingOrder = 5;
+            VideoPlayer vp = nextGO.GetComponentInChildren<VideoPlayer>();
+            RawImage raw = nextGO.GetComponentInChildren<RawImage>();
+            raw.texture = vp.texture;
+            raw.color = Color.white;
             vp.source = VideoSource.Url;
             vp.url = url;
+            vp.Prepare();
+            float timeout = 20f;
+            float t0 = Time.time;
+            while (!vp.isPrepared)
+            {
+                if (Time.time - t0 > timeout)
+                {
+                    Debug.LogError($"Timeout ao preparar vídeo {url}");
+                    Destroy(nextGO);
+                    loadingScreen.SetActive(false);
+                    Destroy(loading);
+                    yield break;
+                }
 
-            Debug.Log($"Preparando vídeo: {url}");
-            vp.errorReceived += (source, message) =>
-                Debug.LogError($"VideoPlayer Error: {message} para URL: {source.url}");
-            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
-            {
-                () => PrepareVideoInternal(vp)
-            });
-            if (!vp.isPrepared)
-            {
-                Debug.LogError($"Falha ao preparar o vídeo: {url}. O VideoPlayer não está pronto.");
-                Destroy(vpGO);
-                yield break;
-            }
-            if (vp.texture != null)
-            {
-                rawImage.texture = vp.texture;
-                rawImage.color = Color.white;
-            }
-            else
-            {
-                Debug.LogWarning(
-                    $"VideoPlayer.texture é nula após preparação para {url}. O vídeo pode não ser exibido.");
-            }
-
-
-            vpGO.SetActive(true);
-
-            vp.Play();
-            Debug.Log($"Reproduzindo vídeo: {url}");
-            bool playedOnce = false;
-            while (vp.isPlaying || (vp.isPrepared && !playedOnce && vp.time > 0.01 && !vp.isLooping &&
-                                    vp.frameCount > 0 && (ulong)vp.frame < vp.frameCount - 1))
-            {
-                if (vp.isPlaying) playedOnce = true;
                 yield return null;
+                
             }
-            if (vp.isLooping && vp.isPlaying)
-            {
-                yield return new WaitUntil(() => !vp.isPlaying);
-            }
-
-            Debug.Log($"Vídeo concluído: {url}");
-            yield return new WaitForSeconds(0.2f);
-            Destroy(vpGO);
+            raw.texture = vp.texture;
+            raw.color = Color.white;
+            if (_currentVideoGO != null)
+                Destroy(_currentVideoGO);
+            yield return new WaitForSecondsRealtime(0.3f);
+            loadingScreen.SetActive(false);
+            Destroy(loading);
+            vp.Play();
+            _currentVideoGO = nextGO;
+            
+            yield return new WaitWhile(() => vp.isPlaying);
+            
+            Destroy(nextGO);
+            if (_currentVideoGO == nextGO)
+                _currentVideoGO = null;
         }
 
         private IEnumerator PrepareVideoInternal(VideoPlayer vp)
@@ -541,12 +600,12 @@ namespace Fase_3
                 Debug.LogError("VideoPlayer fornecido para PrepareVideoInternal é nulo.");
                 yield break;
             }
-            
+
 
             Debug.Log($"PrepareVideoInternal iniciado para: {vp.url}");
             vp.Prepare();
 
-            float preparationTimeout = 20f; 
+            float preparationTimeout = 20f;
             float startTime = Time.time;
 
             while (!vp.isPrepared)
@@ -561,14 +620,14 @@ namespace Fase_3
                 if (Time.time - startTime > preparationTimeout)
                 {
                     Debug.LogError($"Timeout (>{preparationTimeout}s) ao preparar o vídeo: {vp.url}");
-                    if (vp != null) vp.Stop(); 
-                    yield break; 
+                    if (vp != null) vp.Stop();
+                    yield break;
                 }
 
                 yield return null;
             }
         }
-        
+
 
         private IEnumerator PrepareVideo(VideoPlayer vp)
         {

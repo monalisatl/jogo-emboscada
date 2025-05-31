@@ -7,46 +7,15 @@
     <list default="true" id="f5616ee2-fc37-4e76-9166-9a5345da24a6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/loadRepescagem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/loadRepescagem.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_1afirmaçao.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_1afirmaçao.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_1rodada.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_1rodada.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase3.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3Script.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3Script.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/videoControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/videoControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario-1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario-1.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario-2.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario-2.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_afirmacao1_1rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_afirmacao1_1rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_afirmacao2_2rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_afirmacao2_2rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostacerta_1rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostacerta_1rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostacerta_2rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostacerta_2rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostaerrada_1rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostaerrada_1rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostaerrada_2rodada.mp4 (2).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario/secretario_respostaerrada_2rodada.mp4 (2).mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao1_1rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao1_1rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao2_2rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao2_2rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao_1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao_1.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao_2.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_afirmacao_2.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_certa_1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_certa_1.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_errada_1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_errada_1.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostacerta_1rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostacerta_1rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostacerta_2rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostacerta_2rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostaerrada_1rodada.mp4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostaerrada_1rodada.mp4.mp4.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostaerrada_2rodada.mp4 (2).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/secretario_respostaerrada_2rodada.mp4 (2).mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 3/PerguntaScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 3/PerguntaScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +57,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 2/InstructionUIController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 2/NoticiaManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3InstrucaoScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/projects/unity/jogo-emboscada/Assets/Scripts/Fase 3/Fase3Script.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 3/Fase3Script.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 3/PerguntaScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fase 3/secretarioVideoConfig.cs" root0="FORCE_HIGHLIGHTING" />
@@ -252,7 +222,7 @@
       <workItem from="1748641771217" duration="8146000" />
       <workItem from="1748658720195" duration="2111000" />
       <workItem from="1748711517283" duration="1475000" />
-      <workItem from="1748723539523" duration="2258000" />
+      <workItem from="1748723539523" duration="6176000" />
     </task>
     <task id="LOCAL-00001" summary="✨ feat: finaliza a base da fase quatro (❤️ ω ❤️)">
       <option name="closed" value="true" />
@@ -342,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747663000336</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary=":bug: fix: correcao fase 3">
+      <option name="closed" value="true" />
+      <created>1748727329022</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748727329022</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +358,8 @@
     <MESSAGE value=":Sparkles: feat: adição de timer para fase 2, 3 e 4" />
     <MESSAGE value=":bug: fix: corrigir de fluxo de jogo" />
     <MESSAGE value=" feat: repescagem" />
-    <option name="LAST_COMMIT_MESSAGE" value=" feat: repescagem" />
+    <MESSAGE value=":bug: fix: correcao fase 3" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix: correcao fase 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -14,25 +14,50 @@ namespace Fase_3
         [Header("Falha por Tempo")]
         [SerializeField] private GameObject falhaTempoPanel;
         [SerializeField] private Button falhaNextButton;
-
         public event Action<bool> OnAnswered;
 
         private bool _falhaNextClicked;
-
+        [SerializeField] private GameObject falhapanel;
+        [SerializeField] private GameObject certapanel;
         void Start()
         {
-            // garante que o painel comece desativado
+            
             falhaTempoPanel.SetActive(false);
-
-            // configura cada botão de opção
+            falhapanel.SetActive(false);
+            certapanel.SetActive(false);
             for (int i = 0; i < opcoes.Length; i++)
             {
                 int idx = i;
                 opcoes[i].onClick.AddListener(() =>
-                {
+                {   var button = falhapanel.GetComponentInChildren<Button>();
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(() =>
+                    {
+                        falhapanel.SetActive(false);
+                        OnAnswered?.Invoke(false);
+                        Destroy(gameObject);
+                    });
+                    button = certapanel.GetComponentInChildren<Button>();
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(() =>
+                    {
+                        certapanel.SetActive(false);
+                        OnAnswered?.Invoke(true);
+                        Destroy(gameObject);
+                    });
                     bool acertou = idx == indiceCorreto;
-                    OnAnswered?.Invoke(acertou);
-                    Destroy(gameObject);
+                    foreach (var botao in opcoes)
+                        botao.interactable = false;
+                    if (!acertou)
+                    {
+                        falhapanel.SetActive(true);
+                        
+                    }
+                    else
+                    {
+                        certapanel.SetActive(true);
+                    }
+
                 });
             }
         }

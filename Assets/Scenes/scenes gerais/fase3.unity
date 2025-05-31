@@ -290,7 +290,6 @@ MonoBehaviour:
   instrucoesClip: {fileID: 8300000, guid: ea8a59dedefafa842ad529baf64cee6e, type: 3}
   instrucaoAudioSource: {fileID: 2461622098914832553}
   instrucaoGO: {fileID: 3256317399447624812}
-  videoPrefab: {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
   urlvideos:
   - secretario_afirmacao1_1rodada.mp4
   - secretario_respostacerta_1rodada.mp4
@@ -298,6 +297,13 @@ MonoBehaviour:
   - secretario_afirmacao2_2rodada.mp4
   - secretario_respostacerta_2rodada.mp4
   - secretario_respostaerrada_2rodada.mp4
+  videoPrefabs:
+  - {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
+  - {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
+  - {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
+  - {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
+  - {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
+  - {fileID: 2348226499027982223, guid: 45335926166bd9246ad12add8d5e5ce0, type: 3}
   pergunta1Prefab: {fileID: 3736304886945475647, guid: 5ef9410371b93b0479a5fa7c051cd8c2, type: 3}
   pergunta2Prefab: {fileID: 628913696984513271, guid: d9ce6555f7043e5418234b9df4653d3b, type: 3}
   vitoriaPrefab: {fileID: 1883391141394169580, guid: 6710c27a9bb99f2468cd4ff22009f8e7, type: 3}
