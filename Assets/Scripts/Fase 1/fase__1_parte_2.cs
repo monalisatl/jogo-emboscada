@@ -162,7 +162,7 @@ namespace Fase_1
                 }
             }
         
-            acertos_garais = acertos;
+            acertos_garais = 0;
             Debug.Log($"Total de acertos: {acertos_garais}");
             
             // Habilitar feedback mesmo sem completar todas as zonas

@@ -202,9 +202,10 @@ namespace Fase_3
 
             loadingInstance.SetActive(true);
 
-            AsyncOperation op = SceneManager.LoadSceneAsync("main");
+            var op = SceneManager.LoadSceneAsync("main");
+            if (op == null) yield break;
             op.allowSceneActivation = false;
-            Slider progressBar = loadingInstance.GetComponentInChildren<Slider>();
+            var progressBar = loadingInstance.GetComponentInChildren<Slider>();
 
             while (op.progress < 0.9f)
             {

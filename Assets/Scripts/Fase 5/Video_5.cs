@@ -15,7 +15,7 @@ namespace Fase_5
         [SerializeField] private GameObject loadingPrefab;
         [SerializeField] private string targetSceneName = "fase5gameplay";
         [SerializeField] private GameObject videoDisplay;
-
+        [SerializeField] private string videoName = "Plantão ID Vilão.mp4";
         private bool videoFinished = false;
         private bool _videoReady = false;
         private bool _videoStarted = false;
@@ -65,11 +65,25 @@ namespace Fase_5
         }
         private IEnumerator PrepareVideo()
         {
+            var url = videoName;
             if (videoPlayer == null)
             {
                 Debug.LogWarning("VideoPlayer não configurado!");
                 yield break;
             }
+
+            if (videoName == null )
+            {
+                Debug.LogWarning("Nome do vídeo inválido ou não configurado!");
+                yield break;
+            }
+
+            if (!videoName.EndsWith("mp4"))
+            {
+                url = videoName + ".mp4";
+            }
+            url = System.IO.Path.Combine(Application.streamingAssetsPath, url);
+            videoPlayer.url = url;
             videoPlayer.prepareCompleted += vp => _videoReady = true;
             videoPlayer.Prepare();
             float timeoutSeconds = 10f;
@@ -79,7 +93,6 @@ namespace Fase_5
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-        
             if (!_videoReady)
             {
                 Debug.LogWarning("Timeout ao preparar o vídeo!");

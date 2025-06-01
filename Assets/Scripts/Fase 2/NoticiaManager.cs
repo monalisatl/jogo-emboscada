@@ -45,13 +45,14 @@ namespace Fase_2
         [Header("Resultado")] public TextMeshProUGUI resultText;
         public GameObject prefabInstructions;
         public GameObject me;
-
+        
         private Noticia currentNoticia;
         private int totalQuestions, totalAnswered, totalCorrect;
         [SerializeField] private TextMeshProUGUI credencial;
         private bool isRepescagemMode;
         [SerializeField] private bool debug = false;
         private readonly int _thisLevel = 1;
+        
         void Awake()
         {
             isRepescagemMode = RepescagemManager.IsRepescagemMode(_thisLevel);
@@ -102,6 +103,7 @@ namespace Fase_2
                             onCount++;
                     confirmButton.interactable = (onCount == 3);
                 });
+                falhatempo.SetActive(false);
             }
 
             // Listeners de botões

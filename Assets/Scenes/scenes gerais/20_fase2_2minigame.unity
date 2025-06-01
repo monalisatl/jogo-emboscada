@@ -256,17 +256,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1258103054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7445727282585178679, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
-  m_PrefabInstance: {fileID: 5443127544018872029}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2086527625
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,10 +343,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1836379985956947667, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2164986901964000134, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
       propertyPath: m_Camera
       value: 
@@ -444,18 +429,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3884485437681593282, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6278789067756978767, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8224115282316131180, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
-      propertyPath: timeoutButton
-      value: 
-      objectReference: {fileID: 1258103054}
-    - target: {fileID: 9082094290086242522, guid: 500f60282d570af44993ec15376cd3f2, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

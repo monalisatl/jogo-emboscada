@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class niveisfase1 : MonoBehaviour {
 
-    [SerializeField] private Queue<GameObject> tutoriais;
-    [SerializeField] private Queue<GameObject> detailTutoriais;
+    [SerializeField] private Queue<GameObject> tutoriais = new Queue<GameObject>();
+    [SerializeField] private Queue<GameObject> detailTutoriais = new Queue<GameObject>();
     public GameObject[] panels;
     public GameObject painel_atual;
     [SerializeField] private GameObject detailPanelAtual;
@@ -36,7 +36,7 @@ public class niveisfase1 : MonoBehaviour {
                 return;
             }
         }
-       // Debug.Log("Painéis encontrados: " + panels.Length);
+       Debug.Log("Painéis encontrados: " + panels.Length);
         foreach (GameObject panel in panels) {
             panel.SetActive(false);
             
