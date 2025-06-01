@@ -6,7 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using Fase_5; // para RepescagemManager
+using Fase_5;
+using UnityEngine.Serialization; // para RepescagemManager
 
 namespace Fase_3
 {
@@ -29,7 +30,6 @@ namespace Fase_3
         private GameObject falhaTempoPanel;
 
         private bool _falhaTempoClicked = false;
-
         [Header("Áudio de Instrução")] [SerializeField]
         private AudioClip instrucoesClip;
 
@@ -54,7 +54,10 @@ namespace Fase_3
         private const int ThisLevel = 2;
         public static Fase3Manager instance;
         private GameObject _currentVideoGO;
-
+        
+        [Header("Falha Vídeo")]
+        [SerializeField] private GameObject falhaPanel;
+        [FormerlySerializedAs("_falhaAudioSource")] [SerializeField] private AudioSource falhaAudioSource;
         void Start()
         {
             if (instance == null)
@@ -73,7 +76,9 @@ namespace Fase_3
             _tempoRestante = tempoTotal;
             if (debug) _isRepescagemMode = true;
 
+            falhaPanel.SetActive(false);
             StartCoroutine(RunFase());
+            
         }
 
         private IEnumerator RunFase()
@@ -111,10 +116,11 @@ namespace Fase_3
             {
                 yield return PlayVideo(videoPrefabs[2], urlvideos[2]);
             }
-            
+
+            yield return falhavideocarrregar();
             // Vídeo 2
             yield return PlayVideo(videoPrefabs[3], urlvideos[3]);
-
+            
             // Pergunta 2
             yield return AskQuestion(pergunta2Prefab, correto =>
             {
@@ -140,6 +146,15 @@ namespace Fase_3
             yield return StartCoroutine(EndFase3());
         }
 
+        private IEnumerator falhavideocarrregar()
+        {
+            falhaPanel.SetActive(true);
+            falhaAudioSource.pitch = 2f;
+            falhaAudioSource.Play();
+            yield return new WaitUntil(() => !falhaAudioSource.isPlaying);
+            
+             falhaPanel.SetActive(false);
+        }
         void Update()
         {
             if (!_timerAtivo) return;
