@@ -1174,7 +1174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.6669, y: 127.42}
+  m_AnchoredPosition: {x: -1.6669, y: 7.9}
   m_SizeDelta: {x: 315.5014, y: 66.2467}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &779646598869871566
@@ -1857,7 +1857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.6669, y: 14}
+  m_AnchoredPosition: {x: -1.6669, y: 126.6}
   m_SizeDelta: {x: 315.5014, y: 66.2467}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1269219224308921324
@@ -4075,7 +4075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &3384193883213803396
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7619,8 +7619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pistas: {fileID: 3336505418807335839}
   statusFase:
-  - {fileID: 910059027822134183}
   - {fileID: 3453243735614213287}
+  - {fileID: 910059027822134183}
   - {fileID: 132810496473387469}
   nivelButtons:
   - {fileID: 2927279831551526575}
