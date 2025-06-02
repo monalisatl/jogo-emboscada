@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using Fase_5;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +14,8 @@ namespace Fase_4
 {
     public class EnigmaScript : MonoBehaviour
     {
+        [Header("Classificação")]
+        [SerializeField] TextMeshProUGUI classificacaoText;
         [Header("Timer")]
         [Tooltip("Tempo total para resolver os enigmas (em segundos)")]
         [SerializeField] private float tempoTotal = 30f;
@@ -63,6 +67,7 @@ namespace Fase_4
 
         private void Start()
         {
+            VerificarClassidicacao();
             _tempoRestante = tempoTotal;
             PausarTimer();
             timeOut.SetActive(false);
@@ -78,6 +83,15 @@ namespace Fase_4
                 );
             }
         }
+
+        private void VerificarClassidicacao()
+        {
+            EmboscadaController.gameData ??= new EmboscadaController.GameData();
+            EmboscadaController.gameData.classificacao = (EmboscadaController.Classificacao)PlayerPrefs.GetInt("classificacao", 0);
+            classificacaoText.text = EmboscadaController.gameData.classificacao.ToString();
+         
+        }
+
         private void AtualizarListaTimers()
         {
             _timerImages.Clear();
