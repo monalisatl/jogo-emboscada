@@ -7,16 +7,14 @@
     <list default="true" id="f5616ee2-fc37-4e76-9166-9a5345da24a6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/5_personagem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/5_personagem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 6.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/7_dicas_fakenews_analise 6.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/9_fase1_nivel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/9_fase1_nivel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pista fase 3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pista fase 3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/fase2/fase2_pista.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Repescagem/fase2/fase2_pista.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_parabens 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_parabens 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/5_personagem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/5_personagem.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/18_fase2_minigame.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/18_fase2_minigame.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/4_inicio_jogo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/4_inicio_jogo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/fase3_2rodada.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/faserepescagem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/Repescagem/faserepescagem.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/layout/libs/audio/secretario_texture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/libs/audio/secretario_texture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase4.1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase4.1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.1_culpado.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/fase5.1_culpado.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 4/EnigmaScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 4/EnigmaScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,27 +89,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "Attach to Unity Player.Unity.exe (jogo-emboscada).executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "XThreadsFramesViewSplitterKey": "0.27570093",
-    "git-widget-placeholder": "dev",
-    "last_opened_file_path": "D:/projects/unity/jogo-emboscada",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;Attach to Unity Player.Unity.exe (jogo-emboscada).executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.27570093&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/unity/jogo-emboscada&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Programas\Unity\installs\6000.0.40f1\Editor\Unity.exe" />
@@ -225,7 +223,8 @@
       <workItem from="1748711517283" duration="1475000" />
       <workItem from="1748723539523" duration="15838000" />
       <workItem from="1748743907184" duration="3135000" />
-      <workItem from="1748787121433" duration="1570000" />
+      <workItem from="1748787121433" duration="3780000" />
+      <workItem from="1748794183070" duration="1140000" />
     </task>
     <task id="LOCAL-00001" summary="✨ feat: finaliza a base da fase quatro (❤️ ω ❤️)">
       <option name="closed" value="true" />
