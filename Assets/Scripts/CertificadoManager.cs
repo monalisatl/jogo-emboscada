@@ -100,6 +100,10 @@ public class CertificadoManager : MonoBehaviour
             botaoMenuPrincipal.onClick.AddListener(() =>
             {
                 PlayerPrefs.DeleteAll();
+                EmboscadaController.gameData = new EmboscadaController.GameData();
+                MonoBehaviour.Destroy(GameObject.FindGameObjectWithTag("DontDestroyOnLoad"));
+                MainManager.indiceCanvainicial = 0;
+                //destruir todos os objetos persistentes no DontDestroyOnLoad
                 UnityEngine.SceneManagement.SceneManager.LoadScene(cenaMenuPrincipal);
             });
         }

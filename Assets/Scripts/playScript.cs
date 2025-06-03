@@ -46,6 +46,7 @@ public class playScript : MonoBehaviour{
     public void PlayGame()
     {
                EmboscadaController.gameData = new EmboscadaController.GameData();
+               MainManager.indiceCanvainicial = 0;
                PlayerPrefs.DeleteAll();
                PlayerPrefs.Save();
                StartCoroutine(LoadRepescagem("main"));

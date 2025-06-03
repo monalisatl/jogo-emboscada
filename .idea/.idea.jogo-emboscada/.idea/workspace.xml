@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f5616ee2-fc37-4e76-9166-9a5345da24a6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/copilot-instructions.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/copilot-instructions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.jogo-emboscada/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/0_abertura_jogo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/0_abertura_jogo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/abertura.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/abertura.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/18_fase2_minigame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/18_fase2_minigame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/video_FINAL.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/scenes gerais/video_FINAL.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CertificadoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CertificadoManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 4/EnigmaS/Enigma 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 4/EnigmaS/Enigma 3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/EnigmaS/Enigma 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/EnigmaS/Enigma 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/EnigmaS/Enigma 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 5/Respescagem Scritps/Fase 4/EnigmaS/Enigma 3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fase 1/fase__1_parte_2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fase 1/fase__1_parte_2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/playScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/playScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/layout/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +243,9 @@
       <workItem from="1748794183070" duration="1140000" />
       <workItem from="1748908369445" duration="9162000" />
       <workItem from="1748921224013" duration="2182000" />
-      <workItem from="1748953492385" duration="149000" />
+      <workItem from="1748953492385" duration="283000" />
+      <workItem from="1748956287921" duration="197000" />
+      <workItem from="1748957993452" duration="1367000" />
     </task>
     <task id="LOCAL-00001" summary="✨ feat: finaliza a base da fase quatro (❤️ ω ❤️)">
       <option name="closed" value="true" />
@@ -358,7 +367,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748918030911</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary=":bug: fix: correções finais">
+      <option name="closed" value="true" />
+      <created>1748953747288</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748953747288</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +417,8 @@
     <MESSAGE value=":bug: fix: fase 3 corrigida" />
     <MESSAGE value=":bug fix: correções finais fase 3/2/1-go" />
     <MESSAGE value=":bug: fix corrige audios/musicas" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix corrige audios/musicas" />
+    <MESSAGE value=":bug: fix: correções finais" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix: correções finais" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
