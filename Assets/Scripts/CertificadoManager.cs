@@ -99,6 +99,7 @@ public class CertificadoManager : MonoBehaviour
         {
             botaoMenuPrincipal.onClick.AddListener(() =>
             {
+                PlayerPrefs.DeleteAll();
                 UnityEngine.SceneManagement.SceneManager.LoadScene(cenaMenuPrincipal);
             });
         }
