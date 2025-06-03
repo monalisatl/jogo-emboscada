@@ -190,6 +190,7 @@ MonoBehaviour:
   personagemVilaoIndex: 0
   cenaVitoria: fase5_parabens
   textoClassificacao: {fileID: 5192018466784853892}
+  musicPlay: {fileID: 5192018466784853893}
 --- !u!114 &15822700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +632,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8563871877406949067, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563871877406949067, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -647,6 +656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &5192018466784853893 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8563871877406949067, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
+  m_PrefabInstance: {fileID: 5192018466784853891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
