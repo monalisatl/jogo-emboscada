@@ -14,7 +14,7 @@ namespace Fase_2
     public class ChronoUIController : MonoBehaviour
     {
         [Header("Timer")] [Tooltip("Tempo máximo para completar a ordenação (em segundos)")]
-        public float tempoLimite = 30f;
+        public float tempoLimite = 10f;
 
         [Tooltip("Referência ao objeto de imagem do cronômetro")]
         public Image cronometro;
@@ -41,13 +41,13 @@ namespace Fase_2
         public Button timeoutButton;
 
         [Header("Cores")] public Color selectedColor = Color.green;
-
         private List<Noticia> listaNoticias;
         private List<Noticia> ordemSelecionada = new List<Noticia>();
         private int nextChronoIndex = 1;
         private Color defaultButtonColor;
         [SerializeField] private TextMeshProUGUI credencial;
-
+        private int _ignoreClickIndex = -1;
+        private bool _ignoreClickFlag = false;
         [Header("Repescagem")] [SerializeField]
         private GameObject vitoria;
 
@@ -57,6 +57,11 @@ namespace Fase_2
         [SerializeField] private bool debug;
         public static bool _isRepescagem = false;
         private const int Nivel = 1;
+        
+        [Header("Desselecionar")]
+        [SerializeField] private GameObject desselectext;
+        
+        
 
         void Start()
         {
@@ -65,7 +70,7 @@ namespace Fase_2
             {
                 _isRepescagem = debug;
             }
-
+            
             if (EmboscadaController.gameData == null)
             {
                 EmboscadaController.gameData = new EmboscadaController.GameData();
@@ -82,8 +87,6 @@ namespace Fase_2
             completePanel.SetActive(false);
             continueButton.onClick.AddListener(OnContinue);
             resetButton.onClick.AddListener(OnReset);
-
-            // config painel de tempo esgotado (se existir)
             if (timeoutPanel != null)
             {
                 timeoutPanel.SetActive(false);
@@ -105,7 +108,10 @@ namespace Fase_2
             });
 
             feedbackText.text = $"Selecione a notícia #{nextChronoIndex}";
-
+            if (desselectext)
+            {
+                desselectext.SetActive(false);
+            }
             // configura cada botão
             for (int i = 0; i < newsButtons.Length; i++)
             {
@@ -114,14 +120,13 @@ namespace Fase_2
                 buttonTexts[i].text = listaNoticias[i].titulo;
 
                 // clique rápido = abrir detalhe
-                newsButtons[i].onClick.AddListener(() => OpenDetail(idx));
+                newsButtons[i].onClick.AddListener(() => OnButtonClick(idx));
 
                 // longo = selecionar ordem
                 var lp = newsButtons[i].gameObject.GetComponent<LongPressButton>();
                 lp.holdThreshold = 0.5f;
                 lp.onLongPress.AddListener(() => OnSelectChrono(idx));
             }
-
             // Inicializa o cronômetro
             InicializarCronometro();
         }
@@ -139,7 +144,6 @@ namespace Fase_2
                 Debug.LogError("Componente de imagem do cronômetro não atribuído!");
                 return;
             }
-
             _tempoRestante = tempoLimite;
             _cronometroAtivo = true;
             UpdateCronometro();
@@ -174,10 +178,8 @@ namespace Fase_2
 
         private void OnTempoEsgotado()
         {
-            // Se o tempo acabou, o jogador perde a fase automaticamente
             Debug.Log("Tempo esgotado! Jogador perdeu a fase.");
 
-            // Desativa interação com os botões
             foreach (var button in newsButtons)
             {
                 button.interactable = false;
@@ -189,13 +191,16 @@ namespace Fase_2
             {
                 timeoutPanel.SetActive(true);
             }
-
-            if (_isRepescagem)
+            timeoutButton.onClick.RemoveAllListeners();
+            timeoutButton.onClick.AddListener((() =>
             {
-                TelaDerrota();
-            }
+                if (_isRepescagem)
+                {
+                    TelaDerrota();
+                }
 
-            OnTimeoutContinue();
+                OnTimeoutContinue();
+            }));
         }
 
         private void OnTimeoutContinue()
@@ -219,8 +224,6 @@ namespace Fase_2
             openData.text = n.data;
             openConteudo.text = n.conteudo;
             openLink.text = n.linkFonte;
-
-            // Pausa o cronômetro enquanto visualiza os detalhes
             _cronometroAtivo = false;
         }
 
@@ -228,24 +231,80 @@ namespace Fase_2
         {
             var n = listaNoticias[i];
             if (ordemSelecionada.Contains(n)) return;
-
-            // marca visual
             var img = newsButtons[i].GetComponent<Image>();
             img.color = selectedColor;
-
-            // registra
             ordemSelecionada.Add(n);
-            newsButtons[i].interactable = false;
-            buttonTexts[i].text += $"  ({nextChronoIndex})";
-
-            // avança
+            buttonTexts[i].text += $" ({nextChronoIndex})";
+            _ignoreClickIndex = i;
+            _ignoreClickFlag  = true;
+            StartCoroutine(ClearIgnoreClickFlag());
+            
             nextChronoIndex++;
+            if (desselectext != null)
+                desselectext.SetActive(ordemSelecionada.Count > 0);
+
             if (nextChronoIndex <= listaNoticias.Count)
                 feedbackText.text = $"Selecione a notícia #{nextChronoIndex}";
             else
                 OnChronoComplete();
         }
 
+        IEnumerator ClearIgnoreClickFlag()
+        {
+            yield return new WaitForSeconds(0.3f);
+            _ignoreClickFlag = false;
+        }
+        
+        private void OnButtonClick(int i)
+        {
+            if (_ignoreClickFlag && i == _ignoreClickIndex)
+                return;
+
+            var n = listaNoticias[i];
+            if (ordemSelecionada.Contains(n))
+                DeselectChrono(i);
+            else
+                OpenDetail(i);
+        }
+        
+        private void DeselectChrono(int i)
+        {
+            var noticia = listaNoticias[i];
+            // encontra a posição na lista de seleção
+            int removedIndex = ordemSelecionada.IndexOf(noticia);
+            if (removedIndex < 0) return;
+
+            // remove da seleção
+            ordemSelecionada.RemoveAt(removedIndex);
+
+            // restaura aparência do botão i
+            newsButtons[i].interactable = true;
+            newsButtons[i].GetComponent<Image>().color = defaultButtonColor;
+            buttonTexts[i].text = listaNoticias[i].titulo;
+
+            // renumera todos os selecionados
+            for (int j = 0; j < newsButtons.Length; j++)
+            {
+                var n = listaNoticias[j];
+                if (ordemSelecionada.Contains(n))
+                {
+                    int newOrder = ordemSelecionada.IndexOf(n) + 1;
+                    buttonTexts[j].text = n.titulo + $" ({newOrder})";
+                    // cor já está em selectedColor e interactable = false
+                }
+            }
+
+            // atualiza próximo índice
+            nextChronoIndex = ordemSelecionada.Count + 1;
+            if (nextChronoIndex <= listaNoticias.Count)
+                feedbackText.text = $"Selecione a notícia #{nextChronoIndex}";
+            else
+                OnChronoComplete();
+
+            // exibe/oculta texto de deseleção
+            if (desselectext != null)
+                desselectext.SetActive(ordemSelecionada.Count > 0);
+        }
         void OnChronoComplete()
         {
             _cronometroAtivo = false;
@@ -515,8 +574,11 @@ namespace Fase_2
             }
 
             // Reinicia o cronômetro
-            _tempoRestante = tempoLimite;
+           // _tempoRestante = tempoLimite;
             _cronometroAtivo = true;
+            if (desselectext != null)
+                desselectext.SetActive(false);
+
         }
 
         private void SaveFase(bool status)

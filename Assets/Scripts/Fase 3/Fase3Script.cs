@@ -1,21 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using Fase_5; // para RepescagemManager
+using Fase_5;
+using TMPro;
+using UnityEngine.Serialization;
 
 namespace Fase_3
 {
-
     public class Fase3Manager : MonoBehaviour
     {
         [Header("Timer")]
         [Tooltip("Tempo total compartilhado para responder as duas perguntas (em segundos)")]
         [SerializeField]
-        private float tempoTotal = 30f;
+        private float tempoTotal = 300f;
 
         private float _tempoRestante;
         private bool _timerAtivo = false;
@@ -25,6 +27,11 @@ namespace Fase_3
         [Header("objetos raiz")] [SerializeField]
         private GameObject loadingScreen;
 
+        [Header("Falha Tempo")] [SerializeField]
+        private GameObject falhaTempoPanel;
+
+        private bool _falhaTempoClicked = false;
+
         [Header("Áudio de Instrução")] [SerializeField]
         private AudioClip instrucoesClip;
 
@@ -32,8 +39,8 @@ namespace Fase_3
         [SerializeField] private GameObject instrucaoGO;
         private bool _skipInstrucao = false;
 
-        [Header("Vídeo")] [SerializeField] private GameObject videoPrefab;
-        [SerializeField] private VideoClip[] secretariosClip;
+        [Header("Vídeo")] public string[] urlvideos;
+        public GameObject[] videoPrefabs;
 
         [Header("Perguntas")] [SerializeField] private PerguntaScript pergunta1Prefab;
         [SerializeField] private PerguntaScript pergunta2Prefab;
@@ -44,38 +51,64 @@ namespace Fase_3
         [SerializeField] private bool debug = false;
         private PerguntaScript _perguntaAtual;
         private bool _resp1, _resp2;
-
+        private GameObject pregunta;
         public static bool _isRepescagemMode = false;
         private const int ThisLevel = 2;
+        public static Fase3Manager instance;
+        private GameObject _currentVideoGO;
+
+        [Header("tela de fase divisao")] [SerializeField]
+        private GameObject deivisaoprefab;
+
+        private bool _divisaoFaseBotaoPressionado = false;
+
+        [Header("Falha Vídeo")] [SerializeField]
+        private GameObject falhaPanel;
+
+        [FormerlySerializedAs("_falhaAudioSource")] [SerializeField]
+        private AudioSource falhaAudioSource;
 
         void Start()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             if (!LoadingScreenController.Instance)
                 DontDestroyOnLoad(loadingScreen);
 
             _tempoRestante = tempoTotal;
-            if (debug)
-                _isRepescagemMode = debug;
+            if (debug) _isRepescagemMode = true;
+
+            falhaPanel.SetActive(false);
             StartCoroutine(RunFase());
         }
 
-
         private IEnumerator RunFase()
         {
+            // Instruções
             yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
             {
                 () => PrepareAudio(instrucoesClip)
             });
-
             instrucaoAudioSource.clip = instrucoesClip;
             instrucaoAudioSource.Play();
             yield return new WaitUntil(() => _skipInstrucao);
+            yield return Divisaofase("Primeira Rodada");
+            // Vídeo 1
+            yield return PlayVideo(videoPrefabs[0], urlvideos[0]);
 
-            yield return PlayVideo(secretariosClip[0]);
-
+            // Pergunta 1
             yield return AskQuestion(pergunta1Prefab, correto =>
             {
                 _resp1 = correto;
+                Debug.Log("Resposta 1 correta: " + _resp1);
                 _timerAtivo = false;
             });
             if (_tempoEsgotado)
@@ -84,35 +117,132 @@ namespace Fase_3
                 yield break;
             }
 
-            yield return PlayVideo(secretariosClip[1]);
-            _timerAtivo = true;
-            // Segunda pergunta
+            if (_resp1)
+            {
+                yield return PlayVideo(videoPrefabs[1], urlvideos[1]);
+            }
+            else
+            {
+                yield return PlayVideo(videoPrefabs[2], urlvideos[2]);
+            }
+
+            yield return FalhaVideoCarrregar();
+            yield return Divisaofase("Segunda Rodada");
+            // Vídeo 2
+            yield return PlayVideo(videoPrefabs[3], urlvideos[3]);
+
+            // Pergunta 2
             yield return AskQuestion(pergunta2Prefab, correto =>
             {
                 _resp2 = correto;
                 _timerAtivo = false;
             });
+            if (_tempoEsgotado)
+            {
+                yield return StartCoroutine(EndFase3());
+                yield break;
+            }
 
+            if (_resp2)
+            {
+                yield return PlayVideo(videoPrefabs[4], urlvideos[4]);
+            }
+            else
+            {
+                yield return PlayVideo(videoPrefabs[5], urlvideos[5]);
+            }
+
+            // Finaliza normalmente
             yield return StartCoroutine(EndFase3());
+        }
+
+        private IEnumerator Divisaofase(string nomeDaRodada)
+        {
+            _divisaoFaseBotaoPressionado = false;
+
+            GameObject divisaoPrefabInstancia;
+            if (deivisaoprefab)
+            {
+                divisaoPrefabInstancia = Instantiate(deivisaoprefab);
+            }
+            else
+            {
+                Debug.LogError(
+                    "'deivisaoprefab' não está atribuído no Inspector. Não é possível mostrar a tela de divisão.");
+                yield break;
+            }
+
+            var canvasComponent = divisaoPrefabInstancia.GetComponent<Canvas>();
+            if (canvasComponent != null)
+            {
+                canvasComponent.renderMode = RenderMode.ScreenSpaceCamera;
+                canvasComponent.worldCamera = Camera.main;
+                canvasComponent.sortingOrder = 5;
+            }
+            else
+            {
+                Debug.LogWarning(
+                    "Componente Canvas não encontrado no 'divisaoPrefabInstancia'. A UI pode não ser exibida corretamente.");
+            }
+
+            divisaoPrefabInstancia.GetComponentInChildren<TextMeshProUGUI>().text = nomeDaRodada;
+                var botaoParaAguardarClique = divisaoPrefabInstancia.GetComponentInChildren<Button>(true);
+                if (botaoParaAguardarClique)
+                {
+                    botaoParaAguardarClique.onClick.RemoveAllListeners();
+                    botaoParaAguardarClique.onClick.AddListener(() =>
+                    {
+                        _divisaoFaseBotaoPressionado = true;
+                        Destroy(divisaoPrefabInstancia);
+                    });
+                }
+                
+
+            Debug.Log($"Exibindo tela de divisão: {nomeDaRodada}. Aguardando clique no botão...");
+            yield return new WaitUntil(() => _divisaoFaseBotaoPressionado);
+            Debug.Log("Botão da tela de divisão clicado. Prosseguindo para a próxima etapa da fase.");
+
+        }
+
+        private IEnumerator FalhaVideoCarrregar()
+        {
+            falhaPanel.SetActive(true);
+            falhaAudioSource.pitch = 2f;
+            falhaAudioSource.Play();
+            yield return new WaitUntil(() => !falhaAudioSource.isPlaying);
+
+            falhaPanel.SetActive(false);
         }
 
         void Update()
         {
-            if (_timerAtivo)
-            {
-                _tempoRestante -= Time.deltaTime;
-                if (_timerImage != null)
-                    _timerImage.fillAmount = _tempoRestante / tempoTotal;
+            if (!_timerAtivo) return;
 
-                if (_tempoRestante <= 0)
-                {
-                    _tempoRestante = 0;
-                    _timerAtivo = false;
-                    _tempoEsgotado = true;
-                    if (_perguntaAtual != null)
-                        _perguntaAtual.ForceFinish(false);
-                }
+            _tempoRestante -= Time.deltaTime;
+            if (_timerImage != null)
+                _timerImage.fillAmount = _tempoRestante / tempoTotal;
+
+            if (_tempoRestante <= 0f)
+            {
+                _tempoRestante = 0f;
+                _timerAtivo = false;
+                _tempoEsgotado = true;
+                if (_perguntaAtual != null)
+                    _perguntaAtual.ForceFinish(false);
             }
+        }
+
+        private IEnumerator WaitForFalhaTempo()
+        {
+            falhaTempoPanel.SetActive(true);
+            _falhaTempoClicked = false;
+            var btn = falhaTempoPanel.GetComponentInChildren<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() => { _falhaTempoClicked = true; });
+            while (!_falhaTempoClicked)
+                yield return null;
+
+            falhaTempoPanel.SetActive(false);
         }
 
         private IEnumerator EndFase3()
@@ -134,7 +264,6 @@ namespace Fase_3
             }
 
             SaveGame(ganhou);
-            // MODO NORMAL: carrega a MAIN como antes
             MainManager.indiceCanvainicial = ganhou ? 29 : 12;
             GameObject loadingInstance = Instantiate(loadingScreen);
             var loadingCanvas = loadingInstance.GetComponent<Canvas>();
@@ -147,9 +276,10 @@ namespace Fase_3
 
             loadingInstance.SetActive(true);
 
-            AsyncOperation op = SceneManager.LoadSceneAsync("main");
+            var op = SceneManager.LoadSceneAsync("main");
+            if (op == null) yield break;
             op.allowSceneActivation = false;
-            Slider progressBar = loadingInstance.GetComponentInChildren<Slider>();
+            var progressBar = loadingInstance.GetComponentInChildren<Slider>();
 
             while (op.progress < 0.9f)
             {
@@ -339,26 +469,240 @@ namespace Fase_3
                 Debug.LogError("Falha ao carregar áudio de instrução.");
         }
 
-        private IEnumerator PlayVideo(VideoClip clip)
+
+        #region Video Control
+
+        // private IEnumerator PlayVideo(string videoname)
+        // {   
+        //     if (string.IsNullOrEmpty(videoname))
+        //     {
+        //         Debug.LogWarning("Nome do vídeo não fornecido.");
+        //         yield break;
+        //     }
+        //     
+        //     if( !videoname.EndsWith(".mp4"))
+        //     {
+        //         Debug.LogWarning($"O nome do vídeo '{videoname}' não termina com '.mp4'. Adicionando extensão.");
+        //         videoname += ".mp4";
+        //     }
+        //     var url = System.IO.Path.Combine(Application.streamingAssetsPath, videoname);
+        //     var vpGO = Instantiate(videoPrefab);
+        //     var canva = vpGO.GetComponentInChildren<Canvas>();
+        //     canva.renderMode = RenderMode.ScreenSpaceCamera;
+        //     canva.worldCamera = Camera.main;
+        //     var vp = vpGO.GetComponentInChildren<VideoPlayer>();
+        //     if (vp == null)
+        //     {
+        //         Debug.LogError("VideoPlayer não encontrado no prefab.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //     Debug.Log($"Preparando vídeo: {url}");
+        //     vp.url = url;
+        //     vp.renderMode = VideoRenderMode.RenderTexture;
+        //     yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+        //     {
+        //         () => PrepareVideo(vp)
+        //     });
+        //     vpGO.SetActive(true);
+        //     yield return new WaitForSeconds(0.5f);
+        //     vp.Play();
+        //     yield return new WaitUntil(() => !vp.isPlaying);
+        //     yield return new WaitForSeconds(0.5f);
+        //     Destroy(vpGO);
+        // }
+
+        #endregion
+
+        // private IEnumerator PlayVideo(GameObject videoPrefab, string videoname)
+        // {
+        //     if (string.IsNullOrEmpty(videoname))
+        //     {
+        //         Debug.LogWarning("Nome do vídeo não fornecido.");
+        //         yield break;
+        //     }
+        //
+        //     if (!videoname.EndsWith(".mp4"))
+        //     {
+        //         // Debug.LogWarning($"O nome do vídeo '{videoname}' não termina com '.mp4'. Adicionando extensão.");
+        //         videoname += ".mp4";
+        //     }
+        //     
+        //     var url = System.IO.Path.Combine(Application.streamingAssetsPath, videoname);
+        //     GameObject vpGO = Instantiate(videoPrefab);
+        //     var canva = vpGO.GetComponentInChildren<Canvas>();
+        //     if (canva != null)
+        //     {
+        //         canva.renderMode = RenderMode.ScreenSpaceCamera;
+        //         canva.worldCamera = Camera.main;
+        //         canva.sortingOrder = 5;
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("Canvas não encontrado no videoPrefab instanciado.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //
+        //     VideoPlayer vp = vpGO.GetComponentInChildren<VideoPlayer>();
+        //     RawImage rawImage = vpGO.GetComponentInChildren<RawImage>(); // Obtenha o RawImage
+        //
+        //     if (vp == null)
+        //     {
+        //         Debug.LogError("VideoPlayer não encontrado no prefab.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //
+        //     if (rawImage == null)
+        //     {
+        //         Debug.LogError("RawImage não encontrado no prefab para exibir o vídeo.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //     rawImage.texture = null;
+        //     rawImage.color = Color.clear;
+        //     vp.source = VideoSource.Url;
+        //     vp.url = url;
+        //
+        //     Debug.Log($"Preparando vídeo: {url}");
+        //     vp.errorReceived += (source, message) =>
+        //         Debug.LogError($"VideoPlayer Error: {message} para URL: {source.url}");
+        //     yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+        //     {
+        //         () => PrepareVideoInternal(vp)
+        //     });
+        //     if (!vp.isPrepared)
+        //     {
+        //         Debug.LogError($"Falha ao preparar o vídeo: {url}. O VideoPlayer não está pronto.");
+        //         Destroy(vpGO);
+        //         yield break;
+        //     }
+        //     if (vp.texture != null)
+        //     {
+        //         rawImage.texture = vp.texture;
+        //         rawImage.color = Color.white;
+        //     }
+        //     else
+        //     {
+        //         Debug.LogWarning(
+        //             $"VideoPlayer.texture é nula após preparação para {url}. O vídeo pode não ser exibido.");
+        //     }
+        //
+        //
+        //     vpGO.SetActive(true);
+        //
+        //     vp.Play();
+        //     Debug.Log($"Reproduzindo vídeo: {url}");
+        //     bool playedOnce = false;
+        //     while (vp.isPlaying || (vp.isPrepared && !playedOnce && vp.time > 0.01 && !vp.isLooping &&
+        //                             vp.frameCount > 0 && (ulong)vp.frame < vp.frameCount - 1))
+        //     {
+        //         if (vp.isPlaying) playedOnce = true;
+        //         yield return null;
+        //     }
+        //     if (vp.isLooping && vp.isPlaying)
+        //     {
+        //         yield return new WaitUntil(() => !vp.isPlaying);
+        //     }
+        //
+        //     Debug.Log($"Vídeo concluído: {url}");
+        //     yield return new WaitForSeconds(0.2f);
+        //     Destroy(vpGO);
+        // }
+
+        private IEnumerator PlayVideo(GameObject videoPrefab, string videoname)
         {
-            var vpGO = Instantiate(videoPrefab);
-            var canva = vpGO.GetComponentInChildren<Canvas>();
+            var loading = Instantiate(loadingScreen);
+            var canvaload = loading.GetComponentInChildren<Canvas>();
+            canvaload.renderMode = RenderMode.ScreenSpaceCamera;
+            canvaload.worldCamera = Camera.main;
+            canvaload.sortingOrder = 10;
+            loading.SetActive(true);
+
+            // 2) instancia o próximo prefab de vídeo
+            string arquivo = videoname.EndsWith(".mp4") ? videoname : videoname + ".mp4";
+            string url = Path.Combine(Application.streamingAssetsPath, arquivo);
+            GameObject nextGO = Instantiate(videoPrefab);
+            var canva = nextGO.GetComponentInChildren<Canvas>();
             canva.renderMode = RenderMode.ScreenSpaceCamera;
             canva.worldCamera = Camera.main;
-            var vp = vpGO.GetComponentInChildren<VideoPlayer>();
-            vp.clip = clip;
-            vp.renderMode = VideoRenderMode.RenderTexture;
-
-            yield return LoadingScreenController.Instance.ShowLoading(new List<Func<IEnumerator>>
+            canva.sortingOrder = 5;
+            VideoPlayer vp = nextGO.GetComponentInChildren<VideoPlayer>();
+            RawImage raw = nextGO.GetComponentInChildren<RawImage>();
+            raw.texture = vp.texture;
+            raw.color = Color.white;
+            vp.source = VideoSource.Url;
+            vp.url = url;
+            vp.Prepare();
+            float timeout = 20f;
+            float t0 = Time.time;
+            while (!vp.isPrepared)
             {
-                () => PrepareVideo(vp)
-            });
+                if (Time.time - t0 > timeout)
+                {
+                    Debug.LogError($"Timeout ao preparar vídeo {url}");
+                    Destroy(nextGO);
+                    loadingScreen.SetActive(false);
+                    Destroy(loading);
+                    yield break;
+                }
 
-            vpGO.SetActive(true);
+                yield return null;
+            }
+
+            raw.texture = vp.texture;
+            raw.color = Color.white;
+            if (_currentVideoGO != null)
+                Destroy(_currentVideoGO);
+            yield return new WaitForSecondsRealtime(0.3f);
+            loadingScreen.SetActive(false);
+            Destroy(loading);
             vp.Play();
-            yield return new WaitUntil(() => !vp.isPlaying);
-            Destroy(vpGO);
+            _currentVideoGO = nextGO;
+
+            yield return new WaitWhile(() => vp.isPlaying);
+
+            Destroy(nextGO);
+            if (_currentVideoGO == nextGO)
+                _currentVideoGO = null;
         }
+
+        private IEnumerator PrepareVideoInternal(VideoPlayer vp)
+        {
+            if (vp == null)
+            {
+                Debug.LogError("VideoPlayer fornecido para PrepareVideoInternal é nulo.");
+                yield break;
+            }
+
+
+            Debug.Log($"PrepareVideoInternal iniciado para: {vp.url}");
+            vp.Prepare();
+
+            float preparationTimeout = 20f;
+            float startTime = Time.time;
+
+            while (!vp.isPrepared)
+            {
+                if (vp == null)
+                {
+                    Debug.LogWarning(
+                        "VideoPlayer foi destruído durante a preparação (possivelmente por OnVideoError).");
+                    yield break;
+                }
+
+                if (Time.time - startTime > preparationTimeout)
+                {
+                    Debug.LogError($"Timeout (>{preparationTimeout}s) ao preparar o vídeo: {vp.url}");
+                    if (vp != null) vp.Stop();
+                    yield break;
+                }
+
+                yield return null;
+            }
+        }
+
 
         private IEnumerator PrepareVideo(VideoPlayer vp)
         {
@@ -376,14 +720,9 @@ namespace Fase_3
             var canva = p.GetComponent<Canvas>();
             canva.renderMode = RenderMode.ScreenSpaceCamera;
             canva.worldCamera = Camera.main;
-            _timerImage = GameObject.FindWithTag("Timer").GetComponent<Image>();
-
-            // Verificar se encontrou alguma imagem para o timer
-            if (_timerImage == null)
-                Debug.LogError("Não foi possível encontrar o sprite do timer!");
-            else
-                Debug.Log("Timer sprite encontrado: " + _timerImage.name);
-
+            _timerImage = GameObject.FindWithTag("Timer")?.GetComponent<Image>();
+            _tempoRestante = tempoTotal;
+            _tempoEsgotado = false;
             _timerAtivo = true;
 
             bool acabou = false;
@@ -393,16 +732,15 @@ namespace Fase_3
                 acabou = true;
                 _perguntaAtual = null;
             };
-
             yield return new WaitUntil(() => acabou || _tempoEsgotado);
 
             if (_tempoEsgotado && !acabou)
+            {
+                p.ShowFalhaTempo();
+                yield return p.WaitForFalhaNext();
                 onAnswered(false);
-
-            if (p != null)
-                Destroy(p.gameObject);
+            }
         }
-
 
         public void OnPressSkipAudio()
         {
@@ -410,6 +748,11 @@ namespace Fase_3
             instrucaoAudioSource.Stop();
             instrucaoGO.SetActive(false);
             Destroy(instrucaoGO);
+        }
+
+        public void destroyPergunta()
+        {
+            Destroy(_perguntaAtual.gameObject);
         }
     }
 }

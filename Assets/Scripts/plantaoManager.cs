@@ -9,7 +9,7 @@ public class PlantaoManager : MonoBehaviour
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject videoDisplay;
     [SerializeField] private GameObject loadingPrefab;
-    
+    [SerializeField] private string videoname;
     private bool _videoReady = false;
     private bool _videoStarted = false;
 
@@ -70,8 +70,14 @@ public class PlantaoManager : MonoBehaviour
 
     private IEnumerator PrepareVideo()
     {
-        if (videoPlayer == null)
+        if (videoname != null && videoPlayer != null)
         {
+            // Configura o vídeo player com o vídeo especificado
+            string url = System.IO.Path.Combine(Application.streamingAssetsPath, videoname);
+            Debug.Log($"Preparando vídeo: {url}");
+            videoPlayer.url = url;
+        }
+        else{
             Debug.LogWarning("VideoPlayer não configurado!");
             yield break;
         }

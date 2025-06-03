@@ -22,7 +22,7 @@ MonoBehaviour:
   linkFonte: "\U0001F5A5\uFE0F Revolu\xE7\xE3o secreta - www.revolu\xE7\xE3osecreta.com  "
   opcoesResposta:
   - texto: "SUPOSI\xC7\xC3O SEM BASE CIENT\xCDFICA"
-    isCorreto: 0
+    isCorreto: 1
   - texto: ' LINGUAGEM ALARMISTA'
     isCorreto: 1
   - texto: "DADOS CHEC\xC1VEIS"
@@ -31,5 +31,5 @@ MonoBehaviour:
     isCorreto: 0
   - texto: "DISTOR\xC7\xC3O DE TECNOLOGIA"
     isCorreto: 1
-  - texto: "SUPOSI\xC7\xD5ES"
-    isCorreto: 1
+  - texto: MANCHETE OBJETIVA
+    isCorreto: 0

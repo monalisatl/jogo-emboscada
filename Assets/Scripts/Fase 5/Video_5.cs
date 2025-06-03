@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
@@ -12,40 +14,106 @@ namespace Fase_5
         [SerializeField] private Button skipButton;
         [SerializeField] private GameObject loadingPrefab;
         [SerializeField] private string targetSceneName = "fase5gameplay";
-
+        [SerializeField] private GameObject videoDisplay;
+        [SerializeField] private string videoName = "Plantão ID Vilão.mp4";
         private bool videoFinished = false;
-        
+        private bool _videoReady = false;
+        private bool _videoStarted = false;
         private void Start()
         {
-                            // Configurar o evento para quando o vídeo terminar
             if (videoPlayer)
-            {
-                videoPlayer.loopPointReached += OnVideoFinished;
-               StartCoroutine(PrepareVideo());
+            { 
+                
+                StartCoroutine(LoadAll());
             }
-            
-            // Configurar o botão de pular/continuar
             if (skipButton != null)
             {
                 skipButton.onClick.AddListener(OnSkipButtonClicked);
             }
         }
-
+        private IEnumerator LoadAll()
+        {
+            GameObject loadingInstance = null;
+            if (loadingPrefab != null)
+            {
+                loadingInstance = Instantiate(loadingPrefab);
+                loadingInstance.SetActive(true);
+            }
+            var steps = new List<Func<IEnumerator>>()
+            {
+                () => PrepareVideo(),
+            };
+            foreach (var step in steps)
+            {
+                yield return StartCoroutine(step());
+            }
+            if (loadingInstance != null)
+            {
+                Destroy(loadingInstance);
+            }
+            if (videoDisplay != null)
+            {
+                videoDisplay.SetActive(true);
+            }
+        
+            if (videoPlayer != null)
+            {
+                videoPlayer.Play();
+                _videoStarted = true;
+                StartCoroutine(CheckVideoEnd());
+            }
+        }
         private IEnumerator PrepareVideo()
         {
-            videoPlayer.Prepare();
-            while (!videoPlayer.isPrepared)
+            var url = videoName;
+            if (videoPlayer == null)
             {
-                yield return null;
+                Debug.LogWarning("VideoPlayer não configurado!");
+                yield break;
             }
 
-            yield return new WaitForSeconds(0.3f);
-            videoPlayer.Play();
-        }
+            if (videoName == null )
+            {
+                Debug.LogWarning("Nome do vídeo inválido ou não configurado!");
+                yield break;
+            }
 
+            if (!videoName.EndsWith("mp4"))
+            {
+                url = videoName + ".mp4";
+            }
+            url = System.IO.Path.Combine(Application.streamingAssetsPath, url);
+            videoPlayer.url = url;
+            videoPlayer.prepareCompleted += vp => _videoReady = true;
+            videoPlayer.Prepare();
+            float timeoutSeconds = 10f;
+            float elapsed = 0f;
+            while (!_videoReady && elapsed < timeoutSeconds)
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            if (!_videoReady)
+            {
+                Debug.LogWarning("Timeout ao preparar o vídeo!");
+            }
+        }
+        private IEnumerator CheckVideoEnd()
+        {
+            if (videoPlayer == null) yield break;
+            yield return new WaitForSeconds(1f);
+            while (true)
+            {
+                if (!videoPlayer.isPlaying && _videoStarted)
+                {
+                    OnVideoFinished(videoPlayer);
+                    yield break;
+                }
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
         private void OnVideoFinished(VideoPlayer vp)
         {
-            // Evita que este método seja chamado várias vezes
             if (videoFinished) return;
             videoFinished = true;
             StartCoroutine(LoadNextScene());
@@ -54,7 +122,6 @@ namespace Fase_5
         {
             if (videoPlayer != null && videoPlayer.isPlaying)
             {
-                // Se o vídeo parar inexperadamente (não por causa do botão de pular)
                 if (videoPlayer.time >= 1.0f && videoPlayer.time < videoPlayer.length - 0.5f && videoPlayer.isPlaying == false && !videoFinished)
                 {
                     Debug.Log("Vídeo parou inesperadamente. Tentando retomar...");
@@ -64,29 +131,19 @@ namespace Fase_5
         }
         private void OnSkipButtonClicked()
         {
-            // Interrompe o vídeo se estiver reproduzindo
             if (videoPlayer != null && videoPlayer.isPlaying)
             {
                 videoPlayer.Stop();
             }
-            
-            // Evita que LoadNextScene seja chamado novamente quando o vídeo terminar
             videoFinished = true;
-            
-            // Carrega a próxima cena quando o botão for clicado
             StartCoroutine(LoadNextScene());
         }
 
         private IEnumerator LoadNextScene()
         {
-            // Instancia a tela de loading
             var loadI = Instantiate(loadingPrefab);
             loadI.SetActive(true);
-            
-            // Inicia o carregamento assíncrono
             AsyncOperation operation = SceneManager.LoadSceneAsync(targetSceneName);
-            
-            // Atualiza o progresso da barra de loading
             while (!operation.isDone)
             {
                 Slider progressBar = loadI.GetComponent<Slider>();
@@ -102,7 +159,6 @@ namespace Fase_5
 
         private void OnDestroy()
         {
-            // Remove o evento ao destruir este objeto para evitar vazamentos de memória
             if (videoPlayer != null)
             {
                 videoPlayer.loopPointReached -= OnVideoFinished;

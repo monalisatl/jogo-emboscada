@@ -32,7 +32,7 @@ namespace Fase_5
         [SerializeField] private int personagemVilaoIndex;          // 1, 2 ou 3 (qual é o vilão correto)
         [SerializeField] private string cenaVitoria = "fase5_vitoria";
         [SerializeField] private TextMeshProUGUI textoClassificacao;
-        
+        [SerializeField] private AudioSource musicPlay; // Música de fundo
         private EmboscadaController.Classificacao classificacaoAtual;  // Começa com classificação máxima
         
         private void saveload()
@@ -154,8 +154,8 @@ namespace Fase_5
         {
             // Esconde a tela de explicação e mostra o jogo
             telaExplicacaoInicial.SetActive(false);
-            
-            // Inicia o timer
+
+            musicPlay.Play();
             timerAtivo = true;
         }
         

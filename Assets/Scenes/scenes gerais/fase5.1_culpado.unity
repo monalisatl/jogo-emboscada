@@ -140,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 15822698}
   - component: {fileID: 15822699}
+  - component: {fileID: 15822700}
   m_Layer: 0
   m_Name: config
   m_TagString: Untagged
@@ -184,11 +185,28 @@ MonoBehaviour:
   botaoComecarJogo: {fileID: 1262462394}
   botaoTentarNovamente: {fileID: 8410463}
   botaoTentarNovoTempo: {fileID: 1575220396}
-  tempoTotal: 30
+  tempoTotal: 300
   barraTimer: {fileID: 249255283}
   personagemVilaoIndex: 0
   cenaVitoria: fase5_parabens
   textoClassificacao: {fileID: 5192018466784853892}
+  musicPlay: {fileID: 5192018466784853893}
+--- !u!114 &15822700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15822697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb753ce438fae14db6238a3bb3c98c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1262462396}
+  videoDisplay: {fileID: 1262462395}
+  loadingPrefab: {fileID: 131606214874875394, guid: 3de70727263c9fd43a55a2e93af31981, type: 3}
+  videoname: 5_investigacao.mp4
 --- !u!114 &249255283 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
@@ -472,17 +490,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 4187058724115465528, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7388112347021951488, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
       propertyPath: m_Name
       value: fase5_instrucoes
-      objectReference: {fileID: 0}
-    - target: {fileID: 7388112347021951488, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -505,6 +515,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1262462395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6631670537395406180, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+  m_PrefabInstance: {fileID: 1262462392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!328 &1262462396 stripped
+VideoPlayer:
+  m_CorrespondingSourceObject: {fileID: 2449385966554173319, guid: fd7bcea8932aabe48a874a0808e2dc44, type: 3}
+  m_PrefabInstance: {fileID: 1262462392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1575220396 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4274002554160083574, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
@@ -612,58 +632,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6086223858067139568, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 410.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6086223858067139568, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -35.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -3251669722322308248, guid: a8fcfef9d1b61954890289dd8b4c2ca4, type: 3}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Color.b
-      value: 0.043137312
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Color.g
+    - target: {fileID: 8563871877406949067, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
+      propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_Color.r
+    - target: {fileID: 8563871877406949067, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634275701411286447, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714002808129394584, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_text
-      value: Tempo esgotou!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714002808129394584, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_fontSize
-      value: 62.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154702334482852798, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_text
-      value: "Infelizmente, o tempo para selecionar o vil\xE3o esgotou. \nSua investiga\xE7\xE3o
-        precisa ser mais r\xE1pida. \nRevise suas pistas e tente novamente!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 9154702334482852798, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
-      propertyPath: m_fontSize
-      value: 49.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -681,6 +656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &5192018466784853893 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8563871877406949067, guid: 2111f8e4efb81cd43924713cfcc325ac, type: 3}
+  m_PrefabInstance: {fileID: 5192018466784853891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

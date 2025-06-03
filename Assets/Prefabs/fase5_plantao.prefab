@@ -231,10 +231,10 @@ RectTransform:
   - {fileID: 3365701539271108546}
   m_Father: {fileID: 2082968713842433233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.3, y: -790.92}
-  m_SizeDelta: {x: 1110.4, y: 382.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 10.578003, y: 377}
+  m_SizeDelta: {x: -169.59998, y: 382.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5657161291797413413
 CanvasRenderer:
@@ -418,10 +418,10 @@ RectTransform:
   - {fileID: 8457867920941075832}
   m_Father: {fileID: 2082968713842433233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 178.934}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 485, y: -1153}
-  m_SizeDelta: {x: 136.8, y: 185.6}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 511.97803, y: 88.46802}
+  m_SizeDelta: {x: -1172.4, y: 139.98401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6172279387323700247
 CanvasRenderer:
@@ -687,10 +687,10 @@ RectTransform:
   - {fileID: 8076474096892187672}
   m_Father: {fileID: 2082968713842433233}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.25}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -485, y: -1153}
-  m_SizeDelta: {x: 136.8, y: 185.6}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -557.0303, y: 79.46326}
+  m_SizeDelta: {x: -1185.037, y: 134.344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6162700899215993479
 CanvasRenderer:
@@ -1217,6 +1217,10 @@ PrefabInstance:
     - target: {fileID: 131606214874875394, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
       propertyPath: m_Name
       value: load
+      objectReference: {fileID: 0}
+    - target: {fileID: 131606214874875394, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 778280228306151040, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
       propertyPath: m_Pivot.x
