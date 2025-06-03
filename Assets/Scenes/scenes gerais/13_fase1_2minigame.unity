@@ -473,30 +473,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4560129421810816274, guid: 7c9be7ab4d7c8714288acfe8d6014240, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -74.05847
-      objectReference: {fileID: 0}
     - target: {fileID: 4926613991772886622, guid: 7c9be7ab4d7c8714288acfe8d6014240, type: 3}
       propertyPath: m_Name
       value: "12_fase1_2instru\xE7ao"
       objectReference: {fileID: 0}
     - target: {fileID: 4926613991772886622, guid: 7c9be7ab4d7c8714288acfe8d6014240, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8318463370439136458, guid: 7c9be7ab4d7c8714288acfe8d6014240, type: 3}
       propertyPath: game
       value: 
       objectReference: {fileID: 6774816675419849630}
-    - target: {fileID: 9168080562248731532, guid: 7c9be7ab4d7c8714288acfe8d6014240, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 66.099976
-      objectReference: {fileID: 0}
-    - target: {fileID: 9168080562248731532, guid: 7c9be7ab4d7c8714288acfe8d6014240, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 240.30005
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -603,6 +591,17 @@ PrefabInstance:
     - target: {fileID: 4987647328326314115, guid: fc6fea4e04559f94ead68d6f970478b1, type: 3}
       propertyPath: m_Name
       value: 13_fase1_2minigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651688774112864224, guid: fc6fea4e04559f94ead68d6f970478b1, type: 3}
+      propertyPath: 'feedbacks.Array.data[2]'
+      value: "O telefone pode ser fundamental para confirmar informa\xE7\xF5es diretamente
+        com as fontes. Not\xEDcias falsas n\xE3o citam \u201Cespecialistas\u201D
+        e \u201Cautoridades oficiais\"."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5651688774112864224, guid: fc6fea4e04559f94ead68d6f970478b1, type: 3}
+      propertyPath: 'feedbacks.Array.data[3]'
+      value: "O calend\xE1rio ajuda a verificar a cronologia dos eventos. Muitas
+        desinforma\xE7\xF5es aproveitam acontecimentos antigos como se fossem atuais."
       objectReference: {fileID: 0}
     - target: {fileID: 8828713426467659574, guid: fc6fea4e04559f94ead68d6f970478b1, type: 3}
       propertyPath: m_Camera

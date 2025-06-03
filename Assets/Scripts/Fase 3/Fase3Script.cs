@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using Fase_5;
-using UnityEngine.Serialization; // para RepescagemManager
+using TMPro;
+using UnityEngine.Serialization;
 
 namespace Fase_3
 {
@@ -30,6 +31,7 @@ namespace Fase_3
         private GameObject falhaTempoPanel;
 
         private bool _falhaTempoClicked = false;
+
         [Header("Áudio de Instrução")] [SerializeField]
         private AudioClip instrucoesClip;
 
@@ -54,10 +56,18 @@ namespace Fase_3
         private const int ThisLevel = 2;
         public static Fase3Manager instance;
         private GameObject _currentVideoGO;
-        
-        [Header("Falha Vídeo")]
-        [SerializeField] private GameObject falhaPanel;
-        [FormerlySerializedAs("_falhaAudioSource")] [SerializeField] private AudioSource falhaAudioSource;
+
+        [Header("tela de fase divisao")] [SerializeField]
+        private GameObject deivisaoprefab;
+
+        private bool _divisaoFaseBotaoPressionado = false;
+
+        [Header("Falha Vídeo")] [SerializeField]
+        private GameObject falhaPanel;
+
+        [FormerlySerializedAs("_falhaAudioSource")] [SerializeField]
+        private AudioSource falhaAudioSource;
+
         void Start()
         {
             if (instance == null)
@@ -78,7 +88,6 @@ namespace Fase_3
 
             falhaPanel.SetActive(false);
             StartCoroutine(RunFase());
-            
         }
 
         private IEnumerator RunFase()
@@ -91,7 +100,7 @@ namespace Fase_3
             instrucaoAudioSource.clip = instrucoesClip;
             instrucaoAudioSource.Play();
             yield return new WaitUntil(() => _skipInstrucao);
-
+            yield return Divisaofase("Primeira Rodada");
             // Vídeo 1
             yield return PlayVideo(videoPrefabs[0], urlvideos[0]);
 
@@ -117,10 +126,11 @@ namespace Fase_3
                 yield return PlayVideo(videoPrefabs[2], urlvideos[2]);
             }
 
-            yield return falhavideocarrregar();
+            yield return FalhaVideoCarrregar();
+            yield return Divisaofase("Segunda Rodada");
             // Vídeo 2
             yield return PlayVideo(videoPrefabs[3], urlvideos[3]);
-            
+
             // Pergunta 2
             yield return AskQuestion(pergunta2Prefab, correto =>
             {
@@ -146,15 +156,64 @@ namespace Fase_3
             yield return StartCoroutine(EndFase3());
         }
 
-        private IEnumerator falhavideocarrregar()
+        private IEnumerator Divisaofase(string nomeDaRodada)
+        {
+            _divisaoFaseBotaoPressionado = false;
+
+            GameObject divisaoPrefabInstancia;
+            if (deivisaoprefab)
+            {
+                divisaoPrefabInstancia = Instantiate(deivisaoprefab);
+            }
+            else
+            {
+                Debug.LogError(
+                    "'deivisaoprefab' não está atribuído no Inspector. Não é possível mostrar a tela de divisão.");
+                yield break;
+            }
+
+            var canvasComponent = divisaoPrefabInstancia.GetComponent<Canvas>();
+            if (canvasComponent != null)
+            {
+                canvasComponent.renderMode = RenderMode.ScreenSpaceCamera;
+                canvasComponent.worldCamera = Camera.main;
+                canvasComponent.sortingOrder = 5;
+            }
+            else
+            {
+                Debug.LogWarning(
+                    "Componente Canvas não encontrado no 'divisaoPrefabInstancia'. A UI pode não ser exibida corretamente.");
+            }
+
+            divisaoPrefabInstancia.GetComponentInChildren<TextMeshProUGUI>().text = nomeDaRodada;
+                var botaoParaAguardarClique = divisaoPrefabInstancia.GetComponentInChildren<Button>(true);
+                if (botaoParaAguardarClique)
+                {
+                    botaoParaAguardarClique.onClick.RemoveAllListeners();
+                    botaoParaAguardarClique.onClick.AddListener(() =>
+                    {
+                        _divisaoFaseBotaoPressionado = true;
+                        Destroy(divisaoPrefabInstancia);
+                    });
+                }
+                
+
+            Debug.Log($"Exibindo tela de divisão: {nomeDaRodada}. Aguardando clique no botão...");
+            yield return new WaitUntil(() => _divisaoFaseBotaoPressionado);
+            Debug.Log("Botão da tela de divisão clicado. Prosseguindo para a próxima etapa da fase.");
+
+        }
+
+        private IEnumerator FalhaVideoCarrregar()
         {
             falhaPanel.SetActive(true);
             falhaAudioSource.pitch = 2f;
             falhaAudioSource.Play();
             yield return new WaitUntil(() => !falhaAudioSource.isPlaying);
-            
-             falhaPanel.SetActive(false);
+
+            falhaPanel.SetActive(false);
         }
+
         void Update()
         {
             if (!_timerAtivo) return;
@@ -590,8 +649,8 @@ namespace Fase_3
                 }
 
                 yield return null;
-                
             }
+
             raw.texture = vp.texture;
             raw.color = Color.white;
             if (_currentVideoGO != null)
@@ -601,9 +660,9 @@ namespace Fase_3
             Destroy(loading);
             vp.Play();
             _currentVideoGO = nextGO;
-            
+
             yield return new WaitWhile(() => vp.isPlaying);
-            
+
             Destroy(nextGO);
             if (_currentVideoGO == nextGO)
                 _currentVideoGO = null;

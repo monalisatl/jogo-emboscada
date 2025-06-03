@@ -310,6 +310,7 @@ MonoBehaviour:
   derrotaPrefab: {fileID: 3182707776592639926, guid: 9668277db1e40a64eabb538a1ed6d240, type: 3}
   pistaPrefab: {fileID: 1149841232130745503, guid: f4e72a830b9f4524d919d70b1ce93478, type: 3}
   debug: 0
+  deivisaoprefab: {fileID: 3668521232247425036, guid: 1695400cd063b684cb3cdefe6df2f732, type: 3}
   falhaPanel: {fileID: 699664185651343564}
   falhaAudioSource: {fileID: 7572238278397645772}
 --- !u!1 &664323737
@@ -869,6 +870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: load
       objectReference: {fileID: 0}
+    - target: {fileID: 131606214874875394, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 778280228306151040, guid: 0ec55d7314f01ba41aa1c73e15ba91bb, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1260,7 +1265,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.6
+  m_fontSize: 56.05
   m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 1
