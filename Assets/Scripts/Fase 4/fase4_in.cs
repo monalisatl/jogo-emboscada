@@ -106,7 +106,7 @@ namespace Fase_4
 
         public void OnCameraPress()
         {
-            Invoke("OpenFase4", 1.0f);
+            Invoke("OpenFase4", 0.2f);
         }
 
         private void OpenFase4()
