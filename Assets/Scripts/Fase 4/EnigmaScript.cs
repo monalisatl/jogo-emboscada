@@ -34,7 +34,7 @@ namespace Fase_4
         public int cenaVitoria;
         public int cenaDerrota;
         [SerializeField] private GameObject instruct;
-
+        [SerializeField] private AudioSource audioSource_music;
         private int respostasCorretas = 0;
         private int totalRespondidos = 0;
 
@@ -49,6 +49,8 @@ namespace Fase_4
         [SerializeField] private GameObject DerrotaPrefab;
         [SerializeField] private GameObject loadPrefab;
         [SerializeField] private GameObject dicaPrefab;
+        
+        
         private void Awake()
         {
             if (instance == null)
@@ -313,6 +315,7 @@ namespace Fase_4
             {
                 instruct.SetActive(false);
                 Destroy(instruct);
+                audioSource_music.Play();
                 LigarTimer();
             }
         }

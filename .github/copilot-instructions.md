@@ -2,13 +2,13 @@
 - Project name: jogo-emboscada
 - Unity version: Unity 6000.0.40f1
 - Active scene:
-  - Name: 18_fase2_minigame
+  - Name: fase5.1_culpado
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, GameControl, noticia, tempo, buttonFase1, totorial_panel, enigma, EnigmaPainel, Timer, detail_image
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Water, UI
 - Active game object:
-  - Name: 18_fase2_minigame
+  - Name: Video Player
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
