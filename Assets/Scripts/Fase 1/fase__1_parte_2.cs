@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Fase_1
@@ -10,15 +11,15 @@ namespace Fase_1
     public class Fase1Parte2 : MonoBehaviour
     {
         public static Fase1Parte2 Instance;
-    
+        private bool _confirmationProcessed;
         [SerializeField] private ZonaSoltar[] dropZones;
         [SerializeField] private Button confirmButton;
         [SerializeField] private Button rejectButton;
         [SerializeField] private GameObject tableButtons;
-        public static int acertos_garais = 0;
+        public static int AcertosGarais;
         [SerializeField] private Arrastavel[] allDraggableItems;
-        private bool isBeingDestroyed = false;
-        [SerializeField] private Button ContinueButton;
+        private bool _isBeingDestroyed;
+        [FormerlySerializedAs("ContinueButton")] [SerializeField] private Button continueButton;
         [Header("Fedback")]
         [SerializeField] private GameObject panelExplication;
         [SerializeField] private string[] feedbacks;
@@ -28,7 +29,7 @@ namespace Fase_1
     
         [Header("Timer")]
         [Tooltip("Tempo máximo para completar a fase em segundos")]
-        [SerializeField] private float tempoLimite = 60f;
+        [SerializeField] private float tempoLimite = 200f;
         [Tooltip("Referência ao objeto de imagem do cronômetro")]
         [SerializeField] private Image cronometro;
         private float _tempoRestante;
@@ -43,8 +44,6 @@ namespace Fase_1
                 Destroy(gameObject);
                 return;
             }
-            
-            // Garantir que botões comecem desativados
             if (tableButtons)
                 tableButtons.SetActive(false);
             if (confirmButton && confirmButton.gameObject)
@@ -52,20 +51,21 @@ namespace Fase_1
 
             foreach (var button in feedbackButtons)
             {   button.interactable = false; }
-            if (ContinueButton)
-                ContinueButton.gameObject.SetActive(false);
+            if (continueButton)
+                continueButton.gameObject.SetActive(false);
             if (panelExplication)
                 panelExplication.SetActive(false);
             if(feedbackAviso)
                 feedbackAviso.gameObject.SetActive(false);
             
-            // Inicializar o timer
-            _tempoRestante = tempoLimite;
+            _confirmationProcessed = false;
+            _tempoRestante = tempoLimite; // Ensure timer is reset here too
+            _cronometroAtivo = true;      // Ensure timer starts active
         }
     
         private void OnDestroy()
         {
-            isBeingDestroyed = true;
+            _isBeingDestroyed = true;
         
             if (Instance == this)
                 Instance = null;
@@ -103,20 +103,35 @@ namespace Fase_1
     
         private void Update()
         {
-            if (!_cronometroAtivo || isBeingDestroyed)
+            if (_isBeingDestroyed)
             {
                 return;
             }
-        
-            _tempoRestante -= Time.deltaTime;
-            _tempoRestante = Mathf.Max(_tempoRestante, 0f);
-            UpdateCronometro();
-        
-            if (_tempoRestante <= 0f)
+
+            if (_confirmationProcessed) // If confirmation is done, nothing more to do for timer here
             {
-                Debug.Log("Tempo esgotado!");
-                _cronometroAtivo = false;
-                TimeOut();
+                // Ensure timer is visually stopped if it was very close to 0
+                if (_tempoRestante > 0 && !_cronometroAtivo) { /* Already handled by confirm */ }
+                else if (_tempoRestante <=0 && _cronometroAtivo) { // Should not happen if confirm stopped timer
+                    _cronometroAtivo = false; UpdateCronometro();
+                }
+                return;
+            }
+
+            // If we are here, confirmation has NOT been processed.
+            if (_cronometroAtivo)
+            {
+                _tempoRestante -= Time.deltaTime;
+                _tempoRestante = Mathf.Max(_tempoRestante, 0f);
+                UpdateCronometro();
+
+                if (_tempoRestante <= 0f)
+                {
+                    Debug.Log("Tempo esgotado! Confirmação não realizada a tempo.");
+                    _cronometroAtivo = false; // Stop the timer
+                    // Since _confirmationProcessed is false here, call TimeOut
+                    TimeOut();
+                }
             }
         }
     
@@ -131,8 +146,7 @@ namespace Fase_1
         private void TimeOut()
         {
             // Marcar como erradas as zonas vazias
-            int acertos = 0;
-        
+
             foreach (ZonaSoltar zone in dropZones)
             {
                 if (!zone) continue;
@@ -143,7 +157,6 @@ namespace Fase_1
                     int zoneId = zone.GetZoneId();
                     if (itemId == zoneId)
                     {
-                        acertos++;
                         Debug.Log($"Item {itemId} está na zona correta {zoneId}");
                         feedbackButtons[zoneId].gameObject.GetComponent<Image>().color = Color.green;
                     }
@@ -162,8 +175,8 @@ namespace Fase_1
                 }
             }
         
-            acertos_garais = 0;
-            Debug.Log($"Total de acertos: {acertos_garais}");
+            AcertosGarais = 0;
+            Debug.Log($"Total de acertos: {AcertosGarais}");
             
             // Habilitar feedback mesmo sem completar todas as zonas
             EnableFeedback();
@@ -178,7 +191,7 @@ namespace Fase_1
 
         public void CheckAllItemsPlaced()
         {
-            if (isBeingDestroyed) return;
+            if (_isBeingDestroyed) return;
         
             if (dropZones == null || dropZones.Length == 0)
             {
@@ -223,11 +236,11 @@ namespace Fase_1
     
         public void OnConfirmButtonClicked()
         {
-            if (isBeingDestroyed) return;
-        
-            // Parar o timer quando o usuário confirmar
+            if (_isBeingDestroyed || _confirmationProcessed) return; // Prevent re-confirmation
+
             _cronometroAtivo = false;
-        
+            _confirmationProcessed = true; // Mark confirmation as processed
+
             Debug.Log("Confirmação realizada!");
             int acertos = 0;
         
@@ -263,17 +276,18 @@ namespace Fase_1
             else    
                 Debug.Log("Há itens em colunas erradas!");
             
-            acertos_garais = acertos;
+            AcertosGarais = acertos;
         
             EnableFeedback();
         }
     
         private void EnableFeedback()
         {
+            
             // Ativar interface de feedback
             feedbackAviso.gameObject.SetActive(true);
-            ContinueButton.gameObject.SetActive(true);
-            ContinueButton.interactable = true;
+            continueButton.gameObject.SetActive(true);
+            continueButton.interactable = true;
             foreach (var button in feedbackButtons)
             {
                 button.interactable = true;
@@ -342,13 +356,13 @@ namespace Fase_1
         {
             feedbackText.text = feedbacks[idZone];
             panelExplication.SetActive(true);
-            ContinueButton.interactable = false;
+            continueButton.interactable = false;
         }
     
         public void DesactiveFeedback()
         {
             panelExplication.SetActive(false);
-            ContinueButton.interactable = true;
+            continueButton.interactable = true;
         }
 
         public void OnContinueButtonPress()
@@ -361,7 +375,7 @@ namespace Fase_1
             yield return new WaitForEndOfFrame();
             EmboscadaController.gameData ??= new EmboscadaController.GameData();
             carregarGameData();
-            if(fase_1_minigame.acertos_garais + Fase1Parte2.acertos_garais >= 6){
+            if(fase_1_minigame.acertos_garais + Fase1Parte2.AcertosGarais >= 6){
                 MainManager.indiceCanvainicial = 14;
                 yield return SaveGameSafely(true);
                 LoadMainScene();
@@ -440,7 +454,7 @@ namespace Fase_1
         }
         public void OnCancelButtonPress()
         {
-            if (isBeingDestroyed) return;
+            if (_isBeingDestroyed) return;
        
             if (tableButtons)
                 tableButtons.SetActive(false);
@@ -461,14 +475,19 @@ namespace Fase_1
                     item.ReturnToInitialPosition();
                 }
             }
-       
-            Debug.Log("Tudo resetado para as posições iniciais");
+            _confirmationProcessed = false; // Reset flag
+            _cronometroAtivo = true;        // Reactivate timer
+            _tempoRestante = tempoLimite;   // Reset timer value
+            UpdateCronometro();             // Update timer display
+            CheckAllItemsPlaced();          // Re-check if buttons should be active (likely not after reset)
+
+            Debug.Log("Tudo resetado para as posições iniciais, pronto para nova tentativa.");
         }
     
         [ContextMenu("Debug Zone Status")]
         public void DebugZoneStatus()
         {
-            if (isBeingDestroyed || dropZones == null) return;
+            if (_isBeingDestroyed || dropZones == null) return;
        
             for (int i = 0; i < dropZones.Length; i++)
             {
