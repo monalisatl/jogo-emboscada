@@ -11808,15 +11808,16 @@ MonoBehaviour:
   - {fileID: 5531922541085823033}
   - {fileID: 324158447640099016}
   - {fileID: 7023876474164882374}
-  ContinueButton: {fileID: 3963178886964225168}
+  continueButton: {fileID: 3963178886964225168}
   panelExplication: {fileID: 4133461671055309297}
   feedbacks:
   - "A lupa pode ser essencial para analisar manipula\xE7\xF5es em imagens."
   - "O computador permite verificar a autenticidade de sites, URLs com erros de digita\xE7\xE3o
     ou dom\xEDnios estranhos."
   - "O telefone pode ser fundamental para confirmar informa\xE7\xF5es diretamente
-    com as fontes. Not\xEDcias falsas n\xE3o citam \u201Cespecialistas\u201D ou \u201Cautoridades."
-  - "O calend\xE1rio ajuda a verificar a cronologia dos eventos. Muitas fake news
+    com as fontes. Not\xEDcias falsas n\xE3o citam \u201Cespecialistas\u201D e \u201Cautoridades
+    oficiais\"."
+  - "O calend\xE1rio ajuda a verificar a cronologia dos eventos. Muitas desinforma\xE7\xF5es
     aproveitam acontecimentos antigos como se fossem atuais."
   - "O gravador permite registrar e verificar as declara\xE7\xF5es. \xC0s vezes informa\xE7\xF5es
     podem ser distorcidas, e essa ferramenta serve como prova de que a declara\xE7\xE3o
@@ -11833,7 +11834,7 @@ MonoBehaviour:
   - {fileID: 1475670732717440108}
   feedbackText: {fileID: 911814949962255770}
   feedbackAviso: {fileID: 460657140643204461}
-  tempoLimite: 120
+  tempoLimite: 200
   cronometro: {fileID: 5295988790918624932}
 --- !u!1 &9111317245296287803
 GameObject:

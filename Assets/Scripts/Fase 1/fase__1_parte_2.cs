@@ -91,8 +91,7 @@ namespace Fase_1
             }
         
             StartCoroutine(DelayedInitCheck());
-        
-            // Verificar se o cronômetro está atribuído
+            
             if (!cronometro)
             {
                 Debug.LogError("Timer não adicionado!");
@@ -108,17 +107,13 @@ namespace Fase_1
                 return;
             }
 
-            if (_confirmationProcessed) // If confirmation is done, nothing more to do for timer here
+            if (_confirmationProcessed)
             {
-                // Ensure timer is visually stopped if it was very close to 0
                 if (_tempoRestante > 0 && !_cronometroAtivo) { /* Already handled by confirm */ }
-                else if (_tempoRestante <=0 && _cronometroAtivo) { // Should not happen if confirm stopped timer
                     _cronometroAtivo = false; UpdateCronometro();
-                }
                 return;
             }
-
-            // If we are here, confirmation has NOT been processed.
+            
             if (_cronometroAtivo)
             {
                 _tempoRestante -= Time.deltaTime;
@@ -128,8 +123,7 @@ namespace Fase_1
                 if (_tempoRestante <= 0f)
                 {
                     Debug.Log("Tempo esgotado! Confirmação não realizada a tempo.");
-                    _cronometroAtivo = false; // Stop the timer
-                    // Since _confirmationProcessed is false here, call TimeOut
+                    _cronometroAtivo = false; 
                     TimeOut();
                 }
             }
@@ -145,7 +139,6 @@ namespace Fase_1
     
         private void TimeOut()
         {
-            // Marcar como erradas as zonas vazias
 
             foreach (ZonaSoltar zone in dropZones)
             {
@@ -168,7 +161,6 @@ namespace Fase_1
                 }
                 else
                 {
-                    // Zonas vazias são marcadas como erradas automaticamente
                     int zoneId = zone.GetZoneId();
                     Debug.Log($"Zona {zoneId} está vazia - marcada como errada");
                     feedbackButtons[zoneId].gameObject.GetComponent<Image>().color = Color.red;
@@ -177,8 +169,6 @@ namespace Fase_1
         
             AcertosGarais = 0;
             Debug.Log($"Total de acertos: {AcertosGarais}");
-            
-            // Habilitar feedback mesmo sem completar todas as zonas
             EnableFeedback();
         }
     
@@ -283,8 +273,6 @@ namespace Fase_1
     
         private void EnableFeedback()
         {
-            
-            // Ativar interface de feedback
             feedbackAviso.gameObject.SetActive(true);
             continueButton.gameObject.SetActive(true);
             continueButton.interactable = true;
@@ -293,49 +281,35 @@ namespace Fase_1
                 button.interactable = true;
             }
             tableButtons.SetActive(false);
-       
-            // Desabilitar a funcionalidade de arrastar
+            
             DesabilitarArrastaveis();
         }
-   
-        // Novo método para desabilitar todos os itens arrastáveis
+        
         private void DesabilitarArrastaveis()
         {
-            // Verificar se a lista de arrastáveis está vazia
             if (allDraggableItems == null || allDraggableItems.Length == 0)
             {
                 allDraggableItems = FindObjectsByType<Arrastavel>(FindObjectsSortMode.None);
             }
-       
-            // Desabilitar cada item arrastável
+            
             foreach (Arrastavel item in allDraggableItems)
             {
                 if (item == null) continue;
-           
-                // Existem várias maneiras de desabilitar o arrasto, dependendo de como o script Arrastavel está implementado
-                // Opção 1: Desabilitar o componente
+                
                 item.enabled = false;
-           
-                // Opção 2: Se o script Arrastavel tem uma propriedade ou método para desabilitar o arrasto, usar isso
-                // Exemplo (descomente a opção correta com base na implementação real):
-                // item.SetDraggable(false);
-                // item.canDrag = false;
-           
-                // Opção 3: Desabilitar o componente EventTrigger se for usado
+                
                 EventTrigger eventTrigger = item.GetComponent<EventTrigger>();
                 if (eventTrigger != null)
                 {
                     eventTrigger.enabled = false;
                 }
-           
-                // Opção 4: Desabilitar qualquer componente de raycast
+                
                 GraphicRaycaster raycaster = item.GetComponent<GraphicRaycaster>();
                 if (raycaster != null)
                 {
                     raycaster.enabled = false;
                 }
-           
-                // Opção 5: Desabilitar os colliders, se for usado Physics ou Physics2D
+                
                 Collider[] colliders = item.GetComponents<Collider>();
                 foreach (Collider collider in colliders)
                 {

@@ -66,6 +66,11 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Android signing keystores (NUNCA versionar - chave de assinatura do app)
+*.keystore
+*.keystore.old
+*.jks
+
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 
